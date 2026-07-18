@@ -29,3 +29,11 @@ When a shader queries properties from an `intersection` struct (such as `distanc
 - This compilation model avoids redundant register storage and memory transactions, maximizing execution efficiency.
 - If a shader queries properties of an invalid intersection (where `type` is `none`), the query returns undefined data. To prevent this, developers should check the intersection `type` before querying other properties.
 - As a result, these virtual properties ensure fast, direct access to hardware-generated raytracing metadata.
+
+
+
+## Virtual Member Properties in Raytracing Intersections
+
+The `intersection` class manages collision attributes returned by the raytracing engine:
+- **Virtual Properties**: Struct members (such as `distance` or `barycentric_coords`) are compiled as virtual properties.
+- **Hardware Register Fetch**: Loads requested metadata directly from specialized register slots populated by the Traversal Engine, avoiding memory transactions.

@@ -30,3 +30,11 @@ MSL uses predefined macros to enable conditional compilation:
 - For example, if `__HAVE_RAYTRACING__` is defined, the shader can compile hardware-accelerated intersection queries; otherwise, it can fall back to manual BVH traversal or software approximations.
 - During parsing, Clang evaluates these preprocessor macros before starting semantic analysis.
 - This compilation model prevents unsupported instructions from being lowered, ensuring robust compilation across diverse hardware targets.
+
+
+
+## Compiler Query Macros and Target Flags
+
+Predefined preprocessor definitions enable conditional compilation:
+- **Target OS Identifiers**: Evaluate target platforms before starting semantic analysis.
+- **Capability Query Macros**: Predefine macros (such as `__HAVE_RAYTRACING__`) to scale shader compilation dynamically across different GPU families.

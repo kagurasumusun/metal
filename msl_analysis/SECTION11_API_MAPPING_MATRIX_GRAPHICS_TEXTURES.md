@@ -133,3 +133,12 @@ The table below catalogs texture read, write, and sampling permutations across a
 | `texture1d<T, access>` | `read` | `(uint, uint lod = 0)`| `CXXMemberCallExpr` | `@llvm.air.read.1d` | `air.read.1d` |
 | `texture2d<T, access>` | `read` | `(uint2, uint lod = 0)`| `CXXMemberCallExpr` | `@llvm.air.read.2d` | `air.read.2d` |
 | `texture3d<T, access>` | `read` | `(uint3, uint lod = 0)`| `CXXMemberCallExpr` | `@llvm.air.read.3d` | `air.read.3d` |
+
+
+
+## Anisotropic Filtering and Texel Fetch Units
+
+Texture sampling in MSL is processed by dedicated Texture Processing Units (TPUs) integrated into each GPU core:
+- **Bilinear Filtering**: The TPU fetches the four nearest pixels, interpolates them in hardware, and writes the resulting vector back to a destination register.
+- **Anisotropic Filtering**: Performs multiple bilinear fetches along the direction of texture coordinates projection, providing sharp filtering for surfaces at steep angles.
+- **MIP Mapping**: Calculates level-of-detail (LOD) and selects the appropriate mipmap level, interpolating between two adjacent mip levels in trilinear mode.

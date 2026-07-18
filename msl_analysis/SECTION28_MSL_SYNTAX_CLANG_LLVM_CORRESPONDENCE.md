@@ -50,3 +50,11 @@ Standard C++ has no native concept of address spaces.
 - In LLVM IR, pointers are annotated with these numerical indices (e.g., `i32 addrspace(1)*`), allowing the JIT compiler to route memory operations to the appropriate hardware memory caches.
 - This address space compilation model allows standard C++ pointer syntax to be safely translated to specialized GPU caches.
 - As a result, pointer operations are highly optimized and secure under the MSL memory model.
+
+
+
+## Grammatical Equivalences in MSL and Clang Parser
+
+Mapping custom MSL syntax within standard C++ grammar:
+- **DeclAttrs**: Custom C++ attribute bindings like `[[buffer(n)]]` map directly to Clang decl-attributes parsed during function type extraction.
+- **TypeQualifiers**: Address spaces like `device` map directly to pointer qualifiers inside Clang semantic validation passes.

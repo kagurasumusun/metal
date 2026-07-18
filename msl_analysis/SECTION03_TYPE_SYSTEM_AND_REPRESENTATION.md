@@ -85,3 +85,24 @@ Textures in MSL are represented by templated classes with type parameters repres
 | `pixel<int, access::read>` | R32_Int / RGBA32_Int | Sign-Extended | `%opencl.image2d_t` / `addrspace(4)` | Returns signed 32-bit integer vector |
 | `pixel<uint, access::read>` | R32_UInt / RGBA32_UInt | Zero-Extended | `%opencl.image2d_t` / `addrspace(4)` | Returns unsigned 32-bit integer vector |
 | `pixel<uchar, access::write>`| RGBA8_UNorm / RGBA8_UInt | Packed / Clamped | `%opencl.image2d_write_t` / `addrspace(4)`| Unpacks and converts to normalized float or integer |
+
+
+
+## Padding and Strides in Struct Alignments
+
+The Metal Shading Language enforces strict structural alignment rules to ensure optimal memory coalescing on GPU cache lines:
+- **Struct Alignment**: The total alignment of a struct is equal to the largest alignment of its members.
+- **Padding**: The compiler automatically inserts padding bytes between struct members to align them to their natural boundaries. For example, if a `float` member (4-byte alignment) follows a `short` member (2-byte alignment), the compiler inserts 2 padding bytes.
+- **Array Stride**: The distance between adjacent elements in an array (stride) is padded to match the element's natural alignment.
+
+### Structure Packing Directives
+To bypass automatic padding and minimize memory footprint, MSL supports packing attributes:
+```cpp
+struct PackedData {
+  packed_float3 position;
+  packed_half2 texcoords;
+} __attribute__((packed));
+```
+When Clang processes a packed structure:
+- It disables natural alignments, reducing member alignments to 1 byte.
+- Lowered LLVM IR loads and stores use unaligned memory fetch instructions, which can incur a performance penalty on older hardware but minimize memory usage in complex pipelines.

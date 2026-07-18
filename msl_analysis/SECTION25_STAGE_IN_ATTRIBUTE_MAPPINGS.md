@@ -36,3 +36,11 @@ When Clang parses the `VertexInput` structure:
 3. This metadata is serialized into the `.air` bitcode and compiled into the `.metallib` reflection section (`REF`).
 4. At runtime, the GPU's fixed-function **Vertex Fetch Unit (VFU)** reads the `MTLVertexDescriptor` configured on the CPU, fetches texels from vertex buffers, converts their formats, and writes the resulting vectors directly to the thread's input registers.
 5. This compilation model offloads vertex fetching from the ALUs, maximizing geometric processing efficiency.
+
+
+
+## Automated Vertex Fetching and Attribute Layouts
+
+The `[[stage_in]]` attribute maps vertex input structure parameters to vertex buffers:
+- **Metadata Serialization**: Serializes attribute bindings to `.air` bitcode metadata.
+- **Automated Vertex Fetching**: The GPU's fixed-function Vertex Fetch Unit automatically fetches vertex parameters, converts formats, and writes them to registers.

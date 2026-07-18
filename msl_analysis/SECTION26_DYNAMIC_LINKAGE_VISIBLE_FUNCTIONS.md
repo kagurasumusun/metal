@@ -26,3 +26,11 @@ Visible Function Tables (VFTs) are compiled as arrays of opaque function pointer
 - At the hardware level, the AGX ISA translator compiles the dynamic call into an indirect branch instruction using a target address register.
 - This dynamic lookup and branch allows parent shaders (such as raytracing closest-hit stages) to execute dynamic functions resolved at runtime.
 - As a result, VFTs provide maximum flexibility for advanced graphics algorithms on Apple Silicon GPUs.
+
+
+
+## Late Linkage and Dynamic dispatched Function pointers
+
+Late runtime linkage enables dynamic dispatch and late shader linking:
+- **Visible Function Tables (VFTs)**: Compiled as arrays of opaque function pointers.
+- **Indirect Call Execution**: Clang compiles table lookups to indirect branch instructions in hardware, allowing dynamic functions to be resolved at runtime.

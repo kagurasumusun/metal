@@ -37,3 +37,12 @@ When Clang processes a `constexpr sampler` declaration:
 2. It validates the compatibility of wrap modes and coordinate settings (e.g., repeating wrap modes are invalid for unnormalized coordinates and trigger compile-time diagnostics).
 3. It maps each argument to its target bits and performs a bitwise-OR to pack them into a single 32-bit unsigned integer (as shown in the matrix above).
 4. This packed integer represents the exact sampler hardware state and is written to a read-only constant pool, allowing it to be loaded directly by the GPU's texture sampling units.
+
+
+
+## Compile-time Constexpr Sampler Parsing
+
+When a shader initializes a `constexpr sampler`:
+- **Compile-Time Evaluation**: Clang evaluates the sampler configuration constructor at compile time.
+- **State Bitfield Packaging**: Packs wrap modes, filtering, and comparison configurations into a single 32-bit unsigned integer (Sampler State Bitfield).
+- **Constant Pool Allocation**: Emits a global constant containing this packed bitfield, allowing it to be loaded directly by the GPU's texture sampling units.

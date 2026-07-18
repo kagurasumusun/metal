@@ -33,3 +33,11 @@ By default, floating-point-to-integer conversions truncate fractional components
 - The compiler maps the operation to specialized rounding intrinsics (such as `@llvm.nearbyint`), which utilize the GPU's native floating-point rounding units.
 - This ensures that rounding calculations are processed with high accuracy and consistency, complying with the IEEE-754 standard.
 - As a result, developers should select the appropriate conversion builtins when precise rounding or saturating behavior is required.
+
+
+
+## Saturating and Rounding Modes in Type Casting
+
+Vector type conversions specify specialized saturating and rounding behaviors:
+- **Saturating Conversions**: Clamp out-of-bounds input values to the destination type's boundaries.
+- **Rounding Modes**: Map float-to-integer conversions to specialized rounding intrinsics (such as `@llvm.nearbyint`), complying with the IEEE-754 standard.

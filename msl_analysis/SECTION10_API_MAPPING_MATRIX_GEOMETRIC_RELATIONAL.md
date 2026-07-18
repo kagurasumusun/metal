@@ -158,3 +158,11 @@ To re-interpret the bit-pattern of a variable as another type without changing i
   %u_val = bitcast float %loaded to i32
   ```
 - Hardware translation: The AGX JIT compiler maps the bitcast as a register re-interpretation, resulting in zero overhead at runtime.
+
+
+
+## Branchless Execution via Sign and Condition Flags
+
+Relational checks and conditional selections are compiled to branchless execution instructions to maintain optimal execution thread alignment (preventing SIMD lane divergence):
+- **Sign Bit Extraction**: Relational templates like `signbit` extract the sign bit from floating-point values using mask operations, avoiding comparison penalties.
+- **Selection Units**: The AGX GPU features direct support for conditional selection instructions (`FSEL`), which evaluate a register's condition mask and select elements with zero branching penalty.

@@ -71,3 +71,11 @@ Add target-specific optimization passes to the LLVM Pass Manager (`llvm/lib/Tran
 Ensure that named metadata nodes required by the GPU JIT compiler (such as `!air.kernels`, `!air.arg_types`, and `!air.version`) are serialized into the compiled bitcode.
 - Modify `clang/lib/CodeGen/BackendUtil.cpp` to write these named metadata nodes based on AST attribute declarations.
 - This ensures the compiled bitcode can be parsed correctly by the GPU driver and host APIs.
+
+
+
+## Custom Pass Pipelines for Target Selection in LLVM
+
+When extending LLVM to output compiled AIR modules:
+- **Target Selection**: Register a dedicated `AIRTargetMachine` class within LLVM's target backend database.
+- **Pass Pipeline**: Hook custom memory-routing and metadata-generation passes into the LLVM Pass Builder, ensuring AIR compatibility at scale.

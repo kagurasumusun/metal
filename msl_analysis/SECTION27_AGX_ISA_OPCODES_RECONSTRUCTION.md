@@ -33,3 +33,11 @@ Apple Silicon GPU cores utilize a unified shader core architecture designed to m
 - **ALU Cores**: Each shader core contains independent integer, floating-point, and transcendental execution pipelines, allowing them to process multiple instruction classes concurrently.
 - **Memory Cores**: Memory operations are handled by a dedicated Load/Store bus that manages data transfers to and from VRAM and local SRAM caches.
 - This compilation and execution model ensures that lowered AGX assembly instructions run with optimal performance and minimum power overhead.
+
+
+
+## AGX Instruction Pipeline and GPR Allocation
+
+The compiled AIR bitcode is translated into speculative native AGX assembly instructions:
+- **Unified Register Files**: Integer and floating-point operations share a single, massive GPR file, reducing register copy overhead.
+- **Pipeline Optimization**: Optimizes instruction-level parallelism across independent, parallel arithmetic units.

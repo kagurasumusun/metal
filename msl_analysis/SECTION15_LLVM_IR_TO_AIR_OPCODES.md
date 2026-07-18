@@ -79,3 +79,12 @@ When pointers are loaded or stored, the compiler checks their LLVM Address Space
 - Pointers qualified with `threadgroup` (Address Space `3`) are lowered to local memory access instructions. These instructions target the GPU's high-speed, on-chip Local Shared Memory (LSM) blocks, bypassing global memory transactions and improving bandwidth.
 - Pointers qualified with `constant` (Address Space `2`) are lowered to read-only constant fetch instructions. These instructions target the GPU's specialized Constant Cache, which optimizes read operations and reduces memory latency.
 - By checking address space qualifiers during compilation, the compiler ensures that memory operations are routed to the most efficient hardware memory caches.
+
+
+
+## Instruction Combining Passes in LLVM Backend
+
+The LLVM backend applies aggressive scalar replacement of aggregates (SROA) to optimize register allocation:
+- **SROA Pass**: Deconstructs structures and arrays into individual scalar variables, allocating them directly to GPR registers.
+- **Register Spilling**: Forces variables to thread-local scratch space (VRAM) if live registers exceed the physical file size, which the compiler minimizes by optimizing structure nesting.
+- **Instruction Combine**: Collapses consecutive arithmetic operations into single FMA instructions.

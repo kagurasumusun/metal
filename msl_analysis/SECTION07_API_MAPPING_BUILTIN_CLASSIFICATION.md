@@ -49,3 +49,13 @@ The table below maps MSL API categories to their compilation and linking behavio
 | **Mesh / Tessellation**| `set_vertex`, `set_primitive`, etc. | **Builtin** | Emits custom mesh hardware allocations. | None |
 | **SIMDgroup Collective**| `simd_sum`, `simd_max`, `simd_shuffle` | **Builtin** | Lowered to SIMD execution lane instructions. | None (Hardware SIMD execution bus) |
 | **Trace Points** | `[[tracepoint(n)]]` | **Runtime** | Emits trace point identifiers and profiling hooks. | `libtracepoint_rt_*.metallib` / `libtracepoint_rt_static_*.a` |
+
+
+
+## Dynamic Linker Resolution of GPU Runtime Symbols
+
+When a compiled AIR shader references complex runtime functions (such as `nextafter` or `memcpy`):
+1. **Symbol Emitted**: The compiler emits a call to an external symbol (e.g., `___metal_fract_float`).
+2. **Library Archived**: These symbols are precompiled and stored inside runtime library archives (`libmetal_rt_*.a`).
+3. **JIT Linking**: During runtime JIT compilation, the GPU driver extracts matching bitcode elements from these archives and links them directly into the shader execution image.
+4. **Hardware Acceleration**: If the target GPU core supports a hardware-accelerated version of the function, the JIT compiler overrides the runtime bitcode and emits direct hardware instructions.

@@ -119,3 +119,12 @@ The table below catalogs every possible permutation of atomic memory operations 
 | `atomic_fetch_add` | `device` (Space 1) | `uint` | `relaxed` | `atomicrmw add i32* %ptr, i32 %val relaxed` | `air.atomic.add.i32` |
 | `atomic_fetch_sub` | `device` (Space 1) | `int` | `relaxed` | `atomicrmw sub i32* %ptr, i32 %val relaxed` | `air.atomic.sub.i32` |
 | `atomic_fetch_sub` | `device` (Space 1) | `uint` | `relaxed` | `atomicrmw sub i32* %ptr, i32 %val relaxed` | `air.atomic.sub.i32` |
+
+
+
+## Coherence Protocols in L2 Cache and LSM Atomic Units
+
+Atomic memory operations coordinate execution among threads across different execution lanes:
+- **L2 Cache Coherence**: Global atomic operations are processed directly within L2 cache lines, bypassing standard L1 caches to prevent cache coherence overhead.
+- **LSM Coherence**: Local atomic operations are processed directly within on-chip Local Shared Memory (LSM) blocks, ensuring high speed and low latency.
+- **Memory Consistency**: Enforced via hardware barriers and memory fences, routing memory operations to the most efficient caches.

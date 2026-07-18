@@ -39,3 +39,12 @@ When Clang compiles this structure:
 3. This structure is represented in the AST as a `RecordDecl` containing specialized field declarations.
 4. When lowered to LLVM IR, the structure is compiled into an opaque descriptor buffer pointer (Address Space `2` or Address Space `1` if writeable), allowing resource pointers to be accessed via structure offsets.
 5. This compilation model enables efficient resource binding and access, reducing CPU-to-GPU overhead in complex rendering pipelines.
+
+
+
+## Bindless Architecture and Argument Buffers
+
+Argument Buffers enable efficient resource binding, minimizing CPU-to-GPU overhead:
+- **Bindless Architecture**: Tier 2 support allows dynamic indexing of thousands of buffers, textures, and samplers directly inside loop constructs.
+- **Nested Structs**: Allows nesting of pointers and structures, flattening them dynamically into target-specific layout descriptors.
+- **Indirect Command Buffers**: Enables shaders to encode draw or dispatch commands dynamically on the GPU.

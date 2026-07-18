@@ -78,3 +78,12 @@ The `MTLRaytracingRuntime.rtlib` precompiled library contains the helper functio
   - When custom intersection shaders are defined, the traversal engine must branch from hardware traversal to execute user-defined intersection calculations.
   - This dynamic branching is managed by **Visible Function Tables (VFTs)**, which resolve function pointers and execute custom shader code dynamically at runtime.
   - The runtime library handles the register saving, stack management, and dynamic linking required during these transitions, allowing developers to implement custom raytracing logic with minimal performance overhead.
+
+
+
+## Symbol Linkage and Dynamic Relocation in RT Libraries
+
+The MSL compiler-runtime packages bitcode, static libraries, and metallib archives:
+- **Dynamic Relocation**: Resolves runtime symbols dynamically during JIT compilation.
+- **Memory Utilities**: Precompiled archives package optimized memory operations (such as `_target_memcpy`) using vectorized register transfer loops, maximizing memory bandwidth.
+- **Assertion Handlers**: Trap and report assertion failures inside shaders, writing metadata directly to a specialized VRAM output buffer.

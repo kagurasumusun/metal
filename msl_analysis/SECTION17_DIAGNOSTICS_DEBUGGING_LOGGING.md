@@ -74,3 +74,12 @@ When a shader is compiled with statement-level trace points enabled (e.g., `[[tr
 4. During execution, the GPU write trace point event records (containing the thread index, workgroup coordinates, and trace point identifier) to a specialized system-managed profiling buffer in VRAM.
 5. These event records are read by Xcode Instruments at runtime, allowing developers to analyze execution timing, detect memory bottlenecks, and profile shader performance with minimal overhead.
 - This profiling architecture allows developers to trace execution paths across thousands of parallel threads, making it a critical tool for debugging and optimizing complex shaders on Apple Silicon GPUs.
+
+
+
+## Assert Trapping and Debugging Ring Buffers
+
+Diagnostics and assertion validation are critical for debugging shader code:
+- **Assert Trapping**: Conditional branches check assertion conditions and trigger an assertion handler if the condition is false.
+- **Logging Buffers**: Calls to `os_log` write binary argument logs directly into a specialized ring buffer in VRAM, which is processed asynchronously by the host CPU driver.
+- **Statement Trace Points**: Statement-level trace attributes compile down to profiling hooks, capturing performance metrics using Xcode Instruments.

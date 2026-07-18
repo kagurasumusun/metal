@@ -86,3 +86,12 @@ Under fast math, divisions like `x / y` are transformed into multiplication by r
 - When precise math is enabled, the compiler generates a full division pipeline, which enforces the strict IEEE-754 $0.5 \text{ ULP}$ error bound.
 - This division pipeline uses a Newton-Raphson refinement loop to calculate the exact quotient, which requires more clock cycles than the fast math approximation.
 - As a result, developers should evaluate their precision requirements and select the appropriate math mode when compiling shaders for Apple Silicon.
+
+
+
+## Floating-Point Standard and ULP Error Boundaries
+
+MSL complies with IEEE-754 precision standards to ensure consistent mathematical execution:
+- **Unit in the Last Place (ULP)**: Measures the maximum allowed error bounds for transcendental math functions.
+- **FMA Precision**: Fused Multiply-Add operations calculate $a \cdot b + c$ with only a single rounding step, ensuring a maximum precision of $0.5 	ext{ ULP}$.
+- **Subnormal Support**: Handles denormalized numbers (subnationals) and signed zeros, flushing subnormals to zero (FTZ) under fast math to optimize performance.

@@ -175,3 +175,19 @@ Within the metadata blocks, Metal libraries store properties as serialized tag-v
 - **Tag ID** (2 bytes): Identifies the metadata field (e.g., function name, type, patch type).
 - **Value Length** (2 bytes): Specifies the payload length.
 - **Value Payload** (Variable): The raw byte sequence representing the value of the parameter.
+
+
+
+## Comprehensive Guide to AIR SSA Form and Lowering Passes
+
+When the LLVM optimizer processes AIR bitcode, it enforces strict Single Static Assignment (SSA) properties. Each virtual register is defined exactly once, which enables the driver's JIT compiler to perform aggressive dead-code elimination (DCE) and loop-invariant code motion (LICM).
+
+During the lowering from Clang AST to LLVM IR:
+1. **Mem2Reg Pass**: Promotes local variables allocated via `alloca` (in Address Space 0) to SSA virtual registers. This minimizes stack accesses and optimizes register usage on the Apple Silicon GPU cores.
+2. **Global Value Numbering (GVN)**: Identifies redundant computations across the shader and consolidates them into a single virtual register reference.
+3. **Dead-Code Elimination (DCE)**: Prunes execution branches and variables that do not contribute to final outputs or writeable global VRAM pointers.
+
+### Implementer's Guide on AST Node Mapping
+For compilation of pipelines:
+- Implementers must extend `clang::CodeGen::CodeGenFunction` to recognize custom attributes during AST traversal.
+- Emitted LLVM function definitions must be decorated with the correct calling conventions (`spir_kernel` or `spir_func`) to ensure the driver's JIT compiler initializes the hardware workgroup and thread launching units correctly.

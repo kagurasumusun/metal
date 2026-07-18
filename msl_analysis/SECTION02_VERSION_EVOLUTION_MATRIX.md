@@ -42,3 +42,16 @@ The table below shows which advanced GPU execution paradigms are enabled across 
 | **Family 8** | A15, A16, M2 series | ❌ | ✅ | Tier 2 | ✅ (32 threads) | ✅ | ✅ | ✅ |
 | **Family 9** | A17 Pro, M3 series | ✅ | ✅ | Tier 2 | ✅ (32 threads) | ✅ | ✅ | ✅ |
 | **Family 10**| A18, M4 series | ✅ | ✅ | Tier 2 | ✅ (32 threads) | ✅ (Ext Multi) | ✅ | ✅ |
+
+
+
+## Evolution of Memory Models across MSL Generations
+
+As MSL transitioned from version 1.0 to 4.1, the underlying memory consistency model underwent a significant shift:
+- **MSL 1.0 to 1.2**: Utilized a simplified, sequentially consistent memory model where all memory operations were ordered globally. While simple, this prevented hardware-level reordering optimizations.
+- **MSL 2.0 (C++14 Shift)**: Introduced relaxed memory operations and acquire-release semantics. This aligned MSL with the standard C++11 memory model, allowing the compiler to optimize instruction pipelines and memory transactions.
+- **MSL 3.0 to 4.1**: Extended the memory model to support cooperative matrices and dynamic tensor operations, integrating hardware-accelerated memory pipelines.
+
+### Driver Configuration Targets
+- Shaders compiled for target platforms (such as macOS or iOS) are parsed by the driver to verify target hardware capabilities.
+- For example, if a shader uses cooperative matrices, the driver verifies that the host system contains an Apple GPU Family 8 or higher core before loading the library.

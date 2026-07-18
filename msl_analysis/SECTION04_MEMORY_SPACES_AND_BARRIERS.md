@@ -31,3 +31,15 @@ Metal supports rigorous synchronization builtins to coordinate execution among t
 | `simdgroup_barrier` | `mem_flags::mem_none` | `__builtin_msl_simd_barrier_none`| `call void @llvm.simdbar.none()`| `air.simdgroup_barrier.none`| Execution barrier across a single SIMD Lane (32 threads). Registers synced. |
 | `simdgroup_barrier` | `mem_flags::mem_threadgroup` | `__builtin_msl_simd_barrier_tg`| `call void @llvm.simdbar.tg()`| `air.simdgroup_barrier.threadgroup`| Simdgroup execution fence with local threadgroup memory visibility. |
 | `simdgroup_barrier` | `mem_flags::mem_device` | `__builtin_msl_simd_barrier_dev`| `call void @llvm.simdbar.device()`| `air.simdgroup_barrier.device`| Simdgroup execution fence with global device memory visibility. |
+
+
+
+## Cache Line Synchronization and LSM Coherency
+
+Apple Silicon GPUs utilize on-chip Local Shared Memory (LSM) to back the high-speed `threadgroup` address space. Coherency across execution lanes is maintained via hardware barriers and memory fences:
+- **L1 Read/Write Caches**: Private to each GPU core. Thread-local variables and active GPR registers bypass L2 to target L1 directly.
+- **LSM Blocks**: High-speed, low-latency SRAM shared among execution lanes in a threadgroup.
+- **Memory Fences**: Prevent the compiler and hardware from reordering memory operations across the fence boundary, ensuring consistent memory states before threads resume execution.
+
+### Barrier Optimization Passes
+During optimization, LLVM combines consecutive barrier operations targeting the same scope (e.g., combining two `threadgroup_barrier` calls) to minimize pipeline stall states and maximize execution throughput.

@@ -64,3 +64,12 @@ Templated wrapper classes define resource objects and specialized matrix blocks.
 | `intersection<T>` | `typename T` (Attributes) | None (Plain Data Struct) | Holds collision attributes returned by the raytracing engine. |
 | `array<T, N>` | `typename T`, `size_t N` | `operator[]`, `size()`, `front()`, `back()`, `data()` | Safe static array container. |
 | `mesh<V, P, NV, NP, Topology>`| `typename V`, `typename P`, `uint NV`, `uint NP`, `mesh_topology T`| `set_vertex()`, `set_primitive()`, `set_index()`, `set_primitive_count()`| Allocates on-chip mesh primitives and vertex parameters. |
+
+
+
+## Namespace Isolation and Template Declarations in `<metal_stdlib>`
+
+To prevent naming collisions with standard C++ libraries, MSL isolates all standard declarations inside the `metal` namespace.
+- **Template Classes**: Header definitions use robust template wrappers to declare resource objects (such as `texture2d` or `atomic`).
+- **Conditional Compilation**: Header blocks use preprocessor checks (e.g., `#if defined(__HAVE_RAYTRACING__)`) to conditionally declare advanced features, preventing compilation errors on unsupported hardware.
+- **Type Traits**: The `<metal_type_traits>` header provides standard C++ type traits (such as `is_same` or `enable_if`) to enable robust template metaprogramming within shaders.

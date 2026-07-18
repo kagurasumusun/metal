@@ -66,3 +66,15 @@ These attributes generate implicit system coordinates and sizes populated by the
 | `[[simdgroups_per_threadgroup]]` | `uint` | `__builtin_msl_simds_per_tg`| `@air.simdgroups_per_threadgroup` | Total number of SIMD groups grouped inside the threadgroup. |
 | `[[threads_per_simdgroup]]` | `uint` | `__builtin_msl_threads_per_simd`| `@air.threads_per_simdgroup` | Number of active execution lanes within a simdgroup (typically 32). |
 | `[[grid_origin]]` | `uint3` | `__builtin_msl_grid_origin`| `@air.grid_origin` | Offset representing grid offset (e.g. for sub-rect execution). |
+
+
+
+## Entry Point Calling Conventions and Descriptor Bindings
+
+MSL entry points decorated with stage attributes (`[[vertex]]`, `[[fragment]]`, etc.) require specialized register configurations when executed on the GPU:
+- **Workgroup Dispatcher**: Hardware unit that schedules threadgroups and coordinates thread launching.
+- **Register Initialization**: Before a thread begins execution, the dispatcher populates its initial registers with system-value coordinates (such as `[[thread_position_in_grid]]`) and resource base descriptors.
+- **Binding Tables**: Holds descriptors for buffers, textures, and samplers, allowing shaders to resolve memory addresses dynamically.
+
+### AST Attribute Lowering
+- Inside `clang/lib/CodeGen/CGCall.cpp`, the compiler parses these entry attributes and attaches specific target-independent calling convention markers to the emitted LLVM function.

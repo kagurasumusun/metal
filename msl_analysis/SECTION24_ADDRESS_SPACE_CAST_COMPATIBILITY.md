@@ -30,3 +30,11 @@ MSL prevents pointer casting between different address spaces (except within the
 - To prevent this, the Clang frontend validates address spaces during semantic analysis, throwing a fatal compilation error if incompatible pointer casts are detected.
 - This strict type validation ensures that pointer operations can be safely routed to target caches.
 - As a result, pointers are highly optimized and secure under the MSL memory model.
+
+
+
+## Address Space Qualification and Casting Warnings
+
+The MSL compiler enforces strict pointer casting rules across address spaces:
+- **Address Space Partitioning**: Maps pointer qualifiers to separate hardware memory pipelines.
+- **Sema Diagnostics**: Validates pointer casts during semantic analysis, throwing a fatal compilation error if incompatible pointer conversions are detected.

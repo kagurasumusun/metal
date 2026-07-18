@@ -32,3 +32,11 @@ Unlike SIMDgroup matrices, `cooperative_matrix` structures are optimized for lar
 - They utilize dedicated matrix multiplication-accumulation hardware blocks (MMA) integrated directly into the SoC (such as the Apple Neural Engine or GPU Tensor Cores).
 - The compiler lowers cooperative matrix load, store, and multiply operations to specialized AIR intrinsics (e.g., `@air.coop_matrix.mma`), which map directly to these hardware blocks.
 - This compilation model offloads heavy tensor arithmetic from the main GPU execution pipeline, significantly improving power efficiency and performance.
+
+
+
+## Hardware Matrix Multiply Accumulate (MMA) Cores
+
+Cooperative Matrix Multiply-Accumulate (MMA) operations accelerate deep learning workloads:
+- **SIMDgroup Matrix Distribution**: Distributes matrix components across the threads of a SIMD group, utilizing lane-swizzling hardware for single-cycle dot products.
+- **Cooperative Matrix Hardware**: Utilizes dedicated tensor core processors integrated into modern SoC designs, offloading heavy tensor arithmetic from the main graphics core.
