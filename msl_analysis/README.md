@@ -2,7 +2,7 @@
 
 This directory contains the ultimate, academic-grade specification and mapping matrix suite for the Metal Shading Language (MSL). It is designed to serve as an exhaustive, complete reference for adapting, optimizing, or implementing full Clang, LLVM, and AIR support for Metal.
 
-The suite is divided into 17 highly detailed sections, organized as follows:
+The suite is divided into 27 highly detailed sections, organized as follows:
 
 - **[Section 1: MSL to AIR/Metallib Compiler Pipeline and Architecture Specification](SECTION01_PIPELINE_AND_COMPILER_SPEC.md)**: Deep dive into the MSL translation pipeline, `.air` LLVM dialect, and Universal/Mach-O `.metallib` container binary format specs.
 - **[Section 2: MSL Version Evolution & Target Capabilities Specification](SECTION02_VERSION_EVOLUTION_MATRIX.md)**: Historical evolution from MSL 1.0 to 4.1 paired with target capabilities matrices for Apple GPU Families (1 to 10).
@@ -21,6 +21,16 @@ The suite is divided into 17 highly detailed sections, organized as follows:
 - **[Section 15: LLVM IR and Intrinsic to AIR Opcode Mapping Specification](SECTION15_LLVM_IR_TO_AIR_OPCODES.md)**: Full instruction lowering and optimization paths from standard LLVM IR to AIR-specific opcodes.
 - **[Section 16: GPU Runtime, RT Libraries, and Bitcode Symbol Analysis Specification](SECTION16_GPU_RUNTIME_AND_RT_LIBRARIES.md)**: Extensive analysis of precompiled runtime archives (`libmetal_rt`, `libair_rt`, `MTLRaytracingRuntime`) with direct symbol mappings.
 - **[Section 17: Diagnostics, Debugging, Logging, and Profiling Specification](SECTION17_DIAGNOSTICS_DEBUGGING_LOGGING.md)**: Specifications for diagnostic warnings control, assert trapping, resource tracking, post-transform mesh dumping, and Statement-Level Trace Points.
+- **[Section 18: Constexpr Sampler Parameters & Bitfield Formats](SECTION18_SAMPLER_CONSTEXPR_MAPPING.md)**: Details compile-time sampler parameters and 32-bit compiled sampler state bitfields.
+- **[Section 19: Argument Buffer Tiers and Hardware Limits](SECTION19_ARGUMENT_BUFFER_TIERS.md)**: Structural mapping, AST structures, and limits of Tier 1 and Tier 2 argument buffers.
+- **[Section 20: Vector Conversions, Saturation, and Rounding Modes](SECTION20_TYPE_CONVERSION_SATURATION_ROUNDING.md)**: Specifies the conversion templates, rounding modes, and saturating behaviors of vector type conversions.
+- **[Section 21: SIMDgroup / Cooperative Matrix MMA Shapes & Layouts](SECTION21_SIMDGROUP_MATRIX_MMA_SHAPES.md)**: Detailing shapes, memory layouts, columns/rows, and hardware accelerator targets for SIMD/tensor matrices.
+- **[Section 22: Raytracing Intersection Properties & Member Functions](SECTION22_RAYTRACING_INTERSECTION_PROPERTIES.md)**: Specifications for query functions, properties, and hardware register fetches for Raytracing intersections.
+- **[Section 23: Predefined Math Constants and Preprocessor Capability Macros](SECTION23_BUILTIN_CONSTANTS_AND_PREPROCESSORS.md)**: Detailed catalog of predefined compiler preprocessor definitions, constants, and capability queries.
+- **[Section 24: Address Space Pointer Cast Compatibility Matrix](SECTION24_ADDRESS_SPACE_CAST_COMPATIBILITY.md)**: Restricts and diagnostics for pointer casting across address spaces.
+- **[Section 25: Stage-In Attribute Mappings and Host Vertex Descriptors](SECTION25_STAGE_IN_ATTRIBUTE_MAPPINGS.md)**: Mapping layouts and descriptors for `[[stage_in]]` variables.
+- **[Section 26: Visible Functions and Late Runtime Linkage Mappings](SECTION26_DYNAMIC_LINKAGE_VISIBLE_FUNCTIONS.md)**: Dynamic linkage mechanisms, indirect branches, and Visible Function Tables.
+- **[Section 27: Speculative Apple AGX ISA Opcode Reconstructions](SECTION27_AGX_ISA_OPCODES_RECONSTRUCTION.md)**: Specification and mappings of AIR opcodes to speculative, reconstructed physical Apple Silicon AGX machine instructions.
 
 ---
 Created with rigorous attention to detail for engineers developing systems targeting Metal compilation, LLVM backends, or GPU runtime frameworks.
