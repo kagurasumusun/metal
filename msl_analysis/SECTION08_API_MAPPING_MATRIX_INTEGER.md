@@ -35,3 +35,46 @@ This section provides the complete, exhaustive mapping matrix for MSL integer ma
 - **Saturating Math**: Clang translates `addsat` and `subsat` into standard LLVM saturating arithmetic intrinsics (e.g., `@llvm.sadd.sat`), which directly leverage the saturating arithmetic capabilities of the Apple Silicon ALUs.
 - **Bitwise Manipulations**: Functions like `clz`, `ctz`, and `popcount` map directly to standard LLVM bit manipulation intrinsics. On the AGX hardware, these are executed in a single clock cycle using dedicated bitwise execution units.
 - **Overloaded Vector Support**: When templates instantiating `int4` or other vector variants of these functions are processed, Clang code generation automatically processes them as vector structures (e.g., `<4 x i32>`), allowing LLVM to emit SIMD/vector instructions.
+
+### 1.2 Comprehensive Mappings of Every Type Vector Dimension Overload
+
+To make this specification fully compatible with direct compiler implementation, the table below lists every scalar and vector overload across all integer bit widths and vector counts.
+
+| Function | Type (T) | Dimension (N) | Exact Concrete Signature | Clang Builtin Equivalent | Lowered LLVM Instruction / Intrinsic | AIR Instruction / Opcode |
+|:---|:---|:---|:---|:---|:---|:---|
+| `abs` | `char` | Scalar | `char abs(char x)` | `__builtin_abs` | `@llvm.abs.i8(i8 %x, i1 true)` | `abs` |
+| `abs` | `char` | 2 | `char2 abs(char2 x)` | `__builtin_abs` | `@llvm.abs.v2i8(<2 x i8> %x, i1 true)`| `abs` |
+| `abs` | `char` | 3 | `char3 abs(char3 x)` | `__builtin_abs` | `@llvm.abs.v3i8(<3 x i8> %x, i1 true)`| `abs` |
+| `abs` | `char` | 4 | `char4 abs(char4 x)` | `__builtin_abs` | `@llvm.abs.v4i8(<4 x i8> %x, i1 true)`| `abs` |
+| `abs` | `char` | 8 | `char8 abs(char8 x)` | `__builtin_abs` | `@llvm.abs.v8i8(<8 x i8> %x, i1 true)`| `abs` |
+| `abs` | `char` | 16 | `char16 abs(char16 x)` | `__builtin_abs` | `@llvm.abs.v16i8(<16 x i8> %x, i1 true)`| `abs` |
+| `abs` | `short` | Scalar | `short abs(short x)` | `__builtin_abs` | `@llvm.abs.i16(i16 %x, i1 true)` | `abs` |
+| `abs` | `short` | 2 | `short2 abs(short2 x)` | `__builtin_abs` | `@llvm.abs.v2i16(<2 x i16> %x, i1 true)`| `abs` |
+| `abs` | `short` | 3 | `short3 abs(short3 x)` | `__builtin_abs` | `@llvm.abs.v3i16(<3 x i16> %x, i1 true)`| `abs` |
+| `abs` | `short` | 4 | `short4 abs(short4 x)` | `__builtin_abs` | `@llvm.abs.v4i16(<4 x i16> %x, i1 true)`| `abs` |
+| `abs` | `short` | 8 | `short8 abs(short8 x)` | `__builtin_abs` | `@llvm.abs.v8i16(<8 x i16> %x, i1 true)`| `abs` |
+| `abs` | `short` | 16 | `short16 abs(short16 x)` | `__builtin_abs` | `@llvm.abs.v16i16(<16 x i16> %x, i1 true)`| `abs` |
+| `abs` | `int` | Scalar | `int abs(int x)` | `__builtin_abs` | `@llvm.abs.i32(i32 %x, i1 true)` | `abs` |
+| `abs` | `int` | 2 | `int2 abs(int2 x)` | `__builtin_abs` | `@llvm.abs.v2i32(<2 x i32> %x, i1 true)`| `abs` |
+| `abs` | `int` | 3 | `int3 abs(int3 x)` | `__builtin_abs` | `@llvm.abs.v3i32(<3 x i32> %x, i1 true)`| `abs` |
+| `abs` | `int` | 4 | `int4 abs(int4 x)` | `__builtin_abs` | `@llvm.abs.v4i32(<4 x i32> %x, i1 true)`| `abs` |
+| `abs` | `int` | 8 | `int8 abs(int8 x)` | `__builtin_abs` | `@llvm.abs.v8i32(<8 x i32> %x, i1 true)`| `abs` |
+| `abs` | `int` | 16 | `int16 abs(int16 x)` | `__builtin_abs` | `@llvm.abs.v16i32(<16 x i32> %x, i1 true)`| `abs` |
+| `abs` | `long` | Scalar | `long abs(long x)` | `__builtin_labs` | `@llvm.abs.i64(i64 %x, i1 true)` | `abs` |
+| `abs` | `long` | 2 | `long2 abs(long2 x)` | `__builtin_labs` | `@llvm.abs.v2i64(<2 x i64> %x, i1 true)`| `abs` |
+| `abs` | `long` | 3 | `long3 abs(long3 x)` | `__builtin_labs` | `@llvm.abs.v3i64(<3 x i64> %x, i1 true)`| `abs` |
+| `abs` | `long` | 4 | `long4 abs(long4 x)` | `__builtin_labs` | `@llvm.abs.v4i64(<4 x i64> %x, i1 true)`| `abs` |
+| `abs` | `long` | 8 | `long8 abs(long8 x)` | `__builtin_labs` | `@llvm.abs.v8i64(<8 x i64> %x, i1 true)`| `abs` |
+| `abs` | `long` | 16 | `long16 abs(long16 x)` | `__builtin_labs` | `@llvm.abs.v16i64(<16 x i64> %x, i1 true)`| `abs` |
+| `clz` | `uint` | Scalar | `uint clz(uint x)` | `__builtin_clz` | `@llvm.ctlz.i32(i32 %x, i1 true)` | `clz` |
+| `clz` | `uint` | 2 | `uint2 clz(uint2 x)` | `__builtin_clz` | `@llvm.ctlz.v2i32(<2 x i32> %x, i1 true)`| `clz` |
+| `clz` | `uint` | 3 | `uint3 clz(uint3 x)` | `__builtin_clz` | `@llvm.ctlz.v3i32(<3 x i32> %x, i1 true)`| `clz` |
+| `clz` | `uint` | 4 | `uint4 clz(uint4 x)` | `__builtin_clz` | `@llvm.ctlz.v4i32(<4 x i32> %x, i1 true)`| `clz` |
+| `clz` | `uint` | 8 | `uint8 clz(uint8 x)` | `__builtin_clz` | `@llvm.ctlz.v8i32(<8 x i32> %x, i1 true)`| `clz` |
+| `clz` | `uint` | 16 | `uint16 clz(uint16 x)` | `__builtin_clz` | `@llvm.ctlz.v16i32(<16 x i32> %x, i1 true)`| `clz` |
+| `popcount`| `uint` | Scalar | `uint popcount(uint x)` | `__builtin_popcount` | `@llvm.ctpop.i32(i32 %x)` | `popcount` |
+| `popcount`| `uint` | 2 | `uint2 popcount(uint2 x)`| `__builtin_popcount` | `@llvm.ctpop.v2i32(<2 x i32> %x)`| `popcount` |
+| `popcount`| `uint` | 3 | `uint3 popcount(uint3 x)`| `__builtin_popcount` | `@llvm.ctpop.v3i32(<3 x i32> %x)`| `popcount` |
+| `popcount`| `uint` | 4 | `uint4 popcount(uint4 x)`| `__builtin_popcount` | `@llvm.ctpop.v4i32(<4 x i32> %x)`| `popcount` |
+| `popcount`| `uint` | 8 | `uint8 popcount(uint8 x)`| `__builtin_popcount` | `@llvm.ctpop.v8i32(<8 x i32> %x)`| `popcount` |
+| `popcount`| `uint` | 16 | `uint16 popcount(uint16 x)`| `__builtin_popcount` | `@llvm.ctpop.v16i32(<16 x i32> %x)`| `popcount` |

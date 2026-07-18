@@ -1,14 +1,15 @@
 # Section 1: MSL to AIR/Metallib Compiler Pipeline and Architecture Specification
 
-This section provides a highly detailed, academic-grade specification of the Metal Shading Language (MSL) compilation pipeline, mapping the exact lifecycle of a shader from high-level source code down to physical GPU hardware execution. Additionally, it details the binary structures of both Apple Intermediate Representation (`.air`) and Metal Library Container (`.metallib`) files.
+This section provides an exhaustive, academic-grade specification of the Metal Shading Language (MSL) compilation pipeline. It outlines every compilation phase, intermediate transformation, metadata structure, and binary container layout required to translate high-level shader source code into optimized GPU executables on Apple Silicon.
 
 ---
 
-## 1. The Compilation Pipeline Architecture
+## 1. Complete Compiler Pipeline Architecture
 
 The translation of high-level Metal Shading Language (MSL) source code into machine instructions executed by the Apple Silicon Unified Shader Core consists of several discrete phases. Each step lowers the representation's abstraction, introducing target-specific optimization and hardware binding details.
 
-### 1.1 Architectural Flowchart
+### 1.1 High-Fidelity Architectural Pipeline Map
+
 ```
   [ MSL Source Code (.metal) ]
                │
@@ -42,7 +43,7 @@ The translation of high-level Metal Shading Language (MSL) source code into mach
 ### 1.2 Step-by-Step Translation Mechanics
 
 #### Step 1: MSL Source to AST (Clang Front-end)
-The compilation begins with the Clang front-end. Since MSL is a dialect of C++14 (and later C++17/C++20 in MSL 3.x/4.x), Clang parses the source with the MSL language mode enabled (e.g., `-std=ios-metal` or `-std=macos-metal`).
+The compilation begins with the Clang front-end. Since MSL is a dialect of C++ (based on C++11, C++14, C++17, or C++20 depending on the version), Clang parses the source with the MSL language mode enabled.
 - **Lexing & Parsing**: The source file is converted into tokens and built into an Abstract Syntax Tree (AST).
 - **Type Checking**: Address space qualifiers (`device`, `thread`, `threadgroup`, `constant`) are validated. Language-specific restrictions (such as prohibiting pointers of pointers, dynamic memory allocation, and virtual functions) are enforced.
 - **Diagnostics**: Custom semantic checks verify that entry point attributes (`[[kernel]]`, `[[vertex]]`, etc.) have correct parameter bindings and layouts.
@@ -160,7 +161,7 @@ The section directory contains entry descriptions specifying the offset, size, a
 #### 3. Section Detailed Anatomy
 
 ##### A. The Code Section (`SRC`)
-Contains one or more compiled LLVM bitcode blobs. These blobs start with the LLVM bitcode magic number `0x42 0x43 0xc0 0xde` (LLVM Bitcode Wrapper) or standard uncompressed bitcode blocks. It contains the executable AIR definitions of all functions included in the compilation unit.
+Contains one or more compiled LLVM bitcode blobs. These blobs start with the LLVM bitcode magic number `0x42 0x43 0xc0 0xde` (LLVM Bitcode Wrapper) or uncompressed bitcode blocks. It contains the executable AIR definitions of all functions included in the compilation unit.
 
 ##### B. The Reflection Section (`REF`)
 The reflection section maps entry points to their input/output structures and binding configurations. This metadata allows the Metal Host API (`MTLComputePipelineDescriptor`, etc.) to query:

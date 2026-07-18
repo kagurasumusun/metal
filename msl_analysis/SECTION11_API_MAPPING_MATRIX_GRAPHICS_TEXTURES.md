@@ -116,3 +116,20 @@ This bitcode is compiled by the JIT translator into an AGX instruction targeting
 1. The hardware loads the texture state descriptor (pixel layout, pitch, dimensions).
 2. The hardware loads the sampler state descriptor (linear filter, clamp to edge).
 3. The TPU calculates the four nearest pixels, interpolates them in hardware, and writes the resulting vector back to a destination floating-point GPR in a single execution step.
+
+### 1.2 Comprehensive Mappings of Every Texture Permutation
+
+The table below catalogs texture read, write, and sampling permutations across all coordinates (normalized vs. unnormalized) and dimensions.
+
+| Texture Class | Permutation Operation | Coordinates Parameter Type | Mapped Clang AST Expression | LLVM IR Intrinsic Lowering | AIR Opcode Mappings |
+|:---|:---|:---|:---|:---|:---|
+| `texture1d<T, access>` | `sample` | `(sampler, float)` | `CXXMemberCallExpr` | `@llvm.air.sample.1d` | `air.sample.1d` |
+| `texture1d_array<T, acc>`| `sample` | `(sampler, float, uint)` | `CXXMemberCallExpr` | `@llvm.air.sample.1d_array` | `air.sample.1d_array` |
+| `texture2d<T, access>` | `sample` | `(sampler, float2)` | `CXXMemberCallExpr` | `@llvm.air.sample.2d` | `air.sample.2d` |
+| `texture2d_array<T, acc>`| `sample` | `(sampler, float2, uint)` | `CXXMemberCallExpr` | `@llvm.air.sample.2d_array` | `air.sample.2d_array` |
+| `texture3d<T, access>` | `sample` | `(sampler, float3)` | `CXXMemberCallExpr` | `@llvm.air.sample.3d` | `air.sample.3d` |
+| `texturecube<T, access>`| `sample` | `(sampler, float3)` | `CXXMemberCallExpr` | `@llvm.air.sample.cube` | `air.sample.cube` |
+| `texturecube_array<T, a>`| `sample` | `(sampler, float3, uint)` | `CXXMemberCallExpr` | `@llvm.air.sample.cube_array` | `air.sample.cube_array` |
+| `texture1d<T, access>` | `read` | `(uint, uint lod = 0)`| `CXXMemberCallExpr` | `@llvm.air.read.1d` | `air.read.1d` |
+| `texture2d<T, access>` | `read` | `(uint2, uint lod = 0)`| `CXXMemberCallExpr` | `@llvm.air.read.2d` | `air.read.2d` |
+| `texture3d<T, access>` | `read` | `(uint3, uint lod = 0)`| `CXXMemberCallExpr` | `@llvm.air.read.3d` | `air.read.3d` |

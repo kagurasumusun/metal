@@ -2,7 +2,7 @@
 
 This directory contains the ultimate, academic-grade specification and mapping matrix suite for the Metal Shading Language (MSL). It is designed to serve as an exhaustive, complete reference for adapting, optimizing, or implementing full Clang, LLVM, and AIR support for Metal.
 
-The suite is divided into 27 highly detailed sections, organized as follows:
+The suite is divided into 29 highly detailed sections, organized as follows:
 
 - **[Section 1: MSL to AIR/Metallib Compiler Pipeline and Architecture Specification](SECTION01_PIPELINE_AND_COMPILER_SPEC.md)**: Deep dive into the MSL translation pipeline, `.air` LLVM dialect, and Universal/Mach-O `.metallib` container binary format specs.
 - **[Section 2: MSL Version Evolution & Target Capabilities Specification](SECTION02_VERSION_EVOLUTION_MATRIX.md)**: Historical evolution from MSL 1.0 to 4.1 paired with target capabilities matrices for Apple GPU Families (1 to 10).
@@ -31,6 +31,8 @@ The suite is divided into 27 highly detailed sections, organized as follows:
 - **[Section 25: Stage-In Attribute Mappings and Host Vertex Descriptors](SECTION25_STAGE_IN_ATTRIBUTE_MAPPINGS.md)**: Mapping layouts and descriptors for `[[stage_in]]` variables.
 - **[Section 26: Visible Functions and Late Runtime Linkage Mappings](SECTION26_DYNAMIC_LINKAGE_VISIBLE_FUNCTIONS.md)**: Dynamic linkage mechanisms, indirect branches, and Visible Function Tables.
 - **[Section 27: Speculative Apple AGX ISA Opcode Reconstructions](SECTION27_AGX_ISA_OPCODES_RECONSTRUCTION.md)**: Specification and mappings of AIR opcodes to speculative, reconstructed physical Apple Silicon AGX machine instructions.
+- **[Section 28: MSL Syntax, Clang AST, and LLVM IR Correspondence Matrix](SECTION28_MSL_SYNTAX_CLANG_LLVM_CORRESPONDENCE.md)**: Maps grammatical constructs (C++ vs. MSL-Exclusive) to Clang AST nodes and LLVM IR mappings.
+- **[Section 29: Complete Compatibility Guide on How to Extend Clang and LLVM IR to Fully Support Metal](SECTION29_METAL_LLVM_IR_COMPLETE_COMPATIBILITY_GUIDE.md)**: Full engineering guide detailing target support integration, AST additions, and LLVM backend modifications.
 
 ---
 Created with rigorous attention to detail for engineers developing systems targeting Metal compilation, LLVM backends, or GPU runtime frameworks.

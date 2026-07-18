@@ -35,3 +35,34 @@ This section provides the complete, exhaustive mapping matrix for floating-point
 | `<metal_math>` | `ldexp` | `half ldexp(half, int)`<br>`float ldexp(float, int)`<br>`double ldexp(double, int)` | None (Headers) | `@__metal_ldexp_float_int32`| Called runtime bitcode | `libmetal_rt_*.a` | **Runtime** |
 | `<metal_math>` | `frexp` | `half frexp(half, thread int&)`<br>`float frexp(float, thread int&)` | None (Headers) | `@__metal_frexp_float_pthread`| Called runtime bitcode | `libmetal_rt_*.a` | **Runtime** |
 | `<metal_math>` | `ilogb` | `int ilogb(half)`<br>`int ilogb(float)`<br>`int ilogb(double)` | None (Headers) | `@__metal_ilogb_float` | Called runtime bitcode | `libmetal_rt_*.a` | **Runtime** |
+
+### 1.2 Comprehensive Floating-Point Function Overload Matrix
+
+The table below catalogs every target overload for essential transcendental and mathematical floating-point operations.
+
+| Function | Type (T) | Dimension (N) | Concrete Overloaded Signature | Clang Builtin equivalent | Lowered LLVM Intrinsic / Representation | AIR Opcode Mappings |
+|:---|:---|:---|:---|:---|:---|:---|
+| `sin` | `half` | Scalar | `half sin(half x)` | `__builtin_sinf16` | `@llvm.sin.f16(half %x)` | `air.sin` |
+| `sin` | `half` | 2 | `half2 sin(half2 x)` | `__builtin_sinf16` | `@llvm.sin.v2f16(<2 x half> %x)` | `air.sin` |
+| `sin` | `half` | 3 | `half3 sin(half3 x)` | `__builtin_sinf16` | `@llvm.sin.v3f16(<3 x half> %x)` | `air.sin` |
+| `sin` | `half` | 4 | `half4 sin(half4 x)` | `__builtin_sinf16` | `@llvm.sin.v4f16(<4 x half> %x)` | `air.sin` |
+| `sin` | `half` | 8 | `half8 sin(half8 x)` | `__builtin_sinf16` | `@llvm.sin.v8f16(<8 x half> %x)` | `air.sin` |
+| `sin` | `half` | 16 | `half16 sin(half16 x)` | `__builtin_sinf16` | `@llvm.sin.v16f16(<16 x half> %x)`| `air.sin` |
+| `sin` | `float` | Scalar | `float sin(float x)` | `__builtin_sinf` | `@llvm.sin.f32(float %x)` | `air.sin` |
+| `sin` | `float` | 2 | `float2 sin(float2 x)` | `__builtin_sinf` | `@llvm.sin.v2f32(<2 x float> %x)` | `air.sin` |
+| `sin` | `float` | 3 | `float3 sin(float3 x)` | `__builtin_sinf` | `@llvm.sin.v3f32(<3 x float> %x)` | `air.sin` |
+| `sin` | `float` | 4 | `float4 sin(float4 x)` | `__builtin_sinf` | `@llvm.sin.v4f32(<4 x float> %x)` | `air.sin` |
+| `sin` | `float` | 8 | `float8 sin(float8 x)` | `__builtin_sinf` | `@llvm.sin.v8f32(<8 x float> %x)` | `air.sin` |
+| `sin` | `float` | 16 | `float16 sin(float16 x)` | `__builtin_sinf` | `@llvm.sin.v16f32(<16 x float> %x)`| `air.sin` |
+| `cos` | `half` | Scalar | `half cos(half x)` | `__builtin_cosf16` | `@llvm.cos.f16(half %x)` | `air.cos` |
+| `cos` | `half` | 2 | `half2 cos(half2 x)` | `__builtin_cosf16` | `@llvm.cos.v2f16(<2 x half> %x)` | `air.cos` |
+| `cos` | `half` | 3 | `half3 cos(half3 x)` | `__builtin_cosf16` | `@llvm.cos.v3f16(<3 x half> %x)` | `air.cos` |
+| `cos` | `half` | 4 | `half4 cos(half4 x)` | `__builtin_cosf16` | `@llvm.cos.v4f16(<4 x half> %x)` | `air.cos` |
+| `cos` | `half` | 8 | `half8 cos(half8 x)` | `__builtin_cosf16` | `@llvm.cos.v8f16(<8 x half> %x)` | `air.cos` |
+| `cos` | `half` | 16 | `half16 cos(half16 x)` | `__builtin_cosf16` | `@llvm.cos.v16f16(<16 x half> %x)`| `air.cos` |
+| `cos` | `float` | Scalar | `float cos(float x)` | `__builtin_cosf` | `@llvm.cos.f32(float %x)` | `air.cos` |
+| `cos` | `float` | 2 | `float2 cos(float2 x)` | `__builtin_cosf` | `@llvm.cos.v2f32(<2 x float> %x)` | `air.cos` |
+| `cos` | `float` | 3 | `float3 cos(float3 x)` | `__builtin_cosf` | `@llvm.cos.v3f32(<3 x float> %x)` | `air.cos` |
+| `cos` | `float` | 4 | `float4 cos(float4 x)` | `__builtin_cosf` | `@llvm.cos.v4f32(<4 x float> %x)` | `air.cos` |
+| `cos` | `float` | 8 | `float8 cos(float8 x)` | `__builtin_cosf` | `@llvm.cos.v8f32(<8 x float> %x)` | `air.cos` |
+| `cos` | `float` | 16 | `float16 cos(float16 x)` | `__builtin_cosf` | `@llvm.cos.v16f32(<16 x float> %x)`| `air.cos` |

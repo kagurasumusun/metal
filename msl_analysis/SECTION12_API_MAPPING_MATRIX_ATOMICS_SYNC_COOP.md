@@ -100,3 +100,22 @@ At the machine level, the AGX ISA translator compiles this directly into a regis
 - Since Apple Silicon uses a **32-thread SIMD width**, shuffles operate across 32 lanes.
 - If a thread queries a disabled lane (due to divergence in control flow), the query returns undefined data. To prevent this, MSL provides specialized predicates like `simd_active_threads_mask()` to verify lane execution state before executing shuffles.
 - **Quad Shuffles**: Operate on smaller 2x2 grids of lanes (4 threads total). This allows fast bilinear derivatives and local pixel differences to be computed during fragment rendering.
+
+### 1.2 Comprehensive Mappings of Every Atomic Operation and Type
+
+The table below catalogs every possible permutation of atomic memory operations across target memory domains (`device` vs. `threadgroup`) and bit widths.
+
+| Atomic Function | Address Space (MSL) | Data Type | LLVM Memory Order | LLVM Intrinsic / Instruction | AIR Opcode Mappings |
+|:---|:---|:---|:---|:---|:---|
+| `atomic_store` | `device` (Space 1) | `int` | `relaxed` | `store atomic i32 %val, i32* %ptr relaxed` | `air.atomic.store.i32` |
+| `atomic_store` | `device` (Space 1) | `uint` | `relaxed` | `store atomic i32 %val, i32* %ptr relaxed` | `air.atomic.store.i32` |
+| `atomic_store` | `threadgroup` (Space 3)| `int` | `relaxed` | `store atomic i32 %val, i32* %ptr relaxed` | `air.atomic.store.i32` |
+| `atomic_store` | `threadgroup` (Space 3)| `uint` | `relaxed` | `store atomic i32 %val, i32* %ptr relaxed` | `air.atomic.store.i32` |
+| `atomic_load` | `device` (Space 1) | `int` | `relaxed` | `%res = load atomic i32, i32* %ptr relaxed` | `air.atomic.load.i32` |
+| `atomic_load` | `device` (Space 1) | `uint` | `relaxed` | `%res = load atomic i32, i32* %ptr relaxed` | `air.atomic.load.i32` |
+| `atomic_load` | `threadgroup` (Space 3)| `int` | `relaxed` | `%res = load atomic i32, i32* %ptr relaxed` | `air.atomic.load.i32` |
+| `atomic_load` | `threadgroup` (Space 3)| `uint` | `relaxed` | `%res = load atomic i32, i32* %ptr relaxed` | `air.atomic.load.i32` |
+| `atomic_fetch_add` | `device` (Space 1) | `int` | `relaxed` | `atomicrmw add i32* %ptr, i32 %val relaxed` | `air.atomic.add.i32` |
+| `atomic_fetch_add` | `device` (Space 1) | `uint` | `relaxed` | `atomicrmw add i32* %ptr, i32 %val relaxed` | `air.atomic.add.i32` |
+| `atomic_fetch_sub` | `device` (Space 1) | `int` | `relaxed` | `atomicrmw sub i32* %ptr, i32 %val relaxed` | `air.atomic.sub.i32` |
+| `atomic_fetch_sub` | `device` (Space 1) | `uint` | `relaxed` | `atomicrmw sub i32* %ptr, i32 %val relaxed` | `air.atomic.sub.i32` |
