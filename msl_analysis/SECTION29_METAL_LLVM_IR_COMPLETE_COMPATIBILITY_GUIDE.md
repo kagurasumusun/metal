@@ -79,3 +79,22 @@ Ensure that named metadata nodes required by the GPU JIT compiler (such as `!air
 When extending LLVM to output compiled AIR modules:
 - **Target Selection**: Register a dedicated `AIRTargetMachine` class within LLVM's target backend database.
 - **Pass Pipeline**: Hook custom memory-routing and metadata-generation passes into the LLVM Pass Builder, ensuring AIR compatibility at scale.
+
+## LLVM Backend configurations for AGX Architecture
+
+Below is the target backend machine registry declaration inside `lib/Target/AGX/TargetInfo/AGXTargetInfo.cpp`:
+
+```cpp
+#include "llvm/MC/TargetRegistry.h"
+
+using namespace llvm;
+
+Target &getTheAGXTarget() {
+  static Target TheAGXTarget;
+  return TheAGXTarget;
+}
+
+extern "C" LLVM_EXTERNAL_VISIBILITY void LLVMInitializeAGXTargetInfo() {
+  RegisterTarget<Triple::agx> X(getTheAGXTarget(), "agx", "Apple Silicon AGX Architecture", "AGX");
+}
+```

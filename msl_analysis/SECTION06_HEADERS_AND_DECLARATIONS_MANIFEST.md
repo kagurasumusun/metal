@@ -73,3 +73,31 @@ To prevent naming collisions with standard C++ libraries, MSL isolates all stand
 - **Template Classes**: Header definitions use robust template wrappers to declare resource objects (such as `texture2d` or `atomic`).
 - **Conditional Compilation**: Header blocks use preprocessor checks (e.g., `#if defined(__HAVE_RAYTRACING__)`) to conditionally declare advanced features, preventing compilation errors on unsupported hardware.
 - **Type Traits**: The `<metal_type_traits>` header provides standard C++ type traits (such as `is_same` or `enable_if`) to enable robust template metaprogramming within shaders.
+
+## Structural Header Layout of the `<metal_stdlib>` Master Entry
+
+Below is the complete header layout required to orchestrate nested imports and target capability checks inside `<metal_stdlib>`:
+
+```cpp
+#ifndef __METAL_STDLIB
+#define __METAL_STDLIB
+
+#include <metal_config>
+#include <metal_types>
+#include <metal_integer>
+#include <metal_math>
+#include <metal_geometric>
+#include <metal_relational>
+#include <metal_texture>
+#include <metal_atomic>
+
+#if defined(__HAVE_RAYTRACING__)
+#include <metal_raytracing>
+#endif
+
+#if defined(__HAVE_MESH_SHADERS__)
+#include <metal_mesh>
+#endif
+
+#endif // __METAL_STDLIB
+```

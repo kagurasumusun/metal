@@ -83,3 +83,35 @@ Diagnostics and assertion validation are critical for debugging shader code:
 - **Assert Trapping**: Conditional branches check assertion conditions and trigger an assertion handler if the condition is false.
 - **Logging Buffers**: Calls to `os_log` write binary argument logs directly into a specialized ring buffer in VRAM, which is processed asynchronously by the host CPU driver.
 - **Statement Trace Points**: Statement-level trace attributes compile down to profiling hooks, capturing performance metrics using Xcode Instruments.
+
+## C++ Implementation of Shader Assertion Trap Handler
+
+Below is the C++ implementation of the shader assertion failure trap handler resolved inside `libmetal_rt_osx.a`:
+
+```cpp
+extern "C" {
+
+struct AssertBufferHeader {
+  volatile uint32_t triggered;
+  uint32_t line;
+  char file_name[256];
+};
+
+// Pointer targeting assert output buffer in VRAM (Address Space 1)
+device AssertBufferHeader* __air_assert_buffer [[buffer(30)]];
+
+void __metal_assert_fail(const char* file, int line) {
+  // Atomic CAS to acquire trigger slot
+  if (__builtin_atomic_compare_exchange_n(&__air_assert_buffer->triggered, 0, 1, false, 0, 0)) {
+    __air_assert_buffer->line = line;
+    // Copy file name characters
+    for (int i = 0; i < 255 && file[i]; ++i) {
+      __air_assert_buffer->file_name[i] = file[i];
+    }
+  }
+  // Force execution block halt
+  __builtin_trap();
+}
+
+}
+```

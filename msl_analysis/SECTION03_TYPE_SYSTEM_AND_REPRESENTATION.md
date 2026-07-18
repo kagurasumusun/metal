@@ -106,3 +106,42 @@ struct PackedData {
 When Clang processes a packed structure:
 - It disables natural alignments, reducing member alignments to 1 byte.
 - Lowered LLVM IR loads and stores use unaligned memory fetch instructions, which can incur a performance penalty on older hardware but minimize memory usage in complex pipelines.
+
+## Complete C++ Header for MSL Standard Vector and Matrix Types
+
+Below is the complete, natural-alignment C++ header declaration required to build standard scalar, vector, and matrix types in `<metal_types>`:
+
+```cpp
+#ifndef __METAL_TYPES_H
+#define __METAL_TYPES_H
+
+namespace metal {
+
+// Scalar types
+typedef unsigned char uchar;
+typedef unsigned short ushort;
+typedef unsigned int uint;
+typedef unsigned long long ulong;
+
+// Vector template layout
+template <typename T, int N>
+struct alignas(sizeof(T) * (N == 3 ? 4 : N)) vector {
+  T data[N];
+};
+
+typedef vector<float, 2> float2;
+typedef vector<float, 3> float3; // Padded to alignas(16)
+typedef vector<float, 4> float4;
+
+// Matrix Column-Major Layout
+template <typename T, int C, int R>
+struct matrix {
+  vector<T, R> columns[C];
+};
+
+typedef matrix<float, 4, 4> float4x4;
+
+} // namespace metal
+
+#endif
+```

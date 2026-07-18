@@ -43,3 +43,29 @@ Apple Silicon GPUs utilize on-chip Local Shared Memory (LSM) to back the high-sp
 
 ### Barrier Optimization Passes
 During optimization, LLVM combines consecutive barrier operations targeting the same scope (e.g., combining two `threadgroup_barrier` calls) to minimize pipeline stall states and maximize execution throughput.
+
+## LLVM IR Code Generation for Synchronization Barriers and LSM
+
+Below is the C++ source code required to lower MSL `threadgroup_barrier` calls to LLVM IR inside Clang's CodeGen:
+
+```cpp
+#include "llvm/IR/IRBuilder.h"
+#include "llvm/IR/Intrinsics.h"
+
+using namespace llvm;
+
+Value *CodeGenFunction::EmitMetalBarrier(unsigned MemFlags) {
+  // Map mem_flags to target scopes
+  Intrinsic::ID IntrinID;
+  if (MemFlags == 1) { // mem_device
+    IntrinID = Intrinsic::air_barrier_device;
+  } else if (MemFlags == 2) { // mem_threadgroup
+    IntrinID = Intrinsic::air_barrier_threadgroup;
+  } else {
+    IntrinID = Intrinsic::air_barrier_none;
+  }
+
+  Function *F = CGM.getIntrinsic(IntrinID);
+  return Builder.CreateCall(F);
+}
+```

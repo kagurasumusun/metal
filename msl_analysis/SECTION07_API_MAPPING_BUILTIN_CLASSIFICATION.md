@@ -52,10 +52,25 @@ The table below maps MSL API categories to their compilation and linking behavio
 
 
 
-## Dynamic Linker Resolution of GPU Runtime Symbols
 
-When a compiled AIR shader references complex runtime functions (such as `nextafter` or `memcpy`):
-1. **Symbol Emitted**: The compiler emits a call to an external symbol (e.g., `___metal_fract_float`).
-2. **Library Archived**: These symbols are precompiled and stored inside runtime library archives (`libmetal_rt_*.a`).
-3. **JIT Linking**: During runtime JIT compilation, the GPU driver extracts matching bitcode elements from these archives and links them directly into the shader execution image.
-4. **Hardware Acceleration**: If the target GPU core supports a hardware-accelerated version of the function, the JIT compiler overrides the runtime bitcode and emits direct hardware instructions.
+## Compilation Resolution Pipeline for Header-only Templates
+
+To resolve whether a function is generated as inline template instructions or external runtime library symbols, the compiler uses template specialization rules. Below is the C++ template design used inside `<metal_integer>`:
+
+```cpp
+namespace metal {
+
+// Base template maps to header-only implementation
+template <typename T>
+inline T abs(T x) {
+  return x < 0 ? -x : x;
+}
+
+// Specialization for char maps to compiler builtin
+template <>
+inline char abs<char>(char x) {
+  return __builtin_abs(x);
+}
+
+} // namespace metal
+```

@@ -95,3 +95,23 @@ MSL complies with IEEE-754 precision standards to ensure consistent mathematical
 - **Unit in the Last Place (ULP)**: Measures the maximum allowed error bounds for transcendental math functions.
 - **FMA Precision**: Fused Multiply-Add operations calculate $a \cdot b + c$ with only a single rounding step, ensuring a maximum precision of $0.5 	ext{ ULP}$.
 - **Subnormal Support**: Handles denormalized numbers (subnationals) and signed zeros, flushing subnormals to zero (FTZ) under fast math to optimize performance.
+
+## Hardware Execution Pipelines of division and Reciprocals
+
+To lower divisions to hardware reciprocal lookup loops inside LLVM instruction combining:
+
+```cpp
+#include "llvm/IR/IRBuilder.h"
+
+using namespace llvm;
+
+Value *EmitFastDivision(IRBuilder<>& Builder, Value *X, Value *Y) {
+  // Calculate reciprocal: 1.0 / Y using hardware lookup
+  Type *Ty = Y->getType();
+  Function *F_rcp = Intrinsic::getDeclaration(Builder.GetInsertBlock()->getModule(), Intrinsic::air_rcp, Ty);
+  Value *Rcp = Builder.CreateCall(F_rcp, {Y});
+
+  // Perform multiplication: X * reciprocal
+  return Builder.CreateFMul(X, Rcp);
+}
+```

@@ -38,3 +38,19 @@ MSL uses predefined macros to enable conditional compilation:
 Predefined preprocessor definitions enable conditional compilation:
 - **Target OS Identifiers**: Evaluate target platforms before starting semantic analysis.
 - **Capability Query Macros**: Predefine macros (such as `__HAVE_RAYTRACING__`) to scale shader compilation dynamically across different GPU families.
+
+## Structural Layout of predefined Compiler constants
+
+Below is the predefined preprocessor target constants set by the compiler:
+
+```cpp
+#ifndef __METAL_PREDEFINES_H
+#define __METAL_PREDEFINES_H
+
+#define __METAL_VERSION__ 310
+#define __HAVE_RAYTRACING__ 1
+#define __HAVE_MESH_SHADERS__ 1
+#define __HAVE_COOPERATIVE_TENSORS__ 1
+
+#endif
+```

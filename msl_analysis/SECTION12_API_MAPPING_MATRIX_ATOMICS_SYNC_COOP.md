@@ -128,3 +128,37 @@ Atomic memory operations coordinate execution among threads across different exe
 - **L2 Cache Coherence**: Global atomic operations are processed directly within L2 cache lines, bypassing standard L1 caches to prevent cache coherence overhead.
 - **LSM Coherence**: Local atomic operations are processed directly within on-chip Local Shared Memory (LSM) blocks, ensuring high speed and low latency.
 - **Memory Consistency**: Enforced via hardware barriers and memory fences, routing memory operations to the most efficient caches.
+
+## C++ Template Class Layout of Standard Atomics
+
+Below is the complete C++ template class structure required to represent atomic operations inside `<metal_atomic>`:
+
+```cpp
+#ifndef __METAL_ATOMIC_H
+#define __METAL_ATOMIC_H
+
+namespace metal {
+
+template <typename T>
+class atomic {
+private:
+  volatile T value;
+
+public:
+  T load(memory_order order = memory_order_relaxed) volatile {
+    return __builtin_atomic_load_n(&value, (int)order);
+  }
+
+  void store(T desired, memory_order order = memory_order_relaxed) volatile {
+    __builtin_atomic_store_n(&value, desired, (int)order);
+  }
+
+  T fetch_add(T arg, memory_order order = memory_order_relaxed) volatile {
+    return __builtin_atomic_fetch_add(&value, arg, (int)order);
+  }
+};
+
+} // namespace metal
+
+#endif
+```

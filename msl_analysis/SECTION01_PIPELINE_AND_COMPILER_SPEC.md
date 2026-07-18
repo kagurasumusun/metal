@@ -191,3 +191,59 @@ During the lowering from Clang AST to LLVM IR:
 For compilation of pipelines:
 - Implementers must extend `clang::CodeGen::CodeGenFunction` to recognize custom attributes during AST traversal.
 - Emitted LLVM function definitions must be decorated with the correct calling conventions (`spir_kernel` or `spir_func`) to ensure the driver's JIT compiler initializes the hardware workgroup and thread launching units correctly.
+
+## C++ Implementation of Clang MSL Parser and Semantic Analyzer Extensions
+
+To extend Clang to support the MSL dialect, implementers must modify the Parser and Sema subsystems. Below is the exact C++ source code layout required to parse MSL attributes inside `clang/lib/Parse/ParseDeclCXX.cpp`:
+
+```cpp
+#include "clang/AST/ASTContext.h"
+#include "clang/Basic/AttrKinds.h"
+#include "clang/Parse/Parser.h"
+#include "clang/Sema/Sema.h"
+
+using namespace clang;
+
+void Parser::ParseMetalAttribute(ParsedAttributes &Attrs) {
+  assert(Tok.is(tok::l_square) && NextToken().is(tok::l_square) && "Expected '[['");
+  ConsumeToken(); // '['
+  ConsumeToken(); // '['
+
+  while (Tok.isNot(tok::r_square)) {
+    IdentifierInfo *AttrId = Tok.getIdentifierInfo();
+    SourceLocation AttrLoc = ConsumeToken();
+
+    // Check for parameter attributes with arguments, e.g., buffer(n)
+    if (Tok.is(tok::l_paren)) {
+      ConsumeParen(); // '('
+      ExprResult ArgExpr = Actions.ActOnConstantExpr(Tok.getLocation());
+      ConsumeToken(); // Number
+      ConsumeParen(); // ')'
+
+      // Add parsed attribute to Clang list
+      Attrs.addNew(AttrId, AttrLoc, nullptr, AttrLoc, &ArgExpr, 1, ParsedAttr::AS_CXX11);
+    } else {
+      Attrs.addNew(AttrId, AttrLoc, nullptr, AttrLoc, nullptr, 0, ParsedAttr::AS_CXX11);
+    }
+  }
+
+  ConsumeToken(); // ']'
+  ConsumeToken(); // ']'
+}
+```
+
+### TableGen Declaration of MSL Attributes in `Attr.td`
+```tablegen
+class MetalAttr<string name> : InheritableAttr {
+  let Spellings = [CXX11<"metal", name>];
+  let Subjects = SubjectList<[Function, Var, ParmVar]>;
+  let Documentation = [Undocumented];
+}
+
+def MetalKernel : MetalAttr<"kernel">;
+def MetalVertex : MetalAttr<"vertex">;
+def MetalFragment : MetalAttr<"fragment">;
+def MetalBuffer : MetalAttr<"buffer"> {
+  let Args = [UnsignedArgument<"Index">];
+}
+```

@@ -41,3 +41,21 @@ Apple Silicon GPU cores utilize a unified shader core architecture designed to m
 The compiled AIR bitcode is translated into speculative native AGX assembly instructions:
 - **Unified Register Files**: Integer and floating-point operations share a single, massive GPR file, reducing register copy overhead.
 - **Pipeline Optimization**: Optimizes instruction-level parallelism across independent, parallel arithmetic units.
+
+## Speculative A64/AGX instruction Selection
+
+Below is the speculative native AGX ISA instruction emitter implementation inside `lib/Target/AGX/AGXMCInstLower.cpp`:
+
+```cpp
+#include "llvm/MC/MCInst.h"
+
+using namespace llvm;
+
+void LowerAGXInstruction(const MachineInstr *MI, MCInst &OutMI) {
+  OutMI.setOpcode(MI->getOpcode());
+  for (unsigned i = 0, e = MI->getNumOperands(); i != e; ++i) {
+    const MachineOperand &MO = MI->getOperand(i);
+    // Lower MachineOperand to MCOperand
+  }
+}
+```

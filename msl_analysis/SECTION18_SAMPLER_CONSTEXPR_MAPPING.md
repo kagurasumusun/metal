@@ -46,3 +46,30 @@ When a shader initializes a `constexpr sampler`:
 - **Compile-Time Evaluation**: Clang evaluates the sampler configuration constructor at compile time.
 - **State Bitfield Packaging**: Packs wrap modes, filtering, and comparison configurations into a single 32-bit unsigned integer (Sampler State Bitfield).
 - **Constant Pool Allocation**: Emits a global constant containing this packed bitfield, allowing it to be loaded directly by the GPU's texture sampling units.
+
+## C++ Header for Constexpr Sampler Properties parsing
+
+Below is the complete C++ class structure of constexpr sampler parser inside `<metal_texture>`:
+
+```cpp
+#ifndef __METAL_SAMPLER_H
+#define __METAL_SAMPLER_H
+
+namespace metal {
+
+enum class filter { nearest, linear };
+enum class address { clamp_to_zero, clamp_to_edge, repeat };
+
+class sampler {
+private:
+  uint32_t bitfield; // Serialized state bitfield
+
+public:
+  constexpr sampler(filter fil, address addr)
+    : bitfield(((int)fil & 1) | (((int)addr & 3) << 2)) {}
+};
+
+} // namespace metal
+
+#endif
+```

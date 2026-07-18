@@ -94,3 +94,32 @@ Raytracing workloads utilize dedicated Traversal Engines integrated into modern 
 - **BVH Traversal**: Traverses bounding volume hierarchies directly in hardware, querying child nodes and evaluating intersections.
 - **Ray-Triangle Intersection**: Performs ray-triangle collision checks using dedicated hardware intersection units.
 - **Dynamic Branching**: Managed via Visible Function Tables (VFTs), allowing custom intersection or closest-hit shaders to be invoked dynamically with minimal overhead.
+
+## C++ Template Layout of Raytracing Structures
+
+Below is the complete, byte-aligned C++ layout required to represent ray and acceleration structures inside `<metal_raytracing>`:
+
+```cpp
+#ifndef __METAL_RAYTRACING_H
+#define __METAL_RAYTRACING_H
+
+namespace metal {
+
+// Ray Primitive Structure
+struct alignas(16) ray {
+  float3 origin;
+  float min_distance;
+  float3 direction;
+  float max_distance;
+};
+
+// Acceleration Structure Descriptor
+class acceleration_structure {
+private:
+  void* handle; // Opaque address pointer targeting BVH nodes
+};
+
+} // namespace metal
+
+#endif
+```

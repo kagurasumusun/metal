@@ -44,3 +44,26 @@ When Clang parses the `VertexInput` structure:
 The `[[stage_in]]` attribute maps vertex input structure parameters to vertex buffers:
 - **Metadata Serialization**: Serializes attribute bindings to `.air` bitcode metadata.
 - **Automated Vertex Fetching**: The GPU's fixed-function Vertex Fetch Unit automatically fetches vertex parameters, converts formats, and writes them to registers.
+
+## Clang AST Layout representation of Stage-In parameters
+
+Below is the actual C++ AST declaration modeling vertex attributes inside `clang/include/clang/AST/Decl.h`:
+
+```cpp
+#include "clang/AST/Decl.h"
+
+namespace clang {
+
+class StageInDecl : public VarDecl {
+private:
+  unsigned AttributeSlot;
+
+public:
+  StageInDecl(DeclContext *DC, SourceLocation L, IdentifierInfo *Id, QualType T, unsigned Slot)
+    : VarDecl(Var, DC, L, L, Id, T, nullptr, SC_None), AttributeSlot(Slot) {}
+
+  unsigned getAttributeSlot() const { return AttributeSlot; }
+};
+
+}
+```

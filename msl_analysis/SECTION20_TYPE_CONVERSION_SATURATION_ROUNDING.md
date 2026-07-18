@@ -41,3 +41,32 @@ By default, floating-point-to-integer conversions truncate fractional components
 Vector type conversions specify specialized saturating and rounding behaviors:
 - **Saturating Conversions**: Clamp out-of-bounds input values to the destination type's boundaries.
 - **Rounding Modes**: Map float-to-integer conversions to specialized rounding intrinsics (such as `@llvm.nearbyint`), complying with the IEEE-754 standard.
+
+## C++ Template Layout of Saturating and Rounding Converters
+
+Below is the complete template structure of safe vector and scalar rounding converters inside `<metal_pack>`:
+
+```cpp
+#ifndef __METAL_PACK_H
+#define __METAL_PACK_H
+
+namespace metal {
+
+// Round to Nearest Even template
+template <typename T, typename U>
+inline T convert_rte(U x) {
+  return (T)__builtin_nearbyint(x);
+}
+
+// Saturating integer clamping template
+template <typename T, typename U>
+inline T convert_sat(U x) {
+  if (x < (U)numeric_limits<T>::min()) return numeric_limits<T>::min();
+  if (x > (U)numeric_limits<T>::max()) return numeric_limits<T>::max();
+  return (T)x;
+}
+
+} // namespace metal
+
+#endif
+```

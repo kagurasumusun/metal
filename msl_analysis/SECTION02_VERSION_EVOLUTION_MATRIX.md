@@ -55,3 +55,23 @@ As MSL transitioned from version 1.0 to 4.1, the underlying memory consistency m
 ### Driver Configuration Targets
 - Shaders compiled for target platforms (such as macOS or iOS) are parsed by the driver to verify target hardware capabilities.
 - For example, if a shader uses cooperative matrices, the driver verifies that the host system contains an Apple GPU Family 8 or higher core before loading the library.
+
+## TableGen Target Architecture Specification of Apple GPU Family 1 to 10
+
+To support target-specific code generation in LLVM, define target features and register classes inside TableGen files. Below is the exact TableGen specification for Apple GPU architectures in `lib/Target/AGX/AGX.td`:
+
+```tablegen
+include "llvm/Target/Target.td"
+
+// Define GPU Generations
+def FeatureAppleGPUFamily1  : SubtargetFeature<"apple-gpu-family-1", "GPUFamily", "1", "A7 GPU Core">;
+def FeatureAppleGPUFamily4  : SubtargetFeature<"apple-gpu-family-4", "GPUFamily", "4", "A11 GPU Core with SIMDgroup">;
+def FeatureAppleGPUFamily8  : SubtargetFeature<"apple-gpu-family-8", "GPUFamily", "8", "A15/M2 GPU Core with Tensors">;
+def FeatureAppleGPUFamily9  : SubtargetFeature<"apple-gpu-family-9", "GPUFamily", "9", "M3 GPU Core with HW Raytracing">;
+
+// Define AGX Processor Models
+def : ProcessorModel<"apple-a7", NoSchedModel, [FeatureAppleGPUFamily1]>;
+def : ProcessorModel<"apple-a11", NoSchedModel, [FeatureAppleGPUFamily4]>;
+def : ProcessorModel<"apple-m2", NoSchedModel, [FeatureAppleGPUFamily8]>;
+def : ProcessorModel<"apple-m3", NoSchedModel, [FeatureAppleGPUFamily9]>;
+```

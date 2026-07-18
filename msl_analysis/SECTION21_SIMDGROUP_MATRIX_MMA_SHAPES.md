@@ -40,3 +40,29 @@ Unlike SIMDgroup matrices, `cooperative_matrix` structures are optimized for lar
 Cooperative Matrix Multiply-Accumulate (MMA) operations accelerate deep learning workloads:
 - **SIMDgroup Matrix Distribution**: Distributes matrix components across the threads of a SIMD group, utilizing lane-swizzling hardware for single-cycle dot products.
 - **Cooperative Matrix Hardware**: Utilizes dedicated tensor core processors integrated into modern SoC designs, offloading heavy tensor arithmetic from the main graphics core.
+
+## Register Allocations for SIMDgroup Matrix MMA shape
+
+Below is the C++ interface class representing SIMDgroup matrix MMA shape:
+
+```cpp
+#ifndef __METAL_SIMDGROUP_MATRIX_H
+#define __METAL_SIMDGROUP_MATRIX_H
+
+namespace metal {
+
+template <typename T, int C, int R>
+class simdgroup_matrix {
+private:
+  T registers[(C * R) / 32]; // Shared register array across 32 threads
+
+public:
+  void load(device const T* ptr, uint stride) {
+    // Coordinated load from memory targeting registers
+  }
+};
+
+} // namespace metal
+
+#endif
+```

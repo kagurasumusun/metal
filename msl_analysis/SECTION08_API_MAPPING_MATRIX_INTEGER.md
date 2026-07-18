@@ -407,3 +407,17 @@ Saturating integer operations (such as `addsat` or `subsat`) prevent integer ove
 - **Unsigned Saturation**: Clamps overflow results to the maximum boundary of unsigned types, flushing underflow values to zero.
 - **Hardware Support**: Apple Silicon ALUs contain native saturating arithmetic units, which perform these clamping operations in a single execution cycle.
 - **Instruction Combining**: During optimization, LLVM combines consecutive scalar additions and subtractions, merging them into single FMA or saturating instructions to improve throughput.
+
+## TableGen DAG Mappings of Integer Arithmetic Operators
+
+To lower integer operations directly to target assembly, implement TableGen pattern-matching classes inside `lib/Target/AGX/AGXInstrInfo.td`:
+
+```tablegen
+// TableGen Pattern for saturating integer add
+def : Pat<(saddsat GPR:$src1, GPR:$src2),
+          (AGX_ADDSAT GPR:$src1, GPR:$src2)>;
+
+// TableGen Pattern for saturating integer sub
+def : Pat<(ssubsat GPR:$src1, GPR:$src2),
+          (AGX_SUBSAT GPR:$src1, GPR:$src2)>;
+```

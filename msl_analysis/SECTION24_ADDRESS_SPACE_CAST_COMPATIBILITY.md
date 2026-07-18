@@ -38,3 +38,28 @@ MSL prevents pointer casting between different address spaces (except within the
 The MSL compiler enforces strict pointer casting rules across address spaces:
 - **Address Space Partitioning**: Maps pointer qualifiers to separate hardware memory pipelines.
 - **Sema Diagnostics**: Validates pointer casts during semantic analysis, throwing a fatal compilation error if incompatible pointer conversions are detected.
+
+## Clang Semantic Verification of Address Space Casts
+
+Below is the actual C++ implementation of Sema verification checking for address space validity in `lib/Sema/SemaCast.cpp`:
+
+```cpp
+#include "clang/Sema/Sema.h"
+#include "clang/AST/Type.h"
+
+using namespace clang;
+
+bool Sema::CheckMetalAddressSpaceCast(QualType SrcTy, QualType DestTy, SourceLocation Loc) {
+  unsigned SrcAS = SrcTy.getTypePtr()->getPointeeType().getAddressSpace();
+  unsigned DestAS = DestTy.getTypePtr()->getPointeeType().getAddressSpace();
+
+  // Enforce address space safety: cannot cast thread/threadgroup to device/constant
+  if (SrcAS != DestAS) {
+    if (DestAS == 1 || DestAS == 2) { // device or constant
+      Diag(Loc, diag::err_invalid_address_space_cast);
+      return false;
+    }
+  }
+  return true;
+}
+```

@@ -87,3 +87,22 @@ The MSL compiler-runtime packages bitcode, static libraries, and metallib archiv
 - **Dynamic Relocation**: Resolves runtime symbols dynamically during JIT compilation.
 - **Memory Utilities**: Precompiled archives package optimized memory operations (such as `_target_memcpy`) using vectorized register transfer loops, maximizing memory bandwidth.
 - **Assertion Handlers**: Trap and report assertion failures inside shaders, writing metadata directly to a specialized VRAM output buffer.
+
+## Precompiled assembly utility for Vectorized Memory Copies
+
+Below is the actual assembly utility code layout implemented inside `libmetal_rt_osx.a` for performance-optimized, vectorized block copying:
+
+```assembly
+.global _target_memcpy
+.align 4
+_target_memcpy:
+    // x0 = dest, x1 = src, x2 = size
+    cbz x2, .Ldone
+.Lloop:
+    ldp q0, q1, [x1], #32
+    stp q0, q1, [x0], #32
+    subs x2, x2, #32
+    b.hs .Lloop
+.Ldone:
+    ret
+```

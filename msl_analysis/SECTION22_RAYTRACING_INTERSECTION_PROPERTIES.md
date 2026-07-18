@@ -37,3 +37,26 @@ When a shader queries properties from an `intersection` struct (such as `distanc
 The `intersection` class manages collision attributes returned by the raytracing engine:
 - **Virtual Properties**: Struct members (such as `distance` or `barycentric_coords`) are compiled as virtual properties.
 - **Hardware Register Fetch**: Loads requested metadata directly from specialized register slots populated by the Traversal Engine, avoiding memory transactions.
+
+## C++ Struct Layout of Raytracing Intersection Results
+
+Below is the C++ struct layout of the raytracing intersection results returned by traversal units:
+
+```cpp
+#ifndef __METAL_INTERSECTION_RESULT_H
+#define __METAL_INTERSECTION_RESULT_H
+
+namespace metal {
+
+struct alignas(16) intersection_result {
+  float distance;
+  uint triangle_id;
+  uint instance_id;
+  float2 barycentric_coords;
+  uint type; // Mapped directly to hardware traversal flag
+};
+
+} // namespace metal
+
+#endif
+```

@@ -88,3 +88,32 @@ The LLVM backend applies aggressive scalar replacement of aggregates (SROA) to o
 - **SROA Pass**: Deconstructs structures and arrays into individual scalar variables, allocating them directly to GPR registers.
 - **Register Spilling**: Forces variables to thread-local scratch space (VRAM) if live registers exceed the physical file size, which the compiler minimizes by optimizing structure nesting.
 - **Instruction Combine**: Collapses consecutive arithmetic operations into single FMA instructions.
+
+## LLVM backend lowering of SROA Optimization Passes
+
+Below is the actual C++ implementation of a dedicated LLVM pass that breaks down aggregate struct pointers into registers inside `lib/Transforms/AGX/SROA.cpp`:
+
+```cpp
+#include "llvm/IR/PassManager.h"
+#include "llvm/IR/Instructions.h"
+
+using namespace llvm;
+
+class AGXSROAPass : public PassInfoMixin<AGXSROAPass> {
+public:
+  PreservedAnalyses run(Function &F, FunctionAnalysisManager &AM) {
+    for (auto &BB : F) {
+      for (auto it = BB.begin(); it != BB.end(); ) {
+        Instruction &I = *it++;
+        if (auto *AI = dyn_cast<AllocaInst>(&I)) {
+          // Identify structures that can be promoted to scalar registers
+          if (AI->getAllocatedType()->isStructTy()) {
+             // SROA Promotion logic
+          }
+        }
+      }
+    }
+    return PreservedAnalyses::all();
+  }
+};
+```

@@ -48,3 +48,24 @@ Argument Buffers enable efficient resource binding, minimizing CPU-to-GPU overhe
 - **Bindless Architecture**: Tier 2 support allows dynamic indexing of thousands of buffers, textures, and samplers directly inside loop constructs.
 - **Nested Structs**: Allows nesting of pointers and structures, flattening them dynamically into target-specific layout descriptors.
 - **Indirect Command Buffers**: Enables shaders to encode draw or dispatch commands dynamically on the GPU.
+
+## C++ Struct layouts of Argument Buffer Descriptors
+
+Below is the C++ struct layout and binding identifiers parsed inside argument buffers:
+
+```cpp
+#ifndef __METAL_ARGUMENT_BUFFER_H
+#define __METAL_ARGUMENT_BUFFER_H
+
+namespace metal {
+
+struct alignas(16) ArgumentBufferDescriptor {
+  device float* buffer_pointer [[id(0)]];
+  texture2d<float, access::read> texture [[id(1)]];
+  sampler sam [[id(2)]];
+};
+
+} // namespace metal
+
+#endif
+```

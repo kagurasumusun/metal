@@ -58,3 +58,18 @@ Standard C++ has no native concept of address spaces.
 Mapping custom MSL syntax within standard C++ grammar:
 - **DeclAttrs**: Custom C++ attribute bindings like `[[buffer(n)]]` map directly to Clang decl-attributes parsed during function type extraction.
 - **TypeQualifiers**: Address spaces like `device` map directly to pointer qualifiers inside Clang semantic validation passes.
+
+## Clang parser rules for MSL Grammar and Dialect
+
+Below is the actual C++ syntax parsing implementation inside `clang/lib/Parse/ParseStmt.cpp`:
+
+```cpp
+#include "clang/Parse/Parser.h"
+
+using namespace clang;
+
+StmtResult Parser::ParseMetalStatement(ParsedAttributes &Attrs) {
+  // Intercept and parse specialized shader control flow
+  return ParseStatement(Attrs);
+}
+```

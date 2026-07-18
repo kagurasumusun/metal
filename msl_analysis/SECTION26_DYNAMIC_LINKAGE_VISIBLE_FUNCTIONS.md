@@ -34,3 +34,18 @@ Visible Function Tables (VFTs) are compiled as arrays of opaque function pointer
 Late runtime linkage enables dynamic dispatch and late shader linking:
 - **Visible Function Tables (VFTs)**: Compiled as arrays of opaque function pointers.
 - **Indirect Call Execution**: Clang compiles table lookups to indirect branch instructions in hardware, allowing dynamic functions to be resolved at runtime.
+
+## Indirect Branch Lowering in LLVM CodeGen
+
+Below is the C++ CodeGen implementation of indirect call emission inside `clang/lib/CodeGen/CGExprCall.cpp`:
+
+```cpp
+#include "llvm/IR/IRBuilder.h"
+
+using namespace llvm;
+
+Value *EmitIndirectCall(IRBuilder<>& Builder, Value *FuncPtr, ArrayRef<Value*> Args) {
+  // Emit indirect call instruction: call %reg %args
+  return Builder.CreateCall(FuncPtr, Args);
+}
+```

@@ -166,3 +166,40 @@ To re-interpret the bit-pattern of a variable as another type without changing i
 Relational checks and conditional selections are compiled to branchless execution instructions to maintain optimal execution thread alignment (preventing SIMD lane divergence):
 - **Sign Bit Extraction**: Relational templates like `signbit` extract the sign bit from floating-point values using mask operations, avoiding comparison penalties.
 - **Selection Units**: The AGX GPU features direct support for conditional selection instructions (`FSEL`), which evaluate a register's condition mask and select elements with zero branching penalty.
+
+## C++ Header for Geometric Dot and Cross Primitives
+
+Below is the complete template layout and implementation required to build geometric dot and cross products inside `<metal_geometric>`:
+
+```cpp
+#ifndef __METAL_GEOMETRIC_H
+#define __METAL_GEOMETRIC_H
+
+#include <metal_types>
+
+namespace metal {
+
+// Dot product template
+template <typename T, int N>
+inline T dot(vector<T, N> x, vector<T, N> y) {
+  T result = 0;
+  for (int i = 0; i < N; ++i) {
+    result += x.data[i] * y.data[i];
+  }
+  return result;
+}
+
+// Cross product template (3D vectors only)
+template <typename T>
+inline vector<T, 3> cross(vector<T, 3> x, vector<T, 3> y) {
+  vector<T, 3> result;
+  result.data[0] = x.data[1] * y.data[2] - x.data[2] * y.data[1];
+  result.data[1] = x.data[2] * y.data[0] - x.data[0] * y.data[2];
+  result.data[2] = x.data[0] * y.data[1] - x.data[1] * y.data[0];
+  return result;
+}
+
+} // namespace metal
+
+#endif
+```

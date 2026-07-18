@@ -247,3 +247,24 @@ Transcendental mathematical functions (such as `sin`, `cos`, or `exp`) require r
 - **Range Reduction**: Reduces the input argument $x$ to a standard reference interval (e.g., reducing $x$ to $[ -\pi, \pi ]$ for trigonometric functions).
 - **Fast Math Lookup**: Under fast math, range reduction and calculation are performed by a dedicated hardware lookup table, which executes in a fraction of the clock cycles required for full division.
 - **Precise Math Pipeline**: Under precise math, range reduction is performed with strict IEEE-754 compliance using high-precision polynomial expansions.
+
+## LLVM IR Mappings of Transcendental Trigonometric Functions
+
+Below is the exact LLVM IR assembly generated for scalar and vector `cos` and `sin` calls:
+
+```llvm
+; Scalar float cos call
+define float @scalar_cos(float %x) {
+  %res = call float @llvm.cos.f32(float %x)
+  ret float %res
+}
+
+; Vector float4 sin call
+define <4 x float> @vector_sin(<4 x float> %x) {
+  %res = call <4 x float> @llvm.sin.v4f32(<4 x float> %x)
+  ret <4 x float> %res
+}
+
+declare float @llvm.cos.f32(float)
+declare <4 x float> @llvm.sin.v4f32(<4 x float>)
+```

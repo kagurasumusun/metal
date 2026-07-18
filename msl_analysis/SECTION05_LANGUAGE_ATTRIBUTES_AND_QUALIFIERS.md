@@ -78,3 +78,33 @@ MSL entry points decorated with stage attributes (`[[vertex]]`, `[[fragment]]`, 
 
 ### AST Attribute Lowering
 - Inside `clang/lib/CodeGen/CGCall.cpp`, the compiler parses these entry attributes and attaches specific target-independent calling convention markers to the emitted LLVM function.
+
+## C++ Header for MSL Grid and Thread Identification Attributes
+
+Below is the complete C++ header layout required to declare workgroup and thread identification functions inside `<metal_stdlib>`:
+
+```cpp
+#ifndef __METAL_IDENTIFIERS_H
+#define __METAL_IDENTIFIERS_H
+
+namespace metal {
+
+// Declarations of compiler-provided workgroup coordinates
+extern "C" {
+  uint3 __air_thread_position_in_grid() __attribute__((pure));
+  uint3 __air_thread_position_in_threadgroup() __attribute__((pure));
+  uint  __air_thread_index_in_threadgroup() __attribute__((pure));
+}
+
+inline uint3 get_thread_position_in_grid() {
+  return __air_thread_position_in_grid();
+}
+
+inline uint3 get_thread_position_in_threadgroup() {
+  return __air_thread_position_in_threadgroup();
+}
+
+} // namespace metal
+
+#endif
+```

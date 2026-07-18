@@ -142,3 +142,37 @@ Texture sampling in MSL is processed by dedicated Texture Processing Units (TPUs
 - **Bilinear Filtering**: The TPU fetches the four nearest pixels, interpolates them in hardware, and writes the resulting vector back to a destination register.
 - **Anisotropic Filtering**: Performs multiple bilinear fetches along the direction of texture coordinates projection, providing sharp filtering for surfaces at steep angles.
 - **MIP Mapping**: Calculates level-of-detail (LOD) and selects the appropriate mipmap level, interpolating between two adjacent mip levels in trilinear mode.
+
+## C++ Class Layout of Standard 2D Texture Objects
+
+Below is the complete C++ class structure required to represent a standard 2D texture object inside `<metal_texture>`:
+
+```cpp
+#ifndef __METAL_TEXTURE_H
+#define __METAL_TEXTURE_H
+
+namespace metal {
+
+enum class access { read, write, sample };
+
+template <typename T, access A>
+class texture2d {
+private:
+  void* handle; // Opaque hardware descriptor pointer
+
+public:
+  // Compiler builtin texture fetch
+  T read(uint2 coord, uint lod = 0) const {
+    return __builtin_msl_texture_read_2d<T>(handle, coord, lod);
+  }
+
+  // Compiler builtin texture write
+  void write(T color, uint2 coord, uint lod = 0) {
+    return __builtin_msl_texture_write_2d<T>(handle, color, coord, lod);
+  }
+};
+
+} // namespace metal
+
+#endif
+```
