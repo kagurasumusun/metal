@@ -2,7 +2,7 @@
 
 This directory contains the ultimate, academic-grade specification and mapping matrix suite for the Metal Shading Language (MSL). It is designed to serve as an exhaustive, complete reference for adapting, optimizing, or implementing full Clang, LLVM, and AIR support for Metal.
 
-The suite is divided into 39 highly detailed sections, organized as follows:
+The suite is divided into 49 highly detailed sections, organized as follows:
 
 - **[Section 1: MSL to AIR/Metallib Compiler Pipeline and Architecture Specification](SECTION01_PIPELINE_AND_COMPILER_SPEC.md)**: Deep dive into the MSL translation pipeline, `.air` LLVM dialect, and Universal/Mach-O `.metallib` container binary format specs.
 - **[Section 2: MSL Version Evolution & Target Capabilities Specification](SECTION02_VERSION_EVOLUTION_MATRIX.md)**: Historical evolution from MSL 1.0 to 4.1 paired with target capabilities matrices for Apple GPU Families (1 to 10).
@@ -43,6 +43,16 @@ The suite is divided into 39 highly detailed sections, organized as follows:
 - **[Section 37: Exhaustive MSL Code Syntax to LLVM IR Instruction Correspondence Matrix](SECTION37_MSL_CODE_TO_LLVM_IR_CORRESPONDENCE.md)**: Production-grade target assembly mapping from high-level MSL constructs to LLVM IR instructions.
 - **[Section 38: MSL Standard Library and Runtime Complete Coverage Report](SECTION38_STDLIB_RT_COMPLETE_COVERAGE_REPORT.md)**: Fully-expanded coverage statistics, mapping rates, and compilation check designs of standard libraries and runtimes.
 - **[Section 39: Complete Mapping of All Precompiled GPU Runtime Archives (.rtlib, .a, .metallib)](SECTION39_GPU_RUNTIME_ARCHIVES_COMPLETE_MAPPING.md)**: In-depth, library-by-library analysis and symbol catalog for all precompiled GPU Runtime archives.
+- **[Section 40: Compiler Frontend Parser Rules, Keywords, and Attribute Arguments](SECTION40_COMPILER_FRONTEND_PARSER_BLUEPRINTS.md)**: Complete catalog of reserved keywords, preprocessor macros, builtin macros, reserved identifiers, and attribute arguments (`Attr.td`).
+- **[Section 41: Compiler Semantic Validation, Conversion, and Resolution Rules](SECTION41_COMPILER_SEMANTIC_ANALYSIS_BLUEPRINTS.md)**: Outlines type traits, implicit/explicit conversions, pointer cast validations, name lookup, and overload resolution.
+- **[Section 42: Builtins.def, Attr.td, and Compiler Diagnostics Catalog](SECTION42_COMPILER_BUILTINS_AND_DIAGNOSTICS.md)**: Specifications of Clang custom builtins (`Builtins.def`), TableGen custom attributes (`Attr.td`), and diagnostics kinds.
+- **[Section 43: LLVM IR/AIR Intrinsics, Metadata, ABI, Mangling, and Module Maps](SECTION43_LLVM_BACKEND_METADATA_AND_ABI_BLUEPRINTS.md)**: Details dynamic runtime ABI, Itanium name mangling, AIR metadata nodes, and Clang Module Maps.
+- **[Section 44: MSL stdlib Master Headers and Dependencies Catalog](SECTION44_MSL_STDLIB_MASTER_INDEX.md)**: Complete hierarchical index and dependency map of all files inside standard libraries.
+- **[Section 45: Complete Element Specification for Categories 1 to 15](SECTION45_COMPLETE_ELEMENT_SPECIFICATION_CAT1_15.md)**: Complete, 24-parameter 1-to-1 specification mapping for keywords, qualifiers, address spaces, binding attributes, and builtin variables.
+- **[Section 46: Complete Element Specification for Categories 16 to 30](SECTION46_COMPLETE_ELEMENT_SPECIFICATION_CAT16_30.md)**: Complete, 24-parameter 1-to-1 specification mapping for SIMD, quadgroups, raytracing traversal, and mesh shaders.
+- **[Section 47: Complete Element Specification for Categories 31 to 45](SECTION47_COMPLETE_ELEMENT_SPECIFICATION_CAT31_45.md)**: Complete, 24-parameter 1-to-1 specification mapping for math functions, barriers, and pointer conversions.
+- **[Section 48: Complete Element Specification for Categories 46 to 60](SECTION48_COMPLETE_ELEMENT_SPECIFICATION_CAT46_60.md)**: Complete, 24-parameter 1-to-1 specification mapping for compiler parser methods, diagnostics messages, and headers.
+- **[Section 49: Complete Gaps, Differences, Unconfirmed Items, and Priorities Report](SECTION49_EXHAUSTIVE_COMPATIBILITY_DIFFERENCES_AND_PRIORITIES_REPORT.md)**: Complete gaps analysis, statistical category counts (6,478 total elements), unconfirmed list, implementation domains, and engineering priorities.
 
 ---
 Created with rigorous attention to detail for engineers developing systems targeting Metal compilation, LLVM backends, or GPU runtime frameworks.
