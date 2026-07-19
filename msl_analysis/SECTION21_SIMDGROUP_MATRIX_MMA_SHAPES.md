@@ -66,3 +66,12 @@ public:
 
 #endif
 ```
+
+### LLVM Backend lowering of Cooperative MMA Matrix Load
+Below is the C++ implementation required to lower cooperative matrix load operations to air-specific intrinsics:
+```cpp
+Value *CodeGenFunction::EmitMetalCooperativeMatrixLoad(Value *Ptr, Value *Stride) {
+  Function *F = CGM.getIntrinsic(Intrinsic::air_coop_matrix_load);
+  return Builder.CreateCall(F, {Ptr, Stride});
+}
+```

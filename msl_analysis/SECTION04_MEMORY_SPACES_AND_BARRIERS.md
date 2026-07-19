@@ -69,3 +69,13 @@ Value *CodeGenFunction::EmitMetalBarrier(unsigned MemFlags) {
   return Builder.CreateCall(F);
 }
 ```
+
+### TableGen Instruction Selection and Memory Fences
+During backend instruction selection, memory fences are lowered to hardware execution barriers inside `lib/Target/AGX/AGXISelLowering.cpp`:
+```cpp
+SDValue AGXTargetLowering::LowerMemFence(SDValue Op, SelectionDAG &DAG) const {
+  SDLoc dl(Op);
+  // Emit native memory fence instruction on AGX
+  return DAG.getNode(AGXISD::MEM_FENCE, dl, MVT::Other, Op.getOperand(0));
+}
+```

@@ -59,3 +59,18 @@ void LowerAGXInstruction(const MachineInstr *MI, MCInst &OutMI) {
   }
 }
 ```
+
+### Register Class Configuration inside TableGen Registers
+Below is the register target configuration specified inside `lib/Target/AGX/AGXRegisterInfo.td`:
+```tablegen
+class AGXReg<string n, bits<16> num> : Register<n> {
+  let HWEncoding = num;
+}
+
+// Declare GPR Registers
+foreach i = 0-127 in {
+  def R#i : AGXReg<"r"#i, i>;
+}
+
+def GPR : RegisterClass<"AGX", [i32, f32], 32, (add (sequence "R%u", 0, 127))>;
+```

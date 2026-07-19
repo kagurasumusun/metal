@@ -247,3 +247,16 @@ def MetalBuffer : MetalAttr<"buffer"> {
   let Args = [UnsignedArgument<"Index">];
 }
 ```
+
+### Direct AST Generation and Module Mapping
+When parsing completes, Clang converts the validated `Decl` representations into LLVM module definitions. For kernel functions, ClangCodeGen inserts the entry function into the LLVM Module's `!air.kernels` metadata node:
+```cpp
+void CodeGenModule::EmitMetalKernelMetadata(Function *F, const FunctionDecl *FD) {
+  NamedMDNode *Kernels = TheModule.getOrInsertNamedMetadata("air.kernels");
+  Metadata *Elts[] = {
+    ValueAsMetadata::get(F),
+    MDString::get(VMContext, FD->getNameAsString())
+  };
+  Kernels->addOperand(MDNode::get(VMContext, Elts));
+}
+```

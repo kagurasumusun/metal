@@ -203,3 +203,15 @@ inline vector<T, 3> cross(vector<T, 3> x, vector<T, 3> y) {
 
 #endif
 ```
+
+### Vector Reduction Optimization
+During compilation, LLVM translates vector dot products into a series of multiply-add instructions, optimizing GPR register usage:
+```cpp
+Value *CodeGenFunction::EmitMetalVectorDotProduct(Value *LHS, Value *RHS) {
+  Value *Mul = Builder.CreateFMul(LHS, RHS, "mul");
+  // Extract and sum components
+  Value *X = Builder.CreateExtractElement(Mul, (uint64_t)0, "x");
+  Value *Y = Builder.CreateExtractElement(Mul, (uint64_t)1, "y");
+  return Builder.CreateFAdd(X, Y, "sum");
+}
+```

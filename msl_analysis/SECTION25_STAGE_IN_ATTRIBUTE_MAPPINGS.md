@@ -67,3 +67,14 @@ public:
 
 }
 ```
+
+### Vertex Input Metadata Generation inside CodeGen
+Below is the C++ implementation required to register stage-in fields to AIR vertex input metadata:
+```cpp
+void CodeGenModule::EmitMetalVertexInputMetadata(const VarDecl *VD) {
+  if (const auto *StageIn = dyn_cast<StageInDecl>(VD)) {
+    unsigned Slot = StageIn->getAttributeSlot();
+    // Emit metadata mappings for Slot
+  }
+}
+```

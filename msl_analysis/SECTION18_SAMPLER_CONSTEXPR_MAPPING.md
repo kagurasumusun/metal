@@ -73,3 +73,14 @@ public:
 
 #endif
 ```
+
+### Clang CodeGen for Constexpr Sampler Initializer
+During CodeGen, constexpr samplers are parsed and serialized to 32-bit constants:
+```cpp
+llvm::Constant *CodeGenFunction::EmitMetalSamplerConstexpr(const Expr *Init) {
+  // Parse and calculate sampler state bitfield
+  uint32_t SamplerVal = 0;
+  // bitfield configurations mapping
+  return llvm::ConstantInt::get(llvm::Type::getInt32Ty(VMContext), SamplerVal);
+}
+```

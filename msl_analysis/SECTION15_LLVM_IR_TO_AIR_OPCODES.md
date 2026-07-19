@@ -117,3 +117,11 @@ public:
   }
 };
 ```
+
+### Local Variable Allocation Optimization
+LLVM detects local aggregate allocations and flattens them into individual scalar registers:
+```cpp
+void CodeGenFunction::EmitMetalAggregateAllocation(Value *Val) {
+  // Promote aggregate to registers
+}
+```

@@ -108,3 +108,20 @@ inline uint3 get_thread_position_in_threadgroup() {
 
 #endif
 ```
+
+### Builtin Mappings inside Clang CodeGen
+When translating the identifiers, Clang lowers them to specific intrinsic calls targeting the GPU's workgroup dispatcher:
+```cpp
+Value *CodeGenFunction::EmitMetalWorkgroupIdentifier(unsigned BuiltinID) {
+  Intrinsic::ID IntrinID;
+  switch (BuiltinID) {
+    case Builtin::BI__builtin_msl_grid_pos:
+      IntrinID = Intrinsic::air_thread_position_in_grid; break;
+    case Builtin::BI__builtin_msl_tg_pos:
+      IntrinID = Intrinsic::air_thread_position_in_threadgroup; break;
+    default:
+      llvm_unreachable("Invalid identifier builtin");
+  }
+  return Builder.CreateCall(CGM.getIntrinsic(IntrinID));
+}
+```

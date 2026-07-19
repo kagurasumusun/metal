@@ -268,3 +268,10 @@ define <4 x float> @vector_sin(<4 x float> %x) {
 declare float @llvm.cos.f32(float)
 declare <4 x float> @llvm.sin.v4f32(<4 x float>)
 ```
+
+### Fast-Math Approximations inside TableGen Instructions
+When fast math is enabled, trigonometric functions are mapped to direct hardware lookup instructions inside `lib/Target/AGX/AGXInstrInfo.td`:
+```tablegen
+def : Pat<(fsin GPR:$src), (AGX_FSIN GPR:$src)>;
+def : Pat<(fcos GPR:$src), (AGX_FCOS GPR:$src)>;
+```

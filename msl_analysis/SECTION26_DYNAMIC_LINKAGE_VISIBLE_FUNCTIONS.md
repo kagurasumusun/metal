@@ -49,3 +49,13 @@ Value *EmitIndirectCall(IRBuilder<>& Builder, Value *FuncPtr, ArrayRef<Value*> A
   return Builder.CreateCall(FuncPtr, Args);
 }
 ```
+
+### Dynamic Dispatch and VFT Lowering inside CodeGen
+Below is the C++ implementation required to compile dynamic visible function table lookups:
+```cpp
+Value *CodeGenFunction::EmitMetalVisibleFunctionCall(Value *VFT, Value *Index, ArrayRef<Value*> Args) {
+  // Index into function pointer array and load ptr
+  Value *FuncPtr = Builder.CreateGEP(VFT, Index);
+  return Builder.CreateCall(FuncPtr, Args);
+}
+```

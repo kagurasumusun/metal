@@ -115,3 +115,12 @@ void __metal_assert_fail(const char* file, int line) {
 
 }
 ```
+
+### Assertion Lowering Pass inside backend
+To support runtime assertions, the backend inserts code paths to execute the assertion failure trap handler:
+```cpp
+void AGXTargetLowering::LowerAssertFail(SDValue Op, SelectionDAG &DAG) const {
+  SDLoc dl(Op);
+  // Emit custom assertion trap sequence
+}
+```

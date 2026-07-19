@@ -69,3 +69,15 @@ struct alignas(16) ArgumentBufferDescriptor {
 
 #endif
 ```
+
+### Argument Buffer CodeGen and Offset Mapping
+During CodeGen, Clang calculates structure member offsets and registers them inside argument buffer metadata:
+```cpp
+void CodeGenModule::EmitMetalArgumentBufferMetadata(const RecordDecl *RD) {
+  for (const auto *Field : RD->fields()) {
+    unsigned IdAttrVal = Field->getAttr<IdAttr>()->getValue();
+    uint64_t OffsetBytes = getContext().getFieldOffset(Field) / 8;
+    // Register metadata and offsets mapping
+  }
+}
+```

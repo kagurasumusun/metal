@@ -54,3 +54,12 @@ Below is the predefined preprocessor target constants set by the compiler:
 
 #endif
 ```
+
+### Compiler Features Queries and Target flags
+Preprocessor macros and features checks are initialized dynamically during parsing:
+```cpp
+void CompilerInstance::InitializeMetalFeatures(MacroBuilder &Builder) {
+  Builder.defineMacro("__METAL_VERSION__", "310");
+  // Additional features configuration
+}
+```

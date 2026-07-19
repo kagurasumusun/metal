@@ -162,3 +162,11 @@ public:
 
 #endif
 ```
+
+### Atomic Operations Lowering inside LLVM CodeGen
+Below is the C++ implementation required to lower atomic fetch operations to LLVM atomicrmw instructions:
+```cpp
+Value *CodeGenFunction::EmitMetalAtomicRMW(AtomicRMWInst::BinOp Op, Value *Ptr, Value *Val, AtomicOrdering Order) {
+  return Builder.CreateAtomicRMW(Op, Ptr, Val, llvm::MaybeAlign(), Order);
+}
+```

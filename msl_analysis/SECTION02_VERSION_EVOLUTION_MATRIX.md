@@ -75,3 +75,20 @@ def : ProcessorModel<"apple-a11", NoSchedModel, [FeatureAppleGPUFamily4]>;
 def : ProcessorModel<"apple-m2", NoSchedModel, [FeatureAppleGPUFamily8]>;
 def : ProcessorModel<"apple-m3", NoSchedModel, [FeatureAppleGPUFamily9]>;
 ```
+
+### Complete Preprocessor Target Macro Set
+During compiler initialization, preprocessor definitions are configured based on the subtarget properties inside `clang/lib/Basic/Targets/AArch64.cpp`:
+```cpp
+void AArch64TargetInfo::getTargetDefinesMSL(const LangOptions &Opts, MacroBuilder &Builder) const {
+  Builder.defineMacro("__METAL_VERSION__", "310");
+  if (HasRaytracing) {
+    Builder.defineMacro("__HAVE_RAYTRACING__", "1");
+  }
+  if (HasMeshShaders) {
+    Builder.defineMacro("__HAVE_MESH_SHADERS__", "1");
+  }
+  if (HasCoopTensors) {
+    Builder.defineMacro("__HAVE_COOPERATIVE_TENSORS__", "1");
+  }
+}
+```

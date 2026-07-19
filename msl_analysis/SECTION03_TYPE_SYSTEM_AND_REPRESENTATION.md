@@ -145,3 +145,17 @@ typedef matrix<float, 4, 4> float4x4;
 
 #endif
 ```
+
+### Memory Copy Alignment Verification
+When generating memory accesses for vectors, Clang ensures load and store operations are aligned to their natural boundaries, preventing unaligned memory exceptions in hardware:
+```cpp
+llvm::Align CodeGenFunction::GetMetalTypeAlignment(QualType Ty) {
+  if (const auto *VT = Ty->getAs<VectorType>()) {
+    unsigned NumElements = VT->getNumElements();
+    QualType EltTy = VT->getElementType();
+    unsigned EltSize = Context.getTypeSize(EltTy) / 8;
+    return llvm::Align(EltSize * (NumElements == 3 ? 4 : NumElements));
+  }
+  return Context.getTypeAlignInChars(Ty);
+}
+```

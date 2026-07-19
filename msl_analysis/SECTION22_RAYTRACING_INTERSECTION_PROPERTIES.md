@@ -60,3 +60,17 @@ struct alignas(16) intersection_result {
 
 #endif
 ```
+
+### Intersection Result Metadata Generation inside CodeGen
+Below is the C++ implementation of the virtual intersection property query code generation:
+```cpp
+Value *CodeGenFunction::EmitMetalIntersectionQueryProperty(Value *Query, unsigned PropertyID) {
+  Intrinsic::ID IntrinID;
+  switch (PropertyID) {
+    case 1: IntrinID = Intrinsic::air_ray_get_dist; break;
+    case 2: IntrinID = Intrinsic::air_ray_get_bary; break;
+    default: llvm_unreachable("Invalid property ID");
+  }
+  return Builder.CreateCall(CGM.getIntrinsic(IntrinID), {Query});
+}
+```

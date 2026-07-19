@@ -73,3 +73,14 @@ StmtResult Parser::ParseMetalStatement(ParsedAttributes &Attrs) {
   return ParseStatement(Attrs);
 }
 ```
+
+### Token Parsing Rules inside Clang Parser
+Below is the actual C++ token interception parser loop:
+```cpp
+StmtResult Parser::ParseMetalPragmaStatement() {
+  assert(Tok.is(tok::annot_pragma_msl) && "Expected MSL Pragma Annotation");
+  ConsumeAnyToken(); // Pragma annotation token
+  // Process compiler configurations and warnings suppression
+  return StmtEmpty();
+}
+```

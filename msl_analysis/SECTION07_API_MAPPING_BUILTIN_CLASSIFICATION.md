@@ -74,3 +74,13 @@ inline char abs<char>(char x) {
 
 } // namespace metal
 ```
+
+### Compiler Intrinsics and Late Linking Passes
+During code generation, calls to unresolved template functions are compiled as external function references in the LLVM Module, allowing them to be resolved by the dynamic linker at JIT compile time:
+```cpp
+bool CodeGenModule::IsRuntimeLinkedFunction(const FunctionDecl *FD) {
+  // Check if function name matches any precompiled symbol inside libmetal_rt
+  StringRef Name = FD->getName();
+  return Name.starts_with("___metal_") || Name.starts_with("__air_impl_");
+}
+```

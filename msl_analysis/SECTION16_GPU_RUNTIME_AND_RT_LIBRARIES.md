@@ -106,3 +106,15 @@ _target_memcpy:
 .Ldone:
     ret
 ```
+
+### Precompiled Math Utilities inside Runtime Archives
+The runtime archive `libmetal_rt_osx.a` contains assembly implementations of complex float operations:
+```assembly
+.global ___metal_fract_float
+.align 4
+___metal_fract_float:
+    // s0 = input value
+    frintm s1, s0 // s1 = floor(input)
+    fsub s0, s0, s1 // s0 = input - floor(input)
+    ret
+```

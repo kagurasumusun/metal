@@ -421,3 +421,12 @@ def : Pat<(saddsat GPR:$src1, GPR:$src2),
 def : Pat<(ssubsat GPR:$src1, GPR:$src2),
           (AGX_SUBSAT GPR:$src1, GPR:$src2)>;
 ```
+
+### Multi-Lane Vector Arithmetic Lowering
+When integer vectors are initialized, Clang generates vectorized arithmetic operations to target the GPU's vector ALUs:
+```cpp
+Value *CodeGenFunction::EmitMetalVectorIntegerAdd(Value *LHS, Value *RHS) {
+  // Emit standard LLVM vector add instruction
+  return Builder.CreateAdd(LHS, RHS, "vadd");
+}
+```

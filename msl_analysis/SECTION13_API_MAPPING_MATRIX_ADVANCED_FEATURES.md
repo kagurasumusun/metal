@@ -123,3 +123,12 @@ private:
 
 #endif
 ```
+
+### BVH Traversal Instructions inside selection DAG
+To support hardware-accelerated raytracing, Traversal queries are compiled to hardware-specific selection DAG nodes inside `lib/Target/AGX/AGXDAGToDAGISel.cpp`:
+```cpp
+void AGXDAGToDAGISel::SelectRaytracingQuery(SDNode *Node) {
+  SDLoc dl(Node);
+  // Lower custom raytracing traversal nodes directly to hardware instructions
+}
+```

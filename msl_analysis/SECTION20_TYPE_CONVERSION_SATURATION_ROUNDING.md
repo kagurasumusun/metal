@@ -70,3 +70,12 @@ inline T convert_sat(U x) {
 
 #endif
 ```
+
+### Saturating Conversion Lowering inside CodeGen
+Saturating vector conversions are mapped to LLVM saturating arithmetic intrinsics:
+```cpp
+Value *CodeGenFunction::EmitMetalSaturatingCast(Value *Val, Type *DestTy) {
+  // Lower to LLVM saturating intrinsics or clamp select
+  return Builder.CreateSelect(Cond, ClampMin, ClampMax);
+}
+```

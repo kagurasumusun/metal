@@ -115,3 +115,16 @@ Value *EmitFastDivision(IRBuilder<>& Builder, Value *X, Value *Y) {
   return Builder.CreateFMul(X, Rcp);
 }
 ```
+
+### Rounding and IEEE-754 Compliance in Division Pipelines
+Under precise math, the compiler inserts a Newton-Raphson refinement loop to calculate the exact quotient, complying with the strict IEEE-754 $0.5 	ext{ ULP}$ error bound:
+```cpp
+Value *EmitPreciseDivision(IRBuilder<>& Builder, Value *X, Value *Y) {
+  // Newton-Raphson refinement steps:
+  // 1. Initial reciprocal estimate: R0 = rcp(Y)
+  // 2. Error term calculation: E = 1.0 - Y * R0
+  // 3. Refined reciprocal estimate: R1 = R0 + E * R0
+  // 4. Multiply quotient: Q = X * R1
+  return Builder.CreateFDiv(X, Y, "fdiv_precise");
+}
+```

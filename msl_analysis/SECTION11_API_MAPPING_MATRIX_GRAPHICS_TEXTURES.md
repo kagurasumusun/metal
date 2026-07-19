@@ -176,3 +176,12 @@ public:
 
 #endif
 ```
+
+### TPU Load and Fetch Instructions inside LLVM
+During code generation, texture sampling and fetching operations are lowered to target-specific TPU instructions:
+```cpp
+Value *CodeGenFunction::EmitMetalTextureSample(Value *Tex, Value *Sampler, Value *Coords) {
+  Function *F = CGM.getIntrinsic(Intrinsic::air_sample_2d);
+  return Builder.CreateCall(F, {Tex, Sampler, Coords});
+}
+```

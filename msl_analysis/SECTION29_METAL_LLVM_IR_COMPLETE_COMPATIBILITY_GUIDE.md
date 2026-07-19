@@ -98,3 +98,18 @@ extern "C" LLVM_EXTERNAL_VISIBILITY void LLVMInitializeAGXTargetInfo() {
   RegisterTarget<Triple::agx> X(getTheAGXTarget(), "agx", "Apple Silicon AGX Architecture", "AGX");
 }
 ```
+
+### Backend Pass Pipeline Registries inside PassBuilder
+Below is the target pass pipeline initialization declaration inside `llvm/lib/Passes/PassBuilder.cpp`:
+```cpp
+void PassBuilder::RegisterAGXPasses() {
+  registerPipelineParsingCallback(
+    [](StringRef Name, FunctionPassManager &FPM, ArrayRef<PipelineElement>) {
+      if (Name == "agx-sroa") {
+        FPM.addPass(AGXSROAPass());
+        return true;
+      }
+      return false;
+    });
+}
+```

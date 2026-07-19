@@ -63,3 +63,11 @@ bool Sema::CheckMetalAddressSpaceCast(QualType SrcTy, QualType DestTy, SourceLoc
   return true;
 }
 ```
+
+### LLVM Address Space Cast Lowering
+When generating IR, address space casts are lowered to target-independent pointer cast instructions:
+```cpp
+Value *CodeGenFunction::EmitMetalAddressSpaceCast(Value *Ptr, Type *DestTy) {
+  return Builder.CreateAddrSpaceCast(Ptr, DestTy);
+}
+```

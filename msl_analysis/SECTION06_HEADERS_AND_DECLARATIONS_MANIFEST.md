@@ -101,3 +101,19 @@ Below is the complete header layout required to orchestrate nested imports and t
 
 #endif // __METAL_STDLIB
 ```
+
+### Preprocessor Conditional Checks
+To prevent header parsing overhead, `<metal_config>` defines core compiler switches and flags:
+```cpp
+#ifndef __METAL_CONFIG_H
+#define __METAL_CONFIG_H
+
+#if !defined(__METAL_VERSION__)
+#error "MSL standard headers require __METAL_VERSION__ configuration"
+#endif
+
+#define METAL_FUNC inline __attribute__((__always_inline__))
+#define METAL_PURE __attribute__((pure))
+
+#endif
+```
