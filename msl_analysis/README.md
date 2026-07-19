@@ -2,7 +2,7 @@
 
 This directory contains the ultimate, academic-grade specification and mapping matrix suite for the Metal Shading Language (MSL). It is designed to serve as an exhaustive, complete reference for adapting, optimizing, or implementing full Clang, LLVM, and AIR support for Metal.
 
-The suite is divided into 29 highly detailed sections, organized as follows:
+The suite is divided into 37 highly detailed sections, organized as follows:
 
 - **[Section 1: MSL to AIR/Metallib Compiler Pipeline and Architecture Specification](SECTION01_PIPELINE_AND_COMPILER_SPEC.md)**: Deep dive into the MSL translation pipeline, `.air` LLVM dialect, and Universal/Mach-O `.metallib` container binary format specs.
 - **[Section 2: MSL Version Evolution & Target Capabilities Specification](SECTION02_VERSION_EVOLUTION_MATRIX.md)**: Historical evolution from MSL 1.0 to 4.1 paired with target capabilities matrices for Apple GPU Families (1 to 10).
@@ -33,6 +33,14 @@ The suite is divided into 29 highly detailed sections, organized as follows:
 - **[Section 27: Speculative Apple AGX ISA Opcode Reconstructions](SECTION27_AGX_ISA_OPCODES_RECONSTRUCTION.md)**: Specification and mappings of AIR opcodes to speculative, reconstructed physical Apple Silicon AGX machine instructions.
 - **[Section 28: MSL Syntax, Clang AST, and LLVM IR Correspondence Matrix](SECTION28_MSL_SYNTAX_CLANG_LLVM_CORRESPONDENCE.md)**: Maps grammatical constructs (C++ vs. MSL-Exclusive) to Clang AST nodes and LLVM IR mappings.
 - **[Section 29: Complete Compatibility Guide on How to Extend Clang and LLVM IR to Fully Support Metal](SECTION29_METAL_LLVM_IR_COMPLETE_COMPATIBILITY_GUIDE.md)**: Full engineering guide detailing target support integration, AST additions, and LLVM backend modifications.
+- **[Section 30: Mesh Shader Grid and Allocation Specifications](SECTION30_MESH_SHADER_GRID_SPEC.md)**: Specifies object/mesh workgroup parameters, primitive allocations, and direct tile memory writes.
+- **[Section 31: Raytracing Curves and Intersection Pipelines](SECTION31_RAYTRACING_CURVES_SPEC.md)**: Architectural analysis of bezier, linear, and B-spline curves intersection checks in dynamic raytracing.
+- **[Section 32: Indirect Command Buffers (ICB) and GPU Execution](SECTION32_INDIRECT_COMMAND_BUFFERS.md)**: Mappings of command buffers, compute/render allocations, and dynamic draw primitive encoding.
+- **[Section 33: Visible Function Tables and Function Groups](SECTION33_VISIBLE_FUNCTION_TABLE_COMPILER_SPEC.md)**: Compiles visible functions, function tables, and indirect dynamic registers inside the AGX backend.
+- **[Section 34: Pixel Formats Packing and Components Layout](SECTION34_PIXEL_FORMATS_PACKING_SPECS.md)**: Hardware specifications and TableGen pattern selections for component-wise color packing/unpacking.
+- **[Section 35: SIMDgroup Matrix Operations and Register Layouts](SECTION35_SIMDGROUP_MATRIX_LAYOUTS.md)**: Detailed register arrays layout and coordinated loads/stores of SIMD matrices.
+- **[Section 36: Exhaustive MSL API to Runtime and Standard Library Dependency Matrix](SECTION36_API_TO_RUNTIME_STD_LIBRARY_DEPENDENCY.md)**: Comprehensive mapping of standard functions to headers and precompiled runtime dependencies (`libmetal_rt`, etc.).
+- **[Section 37: Exhaustive MSL Code Syntax to LLVM IR Instruction Correspondence Matrix](SECTION37_MSL_CODE_TO_LLVM_IR_CORRESPONDENCE.md)**: Production-grade target assembly mapping from high-level MSL constructs to LLVM IR instructions.
 
 ---
 Created with rigorous attention to detail for engineers developing systems targeting Metal compilation, LLVM backends, or GPU runtime frameworks.
