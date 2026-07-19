@@ -2,7 +2,7 @@
 
 This directory contains the ultimate, academic-grade specification and mapping matrix suite for the Metal Shading Language (MSL). It is designed to serve as an exhaustive, complete reference for adapting, optimizing, or implementing full Clang, LLVM, and AIR support for Metal.
 
-The suite is divided into 37 highly detailed sections, organized as follows:
+The suite is divided into 38 highly detailed sections, organized as follows:
 
 - **[Section 1: MSL to AIR/Metallib Compiler Pipeline and Architecture Specification](SECTION01_PIPELINE_AND_COMPILER_SPEC.md)**: Deep dive into the MSL translation pipeline, `.air` LLVM dialect, and Universal/Mach-O `.metallib` container binary format specs.
 - **[Section 2: MSL Version Evolution & Target Capabilities Specification](SECTION02_VERSION_EVOLUTION_MATRIX.md)**: Historical evolution from MSL 1.0 to 4.1 paired with target capabilities matrices for Apple GPU Families (1 to 10).
@@ -41,6 +41,7 @@ The suite is divided into 37 highly detailed sections, organized as follows:
 - **[Section 35: SIMDgroup Matrix Operations and Register Layouts](SECTION35_SIMDGROUP_MATRIX_LAYOUTS.md)**: Detailed register arrays layout and coordinated loads/stores of SIMD matrices.
 - **[Section 36: Exhaustive MSL API to Runtime and Standard Library Dependency Matrix](SECTION36_API_TO_RUNTIME_STD_LIBRARY_DEPENDENCY.md)**: Comprehensive mapping of standard functions to headers and precompiled runtime dependencies (`libmetal_rt`, etc.).
 - **[Section 37: Exhaustive MSL Code Syntax to LLVM IR Instruction Correspondence Matrix](SECTION37_MSL_CODE_TO_LLVM_IR_CORRESPONDENCE.md)**: Production-grade target assembly mapping from high-level MSL constructs to LLVM IR instructions.
+- **[Section 38: MSL Standard Library and Runtime Complete Coverage Report](SECTION38_STDLIB_RT_COMPLETE_COVERAGE_REPORT.md)**: Fully-expanded coverage statistics, mapping rates, and compilation check designs of standard libraries and runtimes.
 
 ---
 Created with rigorous attention to detail for engineers developing systems targeting Metal compilation, LLVM backends, or GPU runtime frameworks.
