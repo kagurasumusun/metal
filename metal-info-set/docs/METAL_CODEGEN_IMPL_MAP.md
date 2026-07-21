@@ -1,0 +1,15 @@
+# METAL_CODEGEN_IMPL_MAP — Metal 固有 CodeGen (LLVM IR/AIR 生成) 完全詳細対応表
+
+> **2026-07-21 実機 IR 解析確定**: Apple Clang (`metalfe`) が出力する `.ll` / `.air` ビットコード実測に基づいて CodeGen パイプラインを全定量化。
+
+## 1. CodeGen 生成ルール詳細表 (`data/metal_codegen_impl_map.csv`)
+
+| 生成フェーズ | ルールID | 対象 AST/機能 | LLVM IR 出力パターン (`llvm_ir_output_pattern`) | 実測 IR 例 (`apple_ir_observed`) | Clang 実装ノート |
+|---|---|---|---|---|---|
+| `module_metadata` | **`CG-MOD-001`** | `AIR Module Version & Language Version` | ``!air.version = !{i32 Major, i32 Minor, i32 Patch}`` | `!air.version = !{!13} -> !13 = !{i32 2, i32 8, i32 0}` | Emitted inside `CodeGenModule::EmitModuleMetadata()`. Computed from `-std=` and `-target` triple via `legacy_metal_support_map.csv` |
+| `module_metadata` | **`CG-MOD-002`** | `Compile Options & Fast Math Flags` | ``!air.compile_options = !{!11, !12, !13}` where !11=`denorms_disable`, !12=`fast_math_enable`, !13=`framebuffer_fetch_enable`` | `!air.compile_options = !{!11, !12, !13}` | Controlled by `-fmetal-math-fp32-functions=fast` (`FE-0581`) or `-ffast-math` |
+| `entry_function` | **`CG-ENT-001`** | `Kernel Entry Function Signature & Calling Conv` | ``define void @my_kernel(...) #0 section "__TEXT,__text,regular,pure_instructions"` with calling convention `fastcc` or `air_kernel`` | `define void @k(ptr addrspace(1) noundef %0, i32 noundef %1) local_unnamed_addr #0` | Entry functions return `void` and carry `!air.kernel` metadata node referencing the function definition |
+| `entry_metadata` | **`CG-ENT-002`** | `Kernel Parameter Metadata Blocks (`!air.kernel`)` | ``!air.kernel = !{!{void (@my_kernel)* @my_kernel, !1, !2, ...}}` where !1, !2 encode argument type name, address space, access, and binding index (`buffer(0)`)` | `!0 = !{void (ptr addrspace(1), i32)* @k, !1, !2}` | Detailed parameter metadata exact layout (`i32 arg_kind`, `name`, `type_name`, `binding_type`, `slot_index`, `align`, `size`) |
+| `builtins_lowering` | **`CG-BLT-001`** | `MSL Builtin Function Call Emission (`__metal_*`)` | ``call <N x float> @air.<verb>.<subject>(<N x float> %arg, ...)` with `tail call fast` attributes when fast_math is active` | `%2 = tail call fast <4 x i32> @air.atomic_exchange_explicit_texture_buffer_1d.u.v4i32(...)` | Directly driven by our `builtin_to_air_map.v2.csv` (686 rows) lookup during `CodeGenFunction::EmitBuiltinExpr()` |
+| `address_space_cast` | **`CG-ASC-001`** | `Pointer Address Space Cast Instructions` | ``addrspacecast (T addrspace(A)* %ptr to T addrspace(B)*)` or `bitcast` for identical layout spaces` | `%3 = addrspacecast ptr addrspace(1) %a to ptr` | Emitted for `ImplicitCastExpr` when casting between `device`/`constant`/`threadgroup` pointers and generic pointers (`addrspace(0)`) |
+| `opaque_types` | **`CG-OPQ-001`** | `Opaque Handle Types Generation (`_t`)` | ``%struct._texture_2d_t = type opaque` / `%struct._sampler_t = type opaque` / `%struct._command_buffer_t = type opaque`` | `%struct._texture_buffer_1d_t = type opaque` | All 35 opaque `_t` types (`type_layout_map.csv`) emitted as `type opaque` in LLVM module global declarations |

@@ -97,7 +97,7 @@ def make_single_slice(air_data, symbols, reflection_data=b''):
     magic = 0x424c544d # 'MTLB'
     unknown4 = 0x00028001
     ver = 0x1a81000009
-    tail = b'\xd0\x0c\x00\x00\x00\x00\x00\x00'
+    tail = struct.pack('<Q', mdsz_val)
 
     hdr = struct.pack('<IIQQQQQQQQQ8s',
                       magic, unknown4, ver, file_size,
