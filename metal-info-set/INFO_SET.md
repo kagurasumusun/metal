@@ -157,6 +157,8 @@ metal-info-set/
 │   ├── IR_GROUND_TRUTH.md       実 IR 逆アセンブル解析 (確定ファクト集)
 │   ├── AIR_VOCABULARY.md        AIR 命名文法・語彙分析
 │   ├── VERIFICATION.md          対応表の独立検証記録 (C1–C7 全緑 + standing auditor)
+│   ├── HANDOVER.md              他 AI への引継ぎ資料 (全状態・全手順・残作業)
+│   ├── METALLIB_WRITER_SPEC.md  自前 .metallib writer 仕様 draft
 │   ├── GPUCOMPILER_SYMBOLS.md   JIT 側構造シンボル解析
 │   ├── PROBING_PLAN.md          Apple 実機 実測計画 P1〜P13
 │   └── samples/*.ll             実 AIR IR ゴールデンサンプル
