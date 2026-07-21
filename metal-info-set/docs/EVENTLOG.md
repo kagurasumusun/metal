@@ -1091,3 +1091,12 @@
 | 2026-07-21T06:16Z | DOC_UPDATE | agent | docs/MSL_TO_IR_MAPPING.md | hub を最終状態へ: ④全確定 (641/45/0), §8 probe 完了記録, 索引に REFERENCE_TREE_INVENTORY/golden/promote_report 追加 |
 | 2026-07-21T06:17Z | REPORT | promote_map.py@1.0.0 | data/promote_report.md | 686 行を集計 |
 | 2026-07-21T06:22Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 0 行; 分布 {'confirmed': 3, 'low': 1} |
+| 2026-07-21T06:36Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 0 行; 分布 {'confirmed': 3, 'low': 1} |
+| 2026-07-21T06:38Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 0 行; 分布 {'confirmed': 3, 'low': 1} |
+| 2026-07-21T06:38Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 0 行; 分布 {'confirmed': 3, 'low': 1} |
+| 2026-07-21T06:40Z | VERIFY | verify_map.py@1.0 (新規 standing auditor) | data/builtin_to_air_map.v2.csv 全 686 行 | 独立検証 C1-C7: C1 universe (headers __metal_* 686:686 1:1) OK / C2 invariants OK / C3 probed content 初回: live-ok=313, inline=187, repairable=154, gap=75 を検出 / C4 observed_ir 97 全実在 / C5 rtlib backing 4 実在 / C6 vocab 全観測可 / C7 golden index stale 0 |
+| 2026-07-21T06:40Z | XC_CORRECT | agent (verify_map --repair, 内容照合つき) | builtin_to_air_map.v2.csv 154 行 | evidence_ref の死んだパスのみを実測内容一致の実パスへ再指向 (candidate 名の変更なし)。P18K→run18_apply, P22K/P23M→run2x_apply, P24B→run24_apply, P25M→run25_apply, P26M→run26_apply, P15M→P15M40_run15, P09F→P09F40_run11 他, 旧 bare scene → 各 metal40 収束版 dir |
+| 2026-07-21T06:40Z | GOLDEN_INGEST | agent | golden/run10_apply, golden/run11_apply, golden/run12_apply, golden/run14_apply, golden/run15_apply | ローカル保持の /home/user/golden_runNN_apply を corpus へ additive 取り込み (内容照合つき: 参照 5 行 — width/height_depth_2d, read_depth_2d, descriptor_size_tensor, set_vft_ift)。run14 は初回 golden_run14_apply 名で取り込まれた為 run14_apply へ正規化 + 13 行の ref 追随 |
+| 2026-07-21T06:40Z | XC_CORRECT | agent | __metal_read_depth_2d_ms_t | 旧参照 golden/P06M/metal32 の inline 片段が air.get_read_sampler で candidate (air.read_depth_2d.f32) と不整合 — 実測済み golden/P06M40_run10 @probe_p06m_read_19 へ再指向 |
+| 2026-07-21T06:40Z | VERIFY | verify_map.py@1.0 | data/builtin_to_air_map.v2.csv | 修復後 最終: C3 live-ok=467 / inline-only=73 (P06M/metal32 原本消失・一次観測行は evidence_ref 内に完全保存, パスは歴史的記録として維持) / repaired=0 / gap=0 — C1-C7 全緑, audit changed=0 quarantined=0 緑 |
+| 2026-07-21T06:39Z | REPORT | promote_map.py@1.0.0 | data/promote_report.md | 686 行を集計 |

@@ -1,6 +1,6 @@
 # 対応表 v2 確度レポート
 
-生成: 2026-07-21T06:17Z by promote_map.py@1.0.0 (冪等: audit 直後の状態の集計)
+生成: 2026-07-21T06:39Z by promote_map.py@1.0.0 (冪等: audit 直後の状態の集計)
 
 ## evidence × confidence
 
