@@ -48,3 +48,23 @@
 - 正本: `data/stdlib_runtime_impl_map.csv` (レイヤ x 項目 対応表)
 - `data/stdlib_header_inventory.csv` / `data/stdlib_runtime_module_inventory.csv`
 - builtin 側の完全表: `data/builtin_to_air_map.v2.csv` (386 行はそちら)
+- **関数粒度のクリーンルーム代替対応表: `data/rtlib_cleanroom_map.csv` (12,672 関数を機械分類: air-direct 10,278 / leaf 2,068 / impl-chain 239 / llvm-or-module-only 87)** — 詳細 `docs/RTLIB_CLEANROOM_MAP.md`
+
+## 完全代替ロードマップ (2026-07-21 確定版)
+
+自前 stdlib/runtime を「完全代替」として使う場合に必要なものをレイヤ順に示す。
+全て一次実測データに連結済み (推測行なし)。
+
+1. **L1 ヘッダ (43)** — 実ヘッダ棚卸 `stdlib_header_inventory.csv` に基づき、
+   public API (decls 6,000+ 関数/クラス/型) を再宣言。builtin 呼出 __metal_* の
+   完全語彙は builtin 対応表が正本 (686 全確定)。
+2. **L2 builtin 受け口** — 自前 clang (fork) 側は `__metal_*` builtin を
+   air intrinsic へ lower する CodeGen を実装 (frontend 対応表 1210 行が実装点索引)。
+3. **L3/L4 rtlib (12,672 関数)** — `rtlib_cleanroom_map.csv` の replace_class 順:
+   - `air-direct` 10,278: air 語彙 (builtin 対応表・確定 stem 375 と同一正本) を emit する bitcode wrapper を自前生成
+   - `impl-chain-air@Nhop` 118: closure 語彙列の wrapper から順に
+   - `leaf` 2,068: ヘッダ/仕様 pdf の記述から MSL/C++ 等価実装 (opencl 由来 math 系が主)
+   - `impl-chain-noair` 121: 連鎖先 leaf ごと再実装
+   - `llvm-or-module-only` 87: llvm intrinsic/定数データで代替
+4. **L5 driver** — metallib container 構造 (metallib_structure.csv 確定) と
+   GPUCompiler JIT シンボル (GPUCOMPILER_SYMBOLS.md) に合致する writer を実装。
