@@ -109,7 +109,7 @@
 
 | ID | 項目 | 状態 | 内容 |
 |---|---|---|---|
-| V-1 | ゴールデン出力コーパス | ✅ 初回回収済 | **2026-07-21 macOS 実機 (upterm/paramiko) で 12/12 シーンビルド成功、golden/ に回収**: 各シーン `metal32_macosx26/probe.{metal,ll}` (+P01/P02 は probe.air/probe.metallib 完全形) + `golden/meta.yml` (date・ツールチェーン版) + `golden/env.txt` + `probe_scenes/build_logs_macosx26/`。apply-golden / apply-golden-corrections で 30 件昇格済。次回収穫: manual_needed シーン (P06〜P11 の wrapper 補完) で規模拡大、および -std/-target マトリクス化 |
+| V-1 | ゴールデン出力コーパス | ✅ 初回回収済 | **2026-07-21 macOS 実機 (upterm/paramiko) で 12/12 シーンビルド成功、golden/ に回収**: 各シーン `metal32_macosx26/probe.{metal,ll}` (+P01/P02 は probe.air/probe.metallib 完全形) + `golden/meta.yml` (date・ツールチェーン版) + `golden/env.txt` (ツールチェーン版詳細)。apply-golden / apply-golden-corrections で 30 件昇格済。ビルドログは runner 側一時物のため未保持 (再現手順は probe_build2.sh 系)。次回収穫: manual_needed シーン (P06〜P11 の wrapper 補完) で規模拡大、および -std/-target マトリクス化 |
 | V-2 | 差分比較ツール | 🔶 | `promote_map.py` の .ll 抽出器 (symbol → air.* 呼出) が差分比較の核として稼働中 (apply-golden/selftest で実証)。bitcode 構造比較・メタデータ比較器・metallib タグ比較器は未実装 (C-1 パーサ流用可) |
 | V-3 | 実行検証スイート | ❌ | 公開 CTS は存在しない → ULP 精度・アトミクス・テクスチャ・同期・拡張機能の実機テスト (MTLCompute 経由) を自作。対象デバイス (apple 各 family) の確保計画も必要 |
 | V-4 | 非回帰 CI | ❌ | macOS runner + Xcode 版マトリクス |
