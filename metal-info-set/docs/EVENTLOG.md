@@ -68,3 +68,4 @@
 | 2026-07-21T01:39Z | APPLY_GOLDEN | promote_map.py@1.0.0 | golden | manifest 579 件: 昇格 17, 不一致 13, 未回収 549 (manual_needed シーンは stub) |
 | 2026-07-21T01:41Z | XC_CORRECT×13 | promote_map.py@1.0.0 | builtin_to_air_map.v2.csv | 命名実名確定 13 件 (air.abs_diff.s.i8 等の連結名 / air.fast_* 接頭) を golden 単一名で訂正昇格。対応表: confirmed 129 / high 68 / medium 489 |
 | 2026-07-21T01:42Z | DOC_UPDATE | human+scripts | IR_GROUND_TRUTH.md §6 等 | 実機 golden 確定分を IR_GROUND_TRUTH/INFO_SET/PROBING_PLAN に反映: entry metadata スキーマ・opaque 型 (texture=AS1/sampler=AS2)・air64_v28・SDK flag・S0-2 現行世代特定 |
+| 2026-07-21T02:30Z | CLEANUP | human | metal-info-set/logs/ + scripts/__pycache__/ | golden tar 展開時にトップレベル logs/ が二重混入 (probe_scenes/build_logs_macosx26 と同一)→削除。__pycache__ も snapshot 不要につき削除。__pycache__ は今後も生成されるため .gitignore 推奨 |
