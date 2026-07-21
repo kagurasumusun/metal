@@ -69,6 +69,47 @@
 - 対応表総計: **confirmed 129 / high 68 / medium 489** (詳細は `data/promote_report.md`)
 - 命名訂正の系統: ドット区切り推測 → 実際はアンダースコア連結 (`air.abs_diff`/`air.add_sat`/`air.extract_bits`/`air.mad_hi`)、整数系は `.s/.u` 付き、`fast_` 接頭 (FP 系) — 詳細は EVENTLOG XC_CORRECT
 
+> ※ §6.5 の数値 (30 件昇格 / confirmed 129) は **当時点の中間記録**。最終状態は
+> §6.6 以降と `data/promote_report.md` (confirmed 641/686, 全行確定)、
+> 独立検証は `docs/VERIFICATION.md`。
+
+### 6.6 intersection query/result 語彙 (run14–run24 確定, corpus: P08M40_run14, P15M40_run15, run24_apply/P24B)
+
+- query: `air.get_{candidate,committed}_primitive_data_intersection_query.instancing.triangle_data` / `air.{next,reset}_intersection_query.instancing.triangle_data`、ctor/dtor で `air.{allocate,deallocate}_intersection_query.instancing.triangle_data` が同伴
+- result: `air.get_*_intersection_result.{instancing|multi_level_instancing}.triangle_data`、transform 系は `...triangle_data.world_space_data`、curve 系は `...triangle_data.curve_data` (tags suffix は `<tag>...` 連結)
+- handle: `air.is_null_{instance,primitive}_acceleration_structure` / `air.get_{instance,primitive}_acceleration_structure_instance_acceleration_structure` / `air.get_size_command_buffer` / `air.get_function_pointer_visible_function_table` / `air.is_uniform.i32`
+- ift/vft: `air.get_buffer_intersection_function_table.p1i8` (**vft 取得も buffer op 共用** — i8* opaque slot)、`air.set_buffer_intersection_function_table.p1i8`、`air.get_null_intersection_function_table`、`air.get_size_visible_function_table`、`air.get_resource_id_{instance,primitive}_acceleration_structure`
+- matrix: `air.simdgroup_matrix_8x8_{load,store}.v64f32.p1f32` / `air.simdgroup_matrix_8x8_multiply_accumulate.v64f32.v64f32.v64f32.v64f32`
+- u64 buffer atomic: `air.atomic.global.{max,min}.u.i64` (global 語あり・型 suffix `.u.i64`)
+
+### 6.7 imageblock / tensor 実測確定 (run14/run22/run25, corpus: P10T40_run10, P10T_O040_run12, run2x_apply/P22K, run25_apply/P25M)
+
+- [[sizeas]] → `MTL_SIZEAS` → `air.get_descriptor_size_tensor` (run12 -O0 でも残存)
+- tensor global 系: `air.{load,store}_global_tensor.s.i32.global.f32` / `air.get_stride_global_tensor.i32` / `air.get_data_pointer_typed_global_tensor.s.i32.global` / `air.is_null_global_tensor`
+- imageblock dims: `air.get_imageblock_{width,height,samples,num_colors}`、kernel 宣言に imageblock 属性は付かない (引数 `%struct._imageblock_t` opaque のみ)
+- slice family: `air.implicit_imageblock_data` / `air.write_imageblock_slice_to_texture_{1d,1d_array,2d,2d_array,3d,cube,cube_array}.i16.v4f32` / `air.store.implicit_imageblock.mask.v4f32` (**語順は `implicit_imageblock_*` — ドット語序と混在するので注意**)
+
+### 6.8 get_null 語彙 (run25, corpus: run25_apply/P25M, 実測 20 語)
+
+- texture 10: `air.get_null_texture_{1d,1d_array,2d,2d_array,2d_ms,2d_ms_array,3d,buffer_1d,cube,cube_array}` (型 suffix なし素名)
+- depth 6: `air.get_null_depth_{2d,2d_ms,2d_array,2d_ms_array,cube,cube_array}`
+- handle 3+1: `air.get_null_{visible_function_table,function_handle,primitive_acceleration_structure,intersection_function_table}`
+
+### 6.9 constexpr sampler の IR 表現・air op 非存在 disposition (run25, corpus: run25_apply/bisect_evidence)
+
+- get_sampler → air op **非存在**。constexpr sampler は module-scope 定数
+  `@__air_sampler_state = internal addrspace(2) constant [2 x i64] [i64 <ビットパターン>, i64 0], align 8` + metadata
+  `!air.sampler_states = !{!17}` / `!17 = !{!"air.sampler_state", [2 x i64] addrspace(2)* @__air_sampler_state}`。
+  sample op には `bitcast ([2 x i64] addrspace(2)* @__air_sampler_state to %struct._sampler_t addrspace(2)*)` で渡る (e2_gsampler.ll L9/L13/L29/L52 実測)
+- struct_has_render_target → air op 非存在。直接呼出は metalfe-32023.883 **frontend crash exit 138** (Sema 通過後 CodeGen 死亡、Target air64-apple-darwin25.4.0)。正当経路は `METAL_VALID_RENDER_TARGET` 制約内のみ (e4_srt.crash.err 実測)
+- `__metal_is_function_constant_defined` → **`air.is_function_constant_defined`** (実 air op として kernel 内に残る、macro 非修飾呼出)
+- divide/select → air op 非存在 (native `fdiv`/`select`。fast フラグは -ffast-math 由来)、get_control_point → clang 合成関数 `_Z2CP.MTL_CONTROL_POINT_FN(i32, pcp*)` 呼出 (index は urem wrap)
+
+### 6.10 texture ulong4 atomic (run26, corpus: run26_apply/P26M, 確定 16)
+
+- `air.atomic_{max,min}_explicit_texture_{1d,1d_array,2d,2d_array,3d,buffer_1d,cube,cube_array}.i16.u.v4i64` — coord index `.i16`、unsigned `.u`、operand `<4 x i64>` (= ulong4)
+- **訂正記録**: 過去 EVENTLOG の「16 texture atomic は toolchain cap 不足 (--cap 非存在) で probe 不能」は**誤認**。実測で `__HAVE_DEVICE_COHERENT_READ_WRITE_TEXTURES__` は defined で、真因は型制約 (ulong4 専用化 `_textureXd_atomic_modify<ulong,...>` のみ member 解放)。詳細は AIR_VOCABULARY §8-7
+
 ---
 
 ## 1. C-4 結論: upstream LLVM 互換
