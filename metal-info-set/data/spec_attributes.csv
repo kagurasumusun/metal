@@ -1,0 +1,89 @@
+attribute,occurrences,first_page,arg_examples
+accept_intersection,5,163,
+alias_implicit_imageblock,2,184,
+alias_implicit_imageblock_color,2,184,n
+amplification_count,10,141,
+amplification_id,13,141,
+attribute,35,73,0 | 1 | index
+barycentric_coord,2,149,
+base_instance,4,141,
+base_vertex,2,142,
+buffer,76,40,0 | 1 | 2
+center_no_perspective,2,175,
+center_perspective,3,149,
+centroid_no_perspective,1,237,
+centroid_perspective,1,237,
+clip_distance,2,185,
+color,27,148,0 | 1 | m
+continue_search,1,164,
+depth,1,127,depth_argument
+direction,1,164,
+dispatch_quadgroups_per_threadgroup,4,157,
+dispatch_simdgroups_per_threadgroup,4,157,
+dispatch_threads_per_threadgroup,7,157,
+distance,3,164,
+early_fragment_tests,5,126,
+flat,2,77,
+fragment,11,74,
+front_facing,3,186,
+function_constant,22,185,0 | index | name
+function_groups,5,60,"""group1"" | ""group2"", ""group3"""
+host_name,6,132,"""abc"" | ""xyz"" | name"
+id,9,54,1 | 3 | n
+imageblock_data,16,48,IM | M | type
+instance_id,5,141,
+intersection,9,61,"primitive_type, intersection_tags… | triangle, triangle_data, instancing,   world_space_data | …"
+invariant,6,17,
+kernel,33,53,
+max_distance,3,164,
+max_total_threadgroups_per_mesh_grid,1,130,size
+max_total_threads_per_threadgroup,6,18,x
+mesh,5,124,
+min_distance,2,164,
+object,4,124,
+origin,1,164,
+patch,5,125,"patch-type, N | quad | quad, 16"
+payload,8,122,
+pixel_position_in_tile,1,150,
+pixels_per_tile,1,150,
+point_coord,1,186,
+point_size,2,185,
+position,35,73,
+primitive_culled,1,77,
+primitive_id,3,149,
+quadgroup_index_in_threadgroup,3,158,
+quadgroups_per_threadgroup,3,158,
+raster_order_group,37,137,"0 | 0), texture(0 | index"
+render_target_array_index,7,144,
+required_threads_per_threadgroup,2,127,
+sample_id,3,176,
+sample_mask,2,148,
+sample_no_perspective,1,237,
+sample_perspective,2,175,
+sampler,18,48,0 | 3 | index
+shared,3,145,
+simdgroup_index_in_threadgroup,4,158,
+simdgroups_per_threadgroup,4,157,
+stage_in,36,73,
+stencil,3,127,
+stitchable,5,124,
+texture,48,44,0 | 1 | 2
+thread_execution_width,1,158,
+thread_index_in_quadgroup,1,157,
+thread_index_in_simdgroup,5,157,
+thread_index_in_threadgroup,5,130,
+thread_position_in_grid,20,40,
+thread_position_in_threadgroup,13,157,
+threadgroup,6,120,0 | 2 | index
+threadgroup_position_in_grid,8,131,
+threadgroups_per_grid,3,158,
+threads_per_grid,6,157,
+threads_per_simdgroup,6,157,
+threads_per_threadgroup,10,130,
+tile_index,1,151,
+user,39,73,"my_a), raster_order_group(0 | my_b), raster_order_group(0 | name"
+user_annotation,1,133,“string”
+vertex,6,74,
+vertex_id,8,41,
+viewport_array_index,15,144,
+visible,10,60,

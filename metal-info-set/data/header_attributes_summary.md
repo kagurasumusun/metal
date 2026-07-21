@@ -1,0 +1,27 @@
+# attribute spellings used by metal_stdlib headers
+
+- `((ext_vector_type(N))` × 18
+- `((packed_vector_type(N))` × 16
+- `((__ext_vector_type__(2))` × 13
+- `((__ext_vector_type__(3))` × 13
+- `((__ext_vector_type__(4))` × 13
+- `((__ext_vector_type__(8))` × 13
+- `((__ext_vector_type__(16))` × 13
+- `((__packed_vector_type__(2))` × 13
+- `((__packed_vector_type__(3))` × 13
+- `((__packed_vector_type__(4))` × 13
+- `((__packed_vector_type__(8))` × 13
+- `((__packed_vector_type__(16))` × 13
+- `((__ext_vector_type__(N))` × 1
+- `((__packed_vector_type__(N))` × 1
+- `((aligned(L))` × 1
+- `((const))` × 1
+- `((deprecated(M))` × 1
+- `((enable_if(P,M))` × 1
+- `((format(metal_os_log,F,F+1))` × 1
+- `((__always_inline__))` × 1
+- `((__maybe_undef__))` × 1
+- `((returns_nonnull))` × 1
+- `((nothrow))` × 1
+- `((pure))` × 1
+- `((unavailable(M))` × 1

@@ -1,0 +1,12 @@
+os,triples_observed
+?,air64_v26-apple-macosx14.0.0;air64_v27-apple-macosx15.0.0
+ios,air64-apple-ios12.0.0;air64-apple-ios8.0.0;air64_v23-apple-ios14.0.0;air64_v25-apple-ios16.0.0;air64_v26-apple-ios17.0.0
+iosmac,air64-apple-ios13.2.0-macabi;air64_v23-apple-ios14.0.0-macabi;air64_v25-apple-ios16.0.0-macabi;air64_v26-apple-ios17.0.0-macabi
+iossim,air64-apple-ios13.0.0-simulator;air64_v23-apple-ios14.0.0-simulator;air64_v25-apple-ios16.0.0-simulator;air64_v26-apple-ios17.0.0-simulator
+osx,air64-apple-macosx10.11.0;air64-apple-macosx10.14.0;air64_v23-apple-macosx11.0.0;air64_v25-apple-macosx13.0.0;air64_v26-apple-macosx14.0.0
+tvos,air64-apple-ios9.0.0;air64-apple-tvos12.0.0;air64_v23-apple-tvos14.0.0;air64_v25-apple-tvos16.0.0;air64_v26-apple-tvos17.0.0
+tvossim,air64-apple-tvos13.0.0-simulator;air64_v23-apple-tvos14.0.0-simulator;air64_v25-apple-tvos16.0.0-simulator;air64_v26-apple-tvos17.0.0-simulator
+watchos,air64-apple-watchos3.0.0;air64-apple-watchos5.0.0;air64_v23-apple-watchos7.0.0;air64_v25-apple-watchos9.0.0;air64_v26-apple-watchos10.0.0
+watchossim,air64-apple-watchos6.0.0-simulator;air64_v23-apple-watchos7.0.0-simulator;air64_v25-apple-watchos9.0.0-simulator;air64_v26-apple-watchos10.0.0-simulator
+xros,air64_v26-apple-xros1.0.0
+xrossim,air64_v26-apple-xros1.0.0-simulator

@@ -1,0 +1,20 @@
+msl_type,category,clang_header_representation,llvm_ir_form,evidence,status
+half,scalar,(組込),f16,spec/headers,✅
+float,scalar,(組込),f32,spec/headers,✅
+bfloat,scalar,__bf16系 (MSL2.2+),bf16,headers(__HAVE_BFLOAT__),🔶probe
+bool,scalar,(組込),i1 (メモリ i8),clang常識,🔶probe
+char/uchar/short/ushort/int/uint,scalar,(組込),i8/i8/i16/i16/i32/i32,spec,✅
+long/ulong,scalar,(組込),i64/i64,spec,✅
+"vec<T,N> (float4等)",vector,__attribute__((__ext_vector_type__(N))),<N x T> (align=自然),headers 25種属性,🔶probe(3要素align要確認)
+"packed_vec<T,N> (packed_float3等)",vector,__attribute__((__packed_vector_type__(N))),<N x T> packed (align=要素),headers 実測 **upstream clang には恐らく無い独自属性**,🧪要clang拡張
+"matrix<T,C,R> (float4x4等)",matrix,"struct { vec<T,R> columns[C]; }",%struct = { [C x <R x T>] } 列優先,metal_matrix 実測,✅layout確定
+atomic<T> (_atomic),struct,template struct (address-space制限ctor),storage型 T + atomicrmw/cmpxchg IR操作,metal_atomic 実測,🔶
+texture1d<T>…texture_buffer<T>/depth*,resource,template class (opaque),opaque handle: ポインタ+専用addrspace or target extension (要実測),headers __bits/metal_texture*,🧪probe 最重要級
+sampler,resource,struct sampler (constexpr state),opaque + 32bit state (sampler state bitfield は metadata/const 値),headers/spec §18 候補,🧪probe
+"array<T,N> (MSL)",container,metal::array (C++ラッパ),[N x T],headers,✅
+threadgroup/device/constant/thread T*,pointer,言語キーワード(addrspace 0/1/2/3),ptr addrspace(N),mangling実測 + datalayout待ち,🔶datalayout確認
+threadgroup_imageblock,pointer系,キーワード,addrspace 8 とされる値 (要検証),msl_analysis由来→要probe,🧪
+visible_function_table / intersection 系,resource,template struct,opaque + air.dyld_flat_table 系実測,binary strings,🔶
+simdgroup_matrix (simdgroup_float8x8等),matrix拡張,template struct (MSL2.3+),専用 layout (fragment型) — cooperative matrix,headers metal_simdgroup_matrix,🧪
+tensor / cooperative_tensor (MSL4),tensor,template class,要実測 (新規),headers metal_tensor/metal_cooperative_tensor,🧪
+raytracing::acceleration_structure,resource,template struct,opaque + air.ray_*? (要実測),headers metal_raytracing,🧪
