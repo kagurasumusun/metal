@@ -352,6 +352,89 @@ def cmd_apply_golden(golden_dir: str, manifest_path: str, map_path: str = None) 
     return {"promoted": promoted, "mismatched": mismatched, "missing": missing}
 
 # ---------------------------------------------------------------- apply-golden-corrections
+def match_builtin_to_calls(row, calls):
+    """builtin row の candidate と golden 呼出群から最良一致を選ぶ。
+
+    ダメージ (小さいほど良い) = 未割当呼出数 + 型 suffix 末尾不足の簡易評価。
+    coverage 目的の近似 (builtin は複数 air 関数を連鎖呼出することがある:
+    例 depth read → get_read_sampler + read_depth)。推測で埋めないため
+    「candidate stem が呼出側 stem の prefix またはその逆」のみ採用し、
+    ずれが大きい場合は採用しない (None を返す)。
+    """
+    cand = row["air_intrinsic_candidate"]
+    ast = S.assess_candidate(cand)
+    cand_stem = ast["stem"]
+    best = None
+    for air_name, fullline in calls:
+        est = S.assess_candidate(air_name)
+        e_stem = est["stem"]
+        if e_stem == cand_stem:
+            score = 0
+        elif e_stem.startswith(cand_stem + ".") or cand_stem.startswith(e_stem + "."):
+            score = 1
+        else:
+            # 区切り文字変種: stem のドット/アンダースコア区切り差を吸収した
+            # ベース一致 (candidate `air.gather.compare.depth.2d.array.t` ↔
+            # golden `air.gather_compare_depth_2d_array` 系)。語順違いは拾わない。
+            # v1 候補中の `.t` セグメントは型 placeholder (実名ではない) ため
+            # 末尾・途中の両方を比較時に除去する (例 `...2d.array.t.grad` → `...2d.array.grad`)
+            stem_c = cand_stem[:-2] if cand_stem.endswith(".t") else cand_stem
+            stem_c = stem_c.replace(".t.", ".")
+            base_c = stem_c.replace(".", "").replace("_", "").lower()
+            base_e = e_stem.replace(".", "").replace("_", "").lower()
+            if base_c.startswith(base_e) or base_e.startswith(base_c):
+                score = 2
+            else:
+                # score 3: builtin 同定 token 一致 (複合語の成分対応)。
+                # 汎用 token を除いた builtin 残部が real stem 残部に全て含まれる
+                # ものだけ採用 (fetch_max/min の誤同定を防ぐため採否は
+                # cmd_apply_golden_corrections 側の一意性チェックで行う)
+                continue
+        if best is None or score < best[0]:
+            best = (score, air_name, fullline)
+    # score 3 経路: score 0-2 で見つからない場合のみ
+    if best is None and cand:
+        GENERIC = {"atomic", "global", "local", "explicit", "fetch", "fence",
+                   "air", "metal"}
+        # 1-token 等価 alias (双方向)。「candidate 側 token が alias 経由で
+        # golden 側 token を指せる」場合にカバー扱いする。alias 追加で
+        # subset 判定が厳しくならないよう coverage 方式で評価する。
+        ALIAS = {"xchg": "exchange", "exchange": "xchg"}
+        # 融合: golden 側に fused token がある場合、candidate 側の parts を
+        # まとめてカバーする (例 golden cmpxchg ≙ candidate の compare+exchange)
+        FUSION = {"cmpxchg": {"compare", "exchange"}}
+
+        def idents(name: str):
+            toks = {t for t in re.split(r"[._]", name.lower()) if t}
+            return toks - GENERIC
+
+        def covered(bid_raw, eid) -> bool:
+            if not bid_raw or not eid:
+                return False
+            bid = set(bid_raw)
+            for fused, parts in FUSION.items():
+                if fused in eid and parts <= bid:
+                    bid -= parts
+            for t in bid:
+                if t in eid:
+                    continue
+                if t in ALIAS and ALIAS[t] in eid:
+                    continue
+                return False
+            return True
+
+        bid = idents(row["__metal_builtin"])
+        if bid:
+            cands3 = []
+            for air_name, fullline in calls:
+                eid = idents(air_name)
+                if covered(bid, eid):
+                    cands3.append((air_name, fullline))
+            if len(cands3) == 1:
+                best = (3, cands3[0][0], cands3[0][1])
+    return best
+
+
 def cmd_apply_golden_corrections(golden_dir: str, manifest_path: str,
                                  map_path: str = None) -> dict:
     """apply-golden の MISMATCH で、golden 側の実呼出 air 名が**単一種類**のものに限り
@@ -401,13 +484,21 @@ def cmd_apply_golden_corrections(golden_dir: str, manifest_path: str,
         if not found:
             continue
         rel, calls = found
-        names = sorted({c[0] for c in calls})
-        stems = {S.assess_candidate(n)["stem"] for n in names}
-        if len(stems) != 1:
-            ambiguous.append((builtin, names))
+        # まず厳密 (stem 完全一致/prefix) で試す (score 3 = ident token カバー一致)
+        strict = match_builtin_to_calls(row, calls)
+        if strict:
+            real = strict[1]
+            names = sorted({c[0] for c in calls})
+            stems = {S.assess_candidate(n)["stem"] for n in names}
+            if len(stems) == 1 or strict[0] in (0, 2, 3):
+                pass  # 採用 (複数 stem でも ident 一致を許容するのは score 3 の目的)
+            else:
+                ambiguous.append((builtin, names))
+                continue
+        else:
+            ambiguous.append((builtin, sorted({c[0] for c in calls})))
             continue
-        real = names[0]
-        if real != row["air_intrinsic_candidate"] and real in used_names:
+        if real != row["air_intrinsic_candidate"] and real in used_names and not real.startswith("rtlib:"):
             skipped.append((builtin, real, "name already used by another row"))
             continue
         old = row["air_intrinsic_candidate"]
@@ -432,6 +523,118 @@ def cmd_apply_golden_corrections(golden_dir: str, manifest_path: str,
                 f"訂正昇格 {len(corrected)} 件; 多様名で保留 {len(ambiguous)} 件; "
                 f"衝突skip {len(skipped)} 件")
     return {"corrected": corrected, "ambiguous": ambiguous, "skipped": skipped}
+
+# ---------------------------------------------------------------- apply-golden-rtlib
+_RE_CALL_HELPER = re.compile(r"\bcall\b[^@]*@((?:___metal|__air)[A-Za-z0-9_.]+)\(")
+
+
+def extract_helper_calls_by_symbol(ll_path: str):
+    """テキスト .ll から {symbol: [(helper_name, full_call_line), ...]} を抽出。
+    helper = ___metal_* / __air* プレフィックスの呼出 (rtlib / private 実装関数)。"""
+    result: dict[str, list] = {}
+    cur = None
+    with open(ll_path, encoding="utf-8", errors="replace") as f:
+        for line in f:
+            m = _RE_DEFINE.match(line)
+            if m:
+                cur = m.group(1)
+                result.setdefault(cur, [])
+                continue
+            if cur is not None:
+                if line.startswith("}"):
+                    cur = None
+                    continue
+                for cm in _RE_CALL_HELPER.finditer(line):
+                    result[cur].append((cm.group(1), line.strip()))
+    return result
+
+
+def cmd_apply_golden_rtlib(golden_dir: str, manifest_path: str,
+                           map_path: str = None) -> dict:
+    """golden 内で __metal_builtin が air.* でなく rtlib helper (___metal_*/__air*)
+    に直接下降することを実測した行に candidate=rtlib:<callee> を付与する。
+
+    採用条件 (推測排除):
+      - 当該 symbol 本体に air.* 呼出が**無い** (air 化しない=rtlib 経由の証)
+      - ___metal_*/__air* 呼出が stem 同一でちょうど 1 種
+      - その callee が対応表他行の確定名と衝突しない
+    """
+    rows = S.read_v2(map_path)
+    by_builtin = {r["__metal_builtin"]: r for r in rows}
+    used_names = {r["air_intrinsic_candidate"] for r in rows}
+    manifest = load_manifest(manifest_path)
+    meta_date = ""
+    meta_path = os.path.join(golden_dir, "meta.yml")
+    if os.path.exists(meta_path):
+        with open(meta_path, encoding="utf-8") as f:
+            for line in f:
+                m = re.match(r"\s*date\s*:\s*([0-9]{4}-[0-9]{2}-[0-9]{2})", line)
+                if m:
+                    meta_date = m.group(1)
+
+    ll_index: dict[str, list[str]] = {}
+    for dirpath, _, files in os.walk(golden_dir):
+        for fn in files:
+            if fn.endswith(".ll"):
+                rel = os.path.relpath(os.path.join(dirpath, fn), golden_dir)
+                ll_index.setdefault(rel.split(os.sep)[0], []).append(rel)
+
+    air_cache: dict[str, dict] = {}
+    helper_cache: dict[str, dict] = {}
+    applied, rejected = [], []
+    for ent in manifest:
+        scene, sym, builtin = ent["scene"], ent["symbol"], ent["builtin"]
+        row = by_builtin.get(builtin)
+        if row is None or row["evidence"] == "probed_xcode_ll":
+            continue
+        found = None
+        for rel in ll_index.get(scene, []):
+            if rel not in air_cache:
+                p = os.path.join(golden_dir, rel)
+                air_cache[rel] = extract_air_calls_by_symbol(p)
+                helper_cache[rel] = extract_helper_calls_by_symbol(p)
+            a, h = air_cache[rel], helper_cache[rel]
+            if sym in a and sym in h:
+                found = (rel, a[sym], h[sym])
+                break
+        if not found:
+            continue
+        rel, air_calls, helper_calls = found
+        if air_calls:
+            rejected.append((builtin, "has air calls (use apply-golden)"))
+            continue
+        stems = {n for n, _ in helper_calls}
+        if len(stems) != 1:
+            rejected.append((builtin, f"multiple/ambiguous helpers: {sorted(stems)}"))
+            continue
+        callee = sorted(stems)[0]
+        cand = f"rtlib:{callee}"
+        if cand != row["air_intrinsic_candidate"] and cand in used_names:
+            rejected.append((builtin, f"name already used: {cand}"))
+            continue
+        old = row["air_intrinsic_candidate"]
+        row["air_intrinsic_candidate"] = cand
+        row["evidence"] = "rtlib_layer_backing"
+        row["evidence_source"] = "xcode_probe_golden"
+        row["evidence_ref"] = f"golden/{rel} @{sym}: {helper_calls[0][1][:160]}"
+        if "P-XRT1" not in row["protocol"]:
+            row["protocol"] += "+P-XRT1"
+        row["confidence"] = "confirmed"
+        row["status"] = "✅実機 Xcode 生成 IR で rtlib helper 下降を確認"
+        if meta_date:
+            row["observed_at"] = meta_date
+        row["grammar_eligible"] = "yes"
+        row["last_change"] = S.utcnow()
+        row["changed_by"] = ACTOR
+        applied.append((builtin, old, cand))
+        S.log_event("XRT_SET", ACTOR, builtin,
+                    f"candidate {old} -> {cand} (golden rtlib helper 実測)")
+
+    S.write_v2(rows, map_path)
+    S.log_event("APPLY_GOLDEN_RTLIB", ACTOR, golden_dir,
+                f"rtlib 確定 {len(applied)} 件; 却下 {len(rejected)} 件")
+    return {"applied": applied, "rejected": rejected}
+
 
 # ---------------------------------------------------------------- selftest
 def cmd_selftest() -> int:
@@ -503,6 +706,9 @@ def main():
     p = sub.add_parser("apply-golden-corrections")
     p.add_argument("golden_dir")
     p.add_argument("--manifest", required=True)
+    p = sub.add_parser("apply-golden-rtlib")
+    p.add_argument("golden_dir")
+    p.add_argument("--manifest", required=True)
     sub.add_parser("selftest")
     args = ap.parse_args()
 
@@ -524,6 +730,14 @@ def main():
         res = cmd_apply_golden(args.golden_dir, args.manifest)
         print(f"apply-golden: promoted={len(res['promoted'])} "
               f"mismatched={len(res['mismatched'])} missing={len(res['missing'])}")
+    elif args.cmd == "apply-golden-corrections":
+        res = cmd_apply_golden_corrections(args.golden_dir, args.manifest)
+        print(f"apply-golden-corrections: corrected={len(res['corrected'])} "
+              f"ambiguous={len(res['ambiguous'])} skipped={len(res['skipped'])}")
+    elif args.cmd == "apply-golden-rtlib":
+        res = cmd_apply_golden_rtlib(args.golden_dir, args.manifest)
+        print(f"apply-golden-rtlib: applied={len(res['applied'])} "
+              f"rejected={len(res['rejected'])}")
     elif args.cmd == "selftest":
         sys.exit(cmd_selftest())
 

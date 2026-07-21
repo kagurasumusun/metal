@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import csv
 import datetime
+import json
 import os
 import re
 
@@ -51,6 +52,41 @@ def utcnow() -> str:
 
 def today() -> str:
     return datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d")
+
+_IDIOM_CACHE = None
+
+def _guard_idiom(tok: str) -> str:
+    """data/guard_idiom.json (実ヘッダの機械集計) で ifdef/numeric 慣用を判定。"""
+    global _IDIOM_CACHE
+    if _IDIOM_CACHE is None:
+        p = os.path.join(DATA, "guard_idiom.json")
+        try:
+            _IDIOM_CACHE = json.load(open(p, encoding="utf-8"))
+        except OSError:
+            _IDIOM_CACHE = {}
+    return _IDIOM_CACHE.get(tok, ["defined"])
+
+def guard_expr(g: str) -> str:
+    """stage1 抽出の guard 列 ('A|B', 'cond' 混在) を #if 式へ機械変換。
+
+    抽出側の語彙: 'A|B' = 同じ宣言が defined(A) or defined(B) の variant で出現。
+    'cond' = マクロ名が取れない variant (#else 側など) = 無条件で有効な変種が
+    存在する → probe では guard 無しとして生成 (最終検証は実コンパイラ)。
+    numeric 慣用 (#if X 形式) の macro は defined(X) では常に真になるので (X) として出す。
+    """
+    toks = [t.strip() for t in g.split("|") if t.strip()]
+    if not toks or "cond" in toks:
+        return ""
+    parts = []
+    for t in toks:
+        idiom = _guard_idiom(t)
+        if idiom == ["numeric"]:
+            parts.append(f"({t})")
+        elif "numeric" in idiom:
+            parts.append(f"(!defined({t}) || ({t}))")
+        else:
+            parts.append(f"defined({t})")
+    return " || ".join(parts)
 
 def log_event(event: str, actor: str, target: str, detail: str) -> None:
     """EVENTLOG.md に 1 行 append (冪等ではない: 変更そのものの記録)。"""
@@ -144,6 +180,19 @@ def load_dicts() -> dict:
         with open(p, newline="", encoding="utf-8") as f:
             for r in csv.DictReader(f):
                 cells.add(r["cell"].strip())
+
+    # golden 実測名 (2026-07-21 実機 probe 由来): 型 suffix を剥いで stems に合流
+    p = os.path.join(DATA, "air_golden_names.csv")
+    if os.path.exists(p):
+        with open(p, newline="", encoding="utf-8") as f:
+            for r in csv.DictReader(f):
+                nm = r["air_name"].strip()
+                if not nm:
+                    continue
+                stem, _tail, ok = split_air_name(nm)
+                if ok and stem.startswith("air."):
+                    stems_bin.add(stem)
+                declares.add(nm)
 
     _cache.update(declares=declares, stems_definitive=stems_def,
                   stems_binaries=stems_bin, literals_airconv=lit_ac,

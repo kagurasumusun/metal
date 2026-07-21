@@ -1,0 +1,473 @@
+probe.metal:13:10: error: no matching member function for call to 'draw_indexed_patches'
+    __rc.draw_indexed_patches(0u, 0u, 0u, p0, p1, 0u, 0u, p2, 0u, 1.0f); return;
+    ~~~~~^~~~~~~~~~~~~~~~~~~~
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_command_buffer:1016:19: note: candidate template ignored: requirement 'disjunction_v<metal::is_same<int, metal::MTLQuadTessellationFactorsHalf>, metal::is_same<int, metal::MTLTriangleTessellationFactorsHalf>>' was not satisfied [with T = int]
+  METAL_FUNC void draw_indexed_patches(uint num_patch_control_points, uint patch_start, uint patch_count, const device uint *patch_index_buffer, const device void *control_point_index_buffer, uint instance_count, uint base_instance, const device T *tessellation_factor_buffer, uint instance_stride = 0, float scale = 1.0f) thread
+                  ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_command_buffer:1029:19: note: candidate template ignored: requirement 'disjunction_v<metal::is_same<int, metal::MTLQuadTessellationFactorsHalf>, metal::is_same<int, metal::MTLTriangleTessellationFactorsHalf>>' was not satisfied [with T = int]
+  METAL_FUNC void draw_indexed_patches(uint num_patch_control_points, uint patch_start, uint patch_count, const device uint *patch_index_buffer, const device void *control_point_index_buffer, uint instance_count, uint base_instance, const constant T *tessellation_factor_buffer, uint instance_stride = 0, float scale = 1.0f) thread
+                  ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_command_buffer:1042:19: note: candidate template ignored: requirement 'disjunction_v<metal::is_same<int, metal::MTLQuadTessellationFactorsHalf>, metal::is_same<int, metal::MTLTriangleTessellationFactorsHalf>>' was not satisfied [with T = int]
+  METAL_FUNC void draw_indexed_patches(uint num_patch_control_points, uint patch_start, uint patch_count, const device uint *patch_index_buffer, const constant void *control_point_index_buffer, uint instance_count, uint base_instance, const device T *tessellation_factor_buffer, uint instance_stride = 0, float scale = 1.0f) thread
+                  ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_command_buffer:1055:19: note: candidate template ignored: requirement 'disjunction_v<metal::is_same<int, metal::MTLQuadTessellationFactorsHalf>, metal::is_same<int, metal::MTLTriangleTessellationFactorsHalf>>' was not satisfied [with T = int]
+  METAL_FUNC void draw_indexed_patches(uint num_patch_control_points, uint patch_start, uint patch_count, const device uint *patch_index_buffer, const constant void *control_point_index_buffer, uint instance_count, uint base_instance, const constant T *tessellation_factor_buffer, uint instance_stride = 0, float scale = 1.0f) thread
+                  ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_command_buffer:1068:19: note: candidate template ignored: requirement 'disjunction_v<metal::is_same<int, metal::MTLQuadTessellationFactorsHalf>, metal::is_same<int, metal::MTLTriangleTessellationFactorsHalf>>' was not satisfied [with T = int]
+  METAL_FUNC void draw_indexed_patches(uint num_patch_control_points, uint patch_start, uint patch_count, const constant uint *patch_index_buffer, const device void *control_point_index_buffer, uint instance_count, uint base_instance, const device T *tessellation_factor_buffer, uint instance_stride = 0, float scale = 1.0f) thread
+                  ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_command_buffer:1081:19: note: candidate template ignored: requirement 'disjunction_v<metal::is_same<int, metal::MTLQuadTessellationFactorsHalf>, metal::is_same<int, metal::MTLTriangleTessellationFactorsHalf>>' was not satisfied [with T = int]
+  METAL_FUNC void draw_indexed_patches(uint num_patch_control_points, uint patch_start, uint patch_count, const constant uint *patch_index_buffer, const device void *control_point_index_buffer, uint instance_count, uint base_instance, const constant T *tessellation_factor_buffer, uint instance_stride = 0, float scale = 1.0f) thread
+                  ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_command_buffer:1094:19: note: candidate template ignored: requirement 'disjunction_v<metal::is_same<int, metal::MTLQuadTessellationFactorsHalf>, metal::is_same<int, metal::MTLTriangleTessellationFactorsHalf>>' was not satisfied [with T = int]
+  METAL_FUNC void draw_indexed_patches(uint num_patch_control_points, uint patch_start, uint patch_count, const constant uint *patch_index_buffer, const constant void *control_point_index_buffer, uint instance_count, uint base_instance, const device T *tessellation_factor_buffer, uint instance_stride = 0, float scale = 1.0f) thread
+                  ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_command_buffer:1107:19: note: candidate template ignored: requirement 'disjunction_v<metal::is_same<int, metal::MTLQuadTessellationFactorsHalf>, metal::is_same<int, metal::MTLTriangleTessellationFactorsHalf>>' was not satisfied [with T = int]
+  METAL_FUNC void draw_indexed_patches(uint num_patch_control_points, uint patch_start, uint patch_count, const constant uint *patch_index_buffer, const constant void *control_point_index_buffer, uint instance_count, uint base_instance, const constant T *tessellation_factor_buffer, uint instance_stride = 0, float scale = 1.0f) thread
+                  ^
+probe.metal:24:10: error: no matching member function for call to 'draw_indexed_primitives'
+    __rc.draw_indexed_primitives(primitive_type::triangle, 0u, p0, 0u, 0u, 0u); return;
+    ~~~~~^~~~~~~~~~~~~~~~~~~~~~~
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_command_buffer:951:19: note: candidate template ignored: requirement 'disjunction_v<metal::is_same<int, unsigned short>, metal::is_same<int, unsigned int>>' was not satisfied [with T = int]
+  METAL_FUNC void draw_indexed_primitives(primitive_type type, uint index_count, const device T *index_buffer, uint instance_count, uint base_vertex = 0, uint base_instance = 0) thread
+                  ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_command_buffer:956:19: note: candidate template ignored: requirement 'disjunction_v<metal::is_same<int, unsigned short>, metal::is_same<int, unsigned int>>' was not satisfied [with T = int]
+  METAL_FUNC void draw_indexed_primitives(primitive_type type, uint index_count, const constant T *index_buffer, uint instance_count, uint base_vertex = 0, uint base_instance = 0) thread
+                  ^
+probe.metal:35:10: error: no matching member function for call to 'draw_patches'
+    __rc.draw_patches(0u, 0u, 0u, p0, 0u, 0u, p1, 0u, 1.0f); return;
+    ~~~~~^~~~~~~~~~~~
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_command_buffer:963:19: note: candidate template ignored: requirement 'disjunction_v<metal::is_same<int, metal::MTLQuadTessellationFactorsHalf>, metal::is_same<int, metal::MTLTriangleTessellationFactorsHalf>>' was not satisfied [with T = int]
+  METAL_FUNC void draw_patches(uint num_patch_control_points, uint patch_start, uint patch_count, const device uint *patch_index_buffer, uint instance_count, uint base_instance, const device T *tessellation_factor_buffer, uint instance_stride = 0, float scale = 1.0f) thread
+                  ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_command_buffer:976:19: note: candidate template ignored: requirement 'disjunction_v<metal::is_same<int, metal::MTLQuadTessellationFactorsHalf>, metal::is_same<int, metal::MTLTriangleTessellationFactorsHalf>>' was not satisfied [with T = int]
+  METAL_FUNC void draw_patches(uint num_patch_control_points, uint patch_start, uint patch_count, const device uint *patch_index_buffer, uint instance_count, uint base_instance, const constant T *tessellation_factor_buffer, uint instance_stride = 0, float scale = 1.0f) thread
+                  ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_command_buffer:989:19: note: candidate template ignored: requirement 'disjunction_v<metal::is_same<int, metal::MTLQuadTessellationFactorsHalf>, metal::is_same<int, metal::MTLTriangleTessellationFactorsHalf>>' was not satisfied [with T = int]
+  METAL_FUNC void draw_patches(uint num_patch_control_points, uint patch_start, uint patch_count, const constant uint *patch_index_buffer, uint instance_count, uint base_instance, const device T *tessellation_factor_buffer, uint instance_stride = 0, float scale = 1.0f) thread
+                  ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_command_buffer:1002:19: note: candidate template ignored: requirement 'disjunction_v<metal::is_same<int, metal::MTLQuadTessellationFactorsHalf>, metal::is_same<int, metal::MTLTriangleTessellationFactorsHalf>>' was not satisfied [with T = int]
+  METAL_FUNC void draw_patches(uint num_patch_control_points, uint patch_start, uint patch_count, const constant uint *patch_index_buffer, uint instance_count, uint base_instance, const constant T *tessellation_factor_buffer, uint instance_stride = 0, float scale = 1.0f) thread
+                  ^
+probe.metal:46:16: error: no member named 'get_candidate_instance_count' in 'metal::raytracing::intersection_query<metal::raytracing::instancing, metal::raytracing::triangle_data>'; did you mean 'get_candidate_instance_id'?
+    return __q.get_candidate_instance_count();
+               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+               get_candidate_instance_id
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:4113:19: note: 'get_candidate_instance_id' declared here
+  METAL_FUNC uint get_candidate_instance_id() const thread
+                  ^
+probe.metal:57:16: error: no member named 'get_committed_instance_count' in 'metal::raytracing::intersection_query<metal::raytracing::instancing, metal::raytracing::triangle_data>'; did you mean 'get_committed_instance_id'?
+    return __q.get_committed_instance_count();
+               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+               get_committed_instance_id
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:4147:19: note: 'get_committed_instance_id' declared here
+  METAL_FUNC uint get_committed_instance_id() const thread
+                  ^
+probe.metal:70:107: error: no member named 'get_curve_parameter' in 'metal::raytracing::intersection_result_ref<metal::raytracing::instancing, metal::raytracing::triangle_data>'
+    __i.intersect(__r, __as, [&](intersection_result_ref<instancing, triangle_data> __ref){ __out = __ref.get_curve_parameter(); });
+                                                                                                    ~~~~~ ^
+probe.metal:70:9: error: no matching member function for call to 'intersect'
+    __i.intersect(__r, __as, [&](intersection_result_ref<instancing, triangle_data> __ref){ __out = __ref.get_curve_parameter(); });
+    ~~~~^~~~~~~~~
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3228:105: note: candidate function template not viable: no known conversion from 'acceleration_structure<(no argument)>' to 'acceleration_structure<metal::raytracing::instancing>' for 2nd argument
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3199:26: note: candidate function not viable: no known conversion from 'acceleration_structure<(no argument)>' to 'acceleration_structure<metal::raytracing::instancing>' for 2nd argument
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3210:26: note: candidate function not viable: no known conversion from 'acceleration_structure<(no argument)>' to 'acceleration_structure<metal::raytracing::instancing>' for 2nd argument
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, uint mask) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3194:26: note: candidate function not viable: requires 2 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3205:26: note: candidate function template not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft, thread P &payload) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3215:26: note: candidate function not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3234:105: note: candidate function template not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3246:105: note: candidate function template not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, uint mask, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3221:26: note: candidate function template not viable: requires 5 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft, thread P &payload) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3240:145: note: candidate function template not viable: requires 5 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>, const ray_data remove_addrspace_t<P> &>>::type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft, const thread P &payload, Callback callback) const thread
+                                                                                                                                                ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3252:105: note: candidate function template not viable: requires 5 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3258:145: note: candidate function template not viable: requires 6 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>, const ray_data remove_addrspace_t<P> &>>::type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft, const thread P &payload, Callback callback) const thread
+                                                                                                                                                ^
+probe.metal:84:9: error: no matching member function for call to 'intersect'
+    __i.intersect(__r, __as, [&](intersection_result_ref<instancing, triangle_data> __ref){ __out = __ref.get_distance(); });
+    ~~~~^~~~~~~~~
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3228:105: note: candidate function template not viable: no known conversion from 'acceleration_structure<(no argument)>' to 'acceleration_structure<metal::raytracing::instancing>' for 2nd argument
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3199:26: note: candidate function not viable: no known conversion from 'acceleration_structure<(no argument)>' to 'acceleration_structure<metal::raytracing::instancing>' for 2nd argument
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3210:26: note: candidate function not viable: no known conversion from 'acceleration_structure<(no argument)>' to 'acceleration_structure<metal::raytracing::instancing>' for 2nd argument
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, uint mask) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3194:26: note: candidate function not viable: requires 2 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3205:26: note: candidate function template not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft, thread P &payload) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3215:26: note: candidate function not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3234:105: note: candidate function template not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3246:105: note: candidate function template not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, uint mask, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3221:26: note: candidate function template not viable: requires 5 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft, thread P &payload) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3240:145: note: candidate function template not viable: requires 5 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>, const ray_data remove_addrspace_t<P> &>>::type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft, const thread P &payload, Callback callback) const thread
+                                                                                                                                                ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3252:105: note: candidate function template not viable: requires 5 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3258:145: note: candidate function template not viable: requires 6 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>, const ray_data remove_addrspace_t<P> &>>::type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft, const thread P &payload, Callback callback) const thread
+                                                                                                                                                ^
+probe.metal:98:9: error: no matching member function for call to 'intersect'
+    __i.intersect(__r, __as, [&](intersection_result_ref<instancing, triangle_data> __ref){ __out = __ref.get_geometry_id(); });
+    ~~~~^~~~~~~~~
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3228:105: note: candidate function template not viable: no known conversion from 'acceleration_structure<(no argument)>' to 'acceleration_structure<metal::raytracing::instancing>' for 2nd argument
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3199:26: note: candidate function not viable: no known conversion from 'acceleration_structure<(no argument)>' to 'acceleration_structure<metal::raytracing::instancing>' for 2nd argument
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3210:26: note: candidate function not viable: no known conversion from 'acceleration_structure<(no argument)>' to 'acceleration_structure<metal::raytracing::instancing>' for 2nd argument
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, uint mask) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3194:26: note: candidate function not viable: requires 2 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3205:26: note: candidate function template not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft, thread P &payload) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3215:26: note: candidate function not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3234:105: note: candidate function template not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3246:105: note: candidate function template not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, uint mask, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3221:26: note: candidate function template not viable: requires 5 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft, thread P &payload) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3240:145: note: candidate function template not viable: requires 5 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>, const ray_data remove_addrspace_t<P> &>>::type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft, const thread P &payload, Callback callback) const thread
+                                                                                                                                                ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3252:105: note: candidate function template not viable: requires 5 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3258:145: note: candidate function template not viable: requires 6 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>, const ray_data remove_addrspace_t<P> &>>::type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft, const thread P &payload, Callback callback) const thread
+                                                                                                                                                ^
+probe.metal:112:107: error: no member named 'get_instance_count' in 'metal::raytracing::intersection_result_ref<metal::raytracing::instancing, metal::raytracing::triangle_data>'; did you mean 'get_instance_id'?
+    __i.intersect(__r, __as, [&](intersection_result_ref<instancing, triangle_data> __ref){ __out = __ref.get_instance_count(); });
+                                                                                                          ^~~~~~~~~~~~~~~~~~
+                                                                                                          get_instance_id
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:2239:19: note: 'get_instance_id' declared here
+  METAL_FUNC uint get_instance_id() const thread
+                  ^
+probe.metal:112:9: error: no matching member function for call to 'intersect'
+    __i.intersect(__r, __as, [&](intersection_result_ref<instancing, triangle_data> __ref){ __out = __ref.get_instance_count(); });
+    ~~~~^~~~~~~~~
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3228:105: note: candidate function template not viable: no known conversion from 'acceleration_structure<(no argument)>' to 'acceleration_structure<metal::raytracing::instancing>' for 2nd argument
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3199:26: note: candidate function not viable: no known conversion from 'acceleration_structure<(no argument)>' to 'acceleration_structure<metal::raytracing::instancing>' for 2nd argument
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3210:26: note: candidate function not viable: no known conversion from 'acceleration_structure<(no argument)>' to 'acceleration_structure<metal::raytracing::instancing>' for 2nd argument
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, uint mask) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3194:26: note: candidate function not viable: requires 2 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3205:26: note: candidate function template not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft, thread P &payload) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3215:26: note: candidate function not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3234:105: note: candidate function template not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3246:105: note: candidate function template not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, uint mask, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3221:26: note: candidate function template not viable: requires 5 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft, thread P &payload) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3240:145: note: candidate function template not viable: requires 5 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>, const ray_data remove_addrspace_t<P> &>>::type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft, const thread P &payload, Callback callback) const thread
+                                                                                                                                                ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3252:105: note: candidate function template not viable: requires 5 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3258:145: note: candidate function template not viable: requires 6 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>, const ray_data remove_addrspace_t<P> &>>::type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft, const thread P &payload, Callback callback) const thread
+                                                                                                                                                ^
+probe.metal:126:9: error: no matching member function for call to 'intersect'
+    __i.intersect(__r, __as, [&](intersection_result_ref<instancing, triangle_data> __ref){ __out = __ref.get_instance_id(); });
+    ~~~~^~~~~~~~~
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3228:105: note: candidate function template not viable: no known conversion from 'acceleration_structure<(no argument)>' to 'acceleration_structure<metal::raytracing::instancing>' for 2nd argument
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3199:26: note: candidate function not viable: no known conversion from 'acceleration_structure<(no argument)>' to 'acceleration_structure<metal::raytracing::instancing>' for 2nd argument
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3210:26: note: candidate function not viable: no known conversion from 'acceleration_structure<(no argument)>' to 'acceleration_structure<metal::raytracing::instancing>' for 2nd argument
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, uint mask) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3194:26: note: candidate function not viable: requires 2 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3205:26: note: candidate function template not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft, thread P &payload) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3215:26: note: candidate function not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3234:105: note: candidate function template not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3246:105: note: candidate function template not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, uint mask, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3221:26: note: candidate function template not viable: requires 5 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft, thread P &payload) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3240:145: note: candidate function template not viable: requires 5 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>, const ray_data remove_addrspace_t<P> &>>::type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft, const thread P &payload, Callback callback) const thread
+                                                                                                                                                ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3252:105: note: candidate function template not viable: requires 5 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3258:145: note: candidate function template not viable: requires 6 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>, const ray_data remove_addrspace_t<P> &>>::type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft, const thread P &payload, Callback callback) const thread
+                                                                                                                                                ^
+probe.metal:140:107: error: no member named 'get_object_to_world_transform' in 'metal::raytracing::intersection_result_ref<metal::raytracing::instancing, metal::raytracing::triangle_data>'
+    __i.intersect(__r, __as, [&](intersection_result_ref<instancing, triangle_data> __ref){ __out = __ref.get_object_to_world_transform(); });
+                                                                                                    ~~~~~ ^
+probe.metal:140:9: error: no matching member function for call to 'intersect'
+    __i.intersect(__r, __as, [&](intersection_result_ref<instancing, triangle_data> __ref){ __out = __ref.get_object_to_world_transform(); });
+    ~~~~^~~~~~~~~
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3228:105: note: candidate function template not viable: no known conversion from 'acceleration_structure<(no argument)>' to 'acceleration_structure<metal::raytracing::instancing>' for 2nd argument
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3199:26: note: candidate function not viable: no known conversion from 'acceleration_structure<(no argument)>' to 'acceleration_structure<metal::raytracing::instancing>' for 2nd argument
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3210:26: note: candidate function not viable: no known conversion from 'acceleration_structure<(no argument)>' to 'acceleration_structure<metal::raytracing::instancing>' for 2nd argument
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, uint mask) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3194:26: note: candidate function not viable: requires 2 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3205:26: note: candidate function template not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft, thread P &payload) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3215:26: note: candidate function not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3234:105: note: candidate function template not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3246:105: note: candidate function template not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, uint mask, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3221:26: note: candidate function template not viable: requires 5 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft, thread P &payload) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3240:145: note: candidate function template not viable: requires 5 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>, const ray_data remove_addrspace_t<P> &>>::type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft, const thread P &payload, Callback callback) const thread
+                                                                                                                                                ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3252:105: note: candidate function template not viable: requires 5 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3258:145: note: candidate function template not viable: requires 6 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>, const ray_data remove_addrspace_t<P> &>>::type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft, const thread P &payload, Callback callback) const thread
+                                                                                                                                                ^
+probe.metal:154:9: error: no matching member function for call to 'intersect'
+    __i.intersect(__r, __as, [&](intersection_result_ref<instancing, triangle_data> __ref){ __out = __ref.get_primitive_id(); });
+    ~~~~^~~~~~~~~
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3228:105: note: candidate function template not viable: no known conversion from 'acceleration_structure<(no argument)>' to 'acceleration_structure<metal::raytracing::instancing>' for 2nd argument
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3199:26: note: candidate function not viable: no known conversion from 'acceleration_structure<(no argument)>' to 'acceleration_structure<metal::raytracing::instancing>' for 2nd argument
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3210:26: note: candidate function not viable: no known conversion from 'acceleration_structure<(no argument)>' to 'acceleration_structure<metal::raytracing::instancing>' for 2nd argument
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, uint mask) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3194:26: note: candidate function not viable: requires 2 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3205:26: note: candidate function template not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft, thread P &payload) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3215:26: note: candidate function not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3234:105: note: candidate function template not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3246:105: note: candidate function template not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, uint mask, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3221:26: note: candidate function template not viable: requires 5 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft, thread P &payload) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3240:145: note: candidate function template not viable: requires 5 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>, const ray_data remove_addrspace_t<P> &>>::type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft, const thread P &payload, Callback callback) const thread
+                                                                                                                                                ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3252:105: note: candidate function template not viable: requires 5 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3258:145: note: candidate function template not viable: requires 6 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>, const ray_data remove_addrspace_t<P> &>>::type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft, const thread P &payload, Callback callback) const thread
+                                                                                                                                                ^
+probe.metal:168:9: error: no matching member function for call to 'intersect'
+    __i.intersect(__r, __as, [&](intersection_result_ref<instancing, triangle_data> __ref){ __out = __ref.get_ray_direction(); });
+    ~~~~^~~~~~~~~
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3228:105: note: candidate function template not viable: no known conversion from 'acceleration_structure<(no argument)>' to 'acceleration_structure<metal::raytracing::instancing>' for 2nd argument
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3199:26: note: candidate function not viable: no known conversion from 'acceleration_structure<(no argument)>' to 'acceleration_structure<metal::raytracing::instancing>' for 2nd argument
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3210:26: note: candidate function not viable: no known conversion from 'acceleration_structure<(no argument)>' to 'acceleration_structure<metal::raytracing::instancing>' for 2nd argument
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, uint mask) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3194:26: note: candidate function not viable: requires 2 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3205:26: note: candidate function template not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft, thread P &payload) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3215:26: note: candidate function not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3234:105: note: candidate function template not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3246:105: note: candidate function template not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, uint mask, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3221:26: note: candidate function template not viable: requires 5 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft, thread P &payload) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3240:145: note: candidate function template not viable: requires 5 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>, const ray_data remove_addrspace_t<P> &>>::type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft, const thread P &payload, Callback callback) const thread
+                                                                                                                                                ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3252:105: note: candidate function template not viable: requires 5 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3258:145: note: candidate function template not viable: requires 6 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>, const ray_data remove_addrspace_t<P> &>>::type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft, const thread P &payload, Callback callback) const thread
+                                                                                                                                                ^
+probe.metal:182:9: error: no matching member function for call to 'intersect'
+    __i.intersect(__r, __as, [&](intersection_result_ref<instancing, triangle_data> __ref){ __out = __ref.get_ray_min_distance(); });
+    ~~~~^~~~~~~~~
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3228:105: note: candidate function template not viable: no known conversion from 'acceleration_structure<(no argument)>' to 'acceleration_structure<metal::raytracing::instancing>' for 2nd argument
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3199:26: note: candidate function not viable: no known conversion from 'acceleration_structure<(no argument)>' to 'acceleration_structure<metal::raytracing::instancing>' for 2nd argument
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3210:26: note: candidate function not viable: no known conversion from 'acceleration_structure<(no argument)>' to 'acceleration_structure<metal::raytracing::instancing>' for 2nd argument
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, uint mask) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3194:26: note: candidate function not viable: requires 2 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3205:26: note: candidate function template not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft, thread P &payload) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3215:26: note: candidate function not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3234:105: note: candidate function template not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3246:105: note: candidate function template not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, uint mask, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3221:26: note: candidate function template not viable: requires 5 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft, thread P &payload) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3240:145: note: candidate function template not viable: requires 5 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>, const ray_data remove_addrspace_t<P> &>>::type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft, const thread P &payload, Callback callback) const thread
+                                                                                                                                                ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3252:105: note: candidate function template not viable: requires 5 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3258:145: note: candidate function template not viable: requires 6 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>, const ray_data remove_addrspace_t<P> &>>::type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft, const thread P &payload, Callback callback) const thread
+                                                                                                                                                ^
+probe.metal:196:9: error: no matching member function for call to 'intersect'
+    __i.intersect(__r, __as, [&](intersection_result_ref<instancing, triangle_data> __ref){ __out = __ref.get_ray_origin(); });
+    ~~~~^~~~~~~~~
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3228:105: note: candidate function template not viable: no known conversion from 'acceleration_structure<(no argument)>' to 'acceleration_structure<metal::raytracing::instancing>' for 2nd argument
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3199:26: note: candidate function not viable: no known conversion from 'acceleration_structure<(no argument)>' to 'acceleration_structure<metal::raytracing::instancing>' for 2nd argument
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3210:26: note: candidate function not viable: no known conversion from 'acceleration_structure<(no argument)>' to 'acceleration_structure<metal::raytracing::instancing>' for 2nd argument
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, uint mask) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3194:26: note: candidate function not viable: requires 2 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3205:26: note: candidate function template not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft, thread P &payload) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3215:26: note: candidate function not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3234:105: note: candidate function template not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3246:105: note: candidate function template not viable: requires 4 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, uint mask, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3221:26: note: candidate function template not viable: requires 5 arguments, but 3 were provided
+  METAL_FUNC result_type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft, thread P &payload) const thread
+                         ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3240:145: note: candidate function template not viable: requires 5 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>, const ray_data remove_addrspace_t<P> &>>::type intersect(ray r, instance_acceleration_structure as, intersection_function_table<Tags...> ft, const thread P &payload, Callback callback) const thread
+                                                                                                                                                ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3252:105: note: candidate function template not viable: requires 5 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>>>::type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft, Callback callback) const thread
+                                                                                                        ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:3258:145: note: candidate function template not viable: requires 6 arguments, but 3 were provided
+  METAL_FUNC typename enable_if<__is_callable_with_v<Callback, intersection_result_ref<Tags...>, const ray_data remove_addrspace_t<P> &>>::type intersect(ray r, instance_acceleration_structure as, uint mask, intersection_function_table<Tags...> ft, const thread P &payload, Callback callback) const thread
+                                                                                                                                                ^
+probe.metal:210:18: error: no member named 'size' in 'metal::raytracing::intersection_result<metal::raytracing::instancing, metal::raytracing::triangle_data>'
+    return __res.size();
+           ~~~~~ ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.

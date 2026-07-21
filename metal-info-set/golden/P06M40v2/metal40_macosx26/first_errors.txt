@@ -1,0 +1,88 @@
+probe.metal:8:90: error: no member named 'atomic_max' in 'metal::texture1d_array<unsigned int, metal::access::read_write, metal::memory_coherence_threadgroup>'
+extern "C" void probe_p06m_atomic_max_0(texture1d_array<uint, access::read_write> t) { t.atomic_max(0u, 0u, ulong4(0ul)); }
+                                                                                       ~ ^
+probe.metal:15:84: error: no member named 'atomic_max' in 'metal::texture1d<unsigned int, metal::access::read_write, metal::memory_coherence_threadgroup>'
+extern "C" void probe_p06m_atomic_max_1(texture1d<uint, access::read_write> t) { t.atomic_max(0u, ulong4(0ul)); }
+                                                                                 ~ ^
+probe.metal:22:90: error: no member named 'atomic_max' in 'metal::texture2d_array<unsigned int, metal::access::read_write, metal::memory_coherence_threadgroup>'
+extern "C" void probe_p06m_atomic_max_2(texture2d_array<uint, access::read_write> t) { t.atomic_max(uint2(0u), 0u, ulong4(0ul)); }
+                                                                                       ~ ^
+probe.metal:29:84: error: no member named 'atomic_max' in 'metal::texture2d<unsigned int, metal::access::read_write, metal::memory_coherence_threadgroup>'
+extern "C" void probe_p06m_atomic_max_3(texture2d<uint, access::read_write> t) { t.atomic_max(uint2(0u), ulong4(0ul)); }
+                                                                                 ~ ^
+probe.metal:36:84: error: no member named 'atomic_max' in 'metal::texture3d<unsigned int, metal::access::read_write, metal::memory_coherence_threadgroup>'
+extern "C" void probe_p06m_atomic_max_4(texture3d<uint, access::read_write> t) { t.atomic_max(uint3(0u), ulong4(0ul)); }
+                                                                                 ~ ^
+probe.metal:43:89: error: no member named 'atomic_max' in 'metal::texture_buffer<unsigned int, metal::access::read_write, metal::memory_coherence_threadgroup>'
+extern "C" void probe_p06m_atomic_max_5(texture_buffer<uint, access::read_write> t) { t.atomic_max(0u, ulong4(0ul)); }
+                                                                                      ~ ^
+probe.metal:50:92: error: no member named 'atomic_max' in 'metal::texturecube_array<unsigned int, metal::access::read_write, metal::memory_coherence_threadgroup>'
+extern "C" void probe_p06m_atomic_max_6(texturecube_array<uint, access::read_write> t) { t.atomic_max(uint2(0u), 0u, 0u, ulong4(0ul)); }
+                                                                                         ~ ^
+probe.metal:57:86: error: no member named 'atomic_max' in 'metal::texturecube<unsigned int, metal::access::read_write, metal::memory_coherence_threadgroup>'
+extern "C" void probe_p06m_atomic_max_7(texturecube<uint, access::read_write> t) { t.atomic_max(uint2(0u), 0u, ulong4(0ul)); }
+                                                                                   ~ ^
+probe.metal:64:90: error: no member named 'atomic_min' in 'metal::texture1d_array<unsigned int, metal::access::read_write, metal::memory_coherence_threadgroup>'
+extern "C" void probe_p06m_atomic_min_8(texture1d_array<uint, access::read_write> t) { t.atomic_min(0u, 0u, ulong4(0ul)); }
+                                                                                       ~ ^
+probe.metal:71:84: error: no member named 'atomic_min' in 'metal::texture1d<unsigned int, metal::access::read_write, metal::memory_coherence_threadgroup>'
+extern "C" void probe_p06m_atomic_min_9(texture1d<uint, access::read_write> t) { t.atomic_min(0u, ulong4(0ul)); }
+                                                                                 ~ ^
+probe.metal:78:91: error: no member named 'atomic_min' in 'metal::texture2d_array<unsigned int, metal::access::read_write, metal::memory_coherence_threadgroup>'
+extern "C" void probe_p06m_atomic_min_10(texture2d_array<uint, access::read_write> t) { t.atomic_min(uint2(0u), 0u, ulong4(0ul)); }
+                                                                                        ~ ^
+probe.metal:85:85: error: no member named 'atomic_min' in 'metal::texture2d<unsigned int, metal::access::read_write, metal::memory_coherence_threadgroup>'
+extern "C" void probe_p06m_atomic_min_11(texture2d<uint, access::read_write> t) { t.atomic_min(uint2(0u), ulong4(0ul)); }
+                                                                                  ~ ^
+probe.metal:92:85: error: no member named 'atomic_min' in 'metal::texture3d<unsigned int, metal::access::read_write, metal::memory_coherence_threadgroup>'
+extern "C" void probe_p06m_atomic_min_12(texture3d<uint, access::read_write> t) { t.atomic_min(uint3(0u), ulong4(0ul)); }
+                                                                                  ~ ^
+probe.metal:99:90: error: no member named 'atomic_min' in 'metal::texture_buffer<unsigned int, metal::access::read_write, metal::memory_coherence_threadgroup>'
+extern "C" void probe_p06m_atomic_min_13(texture_buffer<uint, access::read_write> t) { t.atomic_min(0u, ulong4(0ul)); }
+                                                                                       ~ ^
+probe.metal:106:93: error: no member named 'atomic_min' in 'metal::texturecube_array<unsigned int, metal::access::read_write, metal::memory_coherence_threadgroup>'
+extern "C" void probe_p06m_atomic_min_14(texturecube_array<uint, access::read_write> t) { t.atomic_min(uint2(0u), 0u, 0u, ulong4(0ul)); }
+                                                                                          ~ ^
+probe.metal:113:87: error: no member named 'atomic_min' in 'metal::texturecube<unsigned int, metal::access::read_write, metal::memory_coherence_threadgroup>'
+extern "C" void probe_p06m_atomic_min_15(texturecube<uint, access::read_write> t) { t.atomic_min(uint2(0u), 0u, ulong4(0ul)); }
+                                                                                    ~ ^
+probe.metal:122:76: error: no member named 'get_num_samples' in 'metal::depth2d<float, metal::access::sample, metal::memory_coherence_threadgroup>'
+extern "C" uint probe_p06m_get_num_samples_17(depth2d<float> d) { return d.get_num_samples(); }
+                                                                         ~ ^
+probe.metal:132:32: warning: 'probe_p06m_sparse_read_20' has C-linkage specified, but returns incomplete type 'sparse_color<float>' which could be incompatible with C [-Wreturn-type-c-linkage]
+extern "C" sparse_color<float> probe_p06m_sparse_read_20(depth2d_ms_array<float> d) { return d.sparse_read(uint2(0u), 0u, 0u); }
+                               ^
+probe.metal:142:32: warning: 'probe_p06m_sparse_read_22' has C-linkage specified, but returns user-defined type 'sparse_color<float>' which is incompatible with C [-Wreturn-type-c-linkage]
+extern "C" sparse_color<float> probe_p06m_sparse_read_22(depthcube_array<float> d) { return d.sparse_read(uint2(0u), 0u, 0u, 0u); }
+                               ^
+probe.metal:149:32: warning: 'probe_p06m_sparse_read_23' has C-linkage specified, but returns user-defined type 'sparse_color<float>' which is incompatible with C [-Wreturn-type-c-linkage]
+extern "C" sparse_color<float> probe_p06m_sparse_read_23(depthcube<float> d) { return d.sparse_read(uint2(0u), 0u, 0u); }
+                               ^
+probe.metal:159:32: warning: 'probe_p06m_sparse_sample_compare_25' has C-linkage specified, but returns user-defined type 'sparse_color<float>' which is incompatible with C [-Wreturn-type-c-linkage]
+extern "C" sparse_color<float> probe_p06m_sparse_sample_compare_25(depth2d_array<float> d, sampler s) { return d.sparse_sample_compare(s, float2(1.0f), 0u, 1.0f, gradient2d(float2(0.5f), float2(0.5f)), int2(0)); }
+                               ^
+probe.metal:169:32: warning: 'probe_p06m_sparse_sample_compare_27' has C-linkage specified, but returns user-defined type 'sparse_color<float>' which is incompatible with C [-Wreturn-type-c-linkage]
+extern "C" sparse_color<float> probe_p06m_sparse_sample_compare_27(depth2d<float> d, sampler s) { return d.sparse_sample_compare(s, float2(1.0f), 1.0f, gradient2d(float2(0.5f), float2(0.5f)), min_lod_clamp(1.0f), int2(0)); }
+                               ^
+probe.metal:176:32: warning: 'probe_p06m_sparse_sample_compare_28' has C-linkage specified, but returns user-defined type 'sparse_color<float>' which is incompatible with C [-Wreturn-type-c-linkage]
+extern "C" sparse_color<float> probe_p06m_sparse_sample_compare_28(depthcube_array<float> d, sampler s) { return d.sparse_sample_compare(s, float3(1.0f), 0u, 1.0f, bias(1.0f), min_lod_clamp(1.0f)); }
+                               ^
+probe.metal:183:32: warning: 'probe_p06m_sparse_sample_compare_29' has C-linkage specified, but returns user-defined type 'sparse_color<float>' which is incompatible with C [-Wreturn-type-c-linkage]
+extern "C" sparse_color<float> probe_p06m_sparse_sample_compare_29(depthcube_array<float> d, sampler s) { return d.sparse_sample_compare(s, float3(1.0f), 0u, 1.0f, gradientcube(float3(0.5f), float3(0.5f)), min_lod_clamp(1.0f)); }
+                               ^
+probe.metal:193:32: warning: 'probe_p06m_sparse_sample_compare_31' has C-linkage specified, but returns user-defined type 'sparse_color<float>' which is incompatible with C [-Wreturn-type-c-linkage]
+extern "C" sparse_color<float> probe_p06m_sparse_sample_compare_31(depthcube<float> d, sampler s) { return d.sparse_sample_compare(s, float3(1.0f), 1.0f, gradientcube(float3(0.5f), float3(0.5f)), min_lod_clamp(1.0f)); }
+                               ^
+probe.metal:203:32: warning: 'probe_p06m_sparse_sample_33' has C-linkage specified, but returns user-defined type 'sparse_color<float>' which is incompatible with C [-Wreturn-type-c-linkage]
+extern "C" sparse_color<float> probe_p06m_sparse_sample_33(depthcube_array<float> d, sampler s) { return d.sparse_sample(s, float3(1.0f), 0u, bias(1.0f), min_lod_clamp(1.0f)); }
+                               ^
+probe.metal:210:32: warning: 'probe_p06m_sparse_sample_34' has C-linkage specified, but returns user-defined type 'sparse_color<float>' which is incompatible with C [-Wreturn-type-c-linkage]
+extern "C" sparse_color<float> probe_p06m_sparse_sample_34(depthcube_array<float> d, sampler s) { return d.sparse_sample(s, float3(1.0f), 0u, gradientcube(float3(0.5f), float3(0.5f)), min_lod_clamp(1.0f)); }
+                               ^
+probe.metal:220:69: error: no member named 'write' in 'metal::texturecube_array<float, metal::access::sample, metal::memory_coherence_threadgroup>'
+extern "C" void probe_p06m_write_36(texturecube_array<float> t) { t.write(float4(1.0f), uint2(0u), 0u, 0u, 0u); }
+                                                                  ~ ^
+probe.metal:227:63: error: no member named 'write' in 'metal::texturecube<float, metal::access::sample, metal::memory_coherence_threadgroup>'
+extern "C" void probe_p06m_write_37(texturecube<float> t) { t.write(float4(1.0f), uint2(0u), 0u, 0u); }
+                                                            ~ ^
+10 warnings and 19 errors generated.

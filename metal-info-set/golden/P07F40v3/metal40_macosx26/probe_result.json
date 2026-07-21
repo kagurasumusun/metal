@@ -1,0 +1,23 @@
+{
+ "scene": "P07F",
+ "std": "metal4.0",
+ "iters": 3,
+ "ok": true,
+ "enabled_symbols": [
+  "probe_p07f_atomic_compare_exchange_weak_explicit_0",
+  "probe_p07f_atomic_exchange_explicit_1",
+  "probe_p07f_atomic_fetch_add_explicit_2",
+  "probe_p07f_atomic_fetch_and_explicit_3",
+  "probe_p07f_atomic_fetch_max_explicit_4",
+  "probe_p07f_atomic_fetch_min_explicit_5",
+  "probe_p07f_atomic_fetch_or_explicit_6",
+  "probe_p07f_atomic_fetch_sub_explicit_7",
+  "probe_p07f_atomic_fetch_xor_explicit_8",
+  "probe_p07f_atomic_load_explicit_9",
+  "probe_p07f_atomic_store_explicit_12",
+  "probe_p07f_fdim_22",
+  "probe_p07f_frexp_13",
+  "probe_p07f_ilogb_17"
+ ],
+ "n_enabled": 14
+}

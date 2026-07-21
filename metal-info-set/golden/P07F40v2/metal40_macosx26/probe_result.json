@@ -1,0 +1,11 @@
+{
+ "scene": "P07F",
+ "std": "metal4.0",
+ "iters": 5,
+ "ok": true,
+ "enabled_symbols": [
+  "probe_p07f_fdim_22",
+  "probe_p07f_ilogb_17"
+ ],
+ "n_enabled": 2
+}
