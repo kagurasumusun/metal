@@ -1139,3 +1139,4 @@
 | 2026-07-21T08:08Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 0 行; 分布 {'confirmed': 3, 'low': 1} |
 | 2026-07-21T08:09Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 0 行; 分布 {'confirmed': 3, 'low': 1} |
 | 2026-07-21T08:10Z | METAL_4_1_SUPPORT | agent | data/legacy_metal_support_map.csv | 次期言語標準 -std=metal4.1 をクリーンルーム先行仕様 (`!air.language_version 4.1.0` / `__HAVE_METAL4_1__`) として追加し、metal1.0〜metal4.1 の全 13 世代対応表を完備 |
+| 2026-07-21T08:11Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 0 行; 分布 {'confirmed': 3, 'low': 1} |
