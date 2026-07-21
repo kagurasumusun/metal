@@ -7,12 +7,5 @@ __metal_get_null_visible_function_table,generated
 __metal_get_size_visible_function_table,generated
 __metal_is_equal_function_handle,no_parseable
 __metal_is_null_intersection_function_table,generated
-__metal_is_null_tensor,unsupported_args
-__metal_quad_and,generated
-__metal_quad_or,generated
-__metal_quad_xor,generated
 __metal_select,generated
-__metal_simd_and,generated
-__metal_simd_or,generated
-__metal_simd_xor,generated
 __metal_visible_function_table_t,generated

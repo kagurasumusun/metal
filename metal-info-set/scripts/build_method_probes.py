@@ -34,9 +34,16 @@ TEXTURE_BASES = [
 DEPTH_BASES = ["depth2d", "depth2d_array", "depth2d_ms", "depth2d_ms_array",
                "depthcube", "depthcube_array"]
 
-# クラス名 _<base>_<capability...> → base を取り出す正規表現 (長いものから)
-_BASE_RE = re.compile(
-    r"^_((?:texture|depth)(?:1d|2d|3d|cube|_buffer|_ms|1d_array|2d_array|cube_array|array|_ms_array)?(?:_array|_ms_array)?)")
+# クラス名 _<base>_<capability...> → base を dict 完全一致で取出す
+# (2026-07-21 修正: 旧 _BASE_RE は alternation 順で `_depth2d_ms` を `depth2d` に
+#  短縮マッチし class_public_type 誤起票していた — run10 一次エラーで確定。EVENTLOG XW_BUILDERBUG)
+_BASES_SORTED = sorted(TEXTURE_BASES + DEPTH_BASES, key=len, reverse=True)
+
+def _match_base(cls: str):
+    for b in _BASES_SORTED:
+        if cls.startswith("_" + b + "_") or cls == "_" + b:
+            return b
+    return None
 
 
 def class_public_type(cls: str):
@@ -45,15 +52,18 @@ def class_public_type(cls: str):
     _texture2d_atomic_fetch_and -> ('texture2d<uint, access::read_write>', 't', 'uint')
     _depth2d_sample -> ('depth2d<float>', 'd', 'float')
     value_type はクラステンプレ T の具体型 (ダミー引数・返り値の正規化に使用)"""
-    m = _BASE_RE.match(cls)
-    if not m:
+    base = _match_base(cls)
+    if not base:
         return None
-    base = m.group(1)
     if base in DEPTH_BASES:
         return (f"{base}<float>", "d", "float")
     if base in TEXTURE_BASES:
         if "_atomic" in cls or base == "texture_buffer" and "atomic" in cls:
             return (f"{base}<uint, access::read_write>", "t", "uint")
+        # write 系メソッドは access::write 宣言が必須 (run10 一次診断:
+        #  "no member named 'write' ... access::sample")。class 名の _write サフィックスで駆動
+        if cls.endswith("_write") or "_write_" in cls:
+            return (f"{base}<float, access::write>", "t", "float")
         return (f"{base}<float>", "t", "float")
     return None
 

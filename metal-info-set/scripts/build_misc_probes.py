@@ -64,13 +64,13 @@ def main():
          "metal::raytracing::primitive_acceleration_structure __as; (void)__as; return 0;")
     # (instance 側は confirmed 済)
     cell("fhandle", "__metal_get_null_function_handle", "int",
-         "metal::raytracing::intersection_function_handle __h; (void)__h; return 0;")
+         "metal::raytracing::intersection_function_handle<> __h; (void)__h; return 0;")
     cell("iftnull", "__metal_get_null_intersection_function_table", "int",
          "metal::raytracing::intersection_function_table<metal::raytracing::instancing, metal::raytracing::triangle_data> __t; (void)__t; return 0;")
     cell("vftnull", "__metal_get_null_visible_function_table", "int",
-         "metal::visible_function_table<> __v; (void)__v; return 0;")
+         "metal::visible_function_table<void(uint)> __v; (void)__v; return 0;")
     cell("fequal", "__metal_is_equal_function_handle", "bool",
-         "metal::raytracing::intersection_function_handle __a, __b; return __a == __b;")
+         "metal::raytracing::intersection_function_handle<> __a, __b; return __a == __b;")
 
     # quad vote / reductions (free)
     cell("qvotea", "__metal_quad_vote_all", "bool", "return quad_vote(true).all();")
@@ -93,7 +93,7 @@ def main():
 
     # visible function table: get_size / get_function_pointer
     cell("vftsize", "__metal_get_size_visible_function_table", "uint",
-         "metal::visible_function_table<> __v; return __v.get_size();")
+         "metal::visible_function_table<void(uint)> __v; return __v.size();")
 
     # rasterization rate map decoder (一次ヘッダ金属_graphics 211-236)
     for nm, b, argt in (
@@ -112,24 +112,24 @@ def main():
     cell("draw1", "__metal_draw_indexed_primitives_render_command", "void",
          "metal::render_command __rc(__cb, 0u); "
          "__rc.draw_indexed_primitives(metal::primitive_type::triangle, 0u, (const device uint *)nullptr, 0u); return;",
-         params="metal::render_command __cb")
+         params="metal::command_buffer __cb")
     cell("draw2", "__metal_draw_patches_render_command", "void",
          "metal::render_command __rc(__cb, 0u); "
-         "__rc.draw_patches(0u, 0u, 0u, (const device uint *)nullptr, 0u, 0u, (const device float *)nullptr); return;",
-         params="metal::render_command __cb")
+         "__rc.draw_patches(0u, 0u, 0u, (const device uint *)nullptr, 0u, 0u, (const device metal::MTLQuadTessellationFactorsHalf *)nullptr); return;",
+         params="metal::command_buffer __cb")
     cell("draw3", "__metal_draw_indexed_patches_render_command", "void",
          "metal::render_command __rc(__cb, 0u); "
-         "__rc.draw_indexed_patches(0u, 0u, 0u, (const device uint *)nullptr, (const device void *)nullptr, 0u, 0u, (const device float *)nullptr); return;",
-         params="metal::render_command __cb")
+         "__rc.draw_indexed_patches(0u, 0u, 0u, (const device uint *)nullptr, (const device void *)nullptr, 0u, 0u, (const device metal::MTLQuadTessellationFactorsHalf *)nullptr); return;",
+         params="metal::command_buffer __cb")
     cell("winding", "__metal_set_front_facing_winding_render_command", "void",
          "metal::render_command __rc(__cb, 0u); "
-         "__rc.set_front_facing_winding(metal::winding::counter_clockwise); return;",
-         params="metal::render_command __cb")
+         "__rc.set_front_facing_winding(metal::winding::counterclockwise); return;",
+         params="metal::command_buffer __cb")
     cell("setps_r", "__metal_set_pipeline_state_render_command", "void",
-         "metal::render_command __rc(__cb, 0u); __rc.set_pipeline_state(__ps); return;",
-         params="metal::render_command __cb, metal::render_pipeline_state __ps")
+         "metal::render_command __rc(__cb, 0u); __rc.set_render_pipeline_state(__ps); return;",
+         params="metal::command_buffer __cb, metal::render_pipeline_state __ps")
     cell("setps_c", "__metal_set_pipeline_state_compute_command", "void",
-         "metal::compute_command __c(__cb, 0u); __c.set_pipeline_state(__ps); return;",
+         "metal::compute_command __c(__cb, 0u); __c.set_compute_pipeline_state(__ps); return;",
          params="metal::command_buffer __cb, metal::compute_pipeline_state __ps")
 
     # 正本未消化のみ残す
@@ -150,7 +150,7 @@ def main():
     os.makedirs(d, exist_ok=True)
     header = (f"// scene P11M: misc builtin wrapper (build_misc_probes.py@{S.SCRIPT_VERSION})\n"
               f"// 一次情報: __bits/metal_texture* ctor / metal_quadgroup / metal_graphics / metal_command_buffer\n"
-              "#include <metal_stdlib>\n#include <metal_raytracing>\n#include <metal_graphics>\n#include <metal_command_buffer>\n"
+              "#include <metal_stdlib>\n#include <metal_raytracing>\n#include <metal_graphics>\n#include <metal_command_buffer>\n#include <metal_tessellation>\n"
               "#include <metal_visible_function_table>\n#include <metal_quadgroup>\n"
               "using namespace metal;\nusing namespace metal::raytracing;\n\n")
     with open(os.path.join(d, "probe.metal"), "w", encoding="utf-8") as f:

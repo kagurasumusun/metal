@@ -66,9 +66,11 @@ TYPE_PUBLIC = {
     "intersection_result": "intersection_result<instancing, triangle_data>",
     "primitive_acceleration_structure": "primitive_acceleration_structure",
     "instance_acceleration_structure": "instance_acceleration_structure",
-    "visible_function_table": "visible_function_table<>",
+    "visible_function_table": "visible_function_table<void(uint)>",
     "os_log": "os_log",
-    "tensor": "tensor<float, extents<int, 4, 8>>",
+    # run13 一次診断: tensor ElementType は device/constant 修飾必須
+    # (metal_tensor L1430 static_assert 一次文)
+    "tensor": "tensor<device float, extents<int, 4, 8>>",
 }
 
 AS_TYPE = {"primitive": "primitive_acceleration_structure",
@@ -147,7 +149,7 @@ def construct_dummy(ty: str, externs: dict, idx: int):
     # set_visible_function_table(visible_function_table<T> vft, uint index))
     if base.startswith("visible_function_table"):
         nm = f"vft{len(externs)}"
-        externs[nm] = "visible_function_table<>"
+        externs[nm] = "visible_function_table<void(uint)>"
         return nm
     return None
 
@@ -172,10 +174,22 @@ def make_block(sym, ret, receiver_setup, call, guard_src, builtin, cls, wrapper_
     return core
 
 
-def tags_for(guard: str, need_instancing=True) -> str:
+def tags_for(guard: str, b: str = "") -> str:
+    # run11 一次診断 (metal_raytracing 実測): 拡張メソッドは tags 依存
+    # - get_*/is_* curve 系は _intersection_result_ref_curve_data_ext (curve_data tag 必須)
+    # - world_to_object/object_to_world は _world_space_data_ext (world_space_data tag 必須)
+    # - get_instance_count (result) は _instancing_ext の max_levels 特化 (max_levels<2> tag 必須)
     t = "instancing, triangle_data"
-    if "CURVES" in guard:
+    if "CURVES" in guard or "curve" in b:
         t += ", curve_data"
+    if "world_to_object" in b or "object_to_world" in b:
+        t = "instancing, triangle_data, world_space_data"
+    if b == "__metal_get_instance_count_intersection_result":
+        t = "instancing, max_levels<2>, triangle_data"
+    if "_instance_count_intersection_query" in b:
+        # run12 一次診断: query 系 instance_count も _intersection_query_instancing_ext の
+        # max_levels 特化 (L4185-, cap __HAVE_RAYTRACING_MULTI_LEVEL_INSTANCING__)
+        t = "instancing, max_levels<2>, triangle_data"
     return t
 
 
@@ -224,6 +238,13 @@ def main():
                         "intersection_function_table",
                         "compute_command", "render_command", "simd_vote", "operator="):
                 continue
+            # run13 一次診断: ext class 行は 1 メソッドが複数 builtin を呼ぶ場合がある
+            # (例: get_instance_count は max_levels==2 分岐で __metal_get_type_* も列挙) →
+            # builtin 名由来の期待メソッド名と pm["name"] が一致しない emit は誤帰属として棄却
+            # (推測で body を作らない。対応 parse 改善は stage1 側課題として EVENTLOG 銘記)
+            mb = re.match(r"__metal_(.+?)_intersection_(result|query)$", b)
+            if mb and mb.group(1).replace("_", "") != name.replace("_", ""):
+                continue
             cls = BUILTIN_CLASS_OVERRIDE.get(b, cls)
             guard = r["guard"].strip()
             # 一次ヘッダ行で検証済の IFT builtin を name ベースで追補
@@ -236,6 +257,13 @@ def main():
             externs = {}
             args_ok, call_args = True, []
             for ty, an in pm["args"]:
+                # run11 一次診断: 引数名駆動の型確定
+                # - tessellation_factor_buffer: T は MTLQuad/MTLTriangle TessellationFactorsHalf 制約
+                # - index_buffer (draw_indexed_*): T ∈ {ushort, uint} 制約
+                if an == "tessellation_factor_buffer":
+                    ty = "const device MTLQuadTessellationFactorsHalf *"
+                elif an == "index_buffer":
+                    ty = "const device uint *"
                 dv = construct_dummy(ty, externs, idx)
                 if dv is None:
                     args_ok = False
@@ -252,7 +280,7 @@ def main():
                     continue
                 if "*" in ret and "void" not in ret:
                     continue
-            tags = tags_for(guard)
+            tags = tags_for(guard, b)
             if cls in IQ_CLASSES:
                 setup = ["ray __r;", f"intersection_query<{tags}> __q;"]
                 emit("iq", b, cls, ret, setup, call.format(recv="__q"), guard, params)
@@ -266,12 +294,16 @@ def main():
                 # 2026-07-21 実機観測: default-construct の primitive AS (= null) を
                 # 使うと callback 全体が DCE で畳まれ air 呼出が消える。
                 # → AS は extern 引数化して folding を防ぐ。
+                # run11 一次診断: instancing tags では intersection_query::intersect の
+                # 第2引数は instance_acceleration_structure でなければならない
+                as_decl = ("instance_acceleration_structure" if "instancing" in tags
+                           else "primitive_acceleration_structure")
                 setup = ["ray __r;",
                          f"intersector<{tags}> __i;",
                          f"{ret} __out{{}};",
                          f"__i.intersect(__r, __as, [&](intersection_result_ref<{tags}> __ref){{ __out = __ref.{name}({', '.join(call_args)}); }});"]
                 emit("irr", b, cls, ret, setup, "(__out)", guard,
-                     params + ["primitive_acceleration_structure __as"])
+                     params + [f"{as_decl} __as"])
             elif cls in IFT_CLASSES:
                 # 一次ヘッダ metal_raytracing 1595-1790 実測に基づく手組 cell
                 # (template get_buffer は戻り依存のため明示実引数が必要)
@@ -348,7 +380,7 @@ def main():
     os.makedirs(d, exist_ok=True)
     header = (f"// scene P08M: construct 系 builtin wrapper (build_construct_probes.py@{S.SCRIPT_VERSION})\n"
               f"// 生成: {S.today()} — 実ヘッダ一次情報に基づく構築、実機削りループで収束\n"
-              "#include <metal_stdlib>\n#include <metal_raytracing>\n#include <metal_tensor>\nusing namespace metal;\nusing namespace metal::raytracing;\n\n")
+              "#include <metal_stdlib>\n#include <metal_raytracing>\n#include <metal_tensor>\n#include <metal_tessellation>\nusing namespace metal;\nusing namespace metal::raytracing;\n\n")
     with open(os.path.join(d, "probe.metal"), "w", encoding="utf-8") as f:
         f.write(header + "\n".join(blocks))
     with open(os.path.join(OUT_DIR, "MANIFEST_construct.csv"), "w", newline="", encoding="utf-8") as f:

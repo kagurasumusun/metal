@@ -1,0 +1,16 @@
+{
+ "scene": "P10T_O0",
+ "std": "metal4.0",
+ "iters": 0,
+ "ok": true,
+ "enabled_symbols": [
+  "probe_p10t_descsize_4",
+  "probe_p10t_extent_0",
+  "probe_p10t_handle_3",
+  "probe_p10t_init_2",
+  "probe_p10t_slice_1",
+  "probe_p10t_type_h_5",
+  "probe_p10t_type_th_6"
+ ],
+ "n_enabled": 7
+}

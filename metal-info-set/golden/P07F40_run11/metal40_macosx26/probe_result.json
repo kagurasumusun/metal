@@ -1,0 +1,15 @@
+{
+ "scene": "P07F",
+ "std": "metal4.0",
+ "iters": 0,
+ "ok": true,
+ "enabled_symbols": [
+  "probe_p07f_fdim_4",
+  "probe_p07f_is_null_intersection_function_table_3",
+  "probe_p07f_is_null_visible_function_table_0",
+  "probe_p07f_is_null_visible_function_table_1",
+  "probe_p07f_is_null_visible_function_table_2",
+  "probe_p07f_is_null_visible_function_table_5"
+ ],
+ "n_enabled": 6
+}

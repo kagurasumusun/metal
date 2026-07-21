@@ -1,0 +1,14 @@
+{
+ "scene": "P06M",
+ "std": "metal4.0",
+ "iters": 1,
+ "ok": true,
+ "enabled_symbols": [
+  "probe_p06m_get_height_16",
+  "probe_p06m_get_num_samples_17",
+  "probe_p06m_sample_18",
+  "probe_p06m_write_19",
+  "probe_p06m_write_20"
+ ],
+ "n_enabled": 5
+}

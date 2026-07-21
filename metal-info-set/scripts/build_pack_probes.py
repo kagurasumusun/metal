@@ -79,8 +79,9 @@ def main():
                         f'{{ return _pixel_type_traits<{tag}>::pack(a); }}\n')
             else:
                 core = (f"// builtin={b} cls=pixel_traits tag={tag}\n"
+                        # run10 一次診断: traits unpack は template 明示必須 `unpack<T>(storage)`
                         f'extern "C" {t} {sym}({tr["storage"]} a) '
-                        f'{{ return _pixel_type_traits<{tag}>::unpack(a); }}\n')
+                        f'{{ return _pixel_type_traits<{tag}>::unpack<{t}>(a); }}\n')
             blocks.append(core)
             manifest.append({"scene": "P09F", "file": "probe.metal", "symbol": sym,
                              "builtin": b, "stage1_source": "auto_pack_traits"})

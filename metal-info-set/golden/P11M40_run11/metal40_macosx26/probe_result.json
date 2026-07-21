@@ -1,0 +1,32 @@
+{
+ "scene": "P11M",
+ "std": "metal4.0",
+ "iters": 2,
+ "ok": true,
+ "enabled_symbols": [
+  "probe_p11m_divide_21",
+  "probe_p11m_iftnull_18",
+  "probe_p11m_sampler_23",
+  "probe_p11m_select_22",
+  "probe_p11m_setps_c_31",
+  "probe_p11m_setps_r_30",
+  "probe_p11m_texnull_0",
+  "probe_p11m_texnull_1",
+  "probe_p11m_texnull_10",
+  "probe_p11m_texnull_11",
+  "probe_p11m_texnull_12",
+  "probe_p11m_texnull_13",
+  "probe_p11m_texnull_14",
+  "probe_p11m_texnull_15",
+  "probe_p11m_texnull_2",
+  "probe_p11m_texnull_3",
+  "probe_p11m_texnull_4",
+  "probe_p11m_texnull_5",
+  "probe_p11m_texnull_6",
+  "probe_p11m_texnull_7",
+  "probe_p11m_texnull_8",
+  "probe_p11m_texnull_9",
+  "probe_p11m_winding_29"
+ ],
+ "n_enabled": 23
+}

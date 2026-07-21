@@ -128,10 +128,15 @@ def dummy(ty, locals_defs, vt, externs):
     if re.match(r"^(texture|depth)\w*$", base):
         externs.setdefault("t" + str(len(externs)), f"{base}<float>")
         return [k for k in externs if externs[k].startswith(base)][-1]
-    if base.startswith("visible_function_table") or base.startswith("intersection_function_table"):
-        tn = base.split("<")[0]
-        externs.setdefault("vft", f"{tn}<>")
+    if base.startswith("visible_function_table"):
+        # run10 一次診断: visible_function_table<R(Args...)> は関数シグネチャ必須
+        externs.setdefault("vft", "visible_function_table<void(uint)>")
         return "vft"
+    if base.startswith("intersection_function_table"):
+        # run10 一次診断: ift extern は metal::raytracing 完全修飾の tags 形
+        externs.setdefault("ift",
+            "metal::raytracing::intersection_function_table<metal::raytracing::instancing, metal::raytracing::triangle_data>")
+        return "ift"
     if base == "function_handle":
         externs.setdefault("fn", "function_handle")
         return "fn"
@@ -288,7 +293,9 @@ def main():
         ret = normalize_ret(pm["ret"], vt)
         sym = f"probe_p07f_{pm['name']}_{len(manifest)}"
         decls = "".join(f"  {t} {n}{ini};\n" for t, n, ini in locals_defs)
-        call = f"metal::{pm['name']}({', '.join(call_args)});"
+        # run10 一次診断: intersection_function_table 系は metal::raytracing:: 名前空間
+        ns = "metal::raytracing::" if "intersection_function_table" in pm["name"] else "metal::"
+        call = f"{ns}{pm['name']}({', '.join(call_args)});"
         params = ", ".join(f"{d} {n}" for n, d in externs.items())
         body = decls + (f"  return {call}" if ret != "void" else f"  {call}")
         if ret != "void":
