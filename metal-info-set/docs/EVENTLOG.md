@@ -31,3 +31,40 @@
 | 2026-07-21T02:05Z | CLEANUP | human | metal-info-set/work/ | 再生成可能な中間物 (ir_all 展開 15MB・v1 frozen 重複) を削除。正本は data/ とスクリプト (dump_ir_all_os.py で再展開可能) |
 | 2026-07-21T02:12Z | PUSH | human | github.com/kagurasumusun/metal@jules-2822063734237814689-7500b921 | 整理後一式を push (5ce83fb, fast-forward): metal-info-set/ 新設 + msl_analysis/ 削除 + README 整備。author は kagurasumusun <284823681+kagurasumusun@users.noreply.github.com> に統一 (既存履歴と一致)。push 用作業ツリー work_push/ は二重管理防止のため削除 |
 | 2026-07-21T02:15Z | CLEANUP | human | /home/user 直下の散乱 | libLLVMContainer.tbd (GPUCompiler.framework tbd、コレクション未収録) を reference-external/gpucompiler-tbd/ へ移動 (全 10 件に)。metal-missing-info.md は docs/INITIAL_GAP_ANALYSIS.md へ移動済につき原本整理 |
+| 2026-07-21T02:18Z | PUSH | human | github.com/kagurasumusun/metal@jules-2822063734237814689-7500b921 | follow-up push (9f138fd): libLLVMContainer.tbd 移動 + EVENTLOG 反映。push 用 clone は再び削除 |
+| 2026-07-21T01:39Z | GEN_PROBE_SCENES | build_probe_scenes.py@1.0.0 | probe_scenes/ | セル 579 を 11 シーンに割当: auto=35 manual=544 (P01/P02 は PLAN テンプレ) |
+| 2026-07-21T01:39Z | APPLY_GOLDEN | promote_map.py@1.0.0 | golden | manifest 579 件: 昇格 17, 不一致 13, 未回収 549 |
+| 2026-07-21T01:39Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_absdiff | P04/probe_p04_absdiff: candidate=air.absdiff vs golden=['air.abs_diff.s.i8'] |
+| 2026-07-21T01:39Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_addsat | P04/probe_p04_addsat: candidate=air.addsat vs golden=['air.add_sat.s.i8'] |
+| 2026-07-21T01:39Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_extract_bits | P04/probe_p04_extract_bits: candidate=air.extract.bits vs golden=['air.extract_bits.s.i8'] |
+| 2026-07-21T01:39Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_fmax3 | P03/probe_p03_fmax3: candidate=air.fmax3 vs golden=['air.fast_fmax3.f32'] |
+| 2026-07-21T01:39Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_fmedian3 | P03/probe_p03_fmedian3: candidate=air.fmedian3 vs golden=['air.fast_fmedian3.f32'] |
+| 2026-07-21T01:39Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_fmin3 | P03/probe_p03_fmin3: candidate=air.fmin3 vs golden=['air.fast_fmin3.f32'] |
+| 2026-07-21T01:39Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_insert_bits | P04/probe_p04_insert_bits: candidate=air.insert.bits vs golden=['air.insert_bits.s.i8'] |
+| 2026-07-21T01:39Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_madhi | P04/probe_p04_madhi: candidate=air.madhi vs golden=['air.mad_hi.s.i8'] |
+| 2026-07-21T01:39Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_madsat | P04/probe_p04_madsat: candidate=air.madsat vs golden=['air.mad_sat.s.i8'] |
+| 2026-07-21T01:39Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_mulhi | P04/probe_p04_mulhi: candidate=air.mulhi vs golden=['air.mul_hi.s.i8'] |
+| 2026-07-21T01:39Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_reverse_bits | P04/probe_p04_reverse_bits: candidate=air.reverse.bits vs golden=['air.reverse_bits.i8'] |
+| 2026-07-21T01:39Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_saturate | P05/probe_p05_saturate: candidate=air.saturate vs golden=['air.fast_saturate.f32'] |
+| 2026-07-21T01:39Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_subsat | P04/probe_p04_subsat: candidate=air.subsat vs golden=['air.sub_sat.s.i8'] |
+| 2026-07-21T01:40Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_absdiff | candidate air.absdiff -> air.abs_diff.s.i8 (golden 単一名実測) |
+| 2026-07-21T01:40Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_addsat | candidate air.addsat -> air.add_sat.s.i8 (golden 単一名実測) |
+| 2026-07-21T01:40Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_extract_bits | candidate air.extract.bits -> air.extract_bits.s.i8 (golden 単一名実測) |
+| 2026-07-21T01:40Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_fmax3 | candidate air.fmax3 -> air.fast_fmax3.f32 (golden 単一名実測) |
+| 2026-07-21T01:40Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_fmedian3 | candidate air.fmedian3 -> air.fast_fmedian3.f32 (golden 単一名実測) |
+| 2026-07-21T01:40Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_fmin3 | candidate air.fmin3 -> air.fast_fmin3.f32 (golden 単一名実測) |
+| 2026-07-21T01:40Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_insert_bits | candidate air.insert.bits -> air.insert_bits.s.i8 (golden 単一名実測) |
+| 2026-07-21T01:40Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_madhi | candidate air.madhi -> air.mad_hi.s.i8 (golden 単一名実測) |
+| 2026-07-21T01:40Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_madsat | candidate air.madsat -> air.mad_sat.s.i8 (golden 単一名実測) |
+| 2026-07-21T01:40Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_mulhi | candidate air.mulhi -> air.mul_hi.s.i8 (golden 単一名実測) |
+| 2026-07-21T01:40Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_reverse_bits | candidate air.reverse.bits -> air.reverse_bits.i8 (golden 単一名実測) |
+| 2026-07-21T01:40Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_saturate | candidate air.saturate -> air.fast_saturate.f32 (golden 単一名実測) |
+| 2026-07-21T01:40Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_subsat | candidate air.subsat -> air.sub_sat.s.i8 (golden 単一名実測) |
+| 2026-07-21T01:40Z | APPLY_GOLDEN_CORRECTIONS | promote_map.py@1.0.0 | golden | 訂正昇格 13 件; 多様名で保留 0 件; 衝突skip 0 件 |
+| 2026-07-21T01:40Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 0 行; 分布 {'medium': 1, 'confirmed': 3, 'high': 2} |
+| 2026-07-21T01:40Z | REPORT | promote_map.py@1.0.0 | data/promote_report.md | 686 行を集計 |
+| 2026-07-21T01:35Z | UPTERM | human+scripts | macOS 26.4 実機 | upterm (paramiko: ホスト鍵ピンニング+Ed25519クライアント鍵固定+PTY強制+keepalive15s) で macOS 実機に接続成功。環境: Xcode 26.5/metal 32023.883 (参照ランタイムと同一世代)/air64_v28-apple-macosx26.0.0。goldne 回収手順を確立 (SFTP 利用可) |
+| 2026-07-21T01:37Z | GOLDEN_BUILD | human+scripts | golden/ | 12/12 シーンビルド成功 (P02 テンプレの early_fragment_tests 位置と P05 の __HAVE_* ガードを generate-and-verify で修正)。P01/P02 は .air/.metallib 完全形 |
+| 2026-07-21T01:39Z | APPLY_GOLDEN | promote_map.py@1.0.0 | golden | manifest 579 件: 昇格 17, 不一致 13, 未回収 549 (manual_needed シーンは stub) |
+| 2026-07-21T01:41Z | XC_CORRECT×13 | promote_map.py@1.0.0 | builtin_to_air_map.v2.csv | 命名実名確定 13 件 (air.abs_diff.s.i8 等の連結名 / air.fast_* 接頭) を golden 単一名で訂正昇格。対応表: confirmed 129 / high 68 / medium 489 |
+| 2026-07-21T01:42Z | DOC_UPDATE | human+scripts | IR_GROUND_TRUTH.md §6 等 | 実機 golden 確定分を IR_GROUND_TRUTH/INFO_SET/PROBING_PLAN に反映: entry metadata スキーマ・opaque 型 (texture=AS1/sampler=AS2)・air64_v28・SDK flag・S0-2 現行世代特定 |

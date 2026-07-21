@@ -31,8 +31,8 @@
 
 | ID | 項目 | 状態 | 内容/格納先 |
 |---|---|---|---|
-| S0-1 | AIR ターゲットトリプルの実在系 (Apple 全 OS) | ✅ | `data/os_triple_map.csv` (全ランタイム 1,764 モジュール逆アセンブルで確定): v23/v25/**v26/v27** + レガシー無版形式。サフィックス `-macabi` (Catalyst), `-simulator`, watchos3〜, xros1〜 を全網羅。`!air.version` ↔ `air64_vNN` ↔ MSL 版の写像も確定 |
-| S0-2 | Xcode 版 ↔ clang build ↔ metalfe ↔ MSL ↔ AIR v ↔ OS の総対応表 | 🔶 | 本リポの toolchain は `metalfe-32023.883` (Xcode 26 系) と producer 文字列から確定。過去世代 (v23以前〜) の表は 🧪: 複数 Xcode で `-v`/producer を採取 |
+| S0-1 | AIR ターゲットトリプルの実在系 (Apple 全 OS) | ✅ | `data/os_triple_map.csv` (全ランタイム 1,764 モジュール逆アセンブルで確定): v23/v25/**v26/v27** + レガシー無版形式。サフィックス `-macabi` (Catalyst), `-simulator`, watchos3〜, xros1〜 を全網羅。`!air.version` ↔ `air64_vNN` ↔ MSL 版の写像も確定。**2026-07-21 実機 golden で最新 `air64_v28-apple-macosx26.0.0` (AIR 2.8.0) を追加観測** (`IR_GROUND_TRUTH.md` §6.1 — os_triple_map.csv はランタイム実測一次データとして維持) |
+| S0-2 | Xcode 版 ↔ clang build ↔ metalfe ↔ MSL ↔ AIR v ↔ OS の総対応表 | ✅(現行世代) | **現行世代は実機で特定完了** (2026-07-21, `golden/env.txt`): Xcode 26.5 (17F42) / macOS 26.4 (25E246) / Apple clang 21.0.0 (clang-2100.1.1.101) / **metal 32023.883 (metalfe-32023.883) — 参照ランタイムと同一世代** / metal3.2 → `air64_v28-apple-macosx26.0.0` (AIR 2.8) / SDK Version module flag [26,5]。過去世代 (v23〜v27 ↔ 各 Xcode) の表は 🔶: 複数 Xcode で `-v`/producer を採取 |
 | S0-3 | fat スライス cpu subtype ↔ GPU ファミリの対応 | 🔶 | 実測: cputype=`0x01000017` 固定、subtype=`0x07/0x09` (osx, watch=?) が slice0/1 に対応 → AIR v の古い/新しいに連動すると推測されるが要検証 (upstream LLVM MachO の GPU 系定義とも照合) |
 
 ---
@@ -57,12 +57,12 @@
 | ID | 項目 | 状態 | 内容/格納先 |
 |---|---|---|---|
 | A-1 | MSL→IR 対応表 (stage1: API→builtin) | ✅ | `data/msl_stage1_api_to_builtin.csv` (3,810 API) + `data/msl_stage1_methods.csv` (7,058 メソッド行 / 178 クラス)。650/686 builtin の使用経路を完全解明 |
-| A-1b | builtin→AIR 正規マスタ表 | 🔶体系完成・採点済 | **`data/builtin_to_air_map.v2.csv` が正本** (18 列 provenance スキーマ `docs/MAPPING_SCHEMA.md`): confirmed 99 / high 68 / medium 519 / low 0 (`data/promote_report.md`)。昇格パイプライン稼働中 (`scripts/promote_map.py`: audit 冪等 / apply-golden=selftest 済 / apply-rtlib-layer / ingest-callgraph)。callgraph 全抽出で **L4 層判定機構を確立** (rtlib 帰属 2 件確定・偽候補訂正の実績あり)。残 medium 519 は `probe_scenes/` (機械生成済) + golden で昇格。全変更は `docs/EVENTLOG.md` 記録 |
+| A-1b | builtin→AIR 正規マスタ表 | ✅実機昇格開始 | **`data/builtin_to_air_map.v2.csv` が正本** (18 列 provenance スキーマ `docs/MAPPING_SCHEMA.md`): **confirmed 129 / high 68 / medium 489** (`data/promote_report.md`)。**2026-07-21 macOS 実機 (upterm) で golden 12/12 ビルド成功・30 件を `probed_xcode_ll`=confirmed 昇格** (命名訂正 13 件: `air.abs_diff` 系/`fast_` 接頭等の命名規則を実測確定)。昇格パイプライン稼働中 (`scripts/promote_map.py`: audit 冪等 / apply-golden / apply-golden-corrections / apply-rtlib-layer / ingest-callgraph)。残は manual_needed シーンの wrapper 補完 (P06 texture 系 293 件ほか) で拡大可能。全変更は `docs/EVENTLOG.md` 記録 |
 | A-1c | `air.*` intrinsic 語彙 | 🔶 | バイナリ実測 8,132 トークン / 2,530 ステム (`data/air_stems_binaries.txt`) + airconv 121 literal + 命名則 30 件 (`data/airconv_air_ops.csv`)。フル網羅は GPUCompiler strings + probe (🧪) |
-| A-2 | 名前付きメタデータ スキーマ | 🔶 | **モジュール面は実 IR で完了** (`IR_GROUND_TRUTH.md` §2.6): `air.version` / `air.compile_options` / `air.language_version` / `air.source_file_name` / module flags (`air.max_*`, 上限 31)。残: エントリ引数スキーマ (`air.arg_*` operand 構造, airconv の `air_signature.cpp` + probe) |
+| A-2 | 名前付きメタデータ スキーマ | ✅ (kernel/vertex/fragment) | **モジュール面 + エントリ引数面とも実測確定** (2026-07-21 golden P01/P02): kernel/vertex/fragment の metadata 構造、buffer (air.buffer) / texture / sampler / builtin 各 operand 列、air.struct_type_info、vertex `generated(...)` 接続 ID、fragment 補間修飾、air.arg_unused、early_fragment_tests、module flag に SDK Version [26,5] 追加。全詳細は `IR_GROUND_TRUTH.md` §6.2。残: mesh/object/tile (MSL3.0+) のエントリ metadata (P11 は stub のため未取得) |
 | A-3 | 呼出規約 | ✅ | **全 701 モジュール (エントリ含む) がデフォルト C CC。特殊 CC は存在しない** (spir_kernel 説の完全否定確定) |
 | A-4 | アドレス空間番号 | ✅ | **実 IR で確定**: thread=0 / device=1 / constant=2 / threadgroup=3 (atomics, async copy, entry args で使用実績)。texture/threadgroup_imageblock(8) は probe 継続。datalayout も一意確定 (`IR_GROUND_TRUTH.md` §2.3) |
-| A-5 | エントリポイント ABI | ❌ | 引数→リソースバインド (`[[buffer(n)]]` 等→`air.arg_*` メタデータ)、`stage_in` シリアライズ、vertex/fragment IO、threadgroup メモリ量の確定方式。air_signature.cpp が主参照 🧪 実測併用 |
+| A-5 | エントリポイント ABI | ✅ (kernel/vertex/fragment 実測) | **2026-07-21 golden (P01/P02) で metadata スキーマ実測確定** (`IR_GROUND_TRUTH.md` §6.2): kernel/vertex/fragment の 3 関数形、buffer/texture/sampler/builtin 各 operand 列、`air.struct_type_info` の 5 要素反復、vertex `generated(...)` 接続 ID、fragment 補間修飾 (`air.center`+`air.perspective`)、`air.arg_unused`、`early_fragment_tests` の文字列 operand。opaque 型: texture=addrspace(1) device / sampler=addrspace(2) constant。残: threadgroup メモリ量の確定方式 (P01 の `air.buffer` threadgroup 形は取得済) |
 | A-6 | function constants / 特殊化 | ❌ | `[[function_constant(i)]]` の IR 表現と MTLFunctionConstantValues との接続規約。msl_analysis 言及ゼロ・未調査領域 |
 | A-7 | visible function tables / 間接呼出 | 🔶 | 実 intrinsic `air.dyld_flat_table` を rtlib で確認。テーブル構築 ABI・リンク条件を MTLVisibleFunctionTable 実機観察と併せて定義 🧪 |
 | A-8 | atomics / fence / barrier の IR マッピング | 🔶 | `air.atomic.*`, `air.fence_*`, `air.atomic.fence` 実在確認。order/scope パラメータのエンコード規則を実測で採取 🧪 |
@@ -109,7 +109,7 @@
 
 | ID | 項目 | 状態 | 内容 |
 |---|---|---|---|
-| V-1 | ゴールデン出力コーパス | 🔶器完成/実体🧪 | **probe ソース集は機械生成器で再構築済** (`scripts/build_probe_scenes.py` → `probe_scenes/` 13+1 シーン、576 セル被覆、MANIFEST 付き)。残留タスクは実機での `.ll/.air/.metallib` 回収のみ。回収後は `promote_map.py apply-golden golden/ --manifest probe_scenes/MANIFEST.csv` で対応表 v2 に昇格投入 (selftest 済の器) |
+| V-1 | ゴールデン出力コーパス | ✅ 初回回収済 | **2026-07-21 macOS 実機 (upterm/paramiko) で 12/12 シーンビルド成功、golden/ に回収**: 各シーン `metal32_macosx26/probe.{metal,ll}` (+P01/P02 は probe.air/probe.metallib 完全形) + `golden/meta.yml` (date・ツールチェーン版) + `golden/env.txt` + `probe_scenes/build_logs_macosx26/`。apply-golden / apply-golden-corrections で 30 件昇格済。次回収穫: manual_needed シーン (P06〜P11 の wrapper 補完) で規模拡大、および -std/-target マトリクス化 |
 | V-2 | 差分比較ツール | 🔶 | `promote_map.py` の .ll 抽出器 (symbol → air.* 呼出) が差分比較の核として稼働中 (apply-golden/selftest で実証)。bitcode 構造比較・メタデータ比較器・metallib タグ比較器は未実装 (C-1 パーサ流用可) |
 | V-3 | 実行検証スイート | ❌ | 公開 CTS は存在しない → ULP 精度・アトミクス・テクスチャ・同期・拡張機能の実機テスト (MTLCompute 経由) を自作。対象デバイス (apple 各 family) の確保計画も必要 |
 | V-4 | 非回帰 CI | ❌ | macOS runner + Xcode 版マトリクス |

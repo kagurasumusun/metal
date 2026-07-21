@@ -1,9 +1,11 @@
 # macOS probe 実測計画 (ローカル限界以降の確定手順)
 
+> **🎉 2026-07-21 初回実施済**: macOS 26.4 実機 (upterm/paramiko 経由) で全 12 シーンをビルド成功、`golden/` に回収 (`golden/meta.yml` 付き)。**30 件を `probed_xcode_ll`=confirmed に昇格** (apply-golden 17 + corrections 13)。新トリプル `air64_v28-apple-macosx26.0.0` (AIR 2.8) 観測、エントリ metadata スキーマ実測確定 (`IR_GROUND_TRUTH.md` §6)。実施ログは `EVENTLOG.md`。
+>
 > 目的: `data/probe_cells.csv` (576 セル) を macOS+Xcode の実測で埋め、対応表 (`data/builtin_to_air_map.v2.csv` ★正本、スキーマは `MAPPING_SCHEMA.md`) の medium/high 行を confirmed にする。
 > 原則: 命名文法は確立済のため、**ファミリー代表 probe → 文法確定 → 残りを機械展開検算** で最小実測数に抑える。
 >
-> **2026-07-21 体系更新**: probe シーンは **`scripts/build_probe_scenes.py` で `probe_scenes/` に機械生成済** (13+1 シーン、セル被覆 576/576、MANIFEST 付き)。golden 回収後の昇格は **`scripts/promote_map.py apply-golden golden/ --manifest probe_scenes/MANIFEST.csv`** (器は selftest 済、冪等、不一致は降格せず MISMATCH 記録)。全変更は `docs/EVENTLOG.md` に記録される。
+> **次回以降の実施手順**: ① `bench/upterm.env` に接続情報を保存 → ② `probe_scenes/` を SFTP upload → ③ `xcrun --sdk macosx metal -x metal -std=metal3.2 -O2 -S -emit-llvm` で全シーン → ④ golden tar 回収 → ⑤ `promote_map.py apply-golden golden --manifest probe_scenes/MANIFEST.csv` + `apply-golden-corrections golden --manifest probe_scenes/MANIFEST.csv` → ⑥ audit+report。
 
 ## 0. 環境セットアップ
 

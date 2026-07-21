@@ -3,7 +3,7 @@
 > **これは生成物** (喪失したら `python3 scripts/build_probe_scenes.py` で再生成)。
 > 一次入力: `data/probe_cells.csv` + `data/msl_stage1_api_to_builtin.csv`
 > + `data/builtin_to_air_map.v2.csv` (rtlib 層) + `docs/PROBING_PLAN.md` §2。
-> 生成日時: 2026-07-21T01:22Z
+> 生成日時: 2026-07-21T01:39Z
 
 ## 使い方 (docs/PROBING_PLAN.md §1 のコマンド形で実行)
 

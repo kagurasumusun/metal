@@ -351,6 +351,88 @@ def cmd_apply_golden(golden_dir: str, manifest_path: str, map_path: str = None) 
                     f"{scene}/{sym}: candidate={cand} vs golden={seen}")
     return {"promoted": promoted, "mismatched": mismatched, "missing": missing}
 
+# ---------------------------------------------------------------- apply-golden-corrections
+def cmd_apply_golden_corrections(golden_dir: str, manifest_path: str,
+                                 map_path: str = None) -> dict:
+    """apply-golden の MISMATCH で、golden 側の実呼出 air 名が**単一種類**のものに限り
+    実機実名へ candidate を訂正して昇格する (probe の本来目的: 命名規則の実測確定)。
+
+    採用条件 (推測排除):
+      - その symbol の関数内の air.* 呼出名 (stem 単位) が全て同じ 1 種
+      - その実名が対応表の他行の確定名と衝突しない
+    旧 candidate は EVENTLOG (XC_CORRECT) に必ず記録 (additivity: 値の訂正履歴を残す)。
+    """
+    rows = S.read_v2(map_path)
+    by_builtin = {r["__metal_builtin"]: r for r in rows}
+    used_names = {r["air_intrinsic_candidate"] for r in rows}
+    manifest = load_manifest(manifest_path)
+    meta_date = ""
+    meta_path = os.path.join(golden_dir, "meta.yml")
+    if os.path.exists(meta_path):
+        with open(meta_path, encoding="utf-8") as f:
+            for line in f:
+                m = re.match(r"\s*date\s*:\s*([0-9]{4}-[0-9]{2}-[0-9]{2})", line)
+                if m:
+                    meta_date = m.group(1)
+
+    ll_index: dict[str, list[str]] = {}
+    for dirpath, _, files in os.walk(golden_dir):
+        for fn in files:
+            if fn.endswith(".ll"):
+                rel = os.path.relpath(os.path.join(dirpath, fn), golden_dir)
+                ll_index.setdefault(rel.split(os.sep)[0], []).append(rel)
+
+    cache: dict[str, dict] = {}
+    corrected, ambiguous, skipped = [], [], []
+    for ent in manifest:
+        scene, sym, builtin = ent["scene"], ent["symbol"], ent["builtin"]
+        row = by_builtin.get(builtin)
+        if row is None or row["evidence"] == "probed_xcode_ll":
+            continue
+        found = None
+        for rel in ll_index.get(scene, []):
+            if rel not in cache:
+                cache[rel] = extract_air_calls_by_symbol(
+                    os.path.join(golden_dir, rel))
+            symtab = cache[rel]
+            if sym in symtab and symtab[sym]:
+                found = (rel, symtab[sym])
+                break
+        if not found:
+            continue
+        rel, calls = found
+        names = sorted({c[0] for c in calls})
+        stems = {S.assess_candidate(n)["stem"] for n in names}
+        if len(stems) != 1:
+            ambiguous.append((builtin, names))
+            continue
+        real = names[0]
+        if real != row["air_intrinsic_candidate"] and real in used_names:
+            skipped.append((builtin, real, "name already used by another row"))
+            continue
+        old = row["air_intrinsic_candidate"]
+        row["air_intrinsic_candidate"] = real
+        row["evidence"] = "probed_xcode_ll"
+        row["evidence_source"] = "xcode_probe_golden"
+        row["evidence_ref"] = f"golden/{rel} @{sym}: {calls[0][1][:160]}"
+        if "P-XC1" not in row["protocol"]:
+            row["protocol"] += "+P-XC1"
+        row["confidence"] = "confirmed"
+        if meta_date:
+            row["observed_at"] = meta_date
+        row["grammar_eligible"] = "yes"
+        row["status"] = "✅実機 Xcode 生成 IR で確認 (命名訂正: 実名確定)"
+        row["last_change"] = S.utcnow()
+        row["changed_by"] = ACTOR
+        corrected.append((builtin, old, real))
+        S.log_event("XC_CORRECT", ACTOR, builtin, f"candidate {old} -> {real} (golden 単一名実測)")
+
+    S.write_v2(rows, map_path)
+    S.log_event("APPLY_GOLDEN_CORRECTIONS", ACTOR, golden_dir,
+                f"訂正昇格 {len(corrected)} 件; 多様名で保留 {len(ambiguous)} 件; "
+                f"衝突skip {len(skipped)} 件")
+    return {"corrected": corrected, "ambiguous": ambiguous, "skipped": skipped}
+
 # ---------------------------------------------------------------- selftest
 def cmd_selftest() -> int:
     """器の検証: docs/samples/tracepoint.metal.air.ll を golden、
@@ -416,6 +498,9 @@ def main():
     p.add_argument("--edges", default=None)
     sub.add_parser("apply-rtlib-layer")
     p = sub.add_parser("apply-golden")
+    p.add_argument("golden_dir")
+    p.add_argument("--manifest", required=True)
+    p = sub.add_parser("apply-golden-corrections")
     p.add_argument("golden_dir")
     p.add_argument("--manifest", required=True)
     sub.add_parser("selftest")

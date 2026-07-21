@@ -112,8 +112,8 @@ fragment float4 probe_p02_fragment(FSIn in [[stage_in]],
     return t.sample(s, in.uv);
 }
 
-fragment float4 probe_p02_fragment_rog(FSIn in [[stage_in, raster_order_group(0)]])
-        [[early_fragment_tests]] {
+[[early_fragment_tests]]
+fragment float4 probe_p02_fragment_rog(FSIn in [[stage_in, raster_order_group(0)]]) {
     return in.pos;
 }
 """
@@ -163,7 +163,7 @@ def scene_of(probe_method: str) -> str:
 def main():
     cells = list(csv.DictReader(open(os.path.join(S.DATA, "probe_cells.csv"),
                                      newline="", encoding="utf-8")))
-    # builtin -> 最初の free signature (stage1)
+    # builtin -> 最初の free signature (stage1) + __HAVE_* ガード
     builtin2sig = {}
     with open(os.path.join(S.DATA, "msl_stage1_api_to_builtin.csv"),
               newline="", encoding="utf-8") as f:
@@ -171,7 +171,8 @@ def main():
             b = r["metal_builtins"].strip()
             if b and b not in builtin2sig:
                 builtin2sig[b] = (r["msl_api_signature"].strip(),
-                                  r["file"].strip(), r["line"].strip())
+                                  r["file"].strip(), r["line"].strip(),
+                                  r.get("guard", "").strip())
     # rtlib 層確定 builtin は P13 へ (v2 から)
     rtlib_builtins = set()
     if os.path.exists(S.MAP_V2):
@@ -202,14 +203,22 @@ def main():
         parsed = try_parse_sig(sig_info[0]) if sig_info else None
         if parsed:
             ret, name, args = parsed
+            guard = sig_info[3] if len(sig_info) > 3 else ""
             symbol = f"probe_{sc.lower()}_{name}"
-            # 同名 wrapper 衝突回避: builtin 名 suffix
             argdecls = ", ".join(f"{t} {a}" for t, a in args)
             arguse = ", ".join(a for _t, a in args)
             body_ret = f"return metal::{name}({arguse});" if ret != "void" \
                 else f"metal::{name}({arguse});"
-            block = (f"// cell={b} candidate={cand}\n"
-                     f'extern "C" {ret} {symbol}({argdecls}) {{ {body_ret} }}\n')
+            core = (f"// cell={b} candidate={cand}\n"
+                    f'extern "C" {ret} {symbol}({argdecls}) {{ {body_ret} }}\n')
+            # __HAVE_* ガード付き API はターゲットによっては存在しない
+            # (実機エラー実例: snorm10a2 は macOS26.4+metal3.2 で無効)
+            # → #if で囲み、無効ターゲットでは空にしてコンパイル可能を保つ
+            if guard:
+                core = (f"#if defined({guard})\n{core}"
+                        f"#else\n// NOTE: {guard} 無効ターゲットのため wrapper 無効化 "
+                        f"(この builtin は対応ターゲットで別途 probe)\n#endif\n")
+            block = core
             scene_bodies[sc].append(block)
             stage1 = "auto_wrapper"
             scene_counts[sc]["auto"] += 1
