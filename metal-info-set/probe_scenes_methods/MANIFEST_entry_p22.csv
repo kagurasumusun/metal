@@ -1,0 +1,10 @@
+scene,file,symbol,builtin,stage1_source
+P22K,probe.metal,probe_p22k_ib_size,__metal_get_imageblock_width,oneoff_p22
+P22K,probe.metal,probe_p22k_ib_size,__metal_get_imageblock_height,oneoff_p22
+P22K,probe.metal,probe_p22k_ib_size,__metal_get_imageblock_num_colors,oneoff_p22
+P22K,probe.metal,probe_p22k_ib_size,__metal_get_imageblock_samples,oneoff_p22
+P22K,probe.metal,probe_p22k_ib_size,__metal_get_imageblock_color_coverage_mask,oneoff_p22
+P22K,probe.metal,probe_p22k_ib_iread,__metal_imageblock_implicit_read,oneoff_p22
+P22K,probe.metal,probe_p22k_ib_iwrite,__metal_imageblock_implicit_write,oneoff_p22
+P22K,probe.metal,probe_p22k_ib_eread,__metal_imageblock_explicit_data,oneoff_p22
+P22K,probe.metal,probe_p22k_ib_ewrite,__metal_imageblock_explicit_mask_write,oneoff_p22

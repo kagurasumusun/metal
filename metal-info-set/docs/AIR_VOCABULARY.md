@@ -106,3 +106,26 @@ air.<op>[.<qual>...][.<type>...]
 全語彙 (本日 379 unique): `data/air_golden_names.csv` (golden *.ll から機械抽出、要上当番再生成)。
 網羅性注意: golden probe カバレッジ外の op (mesh/[[patch]]/fragten/OS log 深部等) は引続き
 バイナリ stems と airconv 語彙で補完する。P10T(-O0 variant)/P18K(entry stage 構成) probe で拡張予定。
+
+## 7. run18–24 追補 (2026-07-21)
+
+1. **imageblock (kernel 形のみ、MSL4.0 §5.6.4)**: `air.get_imageblock_{width,height,num_colors,samples}`
+   / `air.get_color_coverage_mask` (imageblock 語が抜ける点に注意)
+   / `air.load.implicit_imageblock.v4f32` / `air.store.implicit_imageblock.{v4f32,v4i32}`
+   / `air.imageblock_data` / `air.store.imageblock.mask.{v4f16,i32,f32}` (メンバ型 suffix 分散)。
+   `-O0/-O2` とも叫び順序で現れる load/store 系 (D-block 語は dot 区切り)。
+2. **mesh (MSL4 [[mesh]]/[[object]])**: `air.set_index_mesh` / `air.set_indices_mesh.v4i8`
+   / `air.set_primitive_count_mesh` / `air.set_primitive_id_mesh` / `air.set_position_mesh`
+   / `air.set_threadgroups_per_grid_mesh_properties` (mesh_grid_properties)。vertex 属性毎に op 分散
+   (position メンバのみでは air.set_position_mesh)。
+3. **u64 buffer atomic min/max**: `air.atomic.global.{max,min}.u.i64`
+   (min/max は device ulong 専用 = ヘッダ `_valid_{max,min}_type` 一次事実)。
+4. **simdgroup_matrix 8x8**: `air.simdgroup_matrix_8x8_{init_diag,init_filled,store,multiply_accumulate,load}`
+   引数型 suffix `.v64f32...` (vec<T,64> ストレージ)。
+5. **AS タグ suffix**: `multi_level_instancing` (max_levels>=3 インスタンシングで出る tag 語)。
+   `air.get_{candidate,committed}_instance_count_intersection_query.multi_level_instancing.triangle_data` 実測。
+6. **変換系**: `air.convert.f.f32.u.i16` (u16→f32) のように **to-from とも符号付きかつ語順は to→from**
+   (run19 patch 由来実測、§5 既定則と整合)。
+7. **post-tess vertex**: `patch_control_point::size()` は `[[patch(triangle,3)]]` から compile-time 定数 fold
+   (専用 air op 非存在 = frontend-consteval)。entry 属性制約: post-tess vertex では `vertex_id` 不可、
+   `patch_id` が正 (一次診断)。
