@@ -1,0 +1,376 @@
+air_op_stem,n_declares,example_declare
+air.abs.s,24,declare <16 x i16> @air.abs.s.v16i16(<16 x i16>) local_unnamed_addr #1
+air.abs.u,24,declare <16 x i16> @air.abs.u.v16i16(<16 x i16>) local_unnamed_addr #1
+air.abs_diff.s,24,"declare <16 x i16> @air.abs_diff.s.v16i16(<16 x i16>, <16 x i16>) local_unnamed_addr #1"
+air.abs_diff.u,24,"declare <16 x i16> @air.abs_diff.u.v16i16(<16 x i16>, <16 x i16>) local_unnamed_addr #1"
+air.acos,18,declare <16 x double> @air.acos.v16f64(<16 x double>) local_unnamed_addr #1
+air.acosh,18,declare <16 x double> @air.acosh.v16f64(<16 x double>) local_unnamed_addr #1
+air.acospi,18,declare <16 x double> @air.acospi.v16f64(<16 x double>) local_unnamed_addr #1
+air.add_sat.s,24,"declare <16 x i16> @air.add_sat.s.v16i16(<16 x i16>, <16 x i16>) local_unnamed_addr #1"
+air.add_sat.u,24,"declare <16 x i16> @air.add_sat.u.v16i16(<16 x i16>, <16 x i16>) local_unnamed_addr #1"
+air.all,7,declare i1 @air.all.v16i1(<16 x i1>) local_unnamed_addr #11
+air.any,7,declare i1 @air.any.v16i1(<16 x i1>) local_unnamed_addr #11
+air.asin,18,declare <16 x double> @air.asin.v16f64(<16 x double>) local_unnamed_addr #1
+air.asinh,18,declare <16 x double> @air.asinh.v16f64(<16 x double>) local_unnamed_addr #1
+air.asinpi,18,declare <16 x double> @air.asinpi.v16f64(<16 x double>) local_unnamed_addr #1
+air.async_wg_copy,84,"declare ptr addrspace(3) @air.async_wg_copy.p1f16.p3f16(ptr addrspace(1), ptr addrspace(3), i64, ptr addrspace(3)) local_unnamed_addr #1"
+air.async_wg_strided_copy,84,"declare ptr addrspace(3) @air.async_wg_strided_copy.p1f16.p3f16(ptr addrspace(1), ptr addrspace(3), i64, i64, ptr addrspace(3)) local_unnamed_addr #1"
+air.atan,18,declare <16 x double> @air.atan.v16f64(<16 x double>) local_unnamed_addr #1
+air.atan2,18,"declare <16 x double> @air.atan2.v16f64(<16 x double>, <16 x double>) local_unnamed_addr #1"
+air.atan2pi,18,"declare <16 x double> @air.atan2pi.v16f64(<16 x double>, <16 x double>) local_unnamed_addr #1"
+air.atanh,18,declare <16 x double> @air.atanh.v16f64(<16 x double>) local_unnamed_addr #1
+air.atanpi,18,declare <16 x double> @air.atanpi.v16f64(<16 x double>) local_unnamed_addr #1
+air.atomic.fence,2,"declare void @air.atomic.fence(i32, i32, i32) local_unnamed_addr #1"
+air.atomic.global.add.s,1,"declare i32 @air.atomic.global.add.s.i32(ptr addrspace(1) nocapture, i32, i32, i32, i1) local_unnamed_addr #1"
+air.atomic.global.add.u,3,"declare i32 @air.atomic.global.add.u.i32(ptr addrspace(1) nocapture, i32, i32, i32, i1) local_unnamed_addr #1"
+air.atomic.global.and.s,1,"declare i32 @air.atomic.global.and.s.i32(ptr addrspace(1) nocapture, i32, i32, i32, i1) local_unnamed_addr #1"
+air.atomic.global.and.u,1,"declare i32 @air.atomic.global.and.u.i32(ptr addrspace(1) nocapture, i32, i32, i32, i1) local_unnamed_addr #1"
+air.atomic.global.cmpxchg.weak,1,"declare i32 @air.atomic.global.cmpxchg.weak.i32(ptr addrspace(1) nocapture, ptr nocapture, i32, i32, i32, i32, i1) local_unnamed_addr #1"
+air.atomic.global.load,1,"declare i32 @air.atomic.global.load.i32(ptr addrspace(1) nocapture, i32, i32, i1) local_unnamed_addr #1"
+air.atomic.global.max.s,1,"declare i32 @air.atomic.global.max.s.i32(ptr addrspace(1) nocapture, i32, i32, i32, i1) local_unnamed_addr #1"
+air.atomic.global.max.u,2,"declare i32 @air.atomic.global.max.u.i32(ptr addrspace(1) nocapture, i32, i32, i32, i1) local_unnamed_addr #1"
+air.atomic.global.min.s,1,"declare i32 @air.atomic.global.min.s.i32(ptr addrspace(1) nocapture, i32, i32, i32, i1) local_unnamed_addr #1"
+air.atomic.global.min.u,1,"declare i32 @air.atomic.global.min.u.i32(ptr addrspace(1) nocapture, i32, i32, i32, i1) local_unnamed_addr #1"
+air.atomic.global.or.s,1,"declare i32 @air.atomic.global.or.s.i32(ptr addrspace(1) nocapture, i32, i32, i32, i1) local_unnamed_addr #1"
+air.atomic.global.or.u,1,"declare i32 @air.atomic.global.or.u.i32(ptr addrspace(1) nocapture, i32, i32, i32, i1) local_unnamed_addr #1"
+air.atomic.global.store,1,"declare void @air.atomic.global.store.i32(ptr addrspace(1) nocapture, i32, i32, i32, i1) local_unnamed_addr #1"
+air.atomic.global.sub.s,1,"declare i32 @air.atomic.global.sub.s.i32(ptr addrspace(1) nocapture, i32, i32, i32, i1) local_unnamed_addr #1"
+air.atomic.global.sub.u,2,"declare i32 @air.atomic.global.sub.u.i32(ptr addrspace(1) nocapture, i32, i32, i32, i1) local_unnamed_addr #1"
+air.atomic.global.xchg,1,"declare i32 @air.atomic.global.xchg.i32(ptr addrspace(1) nocapture, i32, i32, i32, i1) local_unnamed_addr #1"
+air.atomic.global.xor.s,1,"declare i32 @air.atomic.global.xor.s.i32(ptr addrspace(1) nocapture, i32, i32, i32, i1) local_unnamed_addr #1"
+air.atomic.global.xor.u,1,"declare i32 @air.atomic.global.xor.u.i32(ptr addrspace(1) nocapture, i32, i32, i32, i1) local_unnamed_addr #1"
+air.atomic.local.add.s,1,"declare i32 @air.atomic.local.add.s.i32(ptr addrspace(3) nocapture, i32, i32, i32, i1) local_unnamed_addr #1"
+air.atomic.local.add.u,1,"declare i32 @air.atomic.local.add.u.i32(ptr addrspace(3) nocapture, i32, i32, i32, i1) local_unnamed_addr #1"
+air.atomic.local.and.s,1,"declare i32 @air.atomic.local.and.s.i32(ptr addrspace(3) nocapture, i32, i32, i32, i1) local_unnamed_addr #1"
+air.atomic.local.and.u,1,"declare i32 @air.atomic.local.and.u.i32(ptr addrspace(3) nocapture, i32, i32, i32, i1) local_unnamed_addr #1"
+air.atomic.local.cmpxchg.weak,1,"declare i32 @air.atomic.local.cmpxchg.weak.i32(ptr addrspace(3) nocapture, ptr nocapture, i32, i32, i32, i32, i1) local_unnamed_addr #1"
+air.atomic.local.max.s,1,"declare i32 @air.atomic.local.max.s.i32(ptr addrspace(3) nocapture, i32, i32, i32, i1) local_unnamed_addr #1"
+air.atomic.local.max.u,1,"declare i32 @air.atomic.local.max.u.i32(ptr addrspace(3) nocapture, i32, i32, i32, i1) local_unnamed_addr #1"
+air.atomic.local.min.s,1,"declare i32 @air.atomic.local.min.s.i32(ptr addrspace(3) nocapture, i32, i32, i32, i1) local_unnamed_addr #1"
+air.atomic.local.min.u,1,"declare i32 @air.atomic.local.min.u.i32(ptr addrspace(3) nocapture, i32, i32, i32, i1) local_unnamed_addr #1"
+air.atomic.local.or.s,1,"declare i32 @air.atomic.local.or.s.i32(ptr addrspace(3) nocapture, i32, i32, i32, i1) local_unnamed_addr #1"
+air.atomic.local.or.u,1,"declare i32 @air.atomic.local.or.u.i32(ptr addrspace(3) nocapture, i32, i32, i32, i1) local_unnamed_addr #1"
+air.atomic.local.sub.s,1,"declare i32 @air.atomic.local.sub.s.i32(ptr addrspace(3) nocapture, i32, i32, i32, i1) local_unnamed_addr #1"
+air.atomic.local.sub.u,1,"declare i32 @air.atomic.local.sub.u.i32(ptr addrspace(3) nocapture, i32, i32, i32, i1) local_unnamed_addr #1"
+air.atomic.local.xchg,1,"declare i32 @air.atomic.local.xchg.i32(ptr addrspace(3) nocapture, i32, i32, i32, i1) local_unnamed_addr #1"
+air.atomic.local.xor.s,1,"declare i32 @air.atomic.local.xor.s.i32(ptr addrspace(3) nocapture, i32, i32, i32, i1) local_unnamed_addr #1"
+air.atomic.local.xor.u,1,"declare i32 @air.atomic.local.xor.u.i32(ptr addrspace(3) nocapture, i32, i32, i32, i1) local_unnamed_addr #1"
+air.cbrt,18,declare <16 x double> @air.cbrt.v16f64(<16 x double>) local_unnamed_addr #1
+air.ceil,18,declare <16 x double> @air.ceil.v16f64(<16 x double>) local_unnamed_addr #1
+air.clamp,18,"declare <16 x double> @air.clamp.v16f64(<16 x double>, <16 x double>, <16 x double>) local_unnamed_addr #1"
+air.clamp.s,24,"declare <16 x i16> @air.clamp.s.v16i16(<16 x i16>, <16 x i16>, <16 x i16>) local_unnamed_addr #1"
+air.clamp.u,24,"declare <16 x i16> @air.clamp.u.v16i16(<16 x i16>, <16 x i16>, <16 x i16>) local_unnamed_addr #1"
+air.clz,24,"declare <16 x i16> @air.clz.v16i16(<16 x i16>, i1) local_unnamed_addr #1"
+air.convert.f.f,144,declare <16 x double> @air.convert.f.v16f64.f.v16f16.rte(<16 x half>) local_unnamed_addr #2
+air.convert.f.s,291,declare <16 x double> @air.convert.f.v16f64.s.v16i16.rte(<16 x i16>) local_unnamed_addr #2
+air.convert.f.u,307,declare <16 x double> @air.convert.f.v16f64.u.v16i1(<16 x i1>) local_unnamed_addr #1
+air.convert.s.f,289,declare <16 x i16> @air.convert.s.v16i16.f.v16f16.rte(<16 x half>) local_unnamed_addr #2
+air.convert.s.f.sat,288,declare <16 x i16> @air.convert.s.v16i16.f.v16f16.rte.sat(<16 x half>) local_unnamed_addr #2
+air.convert.s.s,303,declare <16 x i16> @air.convert.s.v16i16.s.v16i32.rte(<16 x i32>) local_unnamed_addr #2
+air.convert.s.s.sat,288,declare <16 x i16> @air.convert.s.v16i16.s.v16i32.rte.sat(<16 x i32>) local_unnamed_addr #2
+air.convert.s.u,399,declare <16 x i16> @air.convert.s.v16i16.u.v16i16.rte(<16 x i16>) local_unnamed_addr #2
+air.convert.s.u.sat,384,declare <16 x i16> @air.convert.s.v16i16.u.v16i16.rte.sat(<16 x i16>) local_unnamed_addr #2
+air.convert.u.f,289,declare <16 x i16> @air.convert.u.v16i16.f.v16f16.rte(<16 x half>) local_unnamed_addr #2
+air.convert.u.f.sat,288,declare <16 x i16> @air.convert.u.v16i16.f.v16f16.rte.sat(<16 x half>) local_unnamed_addr #2
+air.convert.u.s,393,declare <16 x i16> @air.convert.u.v16i16.s.v16i16.rte(<16 x i16>) local_unnamed_addr #2
+air.convert.u.s.sat,384,declare <16 x i16> @air.convert.u.v16i16.s.v16i16.rte.sat(<16 x i16>) local_unnamed_addr #2
+air.convert.u.u,303,declare <16 x i16> @air.convert.u.v16i16.u.v16i32.rte(<16 x i32>) local_unnamed_addr #2
+air.convert.u.u.sat,288,declare <16 x i16> @air.convert.u.v16i16.u.v16i32.rte.sat(<16 x i32>) local_unnamed_addr #2
+air.cos,18,declare <16 x double> @air.cos.v16f64(<16 x double>) local_unnamed_addr #1
+air.cosh,18,declare <16 x double> @air.cosh.v16f64(<16 x double>) local_unnamed_addr #1
+air.cospi,18,declare <16 x double> @air.cospi.v16f64(<16 x double>) local_unnamed_addr #1
+air.ctz,1,"declare i32 @air.ctz.i32(i32, i1) local_unnamed_addr #1"
+air.dot,14,"declare double @air.dot.f64(double, double) local_unnamed_addr #8"
+air.erf,18,declare <16 x double> @air.erf.v16f64(<16 x double>) local_unnamed_addr #1
+air.erfc,18,declare <16 x double> @air.erfc.v16f64(<16 x double>) local_unnamed_addr #1
+air.exp,18,declare <16 x double> @air.exp.v16f64(<16 x double>) local_unnamed_addr #1
+air.exp10,18,declare <16 x double> @air.exp10.v16f64(<16 x double>) local_unnamed_addr #1
+air.exp2,18,declare <16 x double> @air.exp2.v16f64(<16 x double>) local_unnamed_addr #1
+air.expm1,18,declare <16 x double> @air.expm1.v16f64(<16 x double>) local_unnamed_addr #1
+air.fabs,18,declare <16 x double> @air.fabs.v16f64(<16 x double>) local_unnamed_addr #1
+air.fast_acos,6,declare <16 x float> @air.fast_acos.v16f32(<16 x float>) local_unnamed_addr #1
+air.fast_acosh,6,declare <16 x float> @air.fast_acosh.v16f32(<16 x float>) local_unnamed_addr #1
+air.fast_asin,6,declare <16 x float> @air.fast_asin.v16f32(<16 x float>) local_unnamed_addr #1
+air.fast_asinh,6,declare <16 x float> @air.fast_asinh.v16f32(<16 x float>) local_unnamed_addr #1
+air.fast_atan,6,declare <16 x float> @air.fast_atan.v16f32(<16 x float>) local_unnamed_addr #1
+air.fast_atan2,6,"declare <16 x float> @air.fast_atan2.v16f32(<16 x float>, <16 x float>) local_unnamed_addr #1"
+air.fast_atanh,6,declare <16 x float> @air.fast_atanh.v16f32(<16 x float>) local_unnamed_addr #1
+air.fast_ceil,6,declare <16 x float> @air.fast_ceil.v16f32(<16 x float>) local_unnamed_addr #1
+air.fast_clamp,1,"declare float @air.fast_clamp.f32(float, float, float) local_unnamed_addr #1"
+air.fast_cos,6,declare <16 x float> @air.fast_cos.v16f32(<16 x float>) local_unnamed_addr #1
+air.fast_cosh,6,declare <16 x float> @air.fast_cosh.v16f32(<16 x float>) local_unnamed_addr #1
+air.fast_cospi,6,declare <16 x float> @air.fast_cospi.v16f32(<16 x float>) local_unnamed_addr #1
+air.fast_exp,6,declare <16 x float> @air.fast_exp.v16f32(<16 x float>) local_unnamed_addr #1
+air.fast_exp10,6,declare <16 x float> @air.fast_exp10.v16f32(<16 x float>) local_unnamed_addr #1
+air.fast_exp2,6,declare <16 x float> @air.fast_exp2.v16f32(<16 x float>) local_unnamed_addr #1
+air.fast_fabs,7,declare <16 x float> @air.fast_fabs.v16f32(<16 x float>) local_unnamed_addr #1
+air.fast_floor,6,declare <16 x float> @air.fast_floor.v16f32(<16 x float>) local_unnamed_addr #1
+air.fast_fmax,7,"declare <16 x float> @air.fast_fmax.v16f32(<16 x float>, <16 x float>) local_unnamed_addr #1"
+air.fast_fmin,7,"declare <16 x float> @air.fast_fmin.v16f32(<16 x float>, <16 x float>) local_unnamed_addr #1"
+air.fast_fmod,6,"declare <16 x float> @air.fast_fmod.v16f32(<16 x float>, <16 x float>) local_unnamed_addr #1"
+air.fast_fract,7,declare <16 x float> @air.fast_fract.v16f32(<16 x float>) local_unnamed_addr #1
+air.fast_ldexp,6,"declare <16 x float> @air.fast_ldexp.v16f32(<16 x float>, <16 x i32>) local_unnamed_addr #1"
+air.fast_log,6,declare <16 x float> @air.fast_log.v16f32(<16 x float>) local_unnamed_addr #1
+air.fast_log10,6,declare <16 x float> @air.fast_log10.v16f32(<16 x float>) local_unnamed_addr #1
+air.fast_log2,6,declare <16 x float> @air.fast_log2.v16f32(<16 x float>) local_unnamed_addr #1
+air.fast_pow,6,"declare <16 x float> @air.fast_pow.v16f32(<16 x float>, <16 x float>) local_unnamed_addr #1"
+air.fast_powr,6,"declare <16 x float> @air.fast_powr.v16f32(<16 x float>, <16 x float>) local_unnamed_addr #1"
+air.fast_rint,6,declare <16 x float> @air.fast_rint.v16f32(<16 x float>) local_unnamed_addr #1
+air.fast_round,6,declare <16 x float> @air.fast_round.v16f32(<16 x float>) local_unnamed_addr #1
+air.fast_rsqrt,6,declare <16 x float> @air.fast_rsqrt.v16f32(<16 x float>) local_unnamed_addr #1
+air.fast_saturate,1,declare float @air.fast_saturate.f32(float) local_unnamed_addr #1
+air.fast_sin,6,declare <16 x float> @air.fast_sin.v16f32(<16 x float>) local_unnamed_addr #1
+air.fast_sincos,6,"declare <16 x float> @air.fast_sincos.v16f32(<16 x float>, ptr nocapture writeonly) local_unnamed_addr #56"
+air.fast_sinh,6,declare <16 x float> @air.fast_sinh.v16f32(<16 x float>) local_unnamed_addr #1
+air.fast_sinpi,6,declare <16 x float> @air.fast_sinpi.v16f32(<16 x float>) local_unnamed_addr #1
+air.fast_sqrt,6,declare <16 x float> @air.fast_sqrt.v16f32(<16 x float>) local_unnamed_addr #1
+air.fast_tan,6,declare <16 x float> @air.fast_tan.v16f32(<16 x float>) local_unnamed_addr #1
+air.fast_tanh,6,declare <16 x float> @air.fast_tanh.v16f32(<16 x float>) local_unnamed_addr #1
+air.fast_tanpi,6,declare <16 x float> @air.fast_tanpi.v16f32(<16 x float>) local_unnamed_addr #1
+air.fast_trunc,6,declare <16 x float> @air.fast_trunc.v16f32(<16 x float>) local_unnamed_addr #1
+air.floor,21,declare <16 x double> @air.floor.v16f64(<16 x double>) local_unnamed_addr #1
+air.fma,19,"declare <16 x double> @air.fma.v16f64(<16 x double>, <16 x double>, <16 x double>) local_unnamed_addr #1"
+air.fmax,18,"declare <16 x double> @air.fmax.v16f64(<16 x double>, <16 x double>) local_unnamed_addr #1"
+air.fmin,21,"declare <16 x double> @air.fmin.v16f64(<16 x double>, <16 x double>) local_unnamed_addr #1"
+air.fmod,18,"declare <16 x double> @air.fmod.v16f64(<16 x double>, <16 x double>) local_unnamed_addr #1"
+air.fract,19,declare <16 x double> @air.fract.v16f64(<16 x double>) local_unnamed_addr #1
+air.get_array_size_depth_2d_array,1,declare i32 @air.get_array_size_depth_2d_array(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_array_size_depth_2d_ms_array,1,declare i32 @air.get_array_size_depth_2d_ms_array(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_array_size_texture_1d_array,1,declare i32 @air.get_array_size_texture_1d_array(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_array_size_texture_2d_array,1,declare i32 @air.get_array_size_texture_2d_array(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_array_size_texture_2d_ms_array,1,declare i32 @air.get_array_size_texture_2d_ms_array(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_channel_data_type_depth_2d,1,declare i32 @air.get_channel_data_type_depth_2d(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_channel_data_type_depth_2d_array,1,declare i32 @air.get_channel_data_type_depth_2d_array(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_channel_data_type_depth_2d_ms,1,declare i32 @air.get_channel_data_type_depth_2d_ms(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_channel_data_type_depth_2d_ms_array,1,declare i32 @air.get_channel_data_type_depth_2d_ms_array(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_channel_data_type_texture_1d,1,declare i32 @air.get_channel_data_type_texture_1d(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_channel_data_type_texture_1d_array,1,declare i32 @air.get_channel_data_type_texture_1d_array(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_channel_data_type_texture_2d,1,declare i32 @air.get_channel_data_type_texture_2d(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_channel_data_type_texture_2d_array,1,declare i32 @air.get_channel_data_type_texture_2d_array(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_channel_data_type_texture_2d_ms,1,declare i32 @air.get_channel_data_type_texture_2d_ms(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_channel_data_type_texture_2d_ms_array,1,declare i32 @air.get_channel_data_type_texture_2d_ms_array(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_channel_data_type_texture_3d,1,declare i32 @air.get_channel_data_type_texture_3d(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_channel_data_type_texture_buffer_1d,1,declare i32 @air.get_channel_data_type_texture_buffer_1d(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_channel_order_depth_2d,1,declare i32 @air.get_channel_order_depth_2d(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_channel_order_depth_2d_array,1,declare i32 @air.get_channel_order_depth_2d_array(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_channel_order_depth_2d_ms,1,declare i32 @air.get_channel_order_depth_2d_ms(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_channel_order_depth_2d_ms_array,1,declare i32 @air.get_channel_order_depth_2d_ms_array(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_channel_order_texture_1d,1,declare i32 @air.get_channel_order_texture_1d(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_channel_order_texture_1d_array,1,declare i32 @air.get_channel_order_texture_1d_array(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_channel_order_texture_2d,1,declare i32 @air.get_channel_order_texture_2d(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_channel_order_texture_2d_array,1,declare i32 @air.get_channel_order_texture_2d_array(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_channel_order_texture_2d_ms,1,declare i32 @air.get_channel_order_texture_2d_ms(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_channel_order_texture_2d_ms_array,1,declare i32 @air.get_channel_order_texture_2d_ms_array(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_channel_order_texture_3d,1,declare i32 @air.get_channel_order_texture_3d(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_channel_order_texture_buffer_1d,1,declare i32 @air.get_channel_order_texture_buffer_1d(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_depth_texture_3d,1,"declare i32 @air.get_depth_texture_3d(ptr addrspace(1) nocapture readonly, i32) local_unnamed_addr #5"
+air.get_function_pointer_visible_function_table,3,"declare ptr @air.get_function_pointer_visible_function_table(ptr addrspace(1) nocapture readonly, i32) local_unnamed_addr #2"
+air.get_global_id,1,declare i32 @air.get_global_id.i32(i32) local_unnamed_addr #1
+air.get_global_offset,1,declare i32 @air.get_global_offset.i32(i32) local_unnamed_addr #1
+air.get_global_size,1,declare i32 @air.get_global_size.i32(i32) local_unnamed_addr #1
+air.get_group_id,1,declare i32 @air.get_group_id.i32(i32) local_unnamed_addr #1
+air.get_height_depth_2d,1,"declare i32 @air.get_height_depth_2d(ptr addrspace(1) nocapture readonly, i32) local_unnamed_addr #5"
+air.get_height_depth_2d_array,1,"declare i32 @air.get_height_depth_2d_array(ptr addrspace(1) nocapture readonly, i32) local_unnamed_addr #5"
+air.get_height_depth_2d_ms,1,declare i32 @air.get_height_depth_2d_ms(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_height_depth_2d_ms_array,1,declare i32 @air.get_height_depth_2d_ms_array(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_height_texture_2d,1,"declare i32 @air.get_height_texture_2d(ptr addrspace(1) nocapture readonly, i32) local_unnamed_addr #5"
+air.get_height_texture_2d_array,1,"declare i32 @air.get_height_texture_2d_array(ptr addrspace(1) nocapture readonly, i32) local_unnamed_addr #5"
+air.get_height_texture_2d_ms,1,declare i32 @air.get_height_texture_2d_ms(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_height_texture_2d_ms_array,1,declare i32 @air.get_height_texture_2d_ms_array(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_height_texture_3d,1,"declare i32 @air.get_height_texture_3d(ptr addrspace(1) nocapture readonly, i32) local_unnamed_addr #5"
+air.get_local_id,1,declare i32 @air.get_local_id.i32(i32) local_unnamed_addr #1
+air.get_local_size,1,declare i32 @air.get_local_size.i32(i32) local_unnamed_addr #1
+air.get_num_groups,1,declare i32 @air.get_num_groups.i32(i32) local_unnamed_addr #1
+air.get_num_samples_depth_2d_ms,1,declare i32 @air.get_num_samples_depth_2d_ms(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_num_samples_depth_2d_ms_array,1,declare i32 @air.get_num_samples_depth_2d_ms_array(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_num_samples_texture_2d_ms,1,declare i32 @air.get_num_samples_texture_2d_ms(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_num_samples_texture_2d_ms_array,1,declare i32 @air.get_num_samples_texture_2d_ms_array(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_private_data,1,declare ptr addrspace(2) @air.get_private_data() local_unnamed_addr #1
+air.get_width_depth_2d,1,"declare i32 @air.get_width_depth_2d(ptr addrspace(1) nocapture readonly, i32) local_unnamed_addr #5"
+air.get_width_depth_2d_array,1,"declare i32 @air.get_width_depth_2d_array(ptr addrspace(1) nocapture readonly, i32) local_unnamed_addr #5"
+air.get_width_depth_2d_ms,1,declare i32 @air.get_width_depth_2d_ms(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_width_depth_2d_ms_array,1,declare i32 @air.get_width_depth_2d_ms_array(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_width_texture_1d,1,"declare i32 @air.get_width_texture_1d(ptr addrspace(1) nocapture readonly, i32) local_unnamed_addr #5"
+air.get_width_texture_1d_array,1,"declare i32 @air.get_width_texture_1d_array(ptr addrspace(1) nocapture readonly, i32) local_unnamed_addr #5"
+air.get_width_texture_2d,1,"declare i32 @air.get_width_texture_2d(ptr addrspace(1) nocapture readonly, i32) local_unnamed_addr #5"
+air.get_width_texture_2d_array,1,"declare i32 @air.get_width_texture_2d_array(ptr addrspace(1) nocapture readonly, i32) local_unnamed_addr #5"
+air.get_width_texture_2d_ms,1,declare i32 @air.get_width_texture_2d_ms(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_width_texture_2d_ms_array,1,declare i32 @air.get_width_texture_2d_ms_array(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_width_texture_3d,1,"declare i32 @air.get_width_texture_3d(ptr addrspace(1) nocapture readonly, i32) local_unnamed_addr #5"
+air.get_width_texture_buffer_1d,1,declare i32 @air.get_width_texture_buffer_1d(ptr addrspace(1) nocapture readonly) local_unnamed_addr #5
+air.get_work_dim,1,declare i32 @air.get_work_dim.i32() local_unnamed_addr #1
+air.hadd.s,24,"declare <16 x i16> @air.hadd.s.v16i16(<16 x i16>, <16 x i16>) local_unnamed_addr #1"
+air.hadd.u,24,"declare <16 x i16> @air.hadd.u.v16i16(<16 x i16>, <16 x i16>) local_unnamed_addr #1"
+air.half_cos,6,declare <16 x float> @air.half_cos.v16f32(<16 x float>) local_unnamed_addr #1
+air.half_exp,6,declare <16 x float> @air.half_exp.v16f32(<16 x float>) local_unnamed_addr #1
+air.half_exp10,6,declare <16 x float> @air.half_exp10.v16f32(<16 x float>) local_unnamed_addr #1
+air.half_exp2,6,declare <16 x float> @air.half_exp2.v16f32(<16 x float>) local_unnamed_addr #1
+air.half_log,6,declare <16 x float> @air.half_log.v16f32(<16 x float>) local_unnamed_addr #1
+air.half_log10,6,declare <16 x float> @air.half_log10.v16f32(<16 x float>) local_unnamed_addr #1
+air.half_log2,6,declare <16 x float> @air.half_log2.v16f32(<16 x float>) local_unnamed_addr #1
+air.half_powr,6,"declare <16 x float> @air.half_powr.v16f32(<16 x float>, <16 x float>) local_unnamed_addr #1"
+air.half_rsqrt,6,declare <16 x float> @air.half_rsqrt.v16f32(<16 x float>) local_unnamed_addr #1
+air.half_sin,6,declare <16 x float> @air.half_sin.v16f32(<16 x float>) local_unnamed_addr #1
+air.half_sqrt,6,declare <16 x float> @air.half_sqrt.v16f32(<16 x float>) local_unnamed_addr #1
+air.half_tan,6,declare <16 x float> @air.half_tan.v16f32(<16 x float>) local_unnamed_addr #1
+air.hypot,18,"declare <16 x double> @air.hypot.v16f64(<16 x double>, <16 x double>) local_unnamed_addr #1"
+air.is_null_visible_function_table,3,declare i1 @air.is_null_visible_function_table(ptr addrspace(1) nocapture readonly) local_unnamed_addr #2
+air.ldexp,18,"declare <16 x double> @air.ldexp.v16f64(<16 x double>, <16 x i32>) local_unnamed_addr #1"
+air.lgamma,18,declare <16 x double> @air.lgamma.v16f64(<16 x double>) local_unnamed_addr #1
+air.lgamma_r,36,"declare <16 x double> @air.lgamma_r.v16f64(<16 x double>, ptr nocapture writeonly) local_unnamed_addr #50"
+air.log,18,declare <16 x double> @air.log.v16f64(<16 x double>) local_unnamed_addr #1
+air.log10,18,declare <16 x double> @air.log10.v16f64(<16 x double>) local_unnamed_addr #1
+air.log1p,18,declare <16 x double> @air.log1p.v16f64(<16 x double>) local_unnamed_addr #1
+air.log2,18,declare <16 x double> @air.log2.v16f64(<16 x double>) local_unnamed_addr #1
+air.logb,18,declare <16 x double> @air.logb.v16f64(<16 x double>) local_unnamed_addr #1
+air.mad,18,"declare <16 x double> @air.mad.v16f64(<16 x double>, <16 x double>, <16 x double>) local_unnamed_addr #1"
+air.mad24.s,6,"declare <16 x i32> @air.mad24.s.v16i32(<16 x i32>, <16 x i32>, <16 x i32>) local_unnamed_addr #1"
+air.mad24.u,6,"declare <16 x i32> @air.mad24.u.v16i32(<16 x i32>, <16 x i32>, <16 x i32>) local_unnamed_addr #1"
+air.mad_hi.s,24,"declare <16 x i16> @air.mad_hi.s.v16i16(<16 x i16>, <16 x i16>, <16 x i16>) local_unnamed_addr #1"
+air.mad_hi.u,24,"declare <16 x i16> @air.mad_hi.u.v16i16(<16 x i16>, <16 x i16>, <16 x i16>) local_unnamed_addr #1"
+air.mad_sat.s,24,"declare <16 x i16> @air.mad_sat.s.v16i16(<16 x i16>, <16 x i16>, <16 x i16>) local_unnamed_addr #1"
+air.mad_sat.u,24,"declare <16 x i16> @air.mad_sat.u.v16i16(<16 x i16>, <16 x i16>, <16 x i16>) local_unnamed_addr #1"
+air.max.s,24,"declare <16 x i16> @air.max.s.v16i16(<16 x i16>, <16 x i16>) local_unnamed_addr #1"
+air.max.u,24,"declare <16 x i16> @air.max.u.v16i16(<16 x i16>, <16 x i16>) local_unnamed_addr #1"
+air.min.s,24,"declare <16 x i16> @air.min.s.v16i16(<16 x i16>, <16 x i16>) local_unnamed_addr #1"
+air.min.u,24,"declare <16 x i16> @air.min.u.v16i16(<16 x i16>, <16 x i16>) local_unnamed_addr #1"
+air.mix,18,"declare <16 x double> @air.mix.v16f64(<16 x double>, <16 x double>, <16 x double>) local_unnamed_addr #1"
+air.mul24.s,6,"declare <16 x i32> @air.mul24.s.v16i32(<16 x i32>, <16 x i32>) local_unnamed_addr #1"
+air.mul24.u,6,"declare <16 x i32> @air.mul24.u.v16i32(<16 x i32>, <16 x i32>) local_unnamed_addr #1"
+air.mul_hi.s,24,"declare <16 x i16> @air.mul_hi.s.v16i16(<16 x i16>, <16 x i16>) local_unnamed_addr #1"
+air.mul_hi.u,24,"declare <16 x i16> @air.mul_hi.u.v16i16(<16 x i16>, <16 x i16>) local_unnamed_addr #1"
+air.native_cos,6,declare <16 x float> @air.native_cos.v16f32(<16 x float>) local_unnamed_addr #1
+air.native_exp,6,declare <16 x float> @air.native_exp.v16f32(<16 x float>) local_unnamed_addr #1
+air.native_exp10,6,declare <16 x float> @air.native_exp10.v16f32(<16 x float>) local_unnamed_addr #1
+air.native_exp2,6,declare <16 x float> @air.native_exp2.v16f32(<16 x float>) local_unnamed_addr #1
+air.native_log,6,declare <16 x float> @air.native_log.v16f32(<16 x float>) local_unnamed_addr #1
+air.native_log10,6,declare <16 x float> @air.native_log10.v16f32(<16 x float>) local_unnamed_addr #1
+air.native_log2,6,declare <16 x float> @air.native_log2.v16f32(<16 x float>) local_unnamed_addr #1
+air.native_powr,6,"declare <16 x float> @air.native_powr.v16f32(<16 x float>, <16 x float>) local_unnamed_addr #1"
+air.native_rsqrt,6,declare <16 x float> @air.native_rsqrt.v16f32(<16 x float>) local_unnamed_addr #1
+air.native_sin,6,declare <16 x float> @air.native_sin.v16f32(<16 x float>) local_unnamed_addr #1
+air.native_sqrt,6,declare <16 x float> @air.native_sqrt.v16f32(<16 x float>) local_unnamed_addr #1
+air.native_tan,6,declare <16 x float> @air.native_tan.v16f32(<16 x float>) local_unnamed_addr #1
+air.nextafter,18,"declare <16 x double> @air.nextafter.v16f64(<16 x double>, <16 x double>) local_unnamed_addr #1"
+air.popcount,24,declare <16 x i16> @air.popcount.v16i16(<16 x i16>) local_unnamed_addr #1
+air.pow,18,"declare <16 x double> @air.pow.v16f64(<16 x double>, <16 x double>) local_unnamed_addr #1"
+air.pown,18,"declare <16 x double> @air.pown.v16f64(<16 x double>, <16 x i32>) local_unnamed_addr #1"
+air.powr,18,"declare <16 x double> @air.powr.v16f64(<16 x double>, <16 x double>) local_unnamed_addr #1"
+air.read_depth_2d,1,"declare { float, i8 } @air.read_depth_2d.f32(ptr addrspace(1) nocapture readonly, i32, <2 x i32>, i32, i32) local_unnamed_addr #5"
+air.read_depth_2d_array,1,"declare { float, i8 } @air.read_depth_2d_array.f32(ptr addrspace(1) nocapture readonly, i32, <2 x i32>, i32, i32, i32) local_unnamed_addr #5"
+air.read_depth_2d_ms,1,"declare { float, i8 } @air.read_depth_2d_ms.f32(ptr addrspace(1) nocapture readonly, i32, <2 x i32>, i32, i32) local_unnamed_addr #5"
+air.read_depth_2d_ms_array,1,"declare { float, i8 } @air.read_depth_2d_ms_array.f32(ptr addrspace(1) nocapture readonly, i32, <2 x i32>, i32, i32, i32) local_unnamed_addr #5"
+air.read_texture_1d,2,"declare { <4 x float>, i8 } @air.read_texture_1d.v4f32(ptr addrspace(1) nocapture readonly, i32, i32, i32) local_unnamed_addr #5"
+air.read_texture_1d.s,1,"declare { <4 x i32>, i8 } @air.read_texture_1d.s.v4i32(ptr addrspace(1) nocapture readonly, i32, i32, i32) local_unnamed_addr #5"
+air.read_texture_1d.u,1,"declare { <4 x i32>, i8 } @air.read_texture_1d.u.v4i32(ptr addrspace(1) nocapture readonly, i32, i32, i32) local_unnamed_addr #5"
+air.read_texture_1d_array,2,"declare { <4 x float>, i8 } @air.read_texture_1d_array.v4f32(ptr addrspace(1) nocapture readonly, i32, i32, i32, i32) local_unnamed_addr #5"
+air.read_texture_1d_array.s,1,"declare { <4 x i32>, i8 } @air.read_texture_1d_array.s.v4i32(ptr addrspace(1) nocapture readonly, i32, i32, i32, i32) local_unnamed_addr #5"
+air.read_texture_1d_array.u,1,"declare { <4 x i32>, i8 } @air.read_texture_1d_array.u.v4i32(ptr addrspace(1) nocapture readonly, i32, i32, i32, i32) local_unnamed_addr #5"
+air.read_texture_2d,2,"declare { <4 x float>, i8 } @air.read_texture_2d.v4f32(ptr addrspace(1) nocapture readonly, <2 x i32>, i32, i32) local_unnamed_addr #5"
+air.read_texture_2d.s,1,"declare { <4 x i32>, i8 } @air.read_texture_2d.s.v4i32(ptr addrspace(1) nocapture readonly, <2 x i32>, i32, i32) local_unnamed_addr #5"
+air.read_texture_2d.u,1,"declare { <4 x i32>, i8 } @air.read_texture_2d.u.v4i32(ptr addrspace(1) nocapture readonly, <2 x i32>, i32, i32) local_unnamed_addr #5"
+air.read_texture_2d_array,2,"declare { <4 x float>, i8 } @air.read_texture_2d_array.v4f32(ptr addrspace(1) nocapture readonly, <2 x i32>, i32, i32, i32) local_unnamed_addr #5"
+air.read_texture_2d_array.s,1,"declare { <4 x i32>, i8 } @air.read_texture_2d_array.s.v4i32(ptr addrspace(1) nocapture readonly, <2 x i32>, i32, i32, i32) local_unnamed_addr #5"
+air.read_texture_2d_array.u,1,"declare { <4 x i32>, i8 } @air.read_texture_2d_array.u.v4i32(ptr addrspace(1) nocapture readonly, <2 x i32>, i32, i32, i32) local_unnamed_addr #5"
+air.read_texture_2d_ms,1,"declare { <4 x float>, i8 } @air.read_texture_2d_ms.v4f32(ptr addrspace(1) nocapture readonly, <2 x i32>, i32, i32) local_unnamed_addr #5"
+air.read_texture_2d_ms.s,1,"declare { <4 x i32>, i8 } @air.read_texture_2d_ms.s.v4i32(ptr addrspace(1) nocapture readonly, <2 x i32>, i32, i32) local_unnamed_addr #5"
+air.read_texture_2d_ms.u,1,"declare { <4 x i32>, i8 } @air.read_texture_2d_ms.u.v4i32(ptr addrspace(1) nocapture readonly, <2 x i32>, i32, i32) local_unnamed_addr #5"
+air.read_texture_2d_ms_array,1,"declare { <4 x float>, i8 } @air.read_texture_2d_ms_array.v4f32(ptr addrspace(1) nocapture readonly, <2 x i32>, i32, i32, i32) local_unnamed_addr #5"
+air.read_texture_2d_ms_array.s,1,"declare { <4 x i32>, i8 } @air.read_texture_2d_ms_array.s.v4i32(ptr addrspace(1) nocapture readonly, <2 x i32>, i32, i32, i32) local_unnamed_addr #5"
+air.read_texture_2d_ms_array.u,1,"declare { <4 x i32>, i8 } @air.read_texture_2d_ms_array.u.v4i32(ptr addrspace(1) nocapture readonly, <2 x i32>, i32, i32, i32) local_unnamed_addr #5"
+air.read_texture_3d,2,"declare { <4 x float>, i8 } @air.read_texture_3d.v4f32(ptr addrspace(1) nocapture readonly, <3 x i32>, i32, i32) local_unnamed_addr #5"
+air.read_texture_3d.s,1,"declare { <4 x i32>, i8 } @air.read_texture_3d.s.v4i32(ptr addrspace(1) nocapture readonly, <3 x i32>, i32, i32) local_unnamed_addr #5"
+air.read_texture_3d.u,1,"declare { <4 x i32>, i8 } @air.read_texture_3d.u.v4i32(ptr addrspace(1) nocapture readonly, <3 x i32>, i32, i32) local_unnamed_addr #5"
+air.read_texture_buffer_1d,2,"declare { <4 x float>, i8 } @air.read_texture_buffer_1d.v4f32(ptr addrspace(1) nocapture readonly, i32, i32) local_unnamed_addr #5"
+air.read_texture_buffer_1d.s,1,"declare { <4 x i32>, i8 } @air.read_texture_buffer_1d.s.v4i32(ptr addrspace(1) nocapture readonly, i32, i32) local_unnamed_addr #5"
+air.read_texture_buffer_1d.u,1,"declare { <4 x i32>, i8 } @air.read_texture_buffer_1d.u.v4i32(ptr addrspace(1) nocapture readonly, i32, i32) local_unnamed_addr #5"
+air.remainder,18,"declare <16 x double> @air.remainder.v16f64(<16 x double>, <16 x double>) local_unnamed_addr #1"
+air.remquo,36,"declare <16 x double> @air.remquo.v16f64(<16 x double>, <16 x double>, ptr nocapture writeonly) local_unnamed_addr #50"
+air.rhadd.s,24,"declare <16 x i16> @air.rhadd.s.v16i16(<16 x i16>, <16 x i16>) local_unnamed_addr #1"
+air.rhadd.u,24,"declare <16 x i16> @air.rhadd.u.v16i16(<16 x i16>, <16 x i16>) local_unnamed_addr #1"
+air.rint,18,declare <16 x double> @air.rint.v16f64(<16 x double>) local_unnamed_addr #1
+air.rootn,18,"declare <16 x double> @air.rootn.v16f64(<16 x double>, <16 x i32>) local_unnamed_addr #1"
+air.rotate,24,"declare <16 x i16> @air.rotate.v16i16(<16 x i16>, <16 x i16>) local_unnamed_addr #1"
+air.round,18,declare <16 x double> @air.round.v16f64(<16 x double>) local_unnamed_addr #1
+air.rsqrt,21,declare <16 x double> @air.rsqrt.v16f64(<16 x double>) local_unnamed_addr #1
+air.sample_depth_2d,1,"declare { float, i8 } @air.sample_depth_2d.f32(ptr addrspace(1) nocapture readonly, ptr addrspace(2) nocapture readonly, i32, <2 x float>, i1, <2 x i32>, i1, float, float, i32) local_unnamed_addr #2"
+air.sample_depth_2d_array,1,"declare { float, i8 } @air.sample_depth_2d_array.f32(ptr addrspace(1) nocapture readonly, ptr addrspace(2) nocapture readonly, i32, <2 x float>, i32, i1, <2 x i32>, i1, float, float, i32) local_unnamed_addr #2"
+air.sample_texture_1d,2,"declare { <4 x float>, i8 } @air.sample_texture_1d.v4f32(ptr addrspace(1) nocapture readonly, ptr addrspace(2) nocapture readonly, float, i1, i32, i1, float, float, i32) local_unnamed_addr #2"
+air.sample_texture_1d.s,1,"declare { <4 x i32>, i8 } @air.sample_texture_1d.s.v4i32(ptr addrspace(1) nocapture readonly, ptr addrspace(2) nocapture readonly, float, i1, i32, i1, float, float, i32) local_unnamed_addr #2"
+air.sample_texture_1d.u,1,"declare { <4 x i32>, i8 } @air.sample_texture_1d.u.v4i32(ptr addrspace(1) nocapture readonly, ptr addrspace(2) nocapture readonly, float, i1, i32, i1, float, float, i32) local_unnamed_addr #2"
+air.sample_texture_1d_array,2,"declare { <4 x float>, i8 } @air.sample_texture_1d_array.v4f32(ptr addrspace(1) nocapture readonly, ptr addrspace(2) nocapture readonly, float, i32, i1, i32, i1, float, float, i32) local_unnamed_addr #2"
+air.sample_texture_1d_array.s,1,"declare { <4 x i32>, i8 } @air.sample_texture_1d_array.s.v4i32(ptr addrspace(1) nocapture readonly, ptr addrspace(2) nocapture readonly, float, i32, i1, i32, i1, float, float, i32) local_unnamed_addr #2"
+air.sample_texture_1d_array.u,1,"declare { <4 x i32>, i8 } @air.sample_texture_1d_array.u.v4i32(ptr addrspace(1) nocapture readonly, ptr addrspace(2) nocapture readonly, float, i32, i1, i32, i1, float, float, i32) local_unnamed_addr #2"
+air.sample_texture_2d,2,"declare { <4 x float>, i8 } @air.sample_texture_2d.v4f32(ptr addrspace(1) nocapture readonly, ptr addrspace(2) nocapture readonly, <2 x float>, i1, <2 x i32>, i1, float, float, i32) local_unnamed_addr #2"
+air.sample_texture_2d.s,1,"declare { <4 x i32>, i8 } @air.sample_texture_2d.s.v4i32(ptr addrspace(1) nocapture readonly, ptr addrspace(2) nocapture readonly, <2 x float>, i1, <2 x i32>, i1, float, float, i32) local_unnamed_addr #2"
+air.sample_texture_2d.u,1,"declare { <4 x i32>, i8 } @air.sample_texture_2d.u.v4i32(ptr addrspace(1) nocapture readonly, ptr addrspace(2) nocapture readonly, <2 x float>, i1, <2 x i32>, i1, float, float, i32) local_unnamed_addr #2"
+air.sample_texture_2d_array,2,"declare { <4 x float>, i8 } @air.sample_texture_2d_array.v4f32(ptr addrspace(1) nocapture readonly, ptr addrspace(2) nocapture readonly, <2 x float>, i32, i1, <2 x i32>, i1, float, float, i32) local_unnamed_addr #2"
+air.sample_texture_2d_array.s,1,"declare { <4 x i32>, i8 } @air.sample_texture_2d_array.s.v4i32(ptr addrspace(1) nocapture readonly, ptr addrspace(2) nocapture readonly, <2 x float>, i32, i1, <2 x i32>, i1, float, float, i32) local_unnamed_addr #2"
+air.sample_texture_2d_array.u,1,"declare { <4 x i32>, i8 } @air.sample_texture_2d_array.u.v4i32(ptr addrspace(1) nocapture readonly, ptr addrspace(2) nocapture readonly, <2 x float>, i32, i1, <2 x i32>, i1, float, float, i32) local_unnamed_addr #2"
+air.sample_texture_3d,2,"declare { <4 x float>, i8 } @air.sample_texture_3d.v4f32(ptr addrspace(1) nocapture readonly, ptr addrspace(2) nocapture readonly, <3 x float>, i1, <3 x i32>, i1, float, float, i32) local_unnamed_addr #2"
+air.sample_texture_3d.s,1,"declare { <4 x i32>, i8 } @air.sample_texture_3d.s.v4i32(ptr addrspace(1) nocapture readonly, ptr addrspace(2) nocapture readonly, <3 x float>, i1, <3 x i32>, i1, float, float, i32) local_unnamed_addr #2"
+air.sample_texture_3d.u,1,"declare { <4 x i32>, i8 } @air.sample_texture_3d.u.v4i32(ptr addrspace(1) nocapture readonly, ptr addrspace(2) nocapture readonly, <3 x float>, i1, <3 x i32>, i1, float, float, i32) local_unnamed_addr #2"
+air.shuffle,48,"declare <16 x double> @air.shuffle.v16f64.v16f64.v16i64(<16 x double>, <16 x i64>) local_unnamed_addr #1"
+air.shuffle.s,64,"declare <16 x i16> @air.shuffle.s.v16i16.v16i16.v16i16(<16 x i16>, <16 x i16>) local_unnamed_addr #1"
+air.shuffle.u,64,"declare <16 x i16> @air.shuffle.u.v16i16.v16i16.v16i16(<16 x i16>, <16 x i16>) local_unnamed_addr #1"
+air.shuffle2,48,"declare <16 x double> @air.shuffle2.v16f64.v16f64.v16i64(<16 x double>, <16 x double>, <16 x i64>) local_unnamed_addr #1"
+air.shuffle2.s,64,"declare <16 x i16> @air.shuffle2.s.v16i16.v16i16.v16i16(<16 x i16>, <16 x i16>, <16 x i16>) local_unnamed_addr #1"
+air.shuffle2.u,64,"declare <16 x i16> @air.shuffle2.u.v16i16.v16i16.v16i16(<16 x i16>, <16 x i16>, <16 x i16>) local_unnamed_addr #1"
+air.sign,18,declare <16 x double> @air.sign.v16f64(<16 x double>) local_unnamed_addr #1
+air.sin,18,declare <16 x double> @air.sin.v16f64(<16 x double>) local_unnamed_addr #1
+air.sincos,30,"declare <16 x double> @air.sincos.v16f64(<16 x double>, ptr nocapture writeonly) local_unnamed_addr #50"
+air.sinh,18,declare <16 x double> @air.sinh.v16f64(<16 x double>) local_unnamed_addr #1
+air.sinpi,18,declare <16 x double> @air.sinpi.v16f64(<16 x double>) local_unnamed_addr #1
+air.sqrt,21,declare <16 x double> @air.sqrt.v16f64(<16 x double>) local_unnamed_addr #1
+air.store.system_coherent.volatile,2,"declare void @air.store.system_coherent.volatile.i8.p1i8(i8, ptr addrspace(1) noundef) local_unnamed_addr #1"
+air.sub_sat.s,24,"declare <16 x i16> @air.sub_sat.s.v16i16(<16 x i16>, <16 x i16>) local_unnamed_addr #1"
+air.sub_sat.u,24,"declare <16 x i16> @air.sub_sat.u.v16i16(<16 x i16>, <16 x i16>) local_unnamed_addr #1"
+air.tan,18,declare <16 x double> @air.tan.v16f64(<16 x double>) local_unnamed_addr #1
+air.tanh,18,declare <16 x double> @air.tanh.v16f64(<16 x double>) local_unnamed_addr #1
+air.tanpi,18,declare <16 x double> @air.tanpi.v16f64(<16 x double>) local_unnamed_addr #1
+air.tgamma,18,declare <16 x double> @air.tgamma.v16f64(<16 x double>) local_unnamed_addr #1
+air.trunc,18,declare <16 x double> @air.trunc.v16f64(<16 x double>) local_unnamed_addr #1
+air.vload.constant,35,"declare <16 x double> @air.vload.constant.v16f64(i64, ptr addrspace(2) nocapture readonly) local_unnamed_addr #1"
+air.vload.global,35,"declare <16 x double> @air.vload.global.v16f64(i64, ptr addrspace(1) nocapture readonly) local_unnamed_addr #1"
+air.vload.local,35,"declare <16 x double> @air.vload.local.v16f64(i64, ptr addrspace(3) nocapture readonly) local_unnamed_addr #1"
+air.vload.private,35,"declare <16 x double> @air.vload.private.v16f64(i64, ptr nocapture readonly) local_unnamed_addr #1"
+air.vload_half.constant,6,"declare <16 x float> @air.vload_half.constant.v16f32(i64, ptr addrspace(2) nocapture readonly) local_unnamed_addr #1"
+air.vload_half.global,6,"declare <16 x float> @air.vload_half.global.v16f32(i64, ptr addrspace(1) nocapture readonly) local_unnamed_addr #1"
+air.vload_half.local,6,"declare <16 x float> @air.vload_half.local.v16f32(i64, ptr addrspace(3) nocapture readonly) local_unnamed_addr #1"
+air.vload_half.private,6,"declare <16 x float> @air.vload_half.private.v16f32(i64, ptr nocapture readonly) local_unnamed_addr #1"
+air.vloada_half.constant,6,"declare <16 x float> @air.vloada_half.constant.v16f32(i64, ptr addrspace(2) nocapture readonly) local_unnamed_addr #1"
+air.vloada_half.global,6,"declare <16 x float> @air.vloada_half.global.v16f32(i64, ptr addrspace(1) nocapture readonly) local_unnamed_addr #1"
+air.vloada_half.local,6,"declare <16 x float> @air.vloada_half.local.v16f32(i64, ptr addrspace(3) nocapture readonly) local_unnamed_addr #1"
+air.vloada_half.private,6,"declare <16 x float> @air.vloada_half.private.v16f32(i64, ptr nocapture readonly) local_unnamed_addr #1"
+air.vprintf,1,"declare i32 @air.vprintf(ptr addrspace(2), ptr) local_unnamed_addr #1"
+air.vstore.global,35,"declare void @air.vstore.global.v16f16(<16 x half>, i64, ptr addrspace(1) nocapture writeonly) local_unnamed_addr #24"
+air.vstore.local,35,"declare void @air.vstore.local.v16f16(<16 x half>, i64, ptr addrspace(3) nocapture writeonly) local_unnamed_addr #24"
+air.vstore.private,35,"declare void @air.vstore.private.v16f16(<16 x half>, i64, ptr nocapture writeonly) local_unnamed_addr #24"
+air.vstore_half.global,48,"declare void @air.vstore_half.global.rte.f32(float, i64, ptr addrspace(1) nocapture writeonly) local_unnamed_addr #24"
+air.vstore_half.local,48,"declare void @air.vstore_half.local.rte.f32(float, i64, ptr addrspace(3) nocapture writeonly) local_unnamed_addr #24"
+air.vstore_half.private,48,"declare void @air.vstore_half.private.rte.f32(float, i64, ptr nocapture writeonly) local_unnamed_addr #24"
+air.vstorea_half.global,48,"declare void @air.vstorea_half.global.rte.f32(float, i64, ptr addrspace(1) nocapture writeonly) local_unnamed_addr #24"
+air.vstorea_half.local,48,"declare void @air.vstorea_half.local.rte.f32(float, i64, ptr addrspace(3) nocapture writeonly) local_unnamed_addr #24"
+air.vstorea_half.private,48,"declare void @air.vstorea_half.private.rte.f32(float, i64, ptr nocapture writeonly) local_unnamed_addr #24"
+air.wait_wg_events,1,"declare void @air.wait_wg_events(i32, ptr) local_unnamed_addr #1"
+air.wg.barrier,2,"declare void @air.wg.barrier(i32, i32) local_unnamed_addr #1"
+air.write_depth_2d,1,"declare void @air.write_depth_2d.f32(ptr addrspace(1) nocapture, <2 x i32>, float, i32, i32) local_unnamed_addr #8"
+air.write_depth_2d_array,1,"declare void @air.write_depth_2d_array.f32(ptr addrspace(1) nocapture, <2 x i32>, i32, float, i32, i32) local_unnamed_addr #8"
+air.write_texture_1d,2,"declare void @air.write_texture_1d.v4f16(ptr addrspace(1) nocapture, i32, <4 x half>, i32, i32) local_unnamed_addr #8"
+air.write_texture_1d.s,1,"declare void @air.write_texture_1d.s.v4i32(ptr addrspace(1) nocapture, i32, <4 x i32>, i32, i32) local_unnamed_addr #8"
+air.write_texture_1d.u,1,"declare void @air.write_texture_1d.u.v4i32(ptr addrspace(1) nocapture, i32, <4 x i32>, i32, i32) local_unnamed_addr #8"
+air.write_texture_1d_array,2,"declare void @air.write_texture_1d_array.v4f16(ptr addrspace(1) nocapture, i32, i32, <4 x half>, i32, i32) local_unnamed_addr #8"
+air.write_texture_1d_array.s,1,"declare void @air.write_texture_1d_array.s.v4i32(ptr addrspace(1) nocapture, i32, i32, <4 x i32>, i32, i32) local_unnamed_addr #8"
+air.write_texture_1d_array.u,1,"declare void @air.write_texture_1d_array.u.v4i32(ptr addrspace(1) nocapture, i32, i32, <4 x i32>, i32, i32) local_unnamed_addr #8"
+air.write_texture_2d,2,"declare void @air.write_texture_2d.v4f16(ptr addrspace(1) nocapture, <2 x i32>, <4 x half>, i32, i32) local_unnamed_addr #8"
+air.write_texture_2d.s,1,"declare void @air.write_texture_2d.s.v4i32(ptr addrspace(1) nocapture, <2 x i32>, <4 x i32>, i32, i32) local_unnamed_addr #8"
+air.write_texture_2d.u,1,"declare void @air.write_texture_2d.u.v4i32(ptr addrspace(1) nocapture, <2 x i32>, <4 x i32>, i32, i32) local_unnamed_addr #8"
+air.write_texture_2d_array,2,"declare void @air.write_texture_2d_array.v4f16(ptr addrspace(1) nocapture, <2 x i32>, i32, <4 x half>, i32, i32) local_unnamed_addr #8"
+air.write_texture_2d_array.s,1,"declare void @air.write_texture_2d_array.s.v4i32(ptr addrspace(1) nocapture, <2 x i32>, i32, <4 x i32>, i32, i32) local_unnamed_addr #8"
+air.write_texture_2d_array.u,1,"declare void @air.write_texture_2d_array.u.v4i32(ptr addrspace(1) nocapture, <2 x i32>, i32, <4 x i32>, i32, i32) local_unnamed_addr #8"
+air.write_texture_3d,2,"declare void @air.write_texture_3d.v4f16(ptr addrspace(1) nocapture, <3 x i32>, <4 x half>, i32, i32) local_unnamed_addr #8"
+air.write_texture_3d.s,1,"declare void @air.write_texture_3d.s.v4i32(ptr addrspace(1) nocapture, <3 x i32>, <4 x i32>, i32, i32) local_unnamed_addr #8"
+air.write_texture_3d.u,1,"declare void @air.write_texture_3d.u.v4i32(ptr addrspace(1) nocapture, <3 x i32>, <4 x i32>, i32, i32) local_unnamed_addr #8"
+air.write_texture_buffer_1d,2,"declare void @air.write_texture_buffer_1d.v4f16(ptr addrspace(1) nocapture, i32, <4 x half>, i32) local_unnamed_addr #8"
+air.write_texture_buffer_1d.s,1,"declare void @air.write_texture_buffer_1d.s.v4i32(ptr addrspace(1) nocapture, i32, <4 x i32>, i32) local_unnamed_addr #8"
+air.write_texture_buffer_1d.u,1,"declare void @air.write_texture_buffer_1d.u.v4i32(ptr addrspace(1) nocapture, i32, <4 x i32>, i32) local_unnamed_addr #8"

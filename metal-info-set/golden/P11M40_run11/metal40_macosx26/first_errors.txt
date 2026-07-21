@@ -1,0 +1,73 @@
+probe.metal:64:94: error: ambiguous deduction for template arguments of 'intersection_function_handle'
+extern "C" int probe_p11m_fhandle_17(void) { metal::raytracing::intersection_function_handle __h; (void)__h; return 0; }
+                                                                                             ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.jHw0bo/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:1372:14: note: candidate function [with Tags = <>]
+  METAL_FUNC intersection_function_handle() thread : function_handle(__metal_get_null_function_handle()) {}
+             ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.jHw0bo/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:1376:14: note: candidate function [with Tags = <>]
+  METAL_FUNC intersection_function_handle() ray_data : function_handle(__metal_get_null_function_handle()) {}
+             ^
+probe.metal:73:94: error: ambiguous deduction for template arguments of 'intersection_function_handle'
+extern "C" bool probe_p11m_fequal_20(void) { metal::raytracing::intersection_function_handle __a, __b; return __a == __b; }
+                                                                                             ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.jHw0bo/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:1372:14: note: candidate function [with Tags = <>]
+  METAL_FUNC intersection_function_handle() thread : function_handle(__metal_get_null_function_handle()) {}
+             ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.jHw0bo/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:1376:14: note: candidate function [with Tags = <>]
+  METAL_FUNC intersection_function_handle() ray_data : function_handle(__metal_get_null_function_handle()) {}
+             ^
+probe.metal:73:99: error: ambiguous deduction for template arguments of 'intersection_function_handle'
+extern "C" bool probe_p11m_fequal_20(void) { metal::raytracing::intersection_function_handle __a, __b; return __a == __b; }
+                                                                                                  ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.jHw0bo/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:1372:14: note: candidate function [with Tags = <>]
+  METAL_FUNC intersection_function_handle() thread : function_handle(__metal_get_null_function_handle()) {}
+             ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.jHw0bo/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:1376:14: note: candidate function [with Tags = <>]
+  METAL_FUNC intersection_function_handle() ray_data : function_handle(__metal_get_null_function_handle()) {}
+             ^
+probe.metal:88:105: error: no member named 'get_size' in 'metal::visible_function_table<void (unsigned int)>'
+extern "C" uint probe_p11m_vftsize_25(void) { metal::visible_function_table<void(uint)> __v; return __v.get_size(); }
+                                                                                                    ~~~ ^
+probe.metal:94:110: error: no matching member function for call to 'draw_patches'
+extern "C" void probe_p11m_draw2_27(metal::command_buffer __cb) { metal::render_command __rc(__cb, 0u); __rc.draw_patches(0u, 0u, 0u, (const device uint *)nullptr, 0u, 0u, (const device half *)nullptr); return; }
+                                                                                                        ~~~~~^~~~~~~~~~~~
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.jHw0bo/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_command_buffer:963:19: note: candidate template ignored: requirement 'disjunction_v<metal::is_same<half, metal::MTLQuadTessellationFactorsHalf>, metal::is_same<half, metal::MTLTriangleTessellationFactorsHalf>>' was not satisfied [with T = half]
+  METAL_FUNC void draw_patches(uint num_patch_control_points, uint patch_start, uint patch_count, const device uint *patch_index_buffer, uint instance_count, uint base_instance, const device T *tessellation_factor_buffer, uint instance_stride = 0, float scale = 1.0f) thread
+                  ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.jHw0bo/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_command_buffer:976:19: note: candidate template ignored: requirement 'disjunction_v<metal::is_same<half, metal::MTLQuadTessellationFactorsHalf>, metal::is_same<half, metal::MTLTriangleTessellationFactorsHalf>>' was not satisfied [with T = half]
+  METAL_FUNC void draw_patches(uint num_patch_control_points, uint patch_start, uint patch_count, const device uint *patch_index_buffer, uint instance_count, uint base_instance, const constant T *tessellation_factor_buffer, uint instance_stride = 0, float scale = 1.0f) thread
+                  ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.jHw0bo/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_command_buffer:989:19: note: candidate template ignored: requirement 'disjunction_v<metal::is_same<half, metal::MTLQuadTessellationFactorsHalf>, metal::is_same<half, metal::MTLTriangleTessellationFactorsHalf>>' was not satisfied [with T = half]
+  METAL_FUNC void draw_patches(uint num_patch_control_points, uint patch_start, uint patch_count, const constant uint *patch_index_buffer, uint instance_count, uint base_instance, const device T *tessellation_factor_buffer, uint instance_stride = 0, float scale = 1.0f) thread
+                  ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.jHw0bo/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_command_buffer:1002:19: note: candidate template ignored: requirement 'disjunction_v<metal::is_same<half, metal::MTLQuadTessellationFactorsHalf>, metal::is_same<half, metal::MTLTriangleTessellationFactorsHalf>>' was not satisfied [with T = half]
+  METAL_FUNC void draw_patches(uint num_patch_control_points, uint patch_start, uint patch_count, const constant uint *patch_index_buffer, uint instance_count, uint base_instance, const constant T *tessellation_factor_buffer, uint instance_stride = 0, float scale = 1.0f) thread
+                  ^
+probe.metal:97:110: error: no matching member function for call to 'draw_indexed_patches'
+extern "C" void probe_p11m_draw3_28(metal::command_buffer __cb) { metal::render_command __rc(__cb, 0u); __rc.draw_indexed_patches(0u, 0u, 0u, (const device uint *)nullptr, (const device void *)nullptr, 0u, 0u, (const device half *)nullptr); return; }
+                                                                                                        ~~~~~^~~~~~~~~~~~~~~~~~~~
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.jHw0bo/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_command_buffer:1016:19: note: candidate template ignored: requirement 'disjunction_v<metal::is_same<half, metal::MTLQuadTessellationFactorsHalf>, metal::is_same<half, metal::MTLTriangleTessellationFactorsHalf>>' was not satisfied [with T = half]
+  METAL_FUNC void draw_indexed_patches(uint num_patch_control_points, uint patch_start, uint patch_count, const device uint *patch_index_buffer, const device void *control_point_index_buffer, uint instance_count, uint base_instance, const device T *tessellation_factor_buffer, uint instance_stride = 0, float scale = 1.0f) thread
+                  ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.jHw0bo/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_command_buffer:1029:19: note: candidate template ignored: requirement 'disjunction_v<metal::is_same<half, metal::MTLQuadTessellationFactorsHalf>, metal::is_same<half, metal::MTLTriangleTessellationFactorsHalf>>' was not satisfied [with T = half]
+  METAL_FUNC void draw_indexed_patches(uint num_patch_control_points, uint patch_start, uint patch_count, const device uint *patch_index_buffer, const device void *control_point_index_buffer, uint instance_count, uint base_instance, const constant T *tessellation_factor_buffer, uint instance_stride = 0, float scale = 1.0f) thread
+                  ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.jHw0bo/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_command_buffer:1042:19: note: candidate template ignored: requirement 'disjunction_v<metal::is_same<half, metal::MTLQuadTessellationFactorsHalf>, metal::is_same<half, metal::MTLTriangleTessellationFactorsHalf>>' was not satisfied [with T = half]
+  METAL_FUNC void draw_indexed_patches(uint num_patch_control_points, uint patch_start, uint patch_count, const device uint *patch_index_buffer, const constant void *control_point_index_buffer, uint instance_count, uint base_instance, const device T *tessellation_factor_buffer, uint instance_stride = 0, float scale = 1.0f) thread
+                  ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.jHw0bo/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_command_buffer:1055:19: note: candidate template ignored: requirement 'disjunction_v<metal::is_same<half, metal::MTLQuadTessellationFactorsHalf>, metal::is_same<half, metal::MTLTriangleTessellationFactorsHalf>>' was not satisfied [with T = half]
+  METAL_FUNC void draw_indexed_patches(uint num_patch_control_points, uint patch_start, uint patch_count, const device uint *patch_index_buffer, const constant void *control_point_index_buffer, uint instance_count, uint base_instance, const constant T *tessellation_factor_buffer, uint instance_stride = 0, float scale = 1.0f) thread
+                  ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.jHw0bo/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_command_buffer:1068:19: note: candidate template ignored: requirement 'disjunction_v<metal::is_same<half, metal::MTLQuadTessellationFactorsHalf>, metal::is_same<half, metal::MTLTriangleTessellationFactorsHalf>>' was not satisfied [with T = half]
+  METAL_FUNC void draw_indexed_patches(uint num_patch_control_points, uint patch_start, uint patch_count, const constant uint *patch_index_buffer, const device void *control_point_index_buffer, uint instance_count, uint base_instance, const device T *tessellation_factor_buffer, uint instance_stride = 0, float scale = 1.0f) thread
+                  ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.jHw0bo/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_command_buffer:1081:19: note: candidate template ignored: requirement 'disjunction_v<metal::is_same<half, metal::MTLQuadTessellationFactorsHalf>, metal::is_same<half, metal::MTLTriangleTessellationFactorsHalf>>' was not satisfied [with T = half]
+  METAL_FUNC void draw_indexed_patches(uint num_patch_control_points, uint patch_start, uint patch_count, const constant uint *patch_index_buffer, const device void *control_point_index_buffer, uint instance_count, uint base_instance, const constant T *tessellation_factor_buffer, uint instance_stride = 0, float scale = 1.0f) thread
+                  ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.jHw0bo/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_command_buffer:1094:19: note: candidate template ignored: requirement 'disjunction_v<metal::is_same<half, metal::MTLQuadTessellationFactorsHalf>, metal::is_same<half, metal::MTLTriangleTessellationFactorsHalf>>' was not satisfied [with T = half]
+  METAL_FUNC void draw_indexed_patches(uint num_patch_control_points, uint patch_start, uint patch_count, const constant uint *patch_index_buffer, const constant void *control_point_index_buffer, uint instance_count, uint base_instance, const device T *tessellation_factor_buffer, uint instance_stride = 0, float scale = 1.0f) thread
+                  ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.jHw0bo/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_command_buffer:1107:19: note: candidate template ignored: requirement 'disjunction_v<metal::is_same<half, metal::MTLQuadTessellationFactorsHalf>, metal::is_same<half, metal::MTLTriangleTessellationFactorsHalf>>' was not satisfied [with T = half]
+  METAL_FUNC void draw_indexed_patches(uint num_patch_control_points, uint patch_start, uint patch_count, const constant uint *patch_index_buffer, const constant void *control_point_index_buffer, uint instance_count, uint base_instance, const constant T *tessellation_factor_buffer, uint instance_stride = 0, float scale = 1.0f) thread
+                  ^
+6 errors generated.

@@ -1,0 +1,19 @@
+probe.metal:511:33: warning: 'probe_p06m_sparse_gather_compare_73' has C-linkage specified, but returns incomplete type 'sparse_color<float4>' which could be incompatible with C [-Wreturn-type-c-linkage]
+extern "C" sparse_color<float4> probe_p06m_sparse_gather_compare_73(depthcube_array<float> d, sampler s) { return d.sparse_gather_compare(s, float3(1.0f), 0u, 1.0f); }
+                                ^
+probe.metal:521:33: warning: 'probe_p06m_sparse_gather_75' has C-linkage specified, but returns user-defined type 'sparse_color<float4>' which is incompatible with C [-Wreturn-type-c-linkage]
+extern "C" sparse_color<float4> probe_p06m_sparse_gather_75(depthcube_array<float> d, sampler s) { return d.sparse_gather(s, float3(1.0f), 0u); }
+                                ^
+probe.metal:672:33: warning: 'probe_p06m_sparse_read_104' has C-linkage specified, but returns user-defined type 'sparse_color<float4>' which is incompatible with C [-Wreturn-type-c-linkage]
+extern "C" sparse_color<float4> probe_p06m_sparse_read_104(texturecube_array<float> t) { return t.sparse_read(uint2(0u), 0u, 0u, 0u); }
+                                ^
+probe.metal:679:33: warning: 'probe_p06m_sparse_read_105' has C-linkage specified, but returns user-defined type 'sparse_color<float4>' which is incompatible with C [-Wreturn-type-c-linkage]
+extern "C" sparse_color<float4> probe_p06m_sparse_read_105(texturecube<float> t) { return t.sparse_read(uint2(0u), 0u, 0u); }
+                                ^
+probe.metal:750:33: warning: 'probe_p06m_sparse_sample_118' has C-linkage specified, but returns user-defined type 'sparse_color<float4>' which is incompatible with C [-Wreturn-type-c-linkage]
+extern "C" sparse_color<float4> probe_p06m_sparse_sample_118(texturecube_array<float> t, sampler s) { return t.sparse_sample(s, float3(1.0f), 0u, bias(1.0f), min_lod_clamp(1.0f)); }
+                                ^
+probe.metal:757:33: warning: 'probe_p06m_sparse_sample_119' has C-linkage specified, but returns user-defined type 'sparse_color<float4>' which is incompatible with C [-Wreturn-type-c-linkage]
+extern "C" sparse_color<float4> probe_p06m_sparse_sample_119(texturecube_array<float> t, sampler s) { return t.sparse_sample(s, float3(1.0f), 0u, gradientcube(float3(0.5f), float3(0.5f)), min_lod_clamp(1.0f)); }
+                                ^
+6 warnings generated.

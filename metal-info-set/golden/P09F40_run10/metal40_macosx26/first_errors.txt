@@ -1,0 +1,61 @@
+probe.metal:11:57: error: no matching function for call to 'unpack'
+extern "C" float probe_p09f_unpack_1(ushort a) { return _pixel_type_traits<_r16snorm_tag>::unpack(a); }
+                                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.jHw0bo/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_pixel:1143:45: note: candidate template ignored: couldn't infer template argument 'T'
+  template <typename T> METAL_FUNC static T unpack(ushort data)
+                                            ^
+probe.metal:17:57: error: no matching function for call to 'unpack'
+extern "C" float probe_p09f_unpack_3(ushort a) { return _pixel_type_traits<_r16unorm_tag>::unpack(a); }
+                                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.jHw0bo/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_pixel:1119:45: note: candidate template ignored: couldn't infer template argument 'T'
+  template <typename T> METAL_FUNC static T unpack(ushort data)
+                                            ^
+probe.metal:23:55: error: no matching function for call to 'unpack'
+extern "C" half probe_p09f_unpack_5(uchar a) { return _pixel_type_traits<_r8snorm_tag>::unpack(a); }
+                                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.jHw0bo/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_pixel:1093:45: note: candidate template ignored: couldn't infer template argument 'T'
+  template <typename T> METAL_FUNC static T unpack(uchar data)
+                                            ^
+probe.metal:29:55: error: no matching function for call to 'unpack'
+extern "C" half probe_p09f_unpack_7(uchar a) { return _pixel_type_traits<_r8unorm_tag>::unpack(a); }
+                                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.jHw0bo/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_pixel:1067:45: note: candidate template ignored: couldn't infer template argument 'T'
+  template <typename T> METAL_FUNC static T unpack(uchar data)
+                                            ^
+probe.metal:35:55: error: no matching function for call to 'unpack'
+extern "C" half3 probe_p09f_unpack_9(uint a) { return _pixel_type_traits<_rg11b10f_tag>::unpack(a); }
+                                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.jHw0bo/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_pixel:1419:45: note: candidate template ignored: couldn't infer template argument 'T'
+  template <typename T> METAL_FUNC static T unpack(uint data)
+                                            ^
+probe.metal:41:58: error: no matching function for call to 'unpack'
+extern "C" half2 probe_p09f_unpack_11(ushort a) { return _pixel_type_traits<_rg8snorm_tag>::unpack(a); }
+                                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.jHw0bo/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_pixel:1193:45: note: candidate template ignored: couldn't infer template argument 'T'
+  template <typename T> METAL_FUNC static T unpack(ushort data)
+                                            ^
+probe.metal:47:58: error: no matching function for call to 'unpack'
+extern "C" half2 probe_p09f_unpack_13(ushort a) { return _pixel_type_traits<_rg8unorm_tag>::unpack(a); }
+                                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.jHw0bo/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_pixel:1167:45: note: candidate template ignored: couldn't infer template argument 'T'
+  template <typename T> METAL_FUNC static T unpack(ushort data)
+                                            ^
+probe.metal:53:56: error: no matching function for call to 'unpack'
+extern "C" half3 probe_p09f_unpack_15(uint a) { return _pixel_type_traits<_rgb9e5_tag>::unpack(a); }
+                                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.jHw0bo/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_pixel:1445:45: note: candidate template ignored: couldn't infer template argument 'T'
+  template <typename T> METAL_FUNC static T unpack(uint data)
+                                            ^
+probe.metal:59:59: error: no matching function for call to 'unpack'
+extern "C" float4 probe_p09f_unpack_17(size_t a) { return _pixel_type_traits<_rgba16snorm_tag>::unpack(a); }
+                                                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.jHw0bo/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_pixel:1369:45: note: candidate template ignored: couldn't infer template argument 'T'
+  template <typename T> METAL_FUNC static T unpack(size_t data)
+                                            ^
+probe.metal:65:59: error: no matching function for call to 'unpack'
+extern "C" float4 probe_p09f_unpack_19(size_t a) { return _pixel_type_traits<_rgba16unorm_tag>::unpack(a); }
+                                                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.jHw0bo/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_pixel:1345:45: note: candidate template ignored: couldn't infer template argument 'T'
+  template <typename T> METAL_FUNC static T unpack(size_t data)
+                                            ^
+10 errors generated.

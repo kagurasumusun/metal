@@ -1,0 +1,357 @@
+{
+ "__HAVE_ARRAY__": [
+  "defined"
+ ],
+ "__HAVE_COHERENT__": [
+  "defined"
+ ],
+ "__HAVE_IMAGEBLOCKS__": [
+  "defined"
+ ],
+ "__HAVE_RAYTRACING__": [
+  "defined"
+ ],
+ "__HAVE_MESH__": [
+  "defined"
+ ],
+ "__HAVE_ASSERT__": [
+  "defined"
+ ],
+ "__HAVE_ATOMIC_TEMPLATE__": [
+  "defined"
+ ],
+ "__HAVE_ATOMIC_ULONG__": [
+  "defined"
+ ],
+ "__HAVE_ATOMIC_FLOAT__": [
+  "defined"
+ ],
+ "__HAVE_ATOMIC_BOOL__": [
+  "defined"
+ ],
+ "__HAVE_ATOMIC_FENCE__": [
+  "defined"
+ ],
+ "__HAVE_ATOMIC_ULONG_MIN_MAX__": [
+  "defined"
+ ],
+ "__HAVE_RENDER_COMMAND_RENDERING__": [
+  "defined"
+ ],
+ "__HAVE_GET_SIZE_COMMAND_BUFFER__": [
+  "defined"
+ ],
+ "__HAVE_COMPUTE_COMMANDS__": [
+  "defined"
+ ],
+ "__HAVE_COMPUTE_COMMAND_KERNEL_BUFFER_STRIDE__": [
+  "defined"
+ ],
+ "__HAVE_COMPUTE_COMMANDS_SET_IMAGEBLOCK_SIZE__": [
+  "defined"
+ ],
+ "__HAVE_RENDER_COMMANDS__": [
+  "defined"
+ ],
+ "__HAVE_RENDER_PIPELINE_STATE__": [
+  "defined"
+ ],
+ "__HAVE_RENDER_COMMAND_DEPTH_CLIP_MODE__": [
+  "defined"
+ ],
+ "__HAVE_RENDER_COMMAND_DEPTH_STENCIL_STATE__": [
+  "defined"
+ ],
+ "__HAVE_RENDER_COMMAND_DEPTH_BIAS__": [
+  "defined"
+ ],
+ "__HAVE_RENDER_COMMAND_VERTEX_BUFFER_STRIDE__": [
+  "defined"
+ ],
+ "__HAVE_RENDER_COMMAND_MESH__": [
+  "defined"
+ ],
+ "__HAVE_RENDER_DRAW_PATCHES_TESSELLATION_FACTOR_SCALE__": [
+  "defined"
+ ],
+ "__HAVE_NATIVE_WIDE_VECTORS__": [
+  "defined"
+ ],
+ "__HAVE_NATIVE_DOUBLE__": [
+  "defined"
+ ],
+ "__HAVE_TEXTURE_READWRITE__": [
+  "defined"
+ ],
+ "__HAVE_MEMFLAG_OPERATORS__": [
+  "defined"
+ ],
+ "__HAVE_BARRIER_MEMORY_SCOPE__": [
+  "defined"
+ ],
+ "__HAVE_SIMDGROUP_BARRIER__": [
+  "defined"
+ ],
+ "__HAVE_DRAW_INDIRECT__": [
+  "defined"
+ ],
+ "__HAVE_COMPUTE_IMPROVED_INDIRECT__": [
+  "defined"
+ ],
+ "__HAVE_TENSOR__": [
+  "defined"
+ ],
+ "__HAVE_RAYTRACING_CURVES__": [
+  "defined"
+ ],
+ "__HAVE_BFLOAT__": [
+  "defined"
+ ],
+ "__HAVE_SIMD_TYPES_PREFIX__": [
+  "defined"
+ ],
+ "__HAVE_RASTERIZATION_RATE__": [
+  "defined"
+ ],
+ "__HAVE_TEXTURE_CUBE_ARRAY__": [
+  "defined"
+ ],
+ "__HAVE_INTEGER_BIT_EDIT_FUNCTIONS__": [
+  "defined"
+ ],
+ "__HAVE_MAX3__": [
+  "defined"
+ ],
+ "__HAVE_MEDIAN3__": [
+  "defined"
+ ],
+ "__HAVE_MIN3__": [
+  "defined"
+ ],
+ "__HAVE_INTEGER_LONG_FUNCTIONS__": [
+  "defined"
+ ],
+ "__HAVE_MAD24__": [
+  "defined"
+ ],
+ "__HAVE_MUL24__": [
+  "defined"
+ ],
+ "__HAVE_INTERPOLATION_FUNCTIONS__": [
+  "defined"
+ ],
+ "__HAVE_LOGGING__": [
+  "defined"
+ ],
+ "__HAVE_TRIG_PI__": [
+  "defined"
+ ],
+ "__HAVE_DIVIDE__": [
+  "defined"
+ ],
+ "__HAVE_FMA__": [
+  "defined"
+ ],
+ "__HAVE_FMAX3__": [
+  "defined"
+ ],
+ "__HAVE_FMEDIAN3__": [
+  "defined"
+ ],
+ "__HAVE_FMIN3__": [
+  "defined"
+ ],
+ "__HAVE_NEXTAFTER__": [
+  "defined"
+ ],
+ "__HAVE_MATRIX_MULTIPLE_SCALAR_CONSTRUCTORS__": [
+  "defined"
+ ],
+ "__HAVE_MATRIX_THREADGROUP_DEFAULT_CONSTRUCTOR__": [
+  "defined"
+ ],
+ "__HAVE_MATRIX_SCALAR_DIVISION__": [
+  "defined"
+ ],
+ "__HAVE_MAKE_FILLED_MATRIX__": [
+  "defined"
+ ],
+ "__HAVE_PACK_UNPACK_RGB10A2_SNORM_FUNCTIONS__": [
+  "defined"
+ ],
+ "__HAVE_PACKED_NUMERIC__": [
+  "defined"
+ ],
+ "__HAVE_INT4B_FORMAT_TYPE__": [
+  "defined"
+ ],
+ "__HAVE_PACKED_NUMERIC_TYPE__": [
+  "defined"
+ ],
+ "__HAVE_PIXEL_DATA_TYPES__": [
+  "defined"
+ ],
+ "__HAVE_QUADGROUP__": [
+  "defined"
+ ],
+ "__HAVE_QUADGROUP_BALLOT__": [
+  "defined"
+ ],
+ "__HAVE_QUADGROUP_REDUCTION__": [
+  "defined"
+ ],
+ "__HAVE_QUADGROUP_BROADCAST_FIRST__": [
+  "defined"
+ ],
+ "__HAVE_QUADGROUP_IS_FIRST__": [
+  "defined"
+ ],
+ "__HAVE_QUADGROUP_SHUFFLE_AND_FILL__": [
+  "defined"
+ ],
+ "__HAVE_QUADGROUP_SHUFFLE_ROTATE_DOWN__": [
+  "defined"
+ ],
+ "__HAVE_QUADGROUP_SHUFFLE_ROTATE_UP__": [
+  "defined"
+ ],
+ "__HAVE_RAYTRACING_INTERSECTION_QUERY__": [
+  "defined"
+ ],
+ "__HAVE_RAYTRACING_INTERSECTION_FUNCTION_BUFFER__": [
+  "defined"
+ ],
+ "__HAVE_RAYTRACING_MULTI_LEVEL_INSTANCING__": [
+  "defined"
+ ],
+ "__HAVE_RAYTRACING_MOTION__": [
+  "defined"
+ ],
+ "__HAVE_RAYTRACING_EXTENDED_LIMITS__": [
+  "defined"
+ ],
+ "__HAVE_RAYTRACING_INDIRECT_INSTANCE_BUILD__": [
+  "defined",
+  "numeric"
+ ],
+ "__HAVE_RAYTRACING_PRIMITIVE_DATA__": [
+  "defined"
+ ],
+ "__HAVE_RAYTRACING_USER_INSTANCE_ID__": [
+  "defined"
+ ],
+ "__HAVE_RAYTRACING_INSTANCE_TRANSFORMS__": [
+  "defined"
+ ],
+ "__HAVE_RAYTRACING_INTERSECTION_FUNCTION_HANDLES__": [
+  "defined"
+ ],
+ "__HAVE_RAYTRACING_TABLE_GET_BUFFERS__": [
+  "defined"
+ ],
+ "__HAVE_RAYTRACING_TABLE_SET_BUFFERS__": [
+  "defined"
+ ],
+ "__HAVE_RAYTRACING_DIRECT_ACCESS__": [
+  "defined"
+ ],
+ "__HAVE_MTL_ACCELERATION_STRUCTURE_INSTANCE_OPTIONS__": [
+  "defined"
+ ],
+ "__HAVE_RAYTRACING_INSTANCE_RANDOM_ACCESS__": [
+  "numeric"
+ ],
+ "__HAVE_SELECT_FAST_PRECISE_FUNCTIONS__": [
+  "defined"
+ ],
+ "__HAVE_SIMDGROUP__": [
+  "defined"
+ ],
+ "__HAVE_SIMDGROUP_BALLOT__": [
+  "defined"
+ ],
+ "__HAVE_SIMDGROUP_REDUCTION__": [
+  "defined"
+ ],
+ "__HAVE_SIMDGROUP_BROADCAST_FIRST__": [
+  "defined"
+ ],
+ "__HAVE_SIMDGROUP_IS_FIRST__": [
+  "defined"
+ ],
+ "__HAVE_SIMDGROUP_SHUFFLE_AND_FILL__": [
+  "defined"
+ ],
+ "__HAVE_SIMDGROUP_SHUFFLE_ROTATE_DOWN__": [
+  "defined"
+ ],
+ "__HAVE_SIMDGROUP_SHUFFLE_ROTATE_UP__": [
+  "defined"
+ ],
+ "__HAVE_SIMDGROUP_MATRIX__": [
+  "defined"
+ ],
+ "__HAVE_TESSELLATION__": [
+  "defined"
+ ],
+ "__HAVE_OPERATOR_ADDRESSOF_DELETED__": [
+  "defined"
+ ],
+ "__HAVE_TYPE_TRAIT_ADD_CONST__": [
+  "defined"
+ ],
+ "__HAVE_TYPE_TRAIT_ADD_POINTER__": [
+  "defined"
+ ],
+ "__HAVE_TYPE_TRAIT_REMOVE_EXTENT__": [
+  "defined"
+ ],
+ "__HAVE_TYPE_TRAIT_IS_ARRAY__": [
+  "defined"
+ ],
+ "__HAVE_TYPE_TRAIT_IS_CONSTRUCTIBLE__": [
+  "defined"
+ ],
+ "__HAVE_TYPE_TRAIT_IS_VOLATILE__": [
+  "defined"
+ ],
+ "__HAVE_TYPE_TRAIT_COMMON_TYPE__": [
+  "defined"
+ ],
+ "__HAVE_TYPE_TRAIT_IS_ABSTRACT__": [
+  "defined"
+ ],
+ "__HAVE_NULLPTR_T__": [
+  "defined"
+ ],
+ "__HAVE_FUNCTION_CONSTANTS__": [
+  "defined"
+ ],
+ "__HAVE_THREAD_SCOPE__": [
+  "defined"
+ ],
+ "__HAVE_MEMORY_COHERENCE__": [
+  "defined"
+ ],
+ "__HAVE_NATIVE_LONG_LONG__": [
+  "defined"
+ ],
+ "__HAVE_MTL_RESOURCE_ID__": [
+  "numeric"
+ ],
+ "__HAVE_UNIFORM__": [
+  "defined"
+ ],
+ "__HAVE_UTILITY_INDEX_SEQUENCE__": [
+  "defined"
+ ],
+ "__HAVE_VERTEX_VALUE__": [
+  "defined"
+ ],
+ "__HAVE_VISIBLE_FUNCTION_TABLE__": [
+  "defined"
+ ],
+ "__HAVE_FUNCTION_HANDLES__": [
+  "defined"
+ ]
+}

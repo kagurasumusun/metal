@@ -1,0 +1,100 @@
+probe.metal:8:3: error: variables in the threadgroup address space cannot be declared in a non-qualified function
+  threadgroup atomic_int atm0;
+  ^
+probe.metal:15:3: error: variables in the threadgroup address space cannot be declared in a non-qualified function
+  threadgroup atomic_int atm0;
+  ^
+probe.metal:21:3: error: variables in the threadgroup address space cannot be declared in a non-qualified function
+  threadgroup atomic_int atm0;
+  ^
+probe.metal:27:3: error: variables in the threadgroup address space cannot be declared in a non-qualified function
+  threadgroup atomic_int atm0;
+  ^
+probe.metal:33:3: error: variables in the threadgroup address space cannot be declared in a non-qualified function
+  threadgroup atomic_int atm0;
+  ^
+probe.metal:39:3: error: variables in the threadgroup address space cannot be declared in a non-qualified function
+  threadgroup atomic_int atm0;
+  ^
+probe.metal:45:3: error: variables in the threadgroup address space cannot be declared in a non-qualified function
+  threadgroup atomic_int atm0;
+  ^
+probe.metal:51:3: error: variables in the threadgroup address space cannot be declared in a non-qualified function
+  threadgroup atomic_int atm0;
+  ^
+probe.metal:57:3: error: variables in the threadgroup address space cannot be declared in a non-qualified function
+  threadgroup atomic_int atm0;
+  ^
+probe.metal:63:3: error: variables in the threadgroup address space cannot be declared in a non-qualified function
+  threadgroup atomic_int atm0;
+  ^
+probe.metal:70:3: error: variables in the threadgroup address space cannot be declared in a non-qualified function
+  threadgroup atomic_int atm0;
+  ^
+probe.metal:78:3: error: variables in the threadgroup address space cannot be declared in a non-qualified function
+  threadgroup atomic_int atm0;
+  ^
+probe.metal:85:3: error: variables in the threadgroup address space cannot be declared in a non-qualified function
+  threadgroup atomic_int atm0;
+  ^
+probe.metal:91:10: error: no matching function for call to 'frexp'
+  return metal::frexp(1.0f, 0);
+         ^~~~~~~~~~~~
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_math:4725:18: note: candidate function not viable: expects an lvalue for 2nd argument
+METAL_FUNC float frexp(float x, thread int &exp)
+                 ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_math:3203:17: note: candidate function not viable: expects an lvalue for 2nd argument
+METAL_FUNC half frexp(half x, thread int &exp)
+                ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_math:3456:18: note: candidate function not viable: no known conversion from 'int' to 'metal::int2 &' (aka 'int2 &') for 2nd argument
+METAL_FUNC half2 frexp(half2 x, thread int2 &exp)
+                 ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_math:3709:18: note: candidate function not viable: no known conversion from 'int' to 'metal::int3 &' (aka 'int3 &') for 2nd argument
+METAL_FUNC half3 frexp(half3 x, thread int3 &exp)
+                 ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_math:3962:18: note: candidate function not viable: no known conversion from 'int' to 'metal::int4 &' (aka 'int4 &') for 2nd argument
+METAL_FUNC half4 frexp(half4 x, thread int4 &exp)
+                 ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_math:4978:19: note: candidate function not viable: no known conversion from 'int' to 'metal::int2 &' (aka 'int2 &') for 2nd argument
+METAL_FUNC float2 frexp(float2 x, thread int2 &exp)
+                  ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_math:5231:19: note: candidate function not viable: no known conversion from 'int' to 'metal::int3 &' (aka 'int3 &') for 2nd argument
+METAL_FUNC float3 frexp(float3 x, thread int3 &exp)
+                  ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_math:5484:19: note: candidate function not viable: no known conversion from 'int' to 'metal::int4 &' (aka 'int4 &') for 2nd argument
+METAL_FUNC float4 frexp(float4 x, thread int4 &exp)
+                  ^
+probe.metal:96:62: error: too few template arguments for class template 'visible_function_table'
+extern "C" bool probe_p07f_is_null_visible_function_table_14(visible_function_table<> vft) {
+                                                             ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_visible_function_table:14:8: note: template is declared here
+struct visible_function_table;
+       ^
+probe.metal:103:62: error: too few template arguments for class template 'visible_function_table'
+extern "C" bool probe_p07f_is_null_visible_function_table_15(visible_function_table<> vft) {
+                                                             ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_visible_function_table:14:8: note: template is declared here
+struct visible_function_table;
+       ^
+probe.metal:110:62: error: too few template arguments for class template 'visible_function_table'
+extern "C" bool probe_p07f_is_null_visible_function_table_16(visible_function_table<> vft) {
+                                                             ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_visible_function_table:14:8: note: template is declared here
+struct visible_function_table;
+       ^
+probe.metal:122:67: error: no template named 'intersection_function_table'; did you mean 'metal::raytracing::intersection_function_table'?
+extern "C" bool probe_p07f_is_null_intersection_function_table_18(intersection_function_table<> vft) {
+                                                                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                                                  metal::raytracing::intersection_function_table
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:1459:8: note: 'metal::raytracing::intersection_function_table' declared here
+struct intersection_function_table
+       ^
+probe.metal:123:10: error: no member named 'is_null_intersection_function_table' in namespace 'metal'; did you mean 'metal::raytracing::is_null_intersection_function_table'?
+  return metal::is_null_intersection_function_table(vft);
+         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         metal::raytracing::is_null_intersection_function_table
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:1877:17: note: 'metal::raytracing::is_null_intersection_function_table' declared here
+METAL_FUNC bool is_null_intersection_function_table(intersection_function_table<Tags...> t)
+                ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.

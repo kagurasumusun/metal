@@ -1,0 +1,12 @@
+builtin,status,class
+__metal_get_extent_tensor,generated,tensor
+__metal_get_stride_tensor,generated,tensor
+__metal_descriptor_size_tensor,generated (free descriptor_size 経路),tensor
+__metal_get_data_pointer_tensor,"generated (operator[] -> data ptr 経路, address キャストで IR 出し)",tensor
+__metal_load_tensor,generated,tensor
+__metal_store_tensor,generated,tensor
+__metal_slice_tensor,"generated (slice 経路, 実機検証)",tensor
+__metal_is_null_tensor,generated,tensor
+__metal_get_null_tensor,generated (default ctor 経路 = get_null_tensor),tensor
+__metal_get_tensor_handle,generated (handle() 公開経路),tensor
+__metal_init_strided_tensor,generated (strided 初期化経路 placeholder - 実機検証),tensor

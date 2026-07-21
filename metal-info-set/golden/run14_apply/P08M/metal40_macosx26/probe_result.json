@@ -1,0 +1,33 @@
+{
+ "scene": "P08M",
+ "std": "metal4.0",
+ "iters": 0,
+ "ok": true,
+ "enabled_symbols": [
+  "probe_p08m_ift_16",
+  "probe_p08m_iq_0",
+  "probe_p08m_iq_1",
+  "probe_p08m_irr_10",
+  "probe_p08m_irr_11",
+  "probe_p08m_irr_12",
+  "probe_p08m_irr_13",
+  "probe_p08m_irr_14",
+  "probe_p08m_irr_15",
+  "probe_p08m_irr_2",
+  "probe_p08m_irr_3",
+  "probe_p08m_irr_4",
+  "probe_p08m_irr_5",
+  "probe_p08m_irr_6",
+  "probe_p08m_irr_7",
+  "probe_p08m_irr_8",
+  "probe_p08m_irr_9",
+  "probe_p08m_type_17",
+  "probe_p08m_type_18",
+  "probe_p08m_type_19",
+  "probe_p08m_type_20",
+  "probe_p08m_type_21",
+  "probe_p08m_type_22",
+  "probe_p08m_type_23"
+ ],
+ "n_enabled": 24
+}

@@ -1,0 +1,41 @@
+probe.metal:26:16: error: no member named 'get_candidate_instance_count' in 'metal::raytracing::intersection_query<metal::raytracing::instancing, metal::raytracing::triangle_data>'; did you mean 'get_candidate_instance_id'?
+    return __q.get_candidate_instance_count();
+               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+               get_candidate_instance_id
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.4h1oUO/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:4113:19: note: 'get_candidate_instance_id' declared here
+  METAL_FUNC uint get_candidate_instance_id() const thread
+                  ^
+probe.metal:37:16: error: no member named 'get_committed_instance_count' in 'metal::raytracing::intersection_query<metal::raytracing::instancing, metal::raytracing::triangle_data>'; did you mean 'get_committed_instance_id'?
+    return __q.get_committed_instance_count();
+               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+               get_committed_instance_id
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.4h1oUO/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:4147:19: note: 'get_committed_instance_id' declared here
+  METAL_FUNC uint get_committed_instance_id() const thread
+                  ^
+probe.metal:192:107: error: no member named 'get_instance_count' in 'metal::raytracing::intersection_result_ref<metal::raytracing::instancing, metal::raytracing::triangle_data>'; did you mean 'get_instance_id'?
+    __i.intersect(__r, __as, [&](intersection_result_ref<instancing, triangle_data> __ref){ __out = __ref.get_instance_count(); });
+                                                                                                          ^~~~~~~~~~~~~~~~~~
+                                                                                                          get_instance_id
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.4h1oUO/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:2239:19: note: 'get_instance_id' declared here
+  METAL_FUNC uint get_instance_id() const thread
+                  ^
+probe.metal:255:67: warning: 'probe_p08m_type_21' has C-linkage specified, but returns user-defined type 'intersection_function_table<metal::raytracing::instancing, metal::raytracing::triangle_data>' which is incompatible with C [-Wreturn-type-c-linkage]
+extern "C" intersection_function_table<instancing, triangle_data> probe_p08m_type_21(intersection_function_table<instancing, triangle_data> p) { return p; }
+                                                                  ^
+probe.metal:258:59: warning: 'probe_p08m_type_22' has C-linkage specified, but returns incomplete type 'intersection_result<metal::raytracing::instancing, metal::raytracing::triangle_data>' which could be incompatible with C [-Wreturn-type-c-linkage]
+extern "C" intersection_result<instancing, triangle_data> probe_p08m_type_22(intersection_result<instancing, triangle_data> p) { return p; }
+                                                          ^
+probe.metal:264:46: warning: 'probe_p08m_type_24' has C-linkage specified, but returns incomplete type 'tensor<float, extents<int, 4, 8>>' which could be incompatible with C [-Wreturn-type-c-linkage]
+extern "C" tensor<float, extents<int, 4, 8>> probe_p08m_type_24(tensor<float, extents<int, 4, 8>> p) { return p; }
+                                             ^
+In module 'metal_tensor' imported from probe.metal:5:
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.4h1oUO/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_tensor:1430:3: error: static_assert failed due to requirement '__tensor_detail::__is_tensor_addrspace_v<metal::tensor_handle, float>' "tensor: ElementType must be device or constant qualified"
+  static_assert(__tensor_detail::__is_tensor_addrspace_v<tensor_handle, ElementType>,
+  ^             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+probe.metal:264:46: note: in instantiation of template class 'metal::tensor<float, metal::extents<int, 4, 8>>' requested here
+extern "C" tensor<float, extents<int, 4, 8>> probe_p08m_type_24(tensor<float, extents<int, 4, 8>> p) { return p; }
+                                             ^
+probe.metal:267:47: warning: 'probe_p08m_type_25' has C-linkage specified, but returns user-defined type 'visible_function_table<void (uint)>' (aka 'visible_function_table<void (unsigned int)>') which is incompatible with C [-Wreturn-type-c-linkage]
+extern "C" visible_function_table<void(uint)> probe_p08m_type_25(visible_function_table<void(uint)> p) { return p; }
+                                              ^
+4 warnings and 4 errors generated.

@@ -1,0 +1,26 @@
+{
+ "scene": "P06M",
+ "std": "metal4.0",
+ "iters": 2,
+ "ok": true,
+ "enabled_symbols": [
+  "probe_p06m_get_width_18",
+  "probe_p06m_read_19",
+  "probe_p06m_read_21",
+  "probe_p06m_sample_32",
+  "probe_p06m_sample_compare_24",
+  "probe_p06m_sample_compare_26",
+  "probe_p06m_sample_compare_30",
+  "probe_p06m_sparse_read_20",
+  "probe_p06m_sparse_read_22",
+  "probe_p06m_sparse_read_23",
+  "probe_p06m_sparse_sample_33",
+  "probe_p06m_sparse_sample_34",
+  "probe_p06m_sparse_sample_compare_25",
+  "probe_p06m_sparse_sample_compare_27",
+  "probe_p06m_sparse_sample_compare_28",
+  "probe_p06m_sparse_sample_compare_29",
+  "probe_p06m_sparse_sample_compare_31"
+ ],
+ "n_enabled": 17
+}

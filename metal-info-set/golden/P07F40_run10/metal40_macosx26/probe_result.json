@@ -1,0 +1,16 @@
+{
+ "scene": "P07F",
+ "std": "metal4.0",
+ "iters": 2,
+ "ok": true,
+ "enabled_symbols": [
+  "probe_p07f_fdim_7",
+  "probe_p07f_quad_and_4",
+  "probe_p07f_quad_or_5",
+  "probe_p07f_quad_xor_6",
+  "probe_p07f_simd_and_8",
+  "probe_p07f_simd_or_9",
+  "probe_p07f_simd_xor_10"
+ ],
+ "n_enabled": 7
+}

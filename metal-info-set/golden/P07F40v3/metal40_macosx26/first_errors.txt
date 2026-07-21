@@ -1,0 +1,87 @@
+probe.metal:60:3: error: no matching function for call to 'atomic_max_explicit'
+  metal::atomic_max_explicit(at0, 0, memory_order_relaxed);
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_atomic:647:17: note: candidate template ignored: requirement '_valid_max_type<device int *, void>::value' was not satisfied [with T = int, U = int]
+METAL_FUNC void atomic_max_explicit(
+                ^
+probe.metal:67:3: error: no matching function for call to 'atomic_min_explicit'
+  metal::atomic_min_explicit(at0, 0, memory_order_relaxed);
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_atomic:671:17: note: candidate template ignored: requirement '_valid_min_type<device int *, void>::value' was not satisfied [with T = int, U = int]
+METAL_FUNC void atomic_min_explicit(
+                ^
+probe.metal:84:62: error: too few template arguments for class template 'visible_function_table'
+extern "C" bool probe_p07f_is_null_visible_function_table_14(visible_function_table<> vft) {
+                                                             ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_visible_function_table:14:8: note: template is declared here
+struct visible_function_table;
+       ^
+probe.metal:91:62: error: too few template arguments for class template 'visible_function_table'
+extern "C" bool probe_p07f_is_null_visible_function_table_15(visible_function_table<> vft) {
+                                                             ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_visible_function_table:14:8: note: template is declared here
+struct visible_function_table;
+       ^
+probe.metal:98:62: error: too few template arguments for class template 'visible_function_table'
+extern "C" bool probe_p07f_is_null_visible_function_table_16(visible_function_table<> vft) {
+                                                             ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_visible_function_table:14:8: note: template is declared here
+struct visible_function_table;
+       ^
+probe.metal:110:67: error: no template named 'intersection_function_table'; did you mean 'metal::raytracing::intersection_function_table'?
+extern "C" bool probe_p07f_is_null_intersection_function_table_18(intersection_function_table<> vft) {
+                                                                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                                                  metal::raytracing::intersection_function_table
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:1459:8: note: 'metal::raytracing::intersection_function_table' declared here
+struct intersection_function_table
+       ^
+probe.metal:111:10: error: no member named 'is_null_intersection_function_table' in namespace 'metal'; did you mean 'metal::raytracing::is_null_intersection_function_table'?
+  return metal::is_null_intersection_function_table(vft);
+         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         metal::raytracing::is_null_intersection_function_table
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:1877:17: note: 'metal::raytracing::is_null_intersection_function_table' declared here
+METAL_FUNC bool is_null_intersection_function_table(intersection_function_table<Tags...> t)
+                ^
+probe.metal:118:10: error: no matching function for call to 'quad_and'
+  return metal::quad_and(1.0f);
+         ^~~~~~~~~~~~~~~
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_quadgroup:94:14: note: candidate template ignored: requirement '__is_valid_quadgroup_integral_type<float, void>::value' was not satisfied [with T = float]
+METAL_FUNC T quad_and(T data)
+             ^
+probe.metal:125:10: error: no matching function for call to 'quad_or'
+  return metal::quad_or(1.0f);
+         ^~~~~~~~~~~~~~
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_quadgroup:156:14: note: candidate template ignored: requirement '__is_valid_quadgroup_integral_type<float, void>::value' was not satisfied [with T = float]
+METAL_FUNC T quad_or(T data)
+             ^
+probe.metal:132:10: error: no matching function for call to 'quad_xor'
+  return metal::quad_xor(1.0f);
+         ^~~~~~~~~~~~~~~
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_quadgroup:266:14: note: candidate template ignored: requirement '__is_valid_quadgroup_integral_type<float, void>::value' was not satisfied [with T = float]
+METAL_FUNC T quad_xor(T data)
+             ^
+probe.metal:144:10: error: no matching function for call to 'simd_and'
+  return metal::simd_and(1.0f);
+         ^~~~~~~~~~~~~~~
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_simdgroup:122:14: note: candidate template ignored: requirement '__is_valid_simdgroup_integral_type<float, void>::value' was not satisfied [with T = float]
+METAL_FUNC T simd_and(T data)
+             ^
+probe.metal:151:10: error: no matching function for call to 'simd_or'
+  return metal::simd_or(1.0f);
+         ^~~~~~~~~~~~~~
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_simdgroup:170:14: note: candidate template ignored: requirement '__is_valid_simdgroup_integral_type<float, void>::value' was not satisfied [with T = float]
+METAL_FUNC T simd_or(T data)
+             ^
+probe.metal:158:10: error: no matching function for call to 'simd_xor'
+  return metal::simd_xor(1.0f);
+         ^~~~~~~~~~~~~~~
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_simdgroup:280:14: note: candidate template ignored: requirement '__is_valid_simdgroup_integral_type<float, void>::value' was not satisfied [with T = float]
+METAL_FUNC T simd_xor(T data)
+             ^
+probe.metal:164:62: error: too few template arguments for class template 'visible_function_table'
+extern "C" bool probe_p07f_is_null_visible_function_table_26(visible_function_table<> vft) {
+                                                             ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.tn2OSQ/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_visible_function_table:14:8: note: template is declared here
+struct visible_function_table;
+       ^
+14 errors generated.

@@ -1,0 +1,19 @@
+metal: error: clang frontend command failed with exit code 138 (use -v to see invocation)
+Apple metal version 32023.883 (metalfe-32023.883)
+Target: air64-apple-darwin25.4.0
+Thread model: posix
+InstalledDir: /private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.4h1oUO/Metal.xctoolchain/usr/metal/current/bin
+metal: note: diagnostic msg: 
+********************
+
+PLEASE ATTACH THE FOLLOWING FILES TO THE BUG REPORT:
+Preprocessed source(s) and associated run script(s) are located at:
+metal: note: diagnostic msg: /var/folders/8j/sfr9qqcj73j4p6nhwcfpr0th0000gn/T/e_misc-5b3eca.metal
+metal: note: diagnostic msg: /var/folders/8j/sfr9qqcj73j4p6nhwcfpr0th0000gn/T/e_misc-5b3eca.cache
+metal: note: diagnostic msg: /var/folders/8j/sfr9qqcj73j4p6nhwcfpr0th0000gn/T/e_misc-5b3eca.sh
+metal: note: diagnostic msg: Crash backtrace is located in
+metal: note: diagnostic msg: /Users/runner/Library/Logs/DiagnosticReports/metal_<YYYY-MM-DD-HHMMSS>_<hostname>.crash
+metal: note: diagnostic msg: (choose the .crash file that corresponds to your crash)
+metal: note: diagnostic msg: 
+
+********************

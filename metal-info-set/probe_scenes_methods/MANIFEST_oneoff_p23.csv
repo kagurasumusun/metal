@@ -1,0 +1,9 @@
+scene,file,symbol,builtin,stage1_source
+P23M,probe.metal,probe_p23m_amax,__metal_atomic_max_explicit,oneoff_p23
+P23M,probe.metal,probe_p23m_amin,__metal_atomic_min_explicit,oneoff_p23
+P23M,probe.metal,probe_p23m_mdiag,__metal_simdgroup_matrix_8x8_init_diag,oneoff_p23
+P23M,probe.metal,probe_p23m_mfill,__metal_simdgroup_matrix_8x8_init_filled,oneoff_p23
+P23M,probe.metal,probe_p23m_mload,__metal_simdgroup_matrix_8x8_load,oneoff_p23
+P23M,probe.metal,probe_p23m_mstore,__metal_simdgroup_matrix_8x8_store,oneoff_p23
+P23M,probe.metal,probe_p23m_mmac,__metal_simdgroup_matrix_8x8_multiply_accumulate,oneoff_p23
+P23M,probe.metal,probe_p23m_unif,__metal_is_uniform,oneoff_p23
