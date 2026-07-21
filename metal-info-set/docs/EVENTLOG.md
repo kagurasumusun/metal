@@ -1090,3 +1090,4 @@
 | 2026-07-21T06:16Z | DOC_APPEND | agent | docs/AIR_VOCABULARY.md §8 | run24-26 追補: query/result・handle・get_null・imageblock slice・frontend-consteval・texture atomic・命名総則訂正 + 正本状態 |
 | 2026-07-21T06:16Z | DOC_UPDATE | agent | docs/MSL_TO_IR_MAPPING.md | hub を最終状態へ: ④全確定 (641/45/0), §8 probe 完了記録, 索引に REFERENCE_TREE_INVENTORY/golden/promote_report 追加 |
 | 2026-07-21T06:17Z | REPORT | promote_map.py@1.0.0 | data/promote_report.md | 686 行を集計 |
+| 2026-07-21T06:22Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 0 行; 分布 {'confirmed': 3, 'low': 1} |
