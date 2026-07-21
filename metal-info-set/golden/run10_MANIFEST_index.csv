@@ -1,0 +1,6 @@
+scene,manifest
+P06M,probe_scenes_methods/MANIFEST_methods.csv
+P07F,probe_scenes_methods/MANIFEST_free.csv
+P09F,probe_scenes_methods/MANIFEST_pack.csv
+P10T,probe_scenes_methods/MANIFEST_tensor.csv
+P11M,probe_scenes_methods/MANIFEST_misc.csv

@@ -144,6 +144,12 @@ probe で確定させる残項目:
 | `../data/type_map.csv` | 型対応 |
 | `../data/rtlib_pairing.csv` | rtlib リンク構造 (ペア規則は §6 訂正参照) |
 | `../data/probe_cells.csv` | macOS probe 対象全セル (576) |
-| `AIR_VOCABULARY.md` | 命名文法・語彙分析 |
+| `AIR_VOCABULARY.md` | 命名文法・語彙分析 (§6 run10 tensor/quad/simd/rrm/fold 則 追補済) |
 | `PROBING_PLAN.md` | macOS 実測計画 |
+| `PIXEL_FORMAT_MAP.md` | 16 pixel format 完全対応表 (alias/tag/storage/許容 T/pack・unpack builtin) |
+| `CLANG_FRONTEND_IMPL_MAP.md` + `../data/clang_frontend_impl_map.csv` | clang が .metal→LLVM IR に要する実装対応表 (lexer/parser/sema/型/CodeGen、1,210 行) |
+| `STDLIB_RUNTIME_IMPL_MAP.md` + `../data/stdlib_runtime_impl_map.csv` | stdlib/runtime/rtlib クリーンルーム完全代替対応表 (1,380 行・ヘッダ在庫 43・module 在庫 1,257) |
+| `../data/air_golden_names.csv` | golden 全 .ll からの機械抽出 AIR 語彙 (379 unique) |
+| `../probe_scenes_methods/` | メソッド/Free/構築/pack/tensor/misc 深掘り probe シーン群 (MANIFEST_{methods,free,construct,pack,tensor,misc}.csv) |
+| `../golden/*run10` | run10 実機成果 (std=metal4.0 -O2、tensor 13/13 compiled 等) |
 | `../scripts/lib_mapschema.py` / `migrate_map_v2.py` / `promote_map.py` / `build_probe_scenes.py` / `build_callgraph.py` / `build_rtlib_layer.py` | v2 体系の器群 |

@@ -704,3 +704,78 @@
 | 2026-07-21T03:29Z | GEN_METHOD_PROBES | build_method_probes.py@1.0.0 | probe_scenes_methods/ | 対象 170 builtin: generated=23 no_generatable=140 unsupported_args=7 |
 | 2026-07-21T03:29Z | GEN_METHOD_PROBES | build_method_probes.py@1.0.0 | probe_scenes_methods/ | 対象 170 builtin: generated=23 no_generatable=140 unsupported_args=7 |
 | 2026-07-21T03:33Z | GEN_FREE_PROBES | build_free_probes.py@1.0.0 | probe_scenes_methods/scene_P07F_free | generated=12 no_parseable=3 unsupported=2 (対象 free 索引 17) |
+| 2026-07-21T03:57Z | APPLY_GOLDEN | promote_map.py@1.0.0 | /home/user/golden_run10_apply | manifest 23 件: 昇格 0, 不一致 2, 未回収 21 |
+| 2026-07-21T03:57Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_get_width_depth_2d_t | P06M/probe_p06m_get_width_18: candidate=air.get.width.depth.2d.t vs golden=['air.get_width_depth_2d'] |
+| 2026-07-21T03:57Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_read_depth_2d_t | P06M/probe_p06m_read_19: candidate=air.read.depth.2d.t vs golden=['air.get_read_sampler', 'air.read_depth_2d.f32'] |
+| 2026-07-21T03:57Z | APPLY_GOLDEN | promote_map.py@1.0.0 | /home/user/golden_run10_apply | manifest 12 件: 昇格 0, 不一致 6, 未回収 6 |
+| 2026-07-21T03:57Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_quad_and | P07F/probe_p07f_quad_and_4: candidate=air.quad.and vs golden=['air.quad_and.s.i32'] |
+| 2026-07-21T03:57Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_quad_or | P07F/probe_p07f_quad_or_5: candidate=air.quad.or vs golden=['air.quad_or.s.i32'] |
+| 2026-07-21T03:57Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_quad_xor | P07F/probe_p07f_quad_xor_6: candidate=air.quad.xor vs golden=['air.quad_xor.s.i32'] |
+| 2026-07-21T03:57Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_simd_and | P07F/probe_p07f_simd_and_8: candidate=air.simd.and vs golden=['air.simd_and.s.i32'] |
+| 2026-07-21T03:57Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_simd_or | P07F/probe_p07f_simd_or_9: candidate=air.simd.or vs golden=['air.simd_or.s.i32'] |
+| 2026-07-21T03:57Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_simd_xor | P07F/probe_p07f_simd_xor_10: candidate=air.simd.xor vs golden=['air.simd_xor.s.i32'] |
+| 2026-07-21T03:57Z | APPLY_GOLDEN | promote_map.py@1.0.0 | /home/user/golden_run10_apply | manifest 20 件: 昇格 0, 不一致 0, 未回収 20 |
+| 2026-07-21T03:57Z | APPLY_GOLDEN | promote_map.py@1.0.0 | /home/user/golden_run10_apply | manifest 13 件: 昇格 0, 不一致 8, 未回収 5 |
+| 2026-07-21T03:57Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_get_stride_tensor | P10T/probe_p10t_stride_1: candidate=air.get.stride.tensor vs golden=['air.get_null_global_tensor', 'air.get_stride_global_tensor.i32'] |
+| 2026-07-21T03:57Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_load_tensor | P10T/probe_p10t_load_2: candidate=air.load.tensor vs golden=['air.get_null_global_tensor', 'air.load_global_tensor.s.i32.global.f32'] |
+| 2026-07-21T03:57Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_store_tensor | P10T/probe_p10t_store_3: candidate=air.store.tensor vs golden=['air.get_null_global_tensor', 'air.store_global_tensor.s.i32.global.f32'] |
+| 2026-07-21T03:57Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_get_data_pointer_tensor | P10T/probe_p10t_dptr_4: candidate=air.get.data.pointer.tensor vs golden=['air.get_null_global_tensor', 'air.get_data_pointer_typed_global_tensor.s.i32.global'] |
+| 2026-07-21T03:57Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_is_null_tensor | P10T/probe_p10t_isnull_7: candidate=air.is.null.tensor vs golden=['air.get_null_global_tensor', 'air.is_null_global_tensor'] |
+| 2026-07-21T03:57Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_get_null_tensor | P10T/probe_p10t_null_8: candidate=air.get.null.tensor vs golden=['air.get_null_global_tensor', 'air.is_null_global_tensor'] |
+| 2026-07-21T03:57Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_tensor_t | P10T/probe_p10t_type_h_11: candidate=air.tensor.t vs golden=['air.get_null_global_tensor', 'air.is_null_global_tensor'] |
+| 2026-07-21T03:57Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_tensor_thread_t | P10T/probe_p10t_type_th_12: candidate=air.tensor.thread.t vs golden=['air.get_null_global_tensor', 'air.is_null_global_tensor'] |
+| 2026-07-21T03:57Z | APPLY_GOLDEN | promote_map.py@1.0.0 | /home/user/golden_run10_apply | manifest 41 件: 昇格 0, 不一致 8, 未回収 33 |
+| 2026-07-21T03:57Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_quad_vote_all | P11M/probe_p11m_qvotea_21: candidate=air.quad.vote.all vs golden=['air.quad_vote_all'] |
+| 2026-07-21T03:57Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_quad_vote_any | P11M/probe_p11m_qvoteb_22: candidate=air.quad.vote.any vs golden=['air.quad_vote_any'] |
+| 2026-07-21T03:57Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_quad_and | P11M/probe_p11m_qand_23: candidate=air.quad.and vs golden=['air.quad_and.s.i32'] |
+| 2026-07-21T03:57Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_quad_or | P11M/probe_p11m_qor_24: candidate=air.quad.or vs golden=['air.quad_or.s.i32'] |
+| 2026-07-21T03:57Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_quad_xor | P11M/probe_p11m_qxor_25: candidate=air.quad.xor vs golden=['air.quad_xor.s.i32'] |
+| 2026-07-21T03:57Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_map_physical_to_screen_coordinates | P11M/probe_p11m_rrm_p2s_f_31: candidate=air.map.physical.to.screen.coordinates vs golden=['air.map_physical_to_screen_coordinates.v2f32.p2i8.i32'] |
+| 2026-07-21T03:57Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_map_screen_to_physical_coordinates | P11M/probe_p11m_rrm_s2p_f_32: candidate=air.map.screen.to.physical.coordinates vs golden=['air.map_screen_to_physical_coordinates.v2f32.p2i8.i32'] |
+| 2026-07-21T03:57Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_map_physical_to_screen_coordinates | P11M/probe_p11m_rrm_p2s_u_33: candidate=air.map.physical.to.screen.coordinates vs golden=['air.map_physical_to_screen_coordinates.v2i32.p2i8.i32'] |
+| 2026-07-21T03:57Z | APPLY_GOLDEN_CORRECTIONS | promote_map.py@1.0.0 | /home/user/golden_run10_apply | 訂正昇格 0 件; 多様名で保留 0 件; 衝突skip 2 件 |
+| 2026-07-21T03:57Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_quad_and | candidate air.quad.and -> air.quad_and.s.i32 (golden 単一名実測) |
+| 2026-07-21T03:57Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_quad_or | candidate air.quad.or -> air.quad_or.s.i32 (golden 単一名実測) |
+| 2026-07-21T03:57Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_quad_xor | candidate air.quad.xor -> air.quad_xor.s.i32 (golden 単一名実測) |
+| 2026-07-21T03:57Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_simd_and | candidate air.simd.and -> air.simd_and.s.i32 (golden 単一名実測) |
+| 2026-07-21T03:57Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_simd_or | candidate air.simd.or -> air.simd_or.s.i32 (golden 単一名実測) |
+| 2026-07-21T03:57Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_simd_xor | candidate air.simd.xor -> air.simd_xor.s.i32 (golden 単一名実測) |
+| 2026-07-21T03:57Z | APPLY_GOLDEN_CORRECTIONS | promote_map.py@1.0.0 | /home/user/golden_run10_apply | 訂正昇格 6 件; 多様名で保留 0 件; 衝突skip 0 件 |
+| 2026-07-21T03:57Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_get_stride_tensor | candidate air.get.stride.tensor -> air.get_stride_global_tensor.i32 (golden 単一名実測) |
+| 2026-07-21T03:57Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_load_tensor | candidate air.load.tensor -> air.load_global_tensor.s.i32.global.f32 (golden 単一名実測) |
+| 2026-07-21T03:57Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_store_tensor | candidate air.store.tensor -> air.store_global_tensor.s.i32.global.f32 (golden 単一名実測) |
+| 2026-07-21T03:57Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_get_data_pointer_tensor | candidate air.get.data.pointer.tensor -> air.get_data_pointer_typed_global_tensor.s.i32.global (golden 単一名実測) |
+| 2026-07-21T03:57Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_is_null_tensor | candidate air.is.null.tensor -> air.is_null_global_tensor (golden 単一名実測) |
+| 2026-07-21T03:57Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_get_null_tensor | candidate air.get.null.tensor -> air.get_null_global_tensor (golden 単一名実測) |
+| 2026-07-21T03:57Z | APPLY_GOLDEN_CORRECTIONS | promote_map.py@1.0.0 | /home/user/golden_run10_apply | 訂正昇格 6 件; 多様名で保留 2 件; 衝突skip 0 件 |
+| 2026-07-21T03:57Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_quad_vote_all | candidate air.quad.vote.all -> air.quad_vote_all (golden 単一名実測) |
+| 2026-07-21T03:57Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_quad_vote_any | candidate air.quad.vote.any -> air.quad_vote_any (golden 単一名実測) |
+| 2026-07-21T03:57Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_map_physical_to_screen_coordinates | candidate air.map.physical.to.screen.coordinates -> air.map_physical_to_screen_coordinates.v2f32.p2i8.i32 (golden 単一名実測) |
+| 2026-07-21T03:57Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_map_screen_to_physical_coordinates | candidate air.map.screen.to.physical.coordinates -> air.map_screen_to_physical_coordinates.v2f32.p2i8.i32 (golden 単一名実測) |
+| 2026-07-21T03:57Z | APPLY_GOLDEN_CORRECTIONS | promote_map.py@1.0.0 | /home/user/golden_run10_apply | 訂正昇格 4 件; 多様名で保留 0 件; 衝突skip 0 件 |
+| 2026-07-21T03:57Z | APPLY_GOLDEN_CORRECTIONS | promote_map.py@1.0.0 | /home/user/golden_run10_apply | 訂正昇格 0 件; 多様名で保留 0 件; 衝突skip 2 件 |
+| 2026-07-21T03:57Z | APPLY_GOLDEN_CORRECTIONS | promote_map.py@1.0.0 | /home/user/golden_run10_apply | 訂正昇格 0 件; 多様名で保留 2 件; 衝突skip 0 件 |
+| 2026-07-21T03:58Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 0 行; 分布 {'confirmed': 3, 'medium': 1, 'high': 2} |
+| 2026-07-21T04:05Z | XC_CORRECT | agent | __metal_get_width_depth_2d_t | candidate air.get.width.depth.2d.t -> air.get_width_depth_2d (run10 probe_p06m_get_width_18 実測単一名。ms 行と同名は型 variant 共有) |
+| 2026-07-21T04:05Z | XC_CORRECT | agent | __metal_read_depth_2d_t | candidate air.read.depth.2d.t -> air.read_depth_2d.f32 (run10 probe_p06m_read_19 実測。同 block の air.get_read_sampler は harness sampler 既定由来; 実 read op は air.read_depth_2d.f32) |
+| 2026-07-21T04:05Z | XC_CORRECT | agent | __metal_tensor_t | candidate air.tensor.t -> (空) (run10 probe_p10t_type_h_11 実測 block は air.get_null_global_tensor/is_null のみ。型別名に専用 air op 無し。推測名 air.tensor.t を空欄化) |
+| 2026-07-21T04:05Z | XC_CORRECT | agent | __metal_tensor_thread_t | candidate air.tensor.thread.t -> (空) (run10 probe_p10t_type_th_12 同上。推測名 air.tensor.thread.t を空欄化) |
+| 2026-07-21T04:05Z | XW_P10T_FOLD | agent | P10T golden run10 | -O2 で compile-time fold 確認: extent_0=ret i32 4, handle_9=ret i32 4, slice_5/init_6/descsize_10=ret void。__metal_get_extent_tensor/__metal_get_tensor_handle/__metal_slice_tensor/__metal_init_strided_tensor/__metal_descriptor_size_tensor は -O2 probe 観測不能。次は -O0 variant probe (P10T-O0) が必要 |
+| 2026-07-21T04:00Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 4 行; 分布 {'confirmed': 3, 'medium': 1, 'high': 2, 'low': 1} |
+| 2026-07-21T04:00Z | QUARANTINE | promote_map.py@1.0.0 | __metal_get_width_depth_2d_t | confidence confirmed->high (stem=air.get_width_depth_2d) |
+| 2026-07-21T04:00Z | QUARANTINE | promote_map.py@1.0.0 | __metal_read_depth_2d_t | confidence confirmed->high (stem=air.read_depth_2d) |
+| 2026-07-21T04:00Z | APPLY_GOLDEN | promote_map.py@1.0.0 | /tmp/promote_selftest_y6op15vs/golden | manifest 1 件: 昇格 1, 不一致 0, 未回収 0 |
+| 2026-07-21T04:00Z | SELFTEST | promote_map.py@1.0.0 | docs/samples/tracepoint.metal.air.ll | apply-golden 器の自己検証: OK (symbol=_Z24kernel_thread_tracepointPU11MTLconstantKjjDv3_j, builtin=__metal_all) |
+| 2026-07-21T04:00Z | REPORT | promote_map.py@1.0.0 | data/promote_report.md | 686 行を集計 |
+| 2026-07-21T04:06Z | XW_DATAFIX | agent | data/builtin_to_air_map.v2.csv | 04:05Z 手動反映 2 行 (__metal_get_width_depth_2d_t/__metal_read_depth_2d_t) の evidence 列を起票漏れ (confidence 先行) していたため audit quarantine 降格発生 → corrections と同規則 (probed_xcode_ll/xcode_probe_golden/evidence_ref/P-XC1) で起票。起票漏れは手順ミスとして銘記 |
+| 2026-07-21T04:00Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 0 行; 分布 {'confirmed': 3, 'medium': 1, 'high': 2, 'low': 1} |
+| 2026-07-21T04:00Z | REPORT | promote_map.py@1.0.0 | data/promote_report.md | 686 行を集計 |
+| 2026-07-21T04:10Z | GOLDEN_BUILD | agent | golden/{P06M,P07F,P09F,P10T,P11M}40_run10 | run10 (upterm macOS 26.4/Xcode 26.5/clang 21.0.0/metal 32023.883, -std=metal4.0 -O2) の probe.ll/errors/json を golden corpus へ恒久コミット。manifest index: golden/run10_MANIFEST_index.csv |
+| 2026-07-21T04:10Z | APPLY_GOLDEN | agent | /home/user/golden_run10_apply | run10 一括反映: promoted 0 / corrected 16 / fold・harness artifact 一次診断で残件解消 (詳細は直上 XC_CORRECT 群と XW_P10T_FOLD/XW_DATAFIX) |
+| 2026-07-21T04:10Z | GOLDEN_NAMES | agent | data/air_golden_names.csv | golden corpus 機械再抽出 379 unique (+59: quad/simd reduction, rrm coordinates, tensor global 系, texture write 等) |
+| 2026-07-21T04:10Z | XW_CAPGATE | agent | P06M probe (16 block) | `no member named 'atomic_max'/'atomic_min' in metal::texture*` 一次診断確定: read_write texture atomic_max/min は `__HAVE_DEVICE_COHERENT_READ_WRITE_TEXTURES__` cap-gated で本 runner では宣言自体が無効 = probe 不能 (人工物でなく capability 制限)。今後 coherent-capable 端末 or cap 偽装 probe が必要 |
+| 2026-07-21T04:10Z | XW_BUILDERBUG | agent | scripts/build_method_probes.py | `_BASE_RE` alternation が `_depth2d_ms` を `depth2d` に短縮マッチ (class_public_type 誤起票) → run10 では get_num_samples_ms block が非 ms 宣言で失敗 (失敗自体が bug の一次証跡)。dict 完全一致化で修正予定 (probe11) |
+| 2026-07-21T04:10Z | DOC_UPDATE | agent | docs/AIR_VOCABULARY.md | §6 run10 追補: quad/simd 整数 reduction, rrm coordinates, tensor global 命名 + fold 則, depth2d 非 ms 名, fragment get_null_sampler stage 依存則 |
+| 2026-07-21T04:15Z | DOC_UPDATE | agent | docs/MSL_TO_IR_MAPPING.md | 付録索引に PIXEL_FORMAT_MAP/CLANG_FRONTEND_IMPL_MAP/STDLIB_RUNTIME_IMPL_MAP/air_golden_names(379)/probe_scenes_methods/golden run10 を追補 (ハブからの到達性確保) |
+| 2026-07-21T04:15Z | XW_BACKUP | agent | backup/metal-info-set-20260721-040254-postrun10.tgz | run10 反映後の恒久バックアップ (golden 含む) |
+| 2026-07-21T04:16Z | PRE_PUSH_CHECKPOINT | agent | repo | run10 反映 + docs 追補 (AIR_VOCABULARY §6/MSL_TO_IR_MAPPING 索引) 完了後 push |

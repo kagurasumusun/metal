@@ -1,0 +1,39 @@
+probe.metal:8:61: error: too few template arguments for class template 'visible_function_table'
+extern "C" bool probe_p07f_is_null_visible_function_table_0(visible_function_table<> vft) {
+                                                            ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.jHw0bo/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_visible_function_table:14:8: note: template is declared here
+struct visible_function_table;
+       ^
+probe.metal:15:61: error: too few template arguments for class template 'visible_function_table'
+extern "C" bool probe_p07f_is_null_visible_function_table_1(visible_function_table<> vft) {
+                                                            ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.jHw0bo/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_visible_function_table:14:8: note: template is declared here
+struct visible_function_table;
+       ^
+probe.metal:22:61: error: too few template arguments for class template 'visible_function_table'
+extern "C" bool probe_p07f_is_null_visible_function_table_2(visible_function_table<> vft) {
+                                                            ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.jHw0bo/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_visible_function_table:14:8: note: template is declared here
+struct visible_function_table;
+       ^
+probe.metal:29:66: error: no template named 'intersection_function_table'; did you mean 'metal::raytracing::intersection_function_table'?
+extern "C" bool probe_p07f_is_null_intersection_function_table_3(intersection_function_table<> vft) {
+                                                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                                                 metal::raytracing::intersection_function_table
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.jHw0bo/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:1459:8: note: 'metal::raytracing::intersection_function_table' declared here
+struct intersection_function_table
+       ^
+probe.metal:30:10: error: no member named 'is_null_intersection_function_table' in namespace 'metal'; did you mean 'metal::raytracing::is_null_intersection_function_table'?
+  return metal::is_null_intersection_function_table(vft);
+         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         metal::raytracing::is_null_intersection_function_table
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.jHw0bo/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_raytracing:1877:17: note: 'metal::raytracing::is_null_intersection_function_table' declared here
+METAL_FUNC bool is_null_intersection_function_table(intersection_function_table<Tags...> t)
+                ^
+probe.metal:83:62: error: too few template arguments for class template 'visible_function_table'
+extern "C" bool probe_p07f_is_null_visible_function_table_11(visible_function_table<> vft) {
+                                                             ^
+/private/var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.42.0.jHw0bo/Metal.xctoolchain/usr/metal/32023/lib/clang/32023.883/include/metal/metal_visible_function_table:14:8: note: template is declared here
+struct visible_function_table;
+       ^
+6 errors generated.

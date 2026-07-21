@@ -82,5 +82,27 @@ air.<op>[.<qual>...][.<type>...]
    (%struct._interpolant_t = type opaque)
 9. `air.discard_fragment` / `air.wg.barrier(i32 scope, i32 mem)` 実測。
 
-全語彙 (本日 286 unique): `data/air_golden_names.csv` (golden *.ll から機械抽出、要上当番再生成)。
-網羅性注意: golden probe カバレッジ外の op (mesh/tensor/OS log 等) は引続きバイナリ stems と airconv 語彙で補完する。
+## 6. run10 golden 追補 (2026-07-21, std=metal4.0, -O2)
+
+1. **quad/simd 整数 reduction**: `air.quad_and.s.i32` `air.quad_or.s.i32` `air.quad_xor.s.i32`
+   `air.simd_and.s.i32` `air.simd_or.s.i32` `air.simd_xor.s.i32` (アンダースコア連結則どおり)。
+   vote: `air.quad_vote_all` / `air.quad_vote_any` (型サフィックス無し、実測)。
+2. **MSL4 rate-map (realtime render map)**: `air.map_physical_to_screen_coordinates.v2f32.p2i8.i32`
+   `air.map_screen_to_physical_coordinates.v2f32.p2i8.i32` (u32 版は v2i32 prefix のみ差異、実測)。
+3. **tensor (MSL4 device/global tensor)**: `air.get_null_global_tensor` `air.is_null_global_tensor`
+   `air.get_stride_global_tensor.i32` `air.load_global_tensor.s.i32.global.f32`
+   `air.store_global_tensor.s.i32.global.f32` `air.get_data_pointer_typed_global_tensor.s.i32.global`
+   - `global_tensor` 語が必ず入る (typed handle/strided descriptor 系)。
+   - **fold 則**: extent/descriptor_size/handle/slice/init_strided は -O2 で compile-time 定数化
+     (`ret i32 4` / `ret void`) し air call として残らない (probe 観測は -O0 variant が必須; EVENTLOG XW_P10T_FOLD)。
+   - tensor **型別名** (MSL の `tensor<...>` クラス名) に対応する専用 air op は存在しない
+     (実測 block は null/is_null のみ) — `__metal_tensor_t`/`__metal_tensor_thread_t` は candidate 空欄の low。
+4. **depth2d (texture class 非 ms)**: get_width=`air.get_width_depth_2d`, read=`air.read_depth_2d.f32`。
+   ms 版も golden 上同名 (型 variant 共有)。read block 内の `air.get_read_sampler` は probe の
+   `sampler s{}` 既定生成由来であり read op 本体ではない (harness artifact 注意)。
+5. **fragment での `get_null_sampler`**: fragment stage では null 定数として型のみ現れ
+   air call にならない場合がある (compute では call が出る — stage 依存則)。
+
+全語彙 (本日 379 unique): `data/air_golden_names.csv` (golden *.ll から機械抽出、要上当番再生成)。
+網羅性注意: golden probe カバレッジ外の op (mesh/[[patch]]/fragten/OS log 深部等) は引続き
+バイナリ stems と airconv 語彙で補完する。P10T(-O0 variant)/P18K(entry stage 構成) probe で拡張予定。
