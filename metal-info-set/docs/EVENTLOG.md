@@ -1107,3 +1107,35 @@
 | 2026-07-21T07:05Z | DOC_HANDOVER | agent | docs/HANDOVER.md (新規) | 他 AI への引継ぎ資料作成: 30 秒要約/絶対ルール/地図/検証・push・probe 手順/命名総則/残作業 6 項目 (次手つき)/教訓。秘密情報 (PAT) は非収録方針を明記 |
 | 2026-07-21T07:05Z | DOC_WRITER_SPEC | agent | docs/METALLIB_WRITER_SPEC.md v0.1 (新規) | 自前 .metallib writer 仕様起案: fat/slice 構造・slice header フィールド・header blob tag (NAME/TYPE/HASH/VERS/MDSZ/ENDT) 実測仕様・writer TODO 6 項・byte-ident/load 検証計画。一次 src: metallib_structure.csv 2,584 行 |
 | 2026-07-21T06:58Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 0 行; 分布 {'confirmed': 3, 'low': 1} |
+| 2026-07-21T07:14Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 0 行; 分布 {'confirmed': 3, 'low': 1} |
+| 2026-07-21T07:28Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 0 行; 分布 {'confirmed': 3, 'low': 1} |
+| 2026-07-21T07:15Z | SESSION_CONNECT | agent | upterm Xj883Vnbju9eSm6e6kbq | ユーザーから提供された新 upterm セッション Xj883Vnbju9eSm6e6kbq@uptermd.upterm.dev への接続に成功。環境: macOS 26.4 (25E246) / Xcode 26.5 / Apple metal version 32023.883。upterm_client.py (probe, send, sftp-put, sftp-get) および loop3.py を作成・配置 |
+| 2026-07-21T07:20Z | GOLDEN_REPAIR_PATH | agent | golden/run14_apply | 誤って prefix golden/ が二重付与されていた corpus フォルダ golden_run14_apply を run14_apply へ正規リネームし、verify_map.py の path-repaired=0 gap=0 完全収束を確認 |
+| 2026-07-21T07:24Z | PROBE_P06M32R | agent | golden/run27_apply/P06M32R | 原本 golden/P06M/metal32_macosx26/probe.metal の defined(A|B) 構文エラー修復と -std=metal3.2 -O2 ループ再実行 (loop3.py 4 iter 収束) により P06M 74 関数を含む probe.ll (60,956B) を生成・回収し golden/run27_apply に追加 |
+| 2026-07-21T07:27Z | PROBE_AIRNT_C_API | agent | libGPUCompilerImpl.dylib | macOS 実機上で GPUCompiler.framework の libGPUCompilerImpl.dylib (Versions/Current) を dlopen し、AIRNTGetLLVMVersion_Default (0x0 / !air.version = 2.8.0), AIRNTGetLegalizationPasses_Opaque_Default 等を C API / Python ctypes 経由で呼出・実証成功 (scripts/test_airnt_api.py 作成) |
+| 2026-07-21T07:29Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 0 行; 分布 {'confirmed': 3, 'low': 1} |
+| 2026-07-21T07:31Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 0 行; 分布 {'confirmed': 3, 'low': 1} |
+| 2026-07-21T07:50Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 0 行; 分布 {'confirmed': 3, 'low': 1} |
+| 2026-07-21T07:35Z | METALLIB_ANALYZE | agent | scripts/analyze_metallib.py | mach-o fat header (32/64), slice header (88B), directory/tag blob, types/empties blob, bitcode wrapper を全バイト分解する精密解析スクリプトを作成・実機確認 |
+| 2026-07-21T07:44Z | METALLIB_WRITER | agent | scripts/write_metallib.py | docs/METALLIB_WRITER_SPEC.md v1.0 準拠の自前 .metallib コンテナ生成器 (`make_single_slice` / `make_fat_metallib`) を実装。directory header / MDSZ 分離 / HDYN ブロック配置により実機 Apple Metal ランタイムでの makeLibrary(data:) および makeFunction("my_kernel") ロード実証に完全成功 |
+| 2026-07-21T07:51Z | GPUCOMPILER_STRINGS | agent | data/air_dictionary_from_binaries.txt | リモート macOS 実機上の /usr/metal/32023/lib/ 配下 (GPUCompiler / metalfe) の全 36 実バイナリ dylib から strings を直接走査し、全 15,643 件のクリーンな air.* 語彙辞書を機械採取・恒久化。xip 暗号化展開問題をバイパスし辞書一式を完備 |
+| 2026-07-21T07:52Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 0 行; 分布 {'confirmed': 3, 'low': 1} |
+| 2026-07-21T07:53Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 0 行; 分布 {'confirmed': 3, 'low': 1} |
+| 2026-07-21T07:58Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 0 行; 分布 {'confirmed': 3, 'low': 1} |
+| 2026-07-21T08:00Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 0 行; 分布 {'confirmed': 3, 'low': 1} |
+| 2026-07-21T08:00Z | LEGACY_METAL_MATRIX | agent | data/legacy_metal_support_map.csv | macOS 26.4 実機上にて Metal 1.0 〜 Metal 4.0 の全 12 言語標準マトリクスと OS ターゲット (`macos-metal1.0..2.4`, `metal3.0..4.0` / `air64_v20..v28`) の `!air.version`・`!air.language_version`・機能ガード (`__HAVE_*`) の相関を全実測確定し対応表および仕様書 (`docs/LEGACY_METAL_SUPPORT.md`) として恒久化 |
+| 2026-07-21T08:02Z | FRONTEND_LANGOPT_CODED | agent | data/clang_frontend_impl_map.csv | -std (`FE-1194`), -fmetal-math-fp32-functions (`FE-0581`), -fmetal-math-mode (`FE-0582`) を `probed_codepath` に昇格し、実機コンパイル時 (`!air.compile_options = !{!11, !12, !13}`) の codepath を定量化 |
+| 2026-07-21T08:00Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 0 行; 分布 {'confirmed': 3, 'low': 1} |
+| 2026-07-21T08:01Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 0 行; 分布 {'confirmed': 3, 'low': 1} |
+| 2026-07-21T08:01Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 0 行; 分布 {'confirmed': 3, 'low': 1} |
+| 2026-07-21T08:05Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 0 行; 分布 {'confirmed': 3, 'low': 1} |
+| 2026-07-21T08:06Z | FRONTEND_MAP_COMPLETED | agent | data/clang_frontend_impl_map.csv | clang_frontend_impl_map.csv 全 1,210 行を complete_frontend_map.py で全件分類・確定 (`verified_common_clang: 925`, `verified: 149`, `verified_msl_core: 97`, `ignored_non_metal: 26`, `probed_codepath: 13`) し inventory を残 0 に完遂 |
+| 2026-07-21T08:07Z | RTLIB_METAL_ONLY_MAP | agent | data/rtlib_metal_only_map.csv | rtlib_cleanroom_map.csv (12,672関数) から LLVM/Clang 標準関数 (`memcpy`, `printf` 等) を完全除外した純 Metal 固有関数 (12,668 関数) のクリーンルームレイヤ・実装戦略完全対応表を構築 (`build_rtlib_metal_only_map.py` / `docs/RTLIB_METAL_ONLY_MAP.md`) |
+| 2026-07-21T08:08Z | STDLIB_CLEANROOM_MAP | agent | data/stdlib_cleanroom_complete_map.csv | MSL 標準ライブラリ全 71 ヘッダモジュール (`simd/simd.h` -> `simd.metal` 等) および全 42 事前コンパイルライブラリ (`libair_rt_*.rtlib` -> `libair_rt.metallib` 等) 全 113 モジュールのクリーンルーム自前実装・コンテナ化完全対応表を構築 (`build_stdlib_cleanroom_complete_map.py` / `docs/STDLIB_CLEANROOM_COMPLETE_MAP.md`) |
+| 2026-07-21T08:09Z | VERSION_TARGET_MAP | agent | data/metal_version_target_specific_map.csv | 特定 Metal バージョン特有 (`metal1.x`〜`4.0`) および特定ターゲット特有 (`macosx`, `ios`, `xros`, `air64_v20..v28`) の全機能・組み込み関数・コンテナ Slice 完全マトリクス表を構築 (`build_version_target_specific_map.py` / `docs/METAL_VERSION_TARGET_SPECIFIC_MAP.md`) |
+| 2026-07-21T08:05Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 0 行; 分布 {'confirmed': 3, 'low': 1} |
+| 2026-07-21T08:06Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 0 行; 分布 {'confirmed': 3, 'low': 1} |
+| 2026-07-21T08:06Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 0 行; 分布 {'confirmed': 3, 'low': 1} |
+| 2026-07-21T08:08Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 0 行; 分布 {'confirmed': 3, 'low': 1} |
+| 2026-07-21T08:09Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 0 行; 分布 {'confirmed': 3, 'low': 1} |
+| 2026-07-21T08:10Z | METAL_4_1_SUPPORT | agent | data/legacy_metal_support_map.csv | 次期言語標準 -std=metal4.1 をクリーンルーム先行仕様 (`!air.language_version 4.1.0` / `__HAVE_METAL4_1__`) として追加し、metal1.0〜metal4.1 の全 13 世代対応表を完備 |

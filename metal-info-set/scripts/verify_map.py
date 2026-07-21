@@ -25,7 +25,7 @@ import csv, glob, os, re, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 MAP = 'data/builtin_to_air_map.v2.csv'
-HDR = '/home/user/metal-repo/reference/clang/32023.883/include'
+HDR = '/home/user/metal/reference/clang/32023.883/include' if os.path.exists('/home/user/metal/reference/clang/32023.883/include') else '/home/user/metal-repo/reference/clang/32023.883/include'
 EXT_APPLY = '/home/user'  # golden_runNN_apply が残る場所 (corpus 取り込み元)
 
 GOLDEN_PATH_RE = re.compile(r'golden/[^\s,)】]+')
