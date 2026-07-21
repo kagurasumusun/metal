@@ -22,7 +22,7 @@
 |---|---|---|
 | ①② L0→L1→L2 | **✅ 完了**: API→builtin 全経路を機械分類 (free 3,810 + クラスメソッド 7,058 行) | `msl_stage1_api_to_builtin.csv`, `msl_stage1_methods.csv` |
 | ③ builtin 語彙 | **✅ 完了**: 686 語彙 + 呼出サイト + availability ガード | `metal_builtins.csv`, `have_matrix.csv` |
-| ④ L2→L3 | **🔶 器完成+採点済**: v2 正本 (686行, provenance 完備)。confirmed **99** / high 68 / medium 519 / low 0。残 medium が probe 対象 | `builtin_to_air_map.v2.csv` ★正本 |
+| ④ L2→L3 | **✅ 全確定 (run26 反映、2026-07-21)**: v2 正本 686行。confirmed **641** (golden 実測名) / low **45** (air op 非存在を実測確定: frontend-consteval/native lowering/型) / medium, high **0**。証拠は全行 `evidence_ref` に golden 相対パス付き | `builtin_to_air_map.v2.csv` ★正本 |
 | ⑤ L4 | **✅ 層判定完了**: callgraph 全抽出 (1,764 unique モジュール・エッジ 31,134・parse エラー 0)。`__air_impl_*` 26 実装関数を特定し builtin 2 件 (nextafter/os_log) の rtlib 帰属を確定 | `callgraph_edges.csv`, `rtlib_layer_map.csv`, `rtlib_pairing.csv` |
 
 ---
@@ -53,10 +53,12 @@
 
 | evidence | 件数 | confidence | 意味 |
 |---|---:|---|---|
+| `probed_xcode_ll` | 540 | confirmed | **実機 Xcode 26.5 (metal 32023.883) 生成 IR (golden corpus) で実名確定** — 正本の主柱 |
 | `observed_ir` | 97 | confirmed | **実 IR から AIR シグネチャ全文を確認済 (P-IR1 再検算で全行検証成功)** |
 | `rtlib_layer_backing` | 2 | confirmed | **AIR intrinsic に写像せず `__air_impl_*` 呼出に lowering (callgraph 実証: nextafter, os_log)** |
 | `observed_airconv` | 19 | high | airconv が生成/解釈する名として確認 |
-| `inferred` | 568 | high 49 / medium 519 | 命名文法適合。high はバイナリ stem 辞書包含、medium は文法的に正当だが実辞書未確認 (probe 確定対象) |
+| `inferred` | **0** | — | **全行解消済** (run10–26 golden 訂正で全て probed_xcode_ll へ昇格 or 低確度 disposition へ) |
+| `disposition (air op 非存在)` | 45 | low | **実測で専用 air op 非存在を確定**: frontend-consteval (get_sampler/struct_has_render_target/get_control_point/const 系), native LLVM 降下 (divide/select), 純粋型 `_t` 36, tensor fold 3 (各 evidence_ref に実測注記) |
 
 補強: `data/air_ops_definitive.csv` (375 確定 op stem) / `data/ir_air_signatures.csv` (8,194 declare 全文) / `data/callgraph_edges.csv` (全ランタイム call グラフ 31,134 エッジ) / upstream LLVM での bitcode 読込 1,764/1,764 成功 (C-4 完了)。詳細は `IR_GROUND_TRUTH.md`。
 
@@ -103,7 +105,14 @@
 
 ---
 
-## 8. 残作業 = macOS probe (全件列挙済 + 投入パイプライン稼働中)
+## 8. probe フェーズ完了記録 (2026-07-21)
+
+run10–run26 のエラー駆動ループ (upterm → macOS runner Xcode 26.5 / metal 32023.883) で **正本 686 行が全確定**。
+- golden corpus: `golden/run1x_apply` … `golden/run26_apply` (各 scene .metal + .ll + meta.yml 入り, eventlog PROBE_GOLDEN 群を参照)
+- 一次訂正の要点は `AIR_VOCABULARY.md` §6–§8 に集約済み (命名則, fold 則, stage 依存則, frontend-consteval family, cap 訂正)
+- 以後の真の残作業 = §AIRNT C API 実機実行 / .metallib writer / xip (長期項目、§10 参照)
+
+### 8.1 (旧文) macOS probe 計画 — 全件完了
 
 `data/probe_cells.csv` (576 セル) に全不確定セルを集約。手順と最小 probe 群は `docs/PROBING_PLAN.md`。
 **probe シーンは `scripts/build_probe_scenes.py` により `probe_scenes/` に機械生成済 (2026-07-21)**: 13+1 シーン、セル被覆 576/576 (auto_wrapper 35 / manual_needed 541)。実機で .ll を回収後:
@@ -134,6 +143,9 @@ probe で確定させる残項目:
 | `MAPPING_SCHEMA.md` | v2 スキーマ定義 (列・evidence・protocol・confidence ルール) |
 | `EVENTLOG.md` | 全変更イベントの日時ログ |
 | `../data/promote_report.md` | 確度集計の最新スナップショット |
+| `REFERENCE_TREE_INVENTORY.md` + `../data/reference_tree_inventory.csv` | reference/clang/32023.883 全 145 ファイル棚卸 (header 71・rtlib 32・.a 32・metallib 10; ar member 計1,792) |
+| `../golden/` | golden corpus (run1x–run26_apply: 実機 Xcode .ll + scene .metal + meta.yml)。証拠 JSON/一次エラー付き |
+| `../data/promote_report.md` | 最新状態: confirmed 641 / low 45 / 残不確定 0 |
 | `../data/callgraph_edges.csv` / `callgraph_air_impl.csv` / `callgraph_summary.md` | 全ランタイム call グラフ (31,134 エッジ、parse エラー 0) |
 | `../data/rtlib_layer_map.csv` | `__air_impl_*` → `__metal_*` 逆引き (rtlib 層判定の根拠) |
 | `../probe_scenes/` | probe シーン集 (機械生成・MANIFEST 付き) |

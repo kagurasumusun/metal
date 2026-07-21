@@ -1,0 +1,33 @@
+{
+ "scene": "P25M",
+ "std": "metal4.0",
+ "iters": 0,
+ "ok": true,
+ "enabled_symbols": [
+  "probe_p25m_itpl",
+  "probe_p25m_itplcb",
+  "probe_p25m_nd2d",
+  "probe_p25m_nd2da",
+  "probe_p25m_nd2ms",
+  "probe_p25m_nd2msa",
+  "probe_p25m_ndcube",
+  "probe_p25m_ndcubearr",
+  "probe_p25m_nt1d",
+  "probe_p25m_nt1da",
+  "probe_p25m_nt2d",
+  "probe_p25m_nt2da",
+  "probe_p25m_nt2ms",
+  "probe_p25m_nt2msa",
+  "probe_p25m_nt3d",
+  "probe_p25m_ntbuf1d",
+  "probe_p25m_ntcube",
+  "probe_p25m_ntcubearr",
+  "probe_p25m_nullfh",
+  "probe_p25m_nullpas",
+  "probe_p25m_nullvft",
+  "probe_p25m_ridias",
+  "probe_p25m_ridpas",
+  "probe_p25m_rtype"
+ ],
+ "n_enabled": 24
+}

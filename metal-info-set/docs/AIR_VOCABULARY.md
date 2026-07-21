@@ -129,3 +129,54 @@ air.<op>[.<qual>...][.<type>...]
 7. **post-tess vertex**: `patch_control_point::size()` は `[[patch(triangle,3)]]` から compile-time 定数 fold
    (専用 air op 非存在 = frontend-consteval)。entry 属性制約: post-tess vertex では `vertex_id` 不可、
    `patch_id` が正 (一次診断)。
+
+## 8. run24–26 追補 (2026-07-21、正本全確定化フェーズ)
+
+1. **intersection query/result (P24B)**: primitive_data 系列も `intersection_query` 語を伴う
+   (`air.get_{candidate,committed}_primitive_data_intersection_query.<tags>`)。
+   `air.next_intersection_query` / `air.reset_intersection_query` (query reset は ctor でも
+   `air.allocate_intersection_query`/`air.deallocate_intersection_query` が出る)。
+   callback(ref) 形は direct_access 経路のまま `air.intersect_direct_access.<tags>` +
+   `air.release_intersection_result.<tags>`。**payload 持ち値返却形は別 op**:
+   `air.intersect.<tags>` (`__metal_intersect`) と `air.release_intersect_payload.<tags>`。
+   `air.get_type_intersection_result.<tags>` は result**_ref** 由来 (result 値に accessor は無し)。
+2. **AS/handle 系**: `air.is_null_{instance,primitive}_acceleration_structure` /
+   `air.get_{instance,primitive}_acceleration_structure_instance_acceleration_structure` /
+   `air.get_null_{intersection_function_table, visible_function_table, function_handle,
+   primitive_acceleration_structure}` / `air.get_function_pointer_visible_function_table` /
+   `air.get_size_command_buffer` / resource_id: `air.get_resource_id_{instance,primitive}_acceleration_structure`
+   (公開 API は `operator MTLResourceID()`、`._impl` は uintptr_t)。
+3. **ift/vft スロット**: vft は ift の i8 buffer slot 格納 —
+   set/get とも buffer op 共有: `air.set_buffer_intersection_function_table.p1i8` /
+   `air.get_buffer_intersection_function_table.p1i8` + bitcast (get_vft_ift も同 op)。
+4. **get_null texture/depth (14)**: 実 air op として存在 `air.get_null_texture_{1d,1d_array,
+   2d,2d_array,2d_ms,2d_ms_array,3d,buffer_1d,cube,cube_array}` / `air.get_null_depth_{2d,
+   2d_ms,2d_array,2d_ms_array,cube,cube_array}` (型 suffix なし素名)。
+5. **imageblock implicit slice family (P25M)**: implicit imageblock は **[[color(n)]] 属性付き
+   struct のみ** (素 struct/float4 は layout 未定義で不可)。slice は `slice<E>(unsigned const index)`
+   — E 明示 + Sema trait。`air.implicit_imageblock_data` (non-dot 語順: implicit_imageblock_data) /
+   `air.write_imageblock_slice_to_texture_{1d,1d_array,2d,2d_array,3d,cube,cube_array}.i16.v4f32`
+   (slice index i16 + 要素 vec) / `air.store.implicit_imageblock.mask.v4f32` (mask write)。
+6. **frontend-consteval 確定 (air op 非存在 family)**: `__metal_get_control_point`
+   (post-tess vertex: clang 合成関数 `_Z2CP.MTL_CONTROL_POINT_FN` 呼出形式へ降下、index は
+   urem wrap) / `__metal_divide` (native fdiv) / `__metal_select` (native select) /
+   `__metal_get_sampler` (constexpr sampler → module `@__air_sampler_state [2 x i64] addrspace(2)`
+   定数 + `!air.sampler_states` metadata; sample op には bitcast で渡る) /
+   `__metal_struct_has_render_target` (Sema 時評価専用: runtime 直叩きで metalfe-32023.883 は
+   **frontend crash exit 138**) / 純粋型 builtin `_t` 系 (AIR では %struct._*_t opaque 型) /
+   tensor extents/slice/handle (constexpr/field access fold)。**`air.is_function_constant_defined`
+   は逆に実 air op として存在** (kernel 内で残る、function_constant 廃止にならない)。
+7. **texture ulong4 atomic max/min (P26M)**: `air.atomic_{max,min}_explicit_texture_
+   {1d,1d_array,2d,2d_array,3d,buffer_1d,cube,cube_array}.i16.u.v4i64` — coord index i16、
+   unsigned `u`、operand `<4 x i64>`。**型制約が真因**: `_textureXd_atomic_modify<ulong,
+   access read&&write> 専用化 (:__HAVE_DEVICE_COHERENT_READ_WRITE_TEXTURES__ でメンバ解放)` のため
+   `texture2d<ulong, access::read_write>` 系で執行可能 (過去の「cap-gate で probe 不能」判断は
+   この toolchain 次元では誤り)。buffer atomic u64 (P23) の `air.atomic.global.{max,min}.u.i64` と
+   suffix 系統が異なる点 (global 語と型列) に注意。
+8. **命名総則の訂正済語順**: 「`air.<verb>_<subject>` (u区切り) は subject 名詞句を連結、
+   tags は `.<tag>...`、型 suffix は最後に `.to.from` (convert) / `.i16.u.v4i64` (atomic) /
+   `.v64f32...` (matrix) / `.p1i8` (ポインタ引数)。推測段階の doc-dot 形式は全て
+   golden 訂正へ置換済み (candidate 欄は golden 実名が唯一の最終値)。
+
+**正本状態 (run26 反映後)**: 686 行全確定。confirmed 641 (93.4%) は golden 実測名、
+low 45 (6.6%) は「air op 非存在」を実測で確定した行 (上記 §6)。未確定 (medium/high) は 0。

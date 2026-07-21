@@ -998,3 +998,95 @@
 | 2026-07-21T05:35Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 0 行; 分布 {'confirmed': 3, 'medium': 1, 'high': 1, 'low': 1} |
 | 2026-07-21T05:35Z | REPORT | promote_map.py@1.0.0 | data/promote_report.md | 686 行を集計 |
 | 2026-07-21T05:35Z | SESSION_STATE | agent | metal-info-set | push 前スナップショット: P24B 適用完了 (confirmed 590/686), golden corpus run18–24 恒久取り込み完了, type 系 batch disposition は未着手 (中断点) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_command_buffer_t | candidate air.command.buffer.t -> (空) (型 builtin: AIR 命令でなく opaque struct 型。family) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_compute_pipeline_state_t | candidate air.compute.pipeline.state.t -> (空) (型 builtin: AIR 命令でなく opaque struct 型。probe_p08m_type_17 direct) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_depth_2d_array_t | candidate air.depth.2d.array.t -> (空) (型 builtin: AIR 命令でなく opaque struct 型。family) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_depth_2d_ms_array_t | candidate air.depth.2d.ms.array.t -> (空) (型 builtin: AIR 命令でなく opaque struct 型。family) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_depth_2d_ms_t | candidate air.depth.2d.ms.t -> (空) (型 builtin: AIR 命令でなく opaque struct 型。family) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_depth_2d_t | candidate air.depth.2d.t -> (空) (型 builtin: AIR 命令でなく opaque struct 型。family) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_depth_cube_array_t | candidate air.depth.cube.array.t -> (空) (型 builtin: AIR 命令でなく opaque struct 型。family) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_depth_cube_t | candidate air.depth.cube.t -> (空) (型 builtin: AIR 命令でなく opaque struct 型。family) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_depth_stencil_state_t | candidate air.depth.stencil.state.t -> (空) (型 builtin: AIR 命令でなく opaque struct 型。probe_p08m_type_18 direct) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_function_handle_t | candidate air.function.handle.t -> (空) (型 builtin: AIR 命令でなく opaque struct 型。family) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_imageblock_t | candidate air.imageblock.t -> (空) (型 builtin: AIR 命令でなく opaque struct 型。family) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_instance_acceleration_structure_t | candidate air.instance.acceleration.structure.t -> (空) (型 builtin: AIR 命令でなく opaque struct 型。family) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_interpolant_t | candidate air.interpolant.t -> (空) (型 builtin: AIR 命令でなく opaque struct 型。family) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_intersection_function_table_t | candidate air.intersection.function.table.t -> (空) (型 builtin: AIR 命令でなく opaque struct 型。probe_p08m_type_19 direct) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_intersection_query_t | candidate air.intersection.query.t -> (空) (型 builtin: AIR 命令でなく opaque struct 型。family) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_intersection_result_t | candidate air.intersection.result.t -> (空) (型 builtin: AIR 命令でなく opaque struct 型。probe_p08m_type_20 direct) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_mesh_grid_properties_t | candidate air.mesh.grid.properties.t -> (空) (型 builtin: AIR 命令でなく opaque struct 型。family) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_mesh_t | candidate air.mesh.t -> (空) (型 builtin: AIR 命令でなく opaque struct 型。family) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_patch_control_point_t | candidate air.patch.control.point.t -> (空) (型 builtin: AIR 命令でなく opaque struct 型。family) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_primitive_acceleration_structure_t | candidate air.primitive.acceleration.structure.t -> (空) (型 builtin: AIR 命令でなく opaque struct 型。family) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_render_pipeline_state_t | candidate air.render.pipeline.state.t -> (空) (型 builtin: AIR 命令でなく opaque struct 型。probe_p08m_type_21 direct) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_sampler_t | candidate air.sampler.t -> (空) (型 builtin: AIR 命令でなく opaque struct 型。family) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_texture_1d_array_t | candidate air.texture.1d.array.t -> (空) (型 builtin: AIR 命令でなく opaque struct 型。family) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_texture_1d_t | candidate air.texture.1d.t -> (空) (型 builtin: AIR 命令でなく opaque struct 型。family) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_texture_2d_array_t | candidate air.texture.2d.array.t -> (空) (型 builtin: AIR 命令でなく opaque struct 型。family) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_texture_2d_ms_array_t | candidate air.texture.2d.ms.array.t -> (空) (型 builtin: AIR 命令でなく opaque struct 型。family) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_texture_2d_ms_t | candidate air.texture.2d.ms.t -> (空) (型 builtin: AIR 命令でなく opaque struct 型。family) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_texture_2d_t | candidate air.texture.2d.t -> (空) (型 builtin: AIR 命令でなく opaque struct 型。family) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_texture_3d_t | candidate air.texture.3d.t -> (空) (型 builtin: AIR 命令でなく opaque struct 型。family) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_texture_buffer_1d_t | candidate air.texture.buffer.1d.t -> (空) (型 builtin: AIR 命令でなく opaque struct 型。family) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_texture_cube_array_t | candidate air.texture.cube.array.t -> (空) (型 builtin: AIR 命令でなく opaque struct 型。family) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_texture_cube_t | candidate air.texture.cube.t -> (空) (型 builtin: AIR 命令でなく opaque struct 型。family) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_vertex_value_t | candidate air.vertex.value.t -> (空) (型 builtin: AIR 命令でなく opaque struct 型。family) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_visible_function_table_t | candidate air.visible.function.table.t -> (空) (型 builtin: AIR 命令でなく opaque struct 型。probe_p08m_type_23 direct) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_get_extent_tensor | candidate air.get.extent.tensor -> (空) (P10T -O2/-O0 双摄で air op 非存在=fold/field access) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_get_tensor_handle | candidate air.get.tensor.handle -> (空) (P10T -O2/-O0 双摄で air op 非存在=fold/field access) |
+| 2026-07-21T05:36Z | XC_CORRECT | agent | __metal_slice_tensor | candidate air.slice.tensor -> (空) (P10T -O2/-O0 双摄で air op 非存在=fold/field access) |
+| 2026-07-21T05:37Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 0 行; 分布 {'confirmed': 3, 'medium': 1, 'low': 1} |
+| 2026-07-21T05:37Z | REPORT | promote_map.py@1.0.0 | data/promote_report.md | 686 行を集計 |
+| 2026-07-21T05:42Z | XC_CORRECT | agent | __metal_get_imageblock_color_coverage_mask | candidate air.get.imageblock.color.coverage.mask -> air.get_color_coverage_mask (P22K golden @probe_p22k_ib_size に実測済: get_color_coverage_mask のみ後回し反映) |
+| 2026-07-21T05:51Z | GOLDEN_NAMES_RESCAN | agent | data/air_golden_names.csv | golden corpus 全再スキャン: 444 -> 485 (+41; run18_apply..run24_apply 追加由来)。空 example_source を first-hit golden 相対パスで補完 |
+| 2026-07-21T05:51Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 0 行; 分布 {'confirmed': 3, 'medium': 1, 'low': 1} |
+| 2026-07-21T06:08Z | APPLY_GOLDEN | promote_map.py@1.0.0 | golden/run25_apply | manifest 34 件: 昇格 18, 不一致 16, 未回収 0 |
+| 2026-07-21T06:08Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_imageblock_implicit_data | P25M/probe_p25m_islice2d: candidate=air.imageblock.implicit.data vs golden=['air.implicit_imageblock_data', 'air.write_imageblock_slice_to_texture_2d.i16.v4f32'] |
+| 2026-07-21T06:08Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_imageblock_implicit_mask_write | P25M/probe_p25m_imw: candidate=air.imageblock.implicit.mask.write vs golden=['air.get_color_coverage_mask', 'air.store.implicit_imageblock.mask.v4f32', 'air.store.implicit_imageblock.mask.v4f32'] |
+| 2026-07-21T06:08Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_get_null_depth_2d_t | P25M/probe_p25m_nd2d: candidate=air.get.null.depth.2d.t vs golden=['air.get_null_depth_2d', 'air.get_width_depth_2d'] |
+| 2026-07-21T06:08Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_get_null_depth_2d_ms_t | P25M/probe_p25m_nd2ms: candidate=air.get.null.depth.2d.ms.t vs golden=['air.get_null_depth_2d_ms', 'air.get_width_depth_2d_ms'] |
+| 2026-07-21T06:08Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_get_null_depth_2d_array_t | P25M/probe_p25m_nd2da: candidate=air.get.null.depth.2d.array.t vs golden=['air.get_null_depth_2d_array', 'air.get_width_depth_2d_array'] |
+| 2026-07-21T06:08Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_get_null_depth_2d_ms_array_t | P25M/probe_p25m_nd2msa: candidate=air.get.null.depth.2d.ms.array.t vs golden=['air.get_null_depth_2d_ms_array', 'air.get_width_depth_2d_ms_array'] |
+| 2026-07-21T06:08Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_get_null_depth_cube_t | P25M/probe_p25m_ndcube: candidate=air.get.null.depth.cube.t vs golden=['air.get_null_depth_cube', 'air.get_width_depth_cube'] |
+| 2026-07-21T06:08Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_get_null_depth_cube_array_t | P25M/probe_p25m_ndcubearr: candidate=air.get.null.depth.cube.array.t vs golden=['air.get_null_depth_cube_array', 'air.get_width_depth_cube_array'] |
+| 2026-07-21T06:08Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_get_null_visible_function_table | P25M/probe_p25m_nullvft: candidate=air.get.null.visible.function.table vs golden=['air.get_null_visible_function_table', 'air.get_size_visible_function_table'] |
+| 2026-07-21T06:08Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_get_null_function_handle | P25M/probe_p25m_nullfh: candidate=air.get.null.function.handle vs golden=['air.get_null_function_handle'] |
+| 2026-07-21T06:08Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_get_null_primitive_acceleration_structure | P25M/probe_p25m_nullpas: candidate=air.get.null.primitive.acceleration.structure vs golden=['air.get_null_primitive_acceleration_structure'] |
+| 2026-07-21T06:08Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_release_intersect_payload | P25M/probe_p25m_itplcb: candidate=air.release.intersect.payload vs golden=['air.intersect_direct_access.triangle_data', 'air.release_intersection_result.triangle_data', 'air.release_intersect_payload.triangle_data'] |
+| 2026-07-21T06:08Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_get_type_intersection_result | P25M/probe_p25m_rtype: candidate=air.get.type.intersection.result vs golden=['air.get_null_intersection_function_table', 'air.intersect_direct_access.triangle_data', 'air.get_type_intersection_result.triangle_data'] |
+| 2026-07-21T06:08Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_get_resource_id_instance_acceleration_structure | P25M/probe_p25m_ridias: candidate=air.get.resource.id.instance.acceleration.structure vs golden=['air.get_resource_id_instance_acceleration_structure'] |
+| 2026-07-21T06:08Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_get_resource_id_primitive_acceleration_structure | P25M/probe_p25m_ridpas: candidate=air.get.resource.id.primitive.acceleration.structure vs golden=['air.get_resource_id_primitive_acceleration_structure'] |
+| 2026-07-21T06:08Z | XC_MISMATCH | promote_map.py@1.0.0 | __metal_is_function_constant_defined | P25M/probe_p25m_ifcd: candidate=air.is.function.constant.defined vs golden=['air.is_function_constant_defined'] |
+| 2026-07-21T06:08Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_imageblock_implicit_data | candidate air.imageblock.implicit.data -> air.implicit_imageblock_data (golden 単一名実測) |
+| 2026-07-21T06:08Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_get_null_depth_2d_t | candidate air.get.null.depth.2d.t -> air.get_null_depth_2d (golden 単一名実測) |
+| 2026-07-21T06:08Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_get_null_depth_2d_ms_t | candidate air.get.null.depth.2d.ms.t -> air.get_null_depth_2d_ms (golden 単一名実測) |
+| 2026-07-21T06:08Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_get_null_depth_2d_array_t | candidate air.get.null.depth.2d.array.t -> air.get_null_depth_2d_array (golden 単一名実測) |
+| 2026-07-21T06:08Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_get_null_depth_2d_ms_array_t | candidate air.get.null.depth.2d.ms.array.t -> air.get_null_depth_2d_ms_array (golden 単一名実測) |
+| 2026-07-21T06:08Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_get_null_depth_cube_t | candidate air.get.null.depth.cube.t -> air.get_null_depth_cube (golden 単一名実測) |
+| 2026-07-21T06:08Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_get_null_depth_cube_array_t | candidate air.get.null.depth.cube.array.t -> air.get_null_depth_cube_array (golden 単一名実測) |
+| 2026-07-21T06:08Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_get_null_visible_function_table | candidate air.get.null.visible.function.table -> air.get_null_visible_function_table (golden 単一名実測) |
+| 2026-07-21T06:08Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_get_null_function_handle | candidate air.get.null.function.handle -> air.get_null_function_handle (golden 単一名実測) |
+| 2026-07-21T06:08Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_get_null_primitive_acceleration_structure | candidate air.get.null.primitive.acceleration.structure -> air.get_null_primitive_acceleration_structure (golden 単一名実測) |
+| 2026-07-21T06:08Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_release_intersect_payload | candidate air.release.intersect.payload -> air.release_intersect_payload.triangle_data (golden 単一名実測) |
+| 2026-07-21T06:08Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_get_type_intersection_result | candidate air.get.type.intersection.result -> air.get_type_intersection_result.triangle_data (golden 単一名実測) |
+| 2026-07-21T06:08Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_get_resource_id_instance_acceleration_structure | candidate air.get.resource.id.instance.acceleration.structure -> air.get_resource_id_instance_acceleration_structure (golden 単一名実測) |
+| 2026-07-21T06:08Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_get_resource_id_primitive_acceleration_structure | candidate air.get.resource.id.primitive.acceleration.structure -> air.get_resource_id_primitive_acceleration_structure (golden 単一名実測) |
+| 2026-07-21T06:08Z | XC_CORRECT | promote_map.py@1.0.0 | __metal_is_function_constant_defined | candidate air.is.function.constant.defined -> air.is_function_constant_defined (golden 単一名実測) |
+| 2026-07-21T06:08Z | APPLY_GOLDEN_CORRECTIONS | promote_map.py@1.0.0 | golden/run25_apply | 訂正昇格 15 件; 多様名で保留 1 件; 衝突skip 0 件 |
+| 2026-07-21T06:08Z | XC_CORRECT | agent | __metal_imageblock_implicit_mask_write | candidate air.imageblock.implicit.mask.write -> air.store.implicit_imageblock.mask.v4f32 (run25 P25M @probe_p25m_imw 単一名実測) |
+| 2026-07-21T06:08Z | XC_CORRECT | agent | __metal_get_sampler | candidate air.get.sampler -> (空) (run25 e2_gsampler 実測: constexpr sampler は @__air_sampler_state [2 x i64] addrspace(2) 定数として module に配置、air call 非生成) |
+| 2026-07-21T06:08Z | XC_CORRECT | agent | __metal_struct_has_render_target | candidate air.struct.has.render.target -> (空) (run25 e4_srt 実測: Sema 時評価専用; runtime 直接呼出で frontend crash exit 138 — 32023.883 一次コンパイラ挙動) |
+| 2026-07-21T06:08Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 0 行; 分布 {'confirmed': 3, 'medium': 1, 'low': 1} |
+| 2026-07-21T06:08Z | REPORT | promote_map.py@1.0.0 | data/promote_report.md | 686 行を集計 |
+| 2026-07-21T06:10Z | PROBE_GOLDEN | agent | golden/run25_apply/P25M | P25M v3 (metal4.0 -O2, iter0 一発 OK): imageblock implicit slice family 7 + implicit_data/mask_write + get_null texture/depth 14 + get_null fh/vft/prim-AS 3 + payload 3 + resource_id 2 + ifcd。合計 33 確認 (apply 18 + corrections 15 + 手動 2 - implicit_data... ) event: confirmed 590->625 |
+| 2026-07-21T06:10Z | PROBE_DISCOVERY | agent | golden/run25_apply | 一次学習: (1) imageblock implicit = [[color(n)]] 属性付き struct のみ (float4/属性なし struct は layout 未定義) / slice は template<E> + Sema trait METAL_VALID_RENDER_TARGET; (2) primitive intersector payload form は instancing tag 禁止 (metal_raytracing L529); (3) constexpr sampler = @__air_sampler_state [2 x i64] addrspace(2) module 定数 + !air.sampler_states metadata (air call なし); (4) __metal_struct_has_render_target 直叩きで metalfe-32023.883 frontend crash exit 138 (Sema 時評価専用 builtin); (5) is_function_constant_defined は air op として存在 (fold されない); (6) imageblock_slice write は index/element suffix .i16.v4f32 |
+| 2026-07-21T06:15Z | APPLY_GOLDEN | promote_map.py@1.0.0 | golden/run26_apply | manifest 16 件: 昇格 16, 不一致 0, 未回収 0 |
+| 2026-07-21T06:15Z | APPLY_GOLDEN_CORRECTIONS | promote_map.py@1.0.0 | golden/run26_apply | 訂正昇格 0 件; 多様名で保留 0 件; 衝突skip 0 件 |
+| 2026-07-21T06:15Z | AUDIT | promote_map.py@1.0.0 | data/builtin_to_air_map.v2.csv | 再検算 686 行; 変動 0 行; 分布 {'confirmed': 3, 'low': 1} |
+| 2026-07-21T06:15Z | PROBE_GOLDEN | agent | golden/run26_apply/P26M | P26M (metal4.0 -O2, iter0 一発 OK): texture ulong4 atomic max/min 全8次元 16 件確認 = air.atomic_{max,min}_explicit_texture_<dim>.i16.u.v4i64。真因は型制約 (texture*<ulong, access::read_write> 専用化) で toolchain 非対応ではなかった → 過去 EVENTLOG の 'cap-gate probe 不能' 判定は訂正 |
+| 2026-07-21T06:15Z | MAP_MILESTONE | agent | data/builtin_to_air_map.v2.csv | 正本 686 行: confirmed 641 / low 45 / medium 0 / high 0。candidate 有り未確定 0 行 = 全セルが確定状態 (625 golden 確認 + 16 P26 + 45 air-op 非存在 disposition 実測) |
+| 2026-07-21T06:15Z | GOLDEN_NAMES_RESCAN | agent | data/air_golden_names.csv | run26 分込再スキャン完了 |
+| 2026-07-21T06:15Z | REPORT | promote_map.py@1.0.0 | data/promote_report.md | 686 行を集計 |
+| 2026-07-21T06:16Z | DOC_APPEND | agent | docs/AIR_VOCABULARY.md §8 | run24-26 追補: query/result・handle・get_null・imageblock slice・frontend-consteval・texture atomic・命名総則訂正 + 正本状態 |
+| 2026-07-21T06:16Z | DOC_UPDATE | agent | docs/MSL_TO_IR_MAPPING.md | hub を最終状態へ: ④全確定 (641/45/0), §8 probe 完了記録, 索引に REFERENCE_TREE_INVENTORY/golden/promote_report 追加 |
+| 2026-07-21T06:17Z | REPORT | promote_map.py@1.0.0 | data/promote_report.md | 686 行を集計 |
